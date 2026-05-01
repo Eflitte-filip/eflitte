@@ -1,0 +1,2379 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="title">EFLITTE — UI agencija za slovenska podjetja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root {
+    --bg: #FAF9F5;
+    --bg-alt: #F0EEE6;
+    --surface: #F5F3EC;
+    --surface-2: #E8E5DB;
+    --ink: #141413;
+    --ink-soft: #3D3D3B;
+    --muted: #6C6B67;
+    --line: rgba(20, 20, 19, 0.10);
+    --line-strong: rgba(20, 20, 19, 0.18);
+    --accent: #CC785C;
+    --accent-deep: #B0593F;
+    --accent-soft: rgba(204, 120, 92, 0.10);
+    --accent-ink: #FAF9F5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  em { font-style: normal; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- NAVIGATION ---------- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 22px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 32px;
+    background: rgba(250, 249, 245, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: padding 0.4s ease, border-color 0.4s ease;
+  }
+  .nav .logo { justify-self: start; color: var(--ink); }
+  .nav .nav-links { justify-self: center; }
+  .nav .nav-right { justify-self: end; }
+  .nav .nav-links a { color: var(--ink); }
+  .nav .lang-toggle { color: var(--ink-soft); }
+  .nav .lang-toggle:hover { color: var(--ink); }
+  .nav .nav-cta { background: var(--ink); color: var(--bg); }
+  .nav .nav-cta:hover { background: #2A2A28; }
+
+  .nav.scrolled {
+    padding: 14px 40px;
+    border-bottom-color: var(--line);
+  }
+
+  /* ---------- LOGO (Eflitte. style) ---------- */
+  .logo {
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    height: 32px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .logo-letters {
+    display: flex;
+    align-items: baseline;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .logo-letters span {
+    display: inline-block;
+    transition: max-width 0.6s cubic-bezier(.77,.05,.2,1),
+                opacity 0.35s ease,
+                transform 0.6s cubic-bezier(.77,.05,.2,1);
+    max-width: 1em;
+    overflow: hidden;
+    white-space: pre;
+  }
+  .nav.scrolled .logo-letters span.hide {
+    max-width: 0;
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  /* When collapsed, E stays — no size change needed since we use proper case now */
+  .nav.scrolled .logo-letters span.keep { font-size: 1em; }
+
+  .logo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: 3px;
+    flex-shrink: 0;
+    transition: margin-left 0.6s cubic-bezier(.77,.05,.2,1);
+  }
+  .nav.scrolled .logo-dot { margin-left: 2px; }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  .nav-cta {
+    padding: 10px 20px;
+    min-width: 140px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 160px 40px 100px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #141413;
+  }
+  #hero-3d {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: auto;
+  }
+  #hero-3d canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /* Dark gradient on the left so the text stays readable over the 3D scene */
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 15% 50%, rgba(20, 20, 19, 0.95) 0%, rgba(20, 20, 19, 0.75) 28%, transparent 55%),
+      linear-gradient(to bottom, transparent 0%, transparent 70%, #141413 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-text {
+    max-width: 640px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,249,245,0.55);
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px; height: 1px;
+    background: var(--accent);
+  }
+
+  h1.hero-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 4.6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #FAF9F5;
+    margin-bottom: 24px;
+    max-width: 880px;
+  }
+  h1.hero-title em {
+    font-style: normal;
+    font-weight: 700;
+    color: #FAF9F5;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-color: #FAF9F5;
+  }
+  .hero-attribution {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250,249,245,0.55);
+    margin-bottom: 56px;
+  }
+
+  .hero-sub {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    color: rgba(250,249,245,0.82);
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .btn-primary {
+    padding: 16px 28px;
+    background: #FAF9F5;
+    color: #141413;
+    border: none;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .btn-primary:hover {
+    background: #FFFFFF;
+    transform: translateY(-1px);
+  }
+  .btn-primary .arrow { transition: transform 0.25s ease; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-ghost {
+    padding: 16px 24px;
+    background: transparent;
+    color: #FAF9F5;
+    border: 1px solid rgba(250,249,245,0.25);
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-ghost:hover { border-color: rgba(250,249,245,0.7); background: rgba(250,249,245,0.06); }
+
+  /* Right side visual placeholder badge */
+  /* ---------- FAQ ---------- */
+  .faq {
+    background: var(--bg-alt);
+    border-top: 1px solid var(--line);
+  }
+  .faq-head {
+    margin-bottom: 56px;
+    max-width: 720px;
+  }
+  .faq-list {
+    max-width: 900px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .faq-question {
+    width: 100%;
+    padding: 28px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    margin-top: 6px;
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: "";
+    position: absolute;
+    background: var(--ink);
+    transition: transform 0.35s cubic-bezier(.77,.05,.2,1);
+  }
+  .faq-icon::before {
+    left: 0; top: 50%;
+    width: 100%; height: 1.5px;
+    transform: translateY(-50%);
+  }
+  .faq-icon::after {
+    top: 0; left: 50%;
+    width: 1.5px; height: 100%;
+    transform: translateX(-50%);
+  }
+  .faq-item.open .faq-icon::after {
+    transform: translateX(-50%) rotate(90deg);
+  }
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.45s cubic-bezier(.77,.05,.2,1);
+  }
+  .faq-answer-inner {
+    padding: 0 0 28px 0;
+    max-width: 720px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- CONTACT / CTA ---------- */
+  .cta h2 { max-width: 760px; }
+  .cta-form {
+    max-width: 620px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    text-align: left;
+  }
+  .cta-form .field-full { grid-column: 1 / -1; }
+  .cta-form label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(250,249,245,0.55);
+    margin-bottom: 10px;
+  }
+  .cta-form input,
+  .cta-form select,
+  .cta-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    color: #FAF9F5;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .cta-form input::placeholder,
+  .cta-form textarea::placeholder { color: rgba(250,249,245,0.35); }
+  .cta-form input:focus,
+  .cta-form select:focus,
+  .cta-form textarea:focus {
+    border-color: rgba(250,249,245,0.85);
+    background: rgba(255,255,255,0.07);
+  }
+  .cta-form textarea {
+    min-height: 130px;
+    resize: vertical;
+    font-family: "Inter", sans-serif;
+  }
+  .cta-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23FAF9F5' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+  }
+  .cta-form select option { background: #1F1F1D; color: #FAF9F5; }
+  .cta-form .honeypot { position: absolute; left: -9999px; visibility: hidden; }
+  .cta-form button[type="submit"] {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    padding: 18px 32px;
+    background: #FAF9F5;
+    color: #141413;
+    border: none;
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .cta-form button[type="submit"]:hover { background: #FFFFFF; transform: translateY(-1px); }
+  .cta-form button[type="submit"] .arrow { transition: transform 0.25s ease; }
+  .cta-form button[type="submit"]:hover .arrow { transform: translateX(4px); }
+
+  .form-status {
+    max-width: 620px;
+    margin: 20px auto 0;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: left;
+    display: none;
+  }
+  .form-status.success {
+    display: block;
+    background: rgba(204,120,92,0.14);
+    color: #E8B39B;
+    border: 1px solid rgba(204,120,92,0.38);
+  }
+  .form-status.error {
+    display: block;
+    background: rgba(220, 70, 70, 0.12);
+    color: #F0A0A0;
+    border: 1px solid rgba(220, 70, 70, 0.30);
+  }
+
+  /* ---------- LANGUAGE TOGGLE ---------- */
+  .nav-right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .lang-toggle {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 2px;
+    min-width: 24px;
+    text-align: center;
+    transition: color 0.2s ease;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .lang-toggle:hover { color: var(--ink); }
+
+  /* ---------- HAMBURGER + DRAWER ---------- */
+  .nav-burger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-left: 2px;
+  }
+  .nav-burger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    border-radius: 1px;
+    transition: transform 0.35s cubic-bezier(.7,.05,.2,1), opacity 0.25s ease;
+    transform-origin: center;
+  }
+  body.menu-open .nav-burger span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  body.menu-open .nav-burger span:nth-child(2) {
+    opacity: 0;
+  }
+  body.menu-open .nav-burger span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(20, 20, 19, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  body.menu-open .drawer {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .drawer-inner {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+    width: 100%;
+    padding: 0 32px;
+  }
+  .drawer-link {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    color: #FAF9F5;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2,.7,.2,1), color 0.2s ease;
+  }
+  body.menu-open .drawer-link {
+    opacity: 1;
+    transform: none;
+  }
+  body.menu-open .drawer-link:nth-child(1) { transition-delay: 0.10s; }
+  body.menu-open .drawer-link:nth-child(2) { transition-delay: 0.16s; }
+  body.menu-open .drawer-link:nth-child(3) { transition-delay: 0.22s; }
+  body.menu-open .drawer-link:nth-child(4) { transition-delay: 0.28s; }
+  .drawer-link:hover { color: var(--accent); }
+
+  .drawer-extras {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 28px;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease 0.34s, transform 0.5s cubic-bezier(.2,.7,.2,1) 0.34s;
+  }
+  body.menu-open .drawer-extras { opacity: 1; transform: none; }
+  .drawer-cta {
+    background: #FAF9F5;
+    color: #141413;
+    border: none;
+    border-radius: 999px;
+    padding: 16px 36px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 200px;
+    transition: background 0.25s ease;
+  }
+  .drawer-cta:hover { background: #FFFFFF; }
+  .drawer-lang {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(250,249,245,0.65);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 4px;
+    transition: color 0.2s ease;
+  }
+  .drawer-lang:hover { color: #FAF9F5; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 120px 40px; position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .section-label::before {
+    content: "";
+    width: 28px; height: 1px;
+    background: var(--ink-soft);
+  }
+
+  h2.section-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 4.4vw, 58px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    max-width: 900px;
+  }
+  h2.section-title em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services {
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+  }
+  .services-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 70px;
+  }
+  .services-head p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 480px;
+    justify-self: end;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 16px;
+  }
+  .service-card {
+    background: #EEE8DB;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    position: relative;
+    border-radius: 20px;
+  }
+  .service-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .service-card-top h3 { margin-top: 4px; }
+  .service-num {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .service-card h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  .service-card p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  /* ---------- HARDWARE / ONGOING NOTES (dark callout cards) ---------- */
+  .hardware-note {
+    padding: 24px 40px 56px;
+    background: var(--bg);
+  }
+  .note-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #141413;
+    color: #FAF9F5;
+    border-radius: 20px;
+    padding: 44px 48px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+  }
+  .note-inner::after {
+    content: "";
+    position: absolute;
+    top: 50%; right: -10%;
+    width: 50%; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(204,120,92,0.35), transparent);
+    pointer-events: none;
+  }
+  .note-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250,249,245,0.55);
+    position: relative;
+    z-index: 2;
+  }
+  .note-label::before {
+    content: "";
+    width: 28px; height: 1px;
+    background: rgba(250,249,245,0.35);
+  }
+  .note-body {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    color: rgba(250,249,245,0.88);
+    max-width: 720px;
+    letter-spacing: -0.005em;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process {
+    background: var(--bg-alt);
+    color: var(--ink);
+    position: relative;
+  }
+  .process::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: var(--line);
+  }
+  .process h2.section-title { color: var(--ink); }
+  .process h2.section-title em { color: var(--accent); }
+
+  .process-grid {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .process-step {
+    position: relative;
+  }
+  .process-step .step-num {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .process-step h4 {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .process-step p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- INTEGRATIONS ---------- */
+  .integrations {
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+  }
+  .integrations-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 60px;
+  }
+  .integrations-head p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 480px;
+    justify-self: end;
+  }
+
+  .integration-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 60px;
+  }
+  .integration-group h5 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .integration-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .integration-tags > span,
+  .integration-tags > a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  }
+  .integration-tags > a {
+    padding-right: 28px;
+  }
+  .integration-tags > a::after {
+    content: "↗";
+    font-size: 11px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(4px, -50%);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+  .integration-tags > a:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: rgba(20, 20, 19, 0.04);
+  }
+  .integration-tags > a:hover::after {
+    opacity: 0.7;
+    transform: translate(0, -50%);
+  }
+  .chip-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    opacity: 0.85;
+    flex-shrink: 0;
+    transition: opacity 0.25s ease;
+  }
+  .integration-tags > a:hover .chip-icon { opacity: 1; }
+
+  .integration-group {
+    position: relative;
+    padding-bottom: 56px;
+  }
+  .integration-info {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: -42px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 540px;
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .integration-info.show {
+    opacity: 1;
+    transform: none;
+  }
+  .integration-info::before {
+    content: "↳ ";
+    color: var(--muted);
+    margin-right: 4px;
+  }
+
+  /* ---------- INDUSTRIES ---------- */
+  .industries .section-head {
+    max-width: 720px;
+    margin-bottom: 70px;
+  }
+  .industries .section-head p {
+    margin-top: 24px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 640px;
+  }
+  .industry-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--line);
+  }
+  .industry-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 20px;
+    padding: 28px 8px;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .industry-row h4 {
+    transition: transform 0.3s cubic-bezier(.2,.7,.2,1);
+  }
+  .industry-row:hover h4 { transform: translateX(6px); }
+  .industry-row:hover .industry-arrow { opacity: 1; transform: translateX(4px); }
+  .industry-row .idx {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    align-self: flex-start;
+    margin-top: 10px;
+  }
+  .industry-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .industry-row h4 {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .industry-row .industry-tag {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .industry-row .industry-tag em {
+    font-style: normal;
+    color: var(--ink);
+  }
+  .industry-arrow {
+    opacity: 0.35;
+    transform: translateX(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    align-self: center;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    padding: 140px 40px;
+    background: #141413;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(204,120,92,0.12) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .cta > * { position: relative; z-index: 1; }
+  .cta h2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 5.6vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    max-width: 900px;
+    margin: 0 auto 32px;
+    color: #FAF9F5;
+  }
+  .cta h2 em {
+    font-style: normal;
+    font-weight: 700;
+    color: #FAF9F5;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-color: rgba(250,249,245,0.85);
+  }
+  .cta p {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: rgba(250,249,245,0.82);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: #141413;
+    color: rgba(250,249,245,0.6);
+    padding: 80px 40px 32px;
+    border-top: none;
+  }
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    align-items: center;
+  }
+  .footer-brand {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    font-size: 72px;
+    line-height: 1;
+    color: #FAF9F5;
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .footer-brand-dot {
+    display: inline-block;
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: baseline;
+  }
+  .footer-col h5 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(250,249,245,0.45);
+    margin-bottom: 18px;
+  }
+  .footer-col a,
+  .footer-col span {
+    display: block;
+    color: rgba(250,249,245,0.82);
+    text-decoration: none;
+    font-size: 14.5px;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(250,249,245,0.42);
+    font-size: 13px;
+    font-family: "Inter", sans-serif;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-legal {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .footer-legal a {
+    color: rgba(250,249,245,0.55);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s ease;
+  }
+  .footer-legal a:hover { color: var(--accent); }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+  [data-reveal] {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1);
+    will-change: opacity, transform;
+  }
+  [data-reveal="up"]    { transform: translateY(32px); }
+  [data-reveal="down"]  { transform: translateY(-32px); }
+  [data-reveal="left"]  { transform: translateX(-32px); }
+  [data-reveal="right"] { transform: translateX(32px); }
+  [data-reveal].in      { opacity: 1; transform: none; }
+
+  /* Split title — each word animates independently */
+  [data-split] .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+  [data-split] .word-inner {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.9s cubic-bezier(.2,.7,.2,1);
+  }
+  [data-split].in .word-inner {
+    transform: translateY(0);
+  }
+
+  /* Service card 3D tilt (mouse-driven) */
+  .service-card {
+    transform-style: preserve-3d;
+    transition: background 0.3s ease, transform 0.4s cubic-bezier(.2,.7,.2,1);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1080px) {
+    .nav {
+      padding: 18px 22px;
+      grid-template-columns: 1fr auto;
+    }
+    .nav.scrolled { padding: 12px 22px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .nav-right .lang-toggle,
+    .nav-right .nav-cta { display: none; }
+    .drawer-extras { display: flex; }
+  }
+
+  @media (max-width: 960px) {
+    .hero { padding: 140px 22px 80px; min-height: auto; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    #hero-3d { opacity: 0.55; }
+    .hero-vignette { background: linear-gradient(to bottom, rgba(12,12,14,0.7), #141413 90%); }
+    section { padding: 90px 22px; }
+    .services-head,
+    .integrations-head { grid-template-columns: 1fr; gap: 24px; }
+    .services-head p,
+    .integrations-head p { justify-self: start; }
+    .hardware-note { padding: 16px 22px 40px; }
+    .note-inner { grid-template-columns: 1fr; gap: 18px; padding: 32px 28px; border-radius: 16px; }
+    .note-body { font-size: 16px; }
+    .service-grid { grid-template-columns: 1fr; }
+    .integration-groups { grid-template-columns: 1fr; gap: 32px; }
+    .process-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .industry-list { grid-template-columns: 1fr; }
+    .cta-form { grid-template-columns: 1fr; }
+    .faq-question { font-size: 19px; padding: 22px 0; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .cta { padding: 100px 22px; }
+    footer { padding: 60px 22px 28px; }
+  }
+  @media (max-width: 540px) {
+    .process-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .btn-primary, .hero-actions .btn-ghost { justify-content: center; text-align: center; }
+    .service-card { min-height: auto; padding: 32px 28px; }
+    .industry-row { grid-template-columns: 30px 1fr auto; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="logo" aria-label="Eflitte">
+    <span class="logo-letters">
+      <span class="keep">E</span><span class="hide">f</span><span class="hide">l</span><span class="hide">i</span><span class="hide">t</span><span class="hide">t</span><span class="hide">e</span>
+    </span>
+    <span class="logo-dot"></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#storitve" data-i18n="nav.services">Kaj delamo</a></li>
+    <li><a href="#proces" data-i18n="nav.process">Proces</a></li>
+    <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+    <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="lang-toggle" aria-label="Switch language">EN</button>
+    <button class="nav-cta" data-i18n="nav.cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+      Pogovorimo se
+    </button>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-inner">
+    <a href="#storitve" class="drawer-link" data-i18n="nav.services">Kaj delamo</a>
+    <a href="#proces" class="drawer-link" data-i18n="nav.process">Proces</a>
+    <a href="#faq" class="drawer-link" data-i18n="nav.faq">FAQ</a>
+    <a href="#kontakt" class="drawer-link" data-i18n="nav.contact">Kontakt</a>
+    <div class="drawer-extras">
+      <button class="drawer-cta" data-i18n="nav.cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+        Pogovorimo se
+      </button>
+      <button class="drawer-lang" aria-label="Switch language">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div id="hero-3d" aria-hidden="true"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1 class="hero-title" data-split data-i18n="hero.title">
+        UI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <em>uporabljajo</em>, nadomestili tiste, ki ga ne.
+      </h1>
+      <div class="hero-attribution" data-i18n="hero.attribution">
+        — Ginni Rometty, nekdanja izvršna direktorica IBM
+      </div>
+      <p class="hero-sub" data-reveal="up" data-reveal-delay="400" data-i18n="hero.sub">
+        EFLITTE vodi podjetja skozi premišljeno uvedbo umetne inteligence — od prve strategije do delujočih sistemov v produkciji. Skupaj ugotovimo, kje UI res prinaša vrednost in kje (še) ne, nato pa zgradimo tisto, kar je smiselno.
+      </p>
+      <div class="hero-actions" data-reveal="up" data-reveal-delay="550">
+        <button class="btn-primary" data-i18n="hero.cta" onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})">
+          Pogovorimo se
+          <span class="arrow">→</span>
+        </button>
+        <button class="btn-ghost" data-i18n="hero.ghost" onclick="document.getElementById('storitve').scrollIntoView({behavior:'smooth'})">
+          Kaj delamo
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="services" id="storitve">
+  <div class="container">
+    <div class="services-head reveal">
+      <div>
+        <div class="section-label" data-i18n="services.label">Kaj delamo</div>
+        <h2 class="section-title" data-i18n="services.title">UI, vgrajen v <em>vaše</em> poslovanje.</h2>
+      </div>
+      <p data-i18n="services.lead">Naše delo je vgradnja praktičnih UI sistemov v infrastrukturo podjetja za optimizacijo delovanja. Spodaj so štiri področja, ki skupaj tvorijo pot od prve strategije do sistema v vsakdanji rabi.</p>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <div class="service-num" data-i18n="card01.num">01 — Vmesniki</div>
+          <h3 data-i18n="card01.h3">Pogovorni vmesniki</h3>
+          <p data-i18n="card01.p">UI, s katerim se zaposleni ali stranke pogovarjajo v naravnem jeziku. Za podporo, analitiko, interno znanje ali pomoč pri delu. Zgradili smo ga tako, da pozna meje lastne vednosti — ko ne ve, to pove, namesto da si izmisli.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <div class="service-num" data-i18n="card02.num">02 — Razumevanje</div>
+          <h3 data-i18n="card02.h3">Razumevanje dokumentov</h3>
+          <p data-i18n="card02.p">Pogodbe, fakture, napotnice, zapisi sestankov, poročila. UI prebere dokument in izlušči, kar vas zanima — ključne točke, tvegane klavzule, strukturirane podatke, povzetek. Primerno za organizacije, katerih dnevna rutina pomeni branje dolgih besedil.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <div class="service-num" data-i18n="card03.num">03 — Agenti</div>
+          <h3 data-i18n="card03.h3">UI agenti</h3>
+          <p data-i18n="card03.p">Agenti ne le odgovarjajo, tudi delujejo — v vaših sistemih, pod dogovorjenimi pravili. Uporabljajo orodja, ki jih imajo ljudje, vključno z aplikacijami brez strojnega vmesnika. Omejitve in dovoljenja so jasna, odločitve sledljive, kritične akcije pa vedno zahtevajo potrditev človeka.</p>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-top">
+          <div class="service-num" data-i18n="card04.num">04 — Napovedi</div>
+          <h3 data-i18n="card04.h3">Napovedni modeli</h3>
+          <p data-i18n="card04.p">Napoved prodaje, zalog, likvidnosti ali odhoda strank je uporabna šele, ko razumete, od kod izhaja. Naši modeli razloženi z razlago, ne le z rezultati — tako da vodstvo odloča na podlagi vzrokov, ne le številk, in da je zaupanje zgrajeno na razumevanju.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HARDWARE NOTE -->
+<section class="hardware-note">
+  <div class="note-inner reveal">
+    <div class="note-label" data-i18n="hw.label">Dodatno</div>
+    <div class="note-body" data-i18n="hw.body">
+      Po potrebi priskrbimo tudi strojno opremo — od namenskih GPU strežnikov do edge naprav — kadar zahteve po zasebnosti podatkov ali latenci narekujejo izvajanje v lokalnem okolju.
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proces">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="process.label">Kako delamo</div>
+      <h2 class="section-title" data-i18n="process.title">Od <em>raziskave</em> do produkcije.</h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <span class="step-num">01</span>
+        <h4 data-i18n="step1.h4">Razumevanje</h4>
+        <p data-i18n="step1.p">Ne začnemo z modelom. Začnemo z vprašanjem: katero odločitev ali opravilo je smiselno razbremeniti z UI? Pogledamo vaše podatke, procese in meje dovoljenega — rezultat je jasen zemljevid prioritet.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">02</span>
+        <h4 data-i18n="step2.h4">Prototip</h4>
+        <p data-i18n="step2.p">Preden vlagamo mesece v razvoj, v dveh do treh tednih zgradimo delujoč prototip na vaših podatkih. Meri resnično uporabnost — ne le teoretičnih možnosti. Nato se skupaj odločimo, ali gremo naprej.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">03</span>
+        <h4 data-i18n="step3.h4">Produkcija</h4>
+        <p data-i18n="step3.p">Utrdimo prototip v sistem, ki lahko zanesljivo teče vsak dan. Dodamo varovala, ocenjevalni okvir in opazljivost — ker UI v produkciji ni isto kot UI v demonstraciji.</p>
+      </div>
+      <div class="process-step reveal">
+        <span class="step-num">04</span>
+        <h4 data-i18n="step4.h4">Skrb</h4>
+        <p data-i18n="step4.p">Po uvedbi spremljamo natančnost, stroške in uporabo. Modeli se s časom spreminjajo, tako se spreminjajo tudi podatki in vaše potrebe — sistem ohranjamo v ravnovesju s tem, kar se dogaja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONGOING SERVICE NOTE -->
+<section class="hardware-note" id="vzdrzevanje">
+  <div class="note-inner reveal">
+    <div class="note-label" data-i18n="svc.label">Po uvedbi</div>
+    <div class="note-body" data-i18n="svc.body">
+      Ko sistem zaživi, ostane v naši skrbi. Redno spremljamo natančnost modelov, posodabljamo komponente, preverjamo priložnosti za izboljšave in prilagajamo sistem spremembam v vašem poslu.
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="integrations" id="integracije">
+  <div class="container">
+    <div class="integrations-head reveal">
+      <div>
+        <div class="section-label" data-i18n="tech.label">Tehnologija</div>
+        <h2 class="section-title" data-i18n="tech.title">Brez <em>zavezanosti</em> enemu modelu.</h2>
+      </div>
+      <p data-i18n="tech.lead">Izbira modela je za nas tehnična odločitev, ne ideološka. Za vsako nalogo izberemo tisto kombinacijo, ki najbolje deluje — po natančnosti, ceni in zahtevi po lokaciji podatkov.</p>
+    </div>
+
+    <div class="integration-groups reveal">
+      <div class="integration-group">
+        <h5 data-i18n="tech.temeljni_modeli">Temeljni modeli</h5>
+        <div class="integration-tags">
+          <a href="https://www.anthropic.com" target="_blank" rel="noopener" data-desc="Modeli z izrazito sposobnostjo razlage in varnostnim profilom za poslovno rabo." data-desc-en="Models with strong reasoning and a safety profile suited to enterprise use."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Anthropic Claude</span></a>
+          <a href="https://openai.com" target="_blank" rel="noopener" data-desc="Široko podprta družina splošnih modelov, primerna za hitre prototipe." data-desc-en="Widely supported general-purpose family, well suited to quick prototypes."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">OpenAI GPT</span></a>
+          <a href="https://deepmind.google/technologies/gemini/" target="_blank" rel="noopener" data-desc="Multimodalni modeli, močni pri delu s slikami in dolgimi konteksti." data-desc-en="Multimodal models, strong on images and long contexts."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/gemini.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Google Gemini</span></a>
+          <a href="https://mistral.ai" target="_blank" rel="noopener" data-desc="Evropski ponudnik manjših, učinkovitih modelov, primernih za samogostitev." data-desc-en="European provider of smaller, efficient models suited to self-hosting."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/mistral.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Mistral</span></a>
+          <a href="https://www.llama.com" target="_blank" rel="noopener" data-desc="Odprtokodna družina modelov za samogostitev pod popolnim nadzorom." data-desc-en="Open-source family for self-hosting under full control."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/meta-color.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Meta Llama</span></a>
+          <a href="https://www.deepseek.com" target="_blank" rel="noopener" data-desc="Nizkocenovni odprti modeli, primerni za stroškovno občutljive primere." data-desc-en="Low-cost open models, well suited to cost-sensitive cases."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">DeepSeek</span></a>
+        </div>
+        <div class="integration-info" aria-live="polite"></div>
+      </div>
+
+      <div class="integration-group">
+        <h5 data-i18n="tech.lokalno_izvajanje_modelov">Lokalno izvajanje modelov</h5>
+        <div class="integration-tags">
+          <a href="https://ollama.com" target="_blank" rel="noopener" data-desc="Najlažji način za poganjanje odprtih modelov lokalno na razvijalskih napravah." data-desc-en="The simplest way to run open models locally on developer machines."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/ollama.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Ollama</span></a>
+          <a href="https://docs.vllm.ai" target="_blank" rel="noopener" data-desc="Knjižnica za zmogljivo serviranje modelov v produkciji z visoko prepustnostjo." data-desc-en="Library for high-throughput model serving in production.">vLLM</a>
+          <a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener" data-desc="Učinkovita izvedba modelov v C++, brez GPU-ja, primerna tudi za edge naprave." data-desc-en="Efficient C++ inference, runs without a GPU — suitable even for edge devices.">Llama.cpp</a>
+          <a href="https://lmstudio.ai" target="_blank" rel="noopener" data-desc="Namizna aplikacija za lokalno preizkušanje modelov in API izpostavitev." data-desc-en="Desktop app for local model testing and exposing an API.">LM Studio</a>
+          <a href="https://www.nvidia.com/en-us/ai/" target="_blank" rel="noopener" data-desc="Optimizirane vsebnike za poganjanje modelov na GPU strežnikih NVIDIA." data-desc-en="Optimised containers for running models on NVIDIA GPU servers."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/nvidia-color.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">NVIDIA NIM</span></a>
+        </div>
+        <div class="integration-info" aria-live="polite"></div>
+      </div>
+
+      <div class="integration-group">
+        <h5 data-i18n="tech.agenti_orodja">Agenti & orodja</h5>
+        <div class="integration-tags">
+          <a href="https://www.langchain.com/langgraph" target="_blank" rel="noopener" data-desc="Okvir za zanesljive agentne tokove dela s stanjem in vejami odločitev." data-desc-en="Framework for reliable agent workflows with state and decision branches."><img class="chip-icon" src="https://cdn.simpleicons.org/langchain/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">LangGraph</span></a>
+          <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" data-desc="Odprt protokol, ki UI-ju omogoča uporabo orodij in dostop do podatkov." data-desc-en="Open protocol that lets AI use tools and access data sources.">MCP</a>
+          <a href="https://www.llamaindex.ai" target="_blank" rel="noopener" data-desc="Pripomoček za povezovanje dokumentov in baz s pogovornimi vmesniki." data-desc-en="Toolkit for connecting documents and databases to conversational interfaces.">LlamaIndex</a>
+          <a href="https://ai.pydantic.dev" target="_blank" rel="noopener" data-desc="Tipiziran Python okvir za strukturirano izhodno obliko UI rezultatov." data-desc-en="Typed Python framework for structured AI output."><img class="chip-icon" src="https://cdn.simpleicons.org/pydantic/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Pydantic AI</span></a>
+          <a href="https://openrouter.ai" target="_blank" rel="noopener" data-desc="Pametno usmerjanje zahtevkov na najprimernejši model glede na kontekst." data-desc-en="Smart routing of requests to the best-fit model per context.">Model Router</a>
+          <a href="https://www.guardrailsai.com" target="_blank" rel="noopener" data-desc="Varnostne meje za UI: validacija vnosov, izhodov in zaznavanje tveganj." data-desc-en="Safety boundaries for AI: input/output validation and risk detection.">Guardrails</a>
+        </div>
+        <div class="integration-info" aria-live="polite"></div>
+      </div>
+
+      <div class="integration-group">
+        <h5 data-i18n="tech.podatki_iskanje">Podatki & iskanje</h5>
+        <div class="integration-tags">
+          <a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener" data-desc="Razširitev za PostgreSQL, ki omogoča vektorsko iskanje znotraj baze." data-desc-en="PostgreSQL extension that enables vector search inside the database."><img class="chip-icon" src="https://cdn.simpleicons.org/postgresql/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">pgvector</span></a>
+          <a href="https://qdrant.tech" target="_blank" rel="noopener" data-desc="Hitro odprtokodna vektorska baza, prijazna do produkcije." data-desc-en="Fast open-source vector database, production-friendly."><img class="chip-icon" src="https://cdn.simpleicons.org/qdrant/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Qdrant</span></a>
+          <a href="https://weaviate.io" target="_blank" rel="noopener" data-desc="Vektorska baza z vgrajenimi semantičnimi pretvorniki in moduli." data-desc-en="Vector database with built-in semantic transformers and modules."><img class="chip-icon" src="https://cdn.simpleicons.org/weaviate/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Weaviate</span></a>
+          <a href="https://www.elastic.co" target="_blank" rel="noopener" data-desc="Zrela platforma za iskanje, dnevnike in vektorsko-leksikalno mešano iskanje." data-desc-en="Mature platform for search, logs and hybrid vector-lexical retrieval."><img class="chip-icon" src="https://cdn.simpleicons.org/elastic/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Elastic</span></a>
+          <a href="https://www.postgresql.org" target="_blank" rel="noopener" data-desc="Zanesljiva relacijska baza, na kateri sloni večina podatkovnih stebrov." data-desc-en="Reliable relational database underpinning most data backbones."><img class="chip-icon" src="https://cdn.simpleicons.org/postgresql/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">PostgreSQL</span></a>
+          <a href="https://www.snowflake.com" target="_blank" rel="noopener" data-desc="Cloud podatkovno skladišče za analitiko nad velikimi viri podatkov." data-desc-en="Cloud data warehouse for analytics across large data sources."><img class="chip-icon" src="https://cdn.simpleicons.org/snowflake/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Snowflake</span></a>
+        </div>
+        <div class="integration-info" aria-live="polite"></div>
+      </div>
+
+      <div class="integration-group">
+        <h5 data-i18n="tech.opazljivost_ocenjevanje">Opazljivost & ocenjevanje</h5>
+        <div class="integration-tags">
+          <a href="https://www.langchain.com/langsmith" target="_blank" rel="noopener" data-desc="Komercialni okvir za sledenje, evalvacijo in odkrivanje napak v LLM aplikacijah." data-desc-en="Commercial framework for tracing, evaluation and debugging LLM apps."><img class="chip-icon" src="https://cdn.simpleicons.org/langchain/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">LangSmith</span></a>
+          <a href="https://langfuse.com" target="_blank" rel="noopener" data-desc="Odprtokodno orodje za telemetrijo, sledenje in cenilke modelov." data-desc-en="Open-source tool for telemetry, tracing and model evaluation.">Langfuse</a>
+          <a href="https://www.braintrust.dev" target="_blank" rel="noopener" data-desc="Platforma za sistematično ocenjevanje kakovosti UI sistemov." data-desc-en="Platform for systematic AI quality evaluation.">Braintrust</a>
+          <a href="https://www.promptfoo.dev" target="_blank" rel="noopener" data-desc="Orodje za samodejno testiranje promptov in različic modelov." data-desc-en="Tool for automated testing of prompts and model variants.">Promptfoo</a>
+          <a href="https://opentelemetry.io" target="_blank" rel="noopener" data-desc="Odprt standard za zbiranje metrik, sledi in dnevnikov v vseh sistemih." data-desc-en="Open standard for collecting metrics, traces and logs across systems."><img class="chip-icon" src="https://cdn.simpleicons.org/opentelemetry/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">OpenTelemetry</span></a>
+        </div>
+        <div class="integration-info" aria-live="polite"></div>
+      </div>
+
+      <div class="integration-group">
+        <h5 data-i18n="tech.infrastruktura">Infrastruktura</h5>
+        <div class="integration-tags">
+          <a href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener" data-desc="Servis Amazonovega oblaka za poganjanje različnih UI modelov v EU regijah." data-desc-en="AWS service for running multiple AI models in EU regions."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/bedrock-color.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">AWS Bedrock</span></a>
+          <a href="https://azure.microsoft.com/en-us/products/ai-foundry" target="_blank" rel="noopener" data-desc="Microsoftov UI portal z modeli, evalvacijo in agentnimi orodji." data-desc-en="Microsoft AI portal with models, evaluation and agent tooling."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/azureai-color.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Azure AI Foundry</span></a>
+          <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener" data-desc="Googlova platforma za UI razvoj in produkcijsko serviranje modelov." data-desc-en="Google platform for AI development and production model serving."><img class="chip-icon" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/vertexai-color.svg" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Google Vertex AI</span></a>
+          <a href="https://kubernetes.io" target="_blank" rel="noopener" data-desc="Sistem za orkestracijo vsebnikov — temelj sodobne produkcijske infrastrukture." data-desc-en="Container orchestration system — the backbone of modern production infrastructure."><img class="chip-icon" src="https://cdn.simpleicons.org/kubernetes/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Kubernetes</span></a>
+          <a href="https://www.docker.com" target="_blank" rel="noopener" data-desc="Tehnologija za pakiranje UI sistemov v ponovljive izolirane vsebnike." data-desc-en="Technology for packaging AI systems into reproducible isolated containers."><img class="chip-icon" src="https://cdn.simpleicons.org/docker/6B6B68" alt="" width="14" height="14" loading="lazy" /><span class="chip-label">Docker</span></a>
+          <span data-i18n="tech.si_cloud" data-desc="Lokalni ponudniki gostovanja v Sloveniji za podatke, ki ne smejo zapustiti države." data-desc-en="Local hosting providers in Slovenia for data that must not leave the country.">Slovenski oblak</span>
+        </div>
+        <div class="integration-info" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="panoge">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="ind.label">Panoge</div>
+      <h2 class="section-title" data-i18n="ind.title">UI v <em>različnih</em> panogah.</h2>
+      <p data-i18n="ind.lead">Različne panoge prinašajo različne vzorce podatkov in odločitev. Spodaj je, s katerimi delamo najpogosteje in kje UI v njih tipično doprinese.</p>
+    </div>
+
+    <div class="industry-list reveal">
+      <div class="industry-row" role="button" tabindex="0">
+        <span class="idx">01</span>
+        <div class="industry-body">
+          <h4 data-i18n="ind01.h4">Proizvodnja</h4>
+          <div class="industry-tag" data-i18n="ind01.tag">Vizualni pregled kakovosti, napovedno vzdrževanje, optimizacija parametrov linij na podlagi senzorskih podatkov.</div>
+        </div>
+        <span class="industry-arrow">→</span>
+      </div>
+      <div class="industry-row" role="button" tabindex="0">
+        <span class="idx">02</span>
+        <div class="industry-body">
+          <h4 data-i18n="ind02.h4">Finančne storitve</h4>
+          <div class="industry-tag" data-i18n="ind02.tag">Razumevanje finančnih dokumentov, prepoznavanje tveganj, pomoč pri revizijah in regulativnih pregledih.</div>
+        </div>
+        <span class="industry-arrow">→</span>
+      </div>
+      <div class="industry-row" role="button" tabindex="0">
+        <span class="idx">03</span>
+        <div class="industry-body">
+          <h4 data-i18n="ind03.h4">Trgovina & e-commerce</h4>
+          <div class="industry-tag" data-i18n="ind03.tag">Personalizacija ponudbe, napovedi povpraševanja, UI podpora strankam, dinamično cenovno modeliranje.</div>
+        </div>
+        <span class="industry-arrow">→</span>
+      </div>
+      <div class="industry-row" role="button" tabindex="0">
+        <span class="idx">04</span>
+        <div class="industry-body">
+          <h4 data-i18n="ind04.h4">Zdravstvo & farmacija</h4>
+          <div class="industry-tag" data-i18n="ind04.tag">Strukturiranje medicinske dokumentacije, analiza kliničnih protokolov, pomoč pri diagnostiki z vizualnimi modeli.</div>
+        </div>
+        <span class="industry-arrow">→</span>
+      </div>
+      <div class="industry-row" role="button" tabindex="0">
+        <span class="idx">05</span>
+        <div class="industry-body">
+          <h4 data-i18n="ind05.h4">Pravo</h4>
+          <div class="industry-tag" data-i18n="ind05.tag">Analiza obsežnih pogodb, iskanje precedensov v sodni praksi, priprava prvih osnutkov standardnih dokumentov.</div>
+        </div>
+        <span class="industry-arrow">→</span>
+      </div>
+      <div class="industry-row" role="button" tabindex="0">
+        <span class="idx">06</span>
+        <div class="industry-body">
+          <h4 data-i18n="ind06.h4">Prodaja & marketing</h4>
+          <div class="industry-tag" data-i18n="ind06.tag">Kvalifikacija priložnosti, napovedovanje odhoda strank, generiranje vsebin in pomoč pri raziskavi trga.</div>
+        </div>
+        <span class="industry-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-head reveal">
+      <div class="section-label" data-i18n="faq.label">Pogosta vprašanja</div>
+      <h2 class="section-title" data-i18n="faq.title">Kar vprašajo <em>drugi</em>.</h2>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span data-i18n="faq1.q">Kaj če v podjetju nimamo internega IT oddelka?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq1.a">
+            Večina naših strank nima interne UI ekipe — to je razlog, da smo tam. Prevzamemo razvoj, integracijo in vzdrževanje. Vaša naloga je povedati, kaj je pomembno in kaj ne; naša, da to pretvorimo v sistem, ki deluje.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span data-i18n="faq2.q">Kako varujete naše podatke in kdo ima dostop?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq2.a">
+            Občutljivi podatki ostanejo v EU podatkovnih centrih ali v vašem lastnem okolju — ne gredo v javno zalogo in ne služijo za učenje modelov. Vzpostavimo omejitve dostopa, beleženje odločitev in hrambo v skladu z GDPR. Sistem je urejen tako, da UI dela s podatki vašega podjetja po enakih pravilih kot vaši zaposleni.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span data-i18n="faq3.q">Zakaj bi uvajali UI, če že imamo ChatGPT?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq3.a">
+            ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da UI deluje neposredno v vaših procesih, s pravilnimi dovoljenji, beležkami in nadzorom — in to brez ročnega posredovanja.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span data-i18n="faq4.q">Ali bomo po uvedbi odvisni od vas?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq4.a">
+            Koda je vaša — dostavimo jo skupaj z dokumentacijo. Infrastruktura je v vašem imenu. Če se nekoč odločite delati z drugim partnerjem ali vzeti razvoj v lastno ekipo, vam to omogočamo. Ne gradimo lock-ina; gradimo odnos, v katerem ostanete, ker vam to koristi.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          <span data-i18n="faq5.q">Kako merimo, ali UI dejansko deluje?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-i18n="faq5.a">
+            Pred začetkom razvoja skupaj določimo konkretna merila — na primer natančnost pri obdelavi dokumentov, delež zadovoljnih strank, čas do odgovora. Sistem beleži delovanje in merila so vidna v realnem času. Če ne dosegamo dogovorjenega, odpravimo vzrok — ali pa priznamo, da pristop ni bil pravi.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="cta" id="kontakt">
+  <div class="reveal">
+    <h2 data-i18n="cta.title"><em>Pogovorimo</em> se.</h2>
+    <p data-i18n="cta.lead">Tridesetminutni pogovor, brez obveznosti. Pogledamo vaš konkreten primer in iskreno povemo, ali je smiselno nadaljevati — ali ne.</p>
+
+    <form class="cta-form" id="contactForm" novalidate>
+      <div>
+        <label for="cf-name" data-i18n="f.name">Ime</label>
+        <input type="text" id="cf-name" name="name" required autocomplete="name" />
+      </div>
+      <div>
+        <label for="cf-email" data-i18n="f.email">E-pošta</label>
+        <input type="email" id="cf-email" name="email" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="cf-company" data-i18n="f.company">Podjetje</label>
+        <input type="text" id="cf-company" name="company" autocomplete="organization" />
+      </div>
+      <div>
+        <label for="cf-size" data-i18n="f.size">Velikost podjetja</label>
+        <select id="cf-size" name="size">
+          <option value="" data-i18n="f.size.0">Izberite…</option>
+          <option value="mikro" data-i18n="f.size.1">Mikro (do 10)</option>
+          <option value="malo" data-i18n="f.size.2">Malo (10–50)</option>
+          <option value="srednje" data-i18n="f.size.3">Srednje (50–250)</option>
+          <option value="veliko" data-i18n="f.size.4">Veliko (250+)</option>
+        </select>
+      </div>
+      <div class="field-full">
+        <label for="cf-message" data-i18n="f.message">Kaj vas zanima?</label>
+        <textarea id="cf-message" name="message" placeholder="Kratek opis vaše situacije — kje vidite prostor za UI, kaj ste že poskusili, kaj bi radi dosegli." data-i18n-ph="f.message.ph" required></textarea>
+      </div>
+      <div class="honeypot" aria-hidden="true">
+        <label><span data-i18n="f.hp">Ne izpolnjujte</span><input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+      </div>
+      <button type="submit" data-i18n="f.submit">
+        Pošlji sporočilo
+        <span class="arrow">→</span>
+      </button>
+    </form>
+
+    <div class="form-status" id="formStatus"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Eflitte<span class="footer-brand-dot"></span></div>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.company">Podjetje</h5>
+      <a href="#storitve" data-i18n="footer.services">Kaj delamo</a>
+      <a href="#proces" data-i18n="footer.process">Proces</a>
+      <a href="#faq" data-i18n="footer.faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.contact">Kontakt</h5>
+      <a href="mailto:info@eflitte.si">info@eflitte.si</a>
+      <a href="tel:+38668693988">068 693 988</a>
+      <a href="tel:+38664238976">064 238 976</a>
+      <span data-i18n="footer.loc">Slovenija</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="footer.copy">© 2026 Eflitte. Vse pravice pridržane.</span>
+    <div class="footer-legal">
+      <a href="privacy.html" data-i18n="footer.privacy">Politika zasebnosti</a>
+      <a href="cookies.html" data-i18n="footer.cookies">Piškotki</a>
+      <a href="impressum.html" data-i18n="footer.impressum">Impressum</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+'use strict';
+
+/* =====================================================================
+   1 — NAV SCROLL STATE
+   ===================================================================== */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+
+
+/* =====================================================================
+   2 — SPLIT THE HERO TITLE INTO WORDS (for data-split reveal)
+   ===================================================================== */
+(function splitHeroTitle(){
+  document.querySelectorAll('[data-split]').forEach(el => {
+    // Tokenize: text runs and <em>...</em> blocks (treated as single units)
+    const html = el.innerHTML.trim();
+    const tokens = [];
+    const regex = /<em>[\s\S]*?<\/em>|[^\s<]+|\s+/g;
+    let m;
+    while ((m = regex.exec(html)) !== null) {
+      const t = m[0];
+      if (/^\s+$/.test(t)) { tokens.push({ type: 'space' }); continue; }
+      tokens.push({ type: 'word', html: t });
+    }
+
+    // Build: whitespace stays as text; each word wrapped with reveal animation
+    let idx = 0;
+    const out = tokens.map(tok => {
+      if (tok.type === 'space') return ' ';
+      const delay = idx++ * 70;
+      return `<span class="word"><span class="word-inner" style="transition-delay:${delay}ms">${tok.html}</span></span>`;
+    }).join('');
+    el.innerHTML = out;
+  });
+})();
+
+
+/* =====================================================================
+   3 — INTERSECTION OBSERVERS
+   Multiple observers, each handling a distinct class of reveal.
+   ===================================================================== */
+
+// 3a — Generic reveal (legacy .reveal + new [data-reveal])
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      const delay = parseInt(entry.target.dataset.revealDelay || 0, 10);
+      setTimeout(() => entry.target.classList.add('in'), delay || i * 60);
+      revealIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, [data-reveal], [data-split]').forEach(el => revealIO.observe(el));
+
+
+// 3c — Section tracker: notify the 3D scene which section is active
+const activeSection = { id: 'hero' };
+(function initSectionTracker(){
+  const sections = document.querySelectorAll('section, header.hero');
+  const sectIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+        activeSection.id = entry.target.id || entry.target.className.split(' ')[0];
+      }
+    });
+  }, { threshold: [0.4, 0.6, 0.8] });
+  sections.forEach(s => sectIO.observe(s));
+})();
+
+
+/* =====================================================================
+   4 — HERO 3D SCENE (Three.js)
+   A rotating sphere of nodes and connections — "intelligence network".
+   Responds to mouse parallax and page scroll velocity.
+   ===================================================================== */
+(function initHero3D(){
+  const container = document.getElementById('hero-3d');
+  if (!container || typeof THREE === 'undefined') return;
+
+  // Mobile perf scaling
+  const isSmall = Math.min(window.innerWidth, window.innerHeight) < 700;
+  const NUM_POINTS = isSmall ? 260 : 480;
+  const MAX_DIST = isSmall ? 0.60 : 0.55;
+  const NUM_ACCENTS = isSmall ? 22 : 36;
+
+  // --- Scene setup ---
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x141413, 0.10);
+
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    container.clientWidth / container.clientHeight,
+    0.1, 50
+  );
+  camera.position.z = 7;
+
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true,
+    powerPreference: 'high-performance'
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+
+  // --- Build particles on a Fibonacci sphere ---
+  const radius = 2.4;
+  const points = [];
+  for (let i = 0; i < NUM_POINTS; i++) {
+    const phi = Math.acos(1 - 2 * (i + 0.5) / NUM_POINTS);
+    const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+    const r = radius + (Math.random() - 0.5) * 0.28;
+    const x = r * Math.sin(phi) * Math.cos(theta);
+    const y = r * Math.sin(phi) * Math.sin(theta);
+    const z = r * Math.cos(phi);
+    points.push(new THREE.Vector3(x, y, z));
+  }
+
+  // --- Points (cream for dark background) ---
+  const pointGeom = new THREE.BufferGeometry().setFromPoints(points);
+  const pointMat = new THREE.PointsMaterial({
+    color: 0xFAF9F5,
+    size: 0.04,
+    transparent: true,
+    opacity: 0.8,
+    sizeAttenuation: true,
+    depthWrite: false
+  });
+  const pointsMesh = new THREE.Points(pointGeom, pointMat);
+
+  // --- Line segments between nearby points ---
+  const linePositions = [];
+  const lineColors = [];
+  const accentColor = new THREE.Color(0xcc785c);    // terracotta
+  const neutralColor = new THREE.Color(0xFAF9F5);   // cream on dark
+
+  for (let i = 0; i < points.length; i++) {
+    for (let j = i + 1; j < points.length; j++) {
+      const d = points[i].distanceTo(points[j]);
+      if (d < MAX_DIST) {
+        linePositions.push(points[i].x, points[i].y, points[i].z);
+        linePositions.push(points[j].x, points[j].y, points[j].z);
+        const useAccent = d < MAX_DIST * 0.55;
+        const c = useAccent ? accentColor : neutralColor;
+        const a = useAccent ? 1 : 0.28;
+        lineColors.push(c.r * a, c.g * a, c.b * a);
+        lineColors.push(c.r * a, c.g * a, c.b * a);
+      }
+    }
+  }
+  const lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+  lineGeom.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
+  const lineMat = new THREE.LineBasicMaterial({
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.55,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const linesMesh = new THREE.LineSegments(lineGeom, lineMat);
+
+  // --- Accent highlight points (terracotta, glow on dark via additive) ---
+  const accentPositions = [];
+  const accentIndices = [];
+  for (let i = 0; i < NUM_ACCENTS; i++) {
+    const idx = Math.floor(Math.random() * points.length);
+    accentIndices.push(idx);
+    const p = points[idx];
+    accentPositions.push(p.x, p.y, p.z);
+  }
+  const accentGeom = new THREE.BufferGeometry();
+  accentGeom.setAttribute('position', new THREE.Float32BufferAttribute(accentPositions, 3));
+  const accentMat = new THREE.PointsMaterial({
+    color: 0xcc785c,
+    size: 0.15,
+    transparent: true,
+    opacity: 1.0,
+    sizeAttenuation: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const accentsMesh = new THREE.Points(accentGeom, accentMat);
+
+  // --- Group everything so we can rotate together ---
+  const group = new THREE.Group();
+  group.add(pointsMesh);
+  group.add(linesMesh);
+  group.add(accentsMesh);
+  // Position group slightly right so text on the left remains clean
+  group.position.x = 1.2;
+  scene.add(group);
+
+  // --- Resize handling ---
+  function resize() {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+  window.addEventListener('resize', resize);
+
+  // --- Animation loop ---
+  const clock = new THREE.Clock();
+
+  let paused = false;
+  document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+
+  function animate() {
+    if (!paused) {
+      const dt = clock.getDelta();
+      const t = clock.getElapsedTime();
+
+      // Slow, steady auto-rotation only
+      group.rotation.y += dt * 0.04;
+
+      // Pulse accent points (subtle opacity / size only — doesn't move the sphere)
+      accentsMesh.material.opacity = 0.6 + Math.sin(t * 2.2) * 0.28;
+      accentsMesh.material.size = 0.12 + Math.sin(t * 3) * 0.02;
+
+      // Barely-perceptible line breathing
+      linesMesh.material.opacity = 0.45 + Math.sin(t * 0.6) * 0.05;
+
+      // React to active section — gentle camera Z shift when deep in page
+      const targetCamZ = activeSection.id && activeSection.id !== 'hero' ? 8.5 : 7;
+      camera.position.z += (targetCamZ - camera.position.z) * 0.02;
+
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+
+/* =====================================================================
+   5 — HERO TEXT PARALLAX (slower than scroll)
+   ===================================================================== */
+(function initHeroParallax(){
+  const heroText = document.querySelector('.hero-text');
+  if (!heroText) return;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroText.style.transform = `translateY(${y * 0.25}px)`;
+      heroText.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 0.7)));
+    }
+  }, { passive: true });
+})();
+
+
+/* =====================================================================
+   6 — SERVICE CARD 3D TILT (mouse-driven)
+   ===================================================================== */
+(function initCardTilt(){
+  const cards = document.querySelectorAll('.service-card');
+  const MAX_TILT = 4;  // degrees
+  cards.forEach(card => {
+    let rafId = null;
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+
+    function apply() {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      card.style.transform =
+        `perspective(1000px) rotateX(${-currentY * MAX_TILT}deg) rotateY(${currentX * MAX_TILT}deg)`;
+      if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+        rafId = requestAnimationFrame(apply);
+      } else {
+        rafId = null;
+      }
+    }
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      targetX = ((e.clientX - rect.left) / rect.width)  - 0.5;
+      targetY = ((e.clientY - rect.top)  / rect.height) - 0.5;
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    });
+    card.addEventListener('mouseleave', () => {
+      targetX = 0; targetY = 0;
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    });
+  });
+})();
+
+
+/* =====================================================================
+   7 — CARD CLICK → SCROLL TO CONTACT
+   ===================================================================== */
+(function initCardClicks(){
+  const contact = document.getElementById('kontakt');
+  function handleActivate(el) {
+    if (!contact) return;
+    el.style.transition = 'transform 0.12s ease';
+    const existing = el.style.transform;
+    el.style.transform = (existing || '') + ' scale(0.985)';
+    setTimeout(() => { el.style.transform = existing; }, 160);
+    contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.querySelectorAll('.industry-row').forEach(el => {
+    el.addEventListener('click', () => handleActivate(el));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleActivate(el);
+      }
+    });
+  });
+})();
+
+
+/* =====================================================================
+   8 — FAQ ACCORDION
+   ===================================================================== */
+(function initFAQ(){
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const ans = item.querySelector('.faq-answer');
+    if (!btn || !ans) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen) {
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      } else {
+        ans.style.maxHeight = '0px';
+      }
+    });
+  });
+})();
+
+
+/* =====================================================================
+   9 — CONTACT FORM
+   Client-side validation + confirmation. To plug in a real backend
+   (Formspree, Resend, Getform, your own endpoint), replace the
+   submitForm body with a fetch() call to your endpoint.
+   ===================================================================== */
+(function initContactForm(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  if (!form || !status) return;
+
+  const MESSAGES = {
+    sl: {
+      fillRequired: 'Prosim, izpolnite obvezna polja (ime, e-pošta in sporočilo).',
+      invalidEmail: 'Vnesite veljaven e-poštni naslov.',
+      success: 'Hvala za sporočilo. Oglasili se bomo v 1\u20132 delovnih dneh.',
+      error: 'Pošiljanje ni uspelo. Prosim, pišite nam neposredno na info@eflitte.si.'
+    },
+    en: {
+      fillRequired: 'Please fill the required fields (name, email and message).',
+      invalidEmail: 'Please enter a valid email address.',
+      success: 'Thanks for your message. We will be in touch within 1\u20132 business days.',
+      error: 'Submission failed. Please write to us directly at info@eflitte.si.'
+    }
+  };
+
+  function currentLang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'sl';
+  }
+  function showStatus(type, text) {
+    status.className = 'form-status ' + type;
+    status.textContent = text;
+  }
+
+  // Replace with a real endpoint when ready (Formspree / Resend / your own):
+  async function submitForm(data) {
+    // return fetch('https://formspree.io/f/YOUR_ID', {
+    //   method: 'POST',
+    //   headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(data)
+    // });
+    return new Promise(resolve => setTimeout(() => resolve({ ok: true }), 600));
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msgs = MESSAGES[currentLang()];
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if (data.website) return;  // honeypot — silently drop bot submissions
+
+    if (!data.name || !data.email || !data.message) {
+      showStatus('error', msgs.fillRequired);
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      showStatus('error', msgs.invalidEmail);
+      return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    try {
+      const res = await submitForm(data);
+      if (res && res.ok) {
+        showStatus('success', msgs.success);
+        form.reset();
+      } else {
+        showStatus('error', msgs.error);
+      }
+    } catch (err) {
+      showStatus('error', msgs.error);
+    } finally {
+      btn.disabled = false;
+      btn.style.opacity = '';
+    }
+  });
+})();
+
+/* =====================================================================
+   10 — LANGUAGE TOGGLE (SL <-> EN)
+   ===================================================================== */
+(function initLanguageToggle(){
+  const i18n = {
+    "title": { sl: "EFLITTE — UI agencija za slovenska podjetja", en: "EFLITTE — AI agency for businesses" },
+    "nav.services": { sl: "Kaj delamo", en: "What we do" },
+    "nav.process": { sl: "Proces", en: "Process" },
+    "nav.faq": { sl: "FAQ", en: "FAQ" },
+    "nav.contact": { sl: "Kontakt", en: "Contact" },
+    "nav.cta": { sl: "Pogovorimo se", en: "Let's talk" },
+    "hero.title": { sl: "UI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <em>uporabljajo</em>, nadomestili tiste, ki ga ne.", en: "AI will not replace humans. But humans who use AI will <em>replace</em> those who don't." },
+    "hero.attribution": { sl: "— Ginni Rometty, nekdanja izvršna direktorica IBM", en: "— Ginni Rometty, former CEO of IBM" },
+    "hero.sub": { sl: "EFLITTE vodi podjetja skozi premišljeno uvedbo umetne inteligence — od prve strategije do delujočih sistemov v produkciji. Skupaj ugotovimo, kje UI res prinaša vrednost in kje (še) ne, nato pa zgradimo tisto, kar je smiselno.", en: "EFLITTE guides businesses through a considered adoption of artificial intelligence — from initial strategy to systems running in production. Together we figure out where AI actually adds value and where it does not (yet), then build what makes sense." },
+    "hero.cta": { sl: "Pogovorimo se\n          <span class=\"arrow\">→</span>", en: "Let's talk\n          <span class=\"arrow\">→</span>" },
+    "hero.ghost": { sl: "Kaj delamo", en: "What we do" },
+    "services.label": { sl: "Kaj delamo", en: "What we do" },
+    "services.title": { sl: "UI, vgrajen v <em>vaše</em> poslovanje.", en: "AI, embedded in <em>your</em> business." },
+    "services.lead": { sl: "Naše delo je vgradnja praktičnih UI sistemov v infrastrukturo podjetja za optimizacijo delovanja. Spodaj so štiri področja, ki skupaj tvorijo pot od prve strategije do sistema v vsakdanji rabi.", en: "Our work is to embed practical AI systems into a company's infrastructure to optimise its operations. Below are four areas that together form the path from initial strategy to a system in everyday use." },
+    "card01.num": { sl: "01 — Vmesniki", en: "01 — Interfaces" },
+    "card01.h3": { sl: "Pogovorni vmesniki", en: "Conversational interfaces" },
+    "card01.p": { sl: "UI, s katerim se zaposleni ali stranke pogovarjajo v naravnem jeziku. Za podporo, analitiko, interno znanje ali pomoč pri delu. Zgradili smo ga tako, da pozna meje lastne vednosti — ko ne ve, to pove, namesto da si izmisli.", en: "AI your employees or customers talk to in natural language — for support, analytics, internal knowledge or work assistance. We build it to know the limits of its own knowledge — when it doesn\'t know, it says so, rather than making something up." },
+    "card02.num": { sl: "02 — Razumevanje", en: "02 — Understanding" },
+    "card02.h3": { sl: "Razumevanje dokumentov", en: "Document understanding" },
+    "card02.p": { sl: "Pogodbe, fakture, napotnice, zapisi sestankov, poročila. UI prebere dokument in izlušči, kar vas zanima — ključne točke, tvegane klavzule, strukturirane podatke, povzetek. Primerno za organizacije, katerih dnevna rutina pomeni branje dolgih besedil.", en: "Contracts, invoices, medical referrals, meeting notes, reports. AI reads the document and extracts what matters — key points, risky clauses, structured data, a summary. Useful for organisations whose daily routine involves reading long texts." },
+    "card03.num": { sl: "03 — Agenti", en: "03 — Agents" },
+    "card03.h3": { sl: "UI agenti", en: "AI Agents" },
+    "card03.p": { sl: "Agenti ne le odgovarjajo, tudi delujejo — v vaših sistemih, pod dogovorjenimi pravili. Uporabljajo orodja, ki jih imajo ljudje, vključno z aplikacijami brez strojnega vmesnika. Omejitve in dovoljenja so jasna, odločitve sledljive, kritične akcije pa vedno zahtevajo potrditev človeka.", en: "Agents don\'t only answer — they act, inside your systems, within agreed rules. They use the same tools people do, including apps without a machine interface. Limits and permissions are explicit, decisions are traceable, and critical actions always require a human confirmation." },
+    "card04.num": { sl: "04 — Napovedi", en: "04 — Forecasts" },
+    "card04.h3": { sl: "Napovedni modeli", en: "Forecasting models" },
+    "card04.p": { sl: "Napoved prodaje, zalog, likvidnosti ali odhoda strank je uporabna šele, ko razumete, od kod izhaja. Naši modeli razloženi z razlago, ne le z rezultati — tako da vodstvo odloča na podlagi vzrokov, ne le številk, in da je zaupanje zgrajeno na razumevanju.", en: "A forecast of sales, inventory, cash flow or customer churn is only useful once you understand where it comes from. Our models are shipped with their reasoning, not only their results — so leaders decide from causes, not just numbers, and trust is built on understanding." },
+    "hw.label": { sl: "Dodatno", en: "Additional" },
+    "hw.body": { sl: "\n      Po potrebi priskrbimo tudi strojno opremo — od namenskih GPU strežnikov do edge naprav — kadar zahteve po zasebnosti podatkov ali latenci narekujejo izvajanje v lokalnem okolju.\n    ", en: "\n      When required, we also supply the hardware — from dedicated GPU servers to edge devices — whenever data privacy or latency demand that execution stays on-premise.\n    " },
+    "process.label": { sl: "Kako delamo", en: "How we work" },
+    "process.title": { sl: "Od <em>raziskave</em> do produkcije.", en: "From <em>research</em> to production." },
+    "step1.h4": { sl: "Razumevanje", en: "Understanding" },
+    "step1.p": { sl: "Ne začnemo z modelom. Začnemo z vprašanjem: katero odločitev ali opravilo je smiselno razbremeniti z UI? Pogledamo vaše podatke, procese in meje dovoljenega — rezultat je jasen zemljevid prioritet.", en: "We don't start with a model. We start with a question: which decision or task is sensibly offloaded to AI? We look at your data, processes and what is permitted — the outcome is a clear map of priorities." },
+    "step2.h4": { sl: "Prototip", en: "Prototype" },
+    "step2.p": { sl: "Preden vlagamo mesece v razvoj, v dveh do treh tednih zgradimo delujoč prototip na vaših podatkih. Meri resnično uporabnost — ne le teoretičnih možnosti. Nato se skupaj odločimo, ali gremo naprej.", en: "Before investing months in development, we build a working prototype on your data in two to three weeks. It measures actual usefulness — not only theoretical possibility. We then decide together whether to proceed." },
+    "step3.h4": { sl: "Produkcija", en: "Production" },
+    "step3.p": { sl: "Utrdimo prototip v sistem, ki lahko zanesljivo teče vsak dan. Dodamo varovala, ocenjevalni okvir in opazljivost — ker UI v produkciji ni isto kot UI v demonstraciji.", en: "We harden the prototype into a system that can run reliably every day. We add guardrails, an evaluation framework and observability — because AI in production is not the same as AI in a demo." },
+    "step4.h4": { sl: "Skrb", en: "Care" },
+    "step4.p": { sl: "Po uvedbi spremljamo natančnost, stroške in uporabo. Modeli se s časom spreminjajo, tako se spreminjajo tudi podatki in vaše potrebe — sistem ohranjamo v ravnovesju s tem, kar se dogaja.", en: "After rollout we monitor accuracy, cost and usage. Models drift over time, so does your data and your needs — we keep the system in balance with what is actually happening." },
+    "svc.label": { sl: "Po uvedbi", en: "After rollout" },
+    "svc.body": { sl: "\n      Ko sistem zaživi, ostane v naši skrbi. Redno spremljamo natančnost modelov, posodabljamo komponente, preverjamo priložnosti za izboljšave in prilagajamo sistem spremembam v vašem poslu.\n    ", en: "\n      Once the system goes live, it stays in our care. We regularly monitor model accuracy, update components, scan for improvement opportunities and adapt the system to changes in your business.\n    " },
+    "tech.label": { sl: "Tehnologija", en: "Technology" },
+    "tech.title": { sl: "Brez <em>zavezanosti</em> enemu modelu.", en: "Without <em>commitment</em> to a single model." },
+    "tech.lead": { sl: "Izbira modela je za nas tehnična odločitev, ne ideološka. Za vsako nalogo izberemo tisto kombinacijo, ki najbolje deluje — po natančnosti, ceni in zahtevi po lokaciji podatkov.", en: "Choosing a model is a technical decision for us, not an ideological one. For every task we pick the combination that works best — by accuracy, cost and data-residency requirements." },
+    "tech.temeljni_modeli": { sl: "Temeljni modeli", en: "Foundation models" },
+    "tech.lokalno_izvajanje_modelov": { sl: "Lokalno izvajanje modelov", en: "Local model execution" },
+    "tech.agenti_orodja": { sl: "Agenti & orodja", en: "Agents & tooling" },
+    "tech.podatki_iskanje": { sl: "Podatki & iskanje", en: "Data & retrieval" },
+    "tech.opazljivost_ocenjevanje": { sl: "Opazljivost & ocenjevanje", en: "Observability & evaluation" },
+    "tech.infrastruktura": { sl: "Infrastruktura", en: "Infrastructure" },
+    "tech.si_cloud": { sl: "Slovenski oblak", en: "Slovenian cloud" },
+    "ind.label": { sl: "Panoge", en: "Industries" },
+    "ind.title": { sl: "UI v <em>različnih</em> panogah.", en: "AI across <em>different</em> industries." },
+    "ind.lead": { sl: "Različne panoge prinašajo različne vzorce podatkov in odločitev. Spodaj je, s katerimi delamo najpogosteje in kje UI v njih tipično doprinese.", en: "Different industries bring different patterns of data and decisions. Below are the ones we work with most, and where AI typically contributes in each." },
+    "ind01.h4": { sl: "Proizvodnja", en: "Manufacturing" },
+    "ind01.tag": { sl: "Vizualni pregled kakovosti, napovedno vzdrževanje, optimizacija parametrov linij na podlagi senzorskih podatkov.", en: "Visual quality inspection, predictive maintenance, line-parameter optimisation based on sensor data." },
+    "ind02.h4": { sl: "Finančne storitve", en: "Financial services" },
+    "ind02.tag": { sl: "Razumevanje finančnih dokumentov, prepoznavanje tveganj, pomoč pri revizijah in regulativnih pregledih.", en: "Understanding financial documents, risk detection, assistance with audits and regulatory reviews." },
+    "ind03.h4": { sl: "Trgovina & e-commerce", en: "Retail &amp; e-commerce" },
+    "ind03.tag": { sl: "Personalizacija ponudbe, napovedi povpraševanja, UI podpora strankam, dinamično cenovno modeliranje.", en: "Offer personalisation, demand forecasting, AI customer support, dynamic pricing." },
+    "ind04.h4": { sl: "Zdravstvo & farmacija", en: "Healthcare &amp; pharma" },
+    "ind04.tag": { sl: "Strukturiranje medicinske dokumentacije, analiza kliničnih protokolov, pomoč pri diagnostiki z vizualnimi modeli.", en: "Structuring medical documentation, clinical protocol analysis, diagnostic assistance with vision models." },
+    "ind05.h4": { sl: "Pravo", en: "Legal" },
+    "ind05.tag": { sl: "Analiza obsežnih pogodb, iskanje precedensov v sodni praksi, priprava prvih osnutkov standardnih dokumentov.", en: "Analysis of lengthy contracts, precedent search in case law, first-draft preparation of standard documents." },
+    "ind06.h4": { sl: "Prodaja & marketing", en: "Sales &amp; marketing" },
+    "ind06.tag": { sl: "Kvalifikacija priložnosti, napovedovanje odhoda strank, generiranje vsebin in pomoč pri raziskavi trga.", en: "Opportunity qualification, churn prediction, content generation, market-research assistance." },
+    "faq.label": { sl: "Pogosta vprašanja", en: "Frequently asked" },
+    "faq.title": { sl: "Kar vprašajo <em>drugi</em>.", en: "What <em>others</em> ask." },
+    "faq1.q": { sl: "Kaj če v podjetju nimamo internega IT oddelka?", en: "What if our company has no in-house IT team?" },
+    "faq1.a": { sl: "\n            Večina naših strank nima interne UI ekipe — to je razlog, da smo tam. Prevzamemo razvoj, integracijo in vzdrževanje. Vaša naloga je povedati, kaj je pomembno in kaj ne; naša, da to pretvorimo v sistem, ki deluje.\n          ", en: "\n            Most of our clients do not have an internal AI team — that is precisely why we are here. We take on development, integration and maintenance. Your job is to say what matters and what doesn't; ours is to turn that into a working system.\n          " },
+    "faq2.q": { sl: "Kako varujete naše podatke in kdo ima dostop?", en: "How do you protect our data and who has access?" },
+    "faq2.a": { sl: "\n            Občutljivi podatki ostanejo v EU podatkovnih centrih ali v vašem lastnem okolju — ne gredo v javno zalogo in ne služijo za učenje modelov. Vzpostavimo omejitve dostopa, beleženje odločitev in hrambo v skladu z GDPR. Sistem je urejen tako, da UI dela s podatki vašega podjetja po enakih pravilih kot vaši zaposleni.\n          ", en: "\n            Sensitive data stays in EU data centres or in your own environment — it does not enter public pools and does not feed model training. We set up access limits, decision logging and GDPR-compliant retention. The system is arranged so that AI works with your company data under the same rules as your employees.\n          " },
+    "faq3.q": { sl: "Zakaj bi uvajali UI, če že imamo ChatGPT?", en: "Why implement AI if we already have ChatGPT?" },
+    "faq3.a": { sl: "\n            ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da UI deluje neposredno v vaših procesih, s pravilnimi dovoljenji, beležkami in nadzorom — in to brez ročnega posredovanja.\n          ", en: "\n            ChatGPT is an excellent personal assistant. For a business, though, it means every employee manually copies data into an app outside your infrastructure. A systemic implementation means AI works directly inside your processes, with proper permissions, logging and oversight — and without manual forwarding.\n          " },
+    "faq4.q": { sl: "Ali bomo po uvedbi odvisni od vas?", en: "Will we become dependent on you after implementation?" },
+    "faq4.a": { sl: "\n            Koda je vaša — dostavimo jo skupaj z dokumentacijo. Infrastruktura je v vašem imenu. Če se nekoč odločite delati z drugim partnerjem ali vzeti razvoj v lastno ekipo, vam to omogočamo. Ne gradimo lock-ina; gradimo odnos, v katerem ostanete, ker vam to koristi.\n          ", en: "\n            The code is yours — we ship it with documentation. The infrastructure is in your name. If you later choose to work with another partner or bring development in-house, we make that possible. We don't build lock-in; we build a relationship you stay in because it benefits you.\n          " },
+    "faq5.q": { sl: "Kako merimo, ali UI dejansko deluje?", en: "How do we measure whether AI actually works?" },
+    "faq5.a": { sl: "\n            Pred začetkom razvoja skupaj določimo konkretna merila — na primer natančnost pri obdelavi dokumentov, delež zadovoljnih strank, čas do odgovora. Sistem beleži delovanje in merila so vidna v realnem času. Če ne dosegamo dogovorjenega, odpravimo vzrok — ali pa priznamo, da pristop ni bil pravi.\n          ", en: "\n            Before development starts we agree on concrete metrics — accuracy on document processing, share of satisfied customers, time-to-answer. The system logs its operation and metrics are visible in real time. If we don't meet the agreed mark, we fix the cause — or acknowledge that the approach was not the right one.\n          " },
+    "cta.title": { sl: "<em>Pogovorimo</em> se.", en: "Let's <em>talk</em>." },
+    "cta.lead": { sl: "Tridesetminutni pogovor, brez obveznosti. Pogledamo vaš konkreten primer in iskreno povemo, ali je smiselno nadaljevati — ali ne.", en: "A thirty-minute conversation, no strings attached. We look at your specific case and tell you honestly whether it is worth pursuing — or not." },
+    "f.name": { sl: "Ime", en: "Name" },
+    "f.email": { sl: "E-pošta", en: "Email" },
+    "f.company": { sl: "Podjetje", en: "Company" },
+    "f.size": { sl: "Velikost podjetja", en: "Company size" },
+    "f.message": { sl: "Kaj vas zanima?", en: "What are you interested in?" },
+    "f.size.0": { sl: "Izberite…", en: "Select…" },
+    "f.size.1": { sl: "Mikro (do 10)", en: "Micro (up to 10)" },
+    "f.size.2": { sl: "Malo (10–50)", en: "Small (10–50)" },
+    "f.size.3": { sl: "Srednje (50–250)", en: "Medium (50–250)" },
+    "f.size.4": { sl: "Veliko (250+)", en: "Large (250+)" },
+    "f.message.ph": { sl: "Kratek opis vaše situacije — kje vidite prostor za UI, kaj ste že poskusili, kaj bi radi dosegli.", en: "A brief description of your situation — where you see room for AI, what you've tried, what you'd like to achieve." },
+    "f.hp": { sl: "Ne izpolnjujte", en: "Do not fill" },
+    "f.submit": { sl: "Pošlji sporočilo\n        <span class=\"arrow\">→</span>", en: "Send message\n        <span class=\"arrow\">→</span>" },
+    "footer.company": { sl: "Podjetje", en: "Company" },
+    "footer.contact": { sl: "Kontakt", en: "Contact" },
+    "footer.services": { sl: "Kaj delamo", en: "What we do" },
+    "footer.process": { sl: "Proces", en: "Process" },
+    "footer.faq": { sl: "FAQ", en: "FAQ" },
+    "footer.loc": { sl: "Slovenija", en: "Slovenia" },
+    "footer.copy": { sl: "© 2026 Eflitte. Vse pravice pridržane.", en: "© 2026 Eflitte. All rights reserved." },
+    "footer.privacy": { sl: "Politika zasebnosti", en: "Privacy Policy" },
+    "footer.cookies": { sl: "Piškotki", en: "Cookies" },
+    "footer.impressum": { sl: "Impressum", en: "Imprint" }
+  };
+
+  function apply(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const t = i18n[el.getAttribute('data-i18n')];
+      if (t && t[lang] !== undefined) el.innerHTML = t[lang];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const t = i18n[el.getAttribute('data-i18n-ph')];
+      if (t && t[lang] !== undefined) el.placeholder = t[lang];
+    });
+    document.querySelectorAll('.lang-toggle, .drawer-lang').forEach(btn => {
+      btn.textContent = lang === 'en' ? 'SL' : 'EN';
+    });
+    try { localStorage.setItem('eflitte-lang', lang); } catch(e) {}
+  }
+
+  let saved = 'sl';
+  try { saved = localStorage.getItem('eflitte-lang') || 'sl'; } catch(e) {}
+  if (saved === 'en') apply('en');
+
+  document.querySelectorAll('.lang-toggle, .drawer-lang').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const now = document.documentElement.lang === 'en' ? 'en' : 'sl';
+      apply(now === 'en' ? 'sl' : 'en');
+    });
+  });
+})();
+
+
+/* =====================================================================
+   11 — TECH STACK CHIP DESCRIPTIONS (hover-driven info panel)
+   ===================================================================== */
+(function initTechInfo(){
+  const groups = document.querySelectorAll('.integration-group');
+  groups.forEach(group => {
+    const info = group.querySelector('.integration-info');
+    const chips = group.querySelectorAll('.integration-tags > a, .integration-tags > span');
+    if (!info || !chips.length) return;
+
+    chips.forEach(chip => {
+      chip.addEventListener('mouseenter', () => {
+        const lang = document.documentElement.lang === 'en' ? 'en' : 'sl';
+        const text = lang === 'en'
+          ? (chip.getAttribute('data-desc-en') || chip.getAttribute('data-desc') || '')
+          : (chip.getAttribute('data-desc') || '');
+        if (!text) return;
+        info.textContent = text;
+        info.classList.add('show');
+      });
+      chip.addEventListener('focus', () => chip.dispatchEvent(new Event('mouseenter')));
+    });
+
+    // When pointer leaves the entire group, fade out
+    group.addEventListener('mouseleave', () => {
+      info.classList.remove('show');
+    });
+    group.addEventListener('focusout', (e) => {
+      if (!group.contains(e.relatedTarget)) info.classList.remove('show');
+    });
+  });
+})();
+
+
+/* =====================================================================
+   12 — MOBILE DRAWER
+   ===================================================================== */
+(function initDrawer(){
+  const burger = document.querySelector('.nav-burger');
+  const drawer = document.getElementById('drawer');
+  if (!burger || !drawer) return;
+
+  function open() {
+    document.body.classList.add('menu-open');
+    burger.setAttribute('aria-expanded', 'true');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  function close() {
+    document.body.classList.remove('menu-open');
+    burger.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  burger.addEventListener('click', () => {
+    if (document.body.classList.contains('menu-open')) close();
+    else open();
+  });
+
+  // Close when a drawer link or CTA is tapped
+  drawer.querySelectorAll('.drawer-link, .drawer-cta').forEach(el => {
+    el.addEventListener('click', close);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) close();
+  });
+
+  // Close if user resizes back to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && document.body.classList.contains('menu-open')) close();
+  });
+})();
+
+</script>
+
+</body>
+</html>
