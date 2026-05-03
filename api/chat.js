@@ -320,28 +320,28 @@ export default async function handler(req) {
   if (req.method === 'OPTIONS') {
     return new Response(null, {
       status: 204,
-      headers: corsHeaders()
+      headers: corsHeaders(req)
     });
   }
   if (req.method !== 'POST') {
-    return jsonError(405, 'Method not allowed');
+    return jsonError(405, 'Method not allowed', req);
   }
 
   // API key
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     console.error('[chat] ANTHROPIC_API_KEY not set');
-    return jsonError(500, 'Server not configured');
+    return jsonError(500, 'Server not configured', req);
   }
 
   // parse body
   let body;
   try { body = await req.json(); }
-  catch { return jsonError(400, 'Invalid JSON'); }
+  catch { return jsonError(400, 'Invalid JSON', req); }
 
   const messages = Array.isArray(body.messages) ? body.messages : null;
   if (!messages || messages.length === 0) {
-    return jsonError(400, 'messages[] required');
+    return jsonError(400, 'messages[] required', req);
   }
 
   // sanitize + cap
@@ -351,7 +351,7 @@ export default async function handler(req) {
     .slice(-MAX_TURNS);
 
   if (cleaned.length === 0 || cleaned[cleaned.length - 1].role !== 'user') {
-    return jsonError(400, 'last message must be from user');
+    return jsonError(400, 'last message must be from user', req);
   }
 
   // call Anthropic
@@ -367,20 +367,30 @@ export default async function handler(req) {
       body: JSON.stringify({
         model:      MODEL,
         max_tokens: 1024,
-        system:     SYSTEM_PROMPT,
+        // Prompt caching: system prompt is large (~3500 tokens) and never changes,
+        // so we tell Anthropic to cache it. First request in a 5-minute window
+        // costs 1.25× (cache write), every subsequent request reads at 0.1×
+        // for the cached portion. Net savings on a typical conversation: ~60%.
+        system: [
+          {
+            type: 'text',
+            text: SYSTEM_PROMPT,
+            cache_control: { type: 'ephemeral' }
+          }
+        ],
         stream:     true,
         messages:   cleaned
       })
     });
   } catch (err) {
     console.error('[chat] upstream fetch failed', err);
-    return jsonError(502, 'Upstream unavailable');
+    return jsonError(502, 'Upstream unavailable', req);
   }
 
   if (!upstream.ok || !upstream.body) {
     const errText = await upstream.text().catch(() => '');
     console.error('[chat] upstream error', upstream.status, errText);
-    return jsonError(502, 'Upstream error');
+    return jsonError(502, 'Upstream error', req);
   }
 
   // transform Anthropic SSE → simple {type:'text', text:'...'} SSE for the widget
@@ -433,22 +443,32 @@ export default async function handler(req) {
       'Content-Type':       'text/event-stream; charset=utf-8',
       'Cache-Control':      'no-cache, no-transform',
       'Connection':         'keep-alive',
-      ...corsHeaders()
+      ...corsHeaders(req)
     }
   });
 }
 
-function corsHeaders() {
+function corsHeaders(req) {
+  // Allow only Eflitte domains. Reject all other origins.
+  const ALLOWED_ORIGINS = [
+    'https://eflitte.si',
+    'https://www.eflitte.si',
+    'https://eflitte.vercel.app'
+  ];
+  const origin = req?.headers?.get?.('origin') || '';
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+
   return {
-    'Access-Control-Allow-Origin':  '*',  // tighten to your domain in prod, e.g. 'https://eflitte.si'
+    'Access-Control-Allow-Origin':  allowed,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type'
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary':                         'Origin'
   };
 }
 
-function jsonError(status, message) {
+function jsonError(status, message, req) {
   return new Response(JSON.stringify({ error: message }), {
     status,
-    headers: { 'Content-Type': 'application/json', ...corsHeaders() }
+    headers: { 'Content-Type': 'application/json', ...corsHeaders(req) }
   });
 }
