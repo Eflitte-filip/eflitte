@@ -1,0 +1,22 @@
+{
+  "name": "EFLITTE — AI agencija za slovenska podjetja",
+  "short_name": "EFLITTE",
+  "description": "AI agencija za slovenska podjetja",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F5",
+  "theme_color": "#FAF9F5",
+  "lang": "sl-SI",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
