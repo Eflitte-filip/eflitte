@@ -27,8 +27,10 @@
       open:        'Odpri pogovor z asistentom',
       close:       'Zapri pogovor',
       title:       'Eflitte asistent',
+      name:        'Flit',
+      role:        'AI asistent',
       online:      'Na voljo',
-      greeting:    'Pozdravljeni 👋 Sem AI asistent agencije Eflitte. Kako vam lahko pomagam?',
+      greeting:    'Pozdravljeni, sem Flit, AI asistent agencije Eflitte. Kako vam lahko pomagam?',
       placeholder: 'Napišite sporočilo...',
       send:        'Pošlji',
       newChat:     'Nov pogovor',
@@ -39,8 +41,10 @@
       open:        'Open chat with assistant',
       close:       'Close chat',
       title:       'Eflitte assistant',
+      name:        'Flit',
+      role:        'AI assistant',
       online:      'Online',
-      greeting:    'Hi 👋 I’m Eflitte’s AI assistant. How can I help?',
+      greeting:    'Hello, I am Flit, the AI assistant of Eflitte. How can I help?',
       placeholder: 'Type a message...',
       send:        'Send',
       newChat:     'New chat',
@@ -51,12 +55,18 @@
 
   function detectLang() {
     if (cfg.lang === 'sl' || cfg.lang === 'en') return cfg.lang;
+    // 1. Read from <html lang> attribute (most reliable for SI sites)
+    try {
+      const htmlLang = (document.documentElement.lang || '').slice(0, 2).toLowerCase();
+      if (htmlLang === 'sl' || htmlLang === 'en') return htmlLang;
+    } catch (_) {}
+    // 2. Fall back to localStorage (set by Eflitte's language toggle)
     try {
       const stored = localStorage.getItem('eflitte-lang');
       if (stored === 'sl' || stored === 'en') return stored;
     } catch (_) {}
-    const nav = (navigator.language || 'sl').slice(0, 2).toLowerCase();
-    return nav === 'sl' ? 'sl' : 'en';
+    // 3. Default to Slovenian (Eflitte primarily serves SI market)
+    return 'sl';
   }
   let lang = detectLang();
   const t = (k) => (STR[lang] && STR[lang][k]) || STR.en[k];
@@ -96,21 +106,30 @@
 
   .efc-header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 20px; border-bottom: 1px solid rgba(20,20,19,0.08);
+    padding: 14px 18px; border-bottom: 1px solid rgba(20,20,19,0.08);
     background: rgba(244,242,234,0.6);
   }
-  .efc-header-left { display: flex; align-items: center; gap: 12px; }
+  .efc-header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
   .efc-logo {
     font-weight: 700; font-size: 17px; letter-spacing: -0.02em; color: #141413;
-    display: inline-flex; align-items: baseline;
+    display: inline-flex; align-items: baseline; flex-shrink: 0;
   }
   .efc-logo-dot {
     display: inline-block; width: 7px; height: 7px;
     background: #CC785C; border-radius: 50%; margin-left: 1px;
   }
-  .efc-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #6B6B68; }
+  .efc-meta {
+    display: flex; flex-direction: column; gap: 1px; line-height: 1.25;
+    padding-left: 12px; border-left: 1px solid rgba(20,20,19,0.10);
+    min-width: 0;
+  }
+  .efc-name {
+    font-size: 12.5px; font-weight: 600; color: #141413;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .efc-status { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #6B6B68; }
   .efc-status-dot {
-    width: 7px; height: 7px; border-radius: 50%; background: #4ade80;
+    width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
     box-shadow: 0 0 0 0 rgba(74,222,128,.5);
     animation: efc-pulse 2.4s ease-in-out infinite;
   }
@@ -181,7 +200,7 @@
     background: rgba(250,249,245,0.6);
   }
   .efc-input-row {
-    display: flex; align-items: flex-end; gap: 8px;
+    display: flex; align-items: center; gap: 8px;
     background: #fff; border: 1px solid rgba(20,20,19,0.10);
     border-radius: 12px; padding: 8px 8px 8px 14px;
     transition: border-color .15s ease, box-shadow .15s ease;
@@ -191,7 +210,8 @@
     flex: 1; border: none; outline: none; resize: none;
     font: inherit; font-size: 14.5px; line-height: 1.5;
     color: #141413; background: transparent;
-    max-height: 120px; min-height: 22px;
+    max-height: 120px; min-height: 32px;
+    padding: 5px 0;
     font-family: "Inter", system-ui, sans-serif;
   }
   .efc-input::placeholder { color: #9A9A96; }
@@ -251,7 +271,10 @@
     <div class="efc-header">
       <div class="efc-header-left">
         <span class="efc-logo">Eflitte<span class="efc-logo-dot"></span></span>
-        <span class="efc-status"><span class="efc-status-dot"></span>${t('online')}</span>
+        <div class="efc-meta">
+          <span class="efc-name">${t('name')} · ${t('role')}</span>
+          <span class="efc-status"><span class="efc-status-dot"></span>${t('online')}</span>
+        </div>
       </div>
       <div class="efc-header-actions">
         <button class="efc-iconbtn" data-action="reset" aria-label="${t('newChat')}" title="${t('newChat')}">
@@ -308,6 +331,32 @@
   }
 
   /* ---------------- rendering ---------------- */
+  // Replace Cyrillic characters that visually look like Latin letters.
+  // Haiku/Sonnet occasionally slip a Cyrillic char into Slovenian text
+  // (e.g. Ч instead of Č). Since this is a Slovenian site, ANY Cyrillic
+  // is virtually always an error — we map the common ones back to Latin.
+  const CYRILLIC_TO_LATIN = {
+    // Visually identical lookalikes
+    'А': 'A', 'В': 'B', 'Е': 'E', 'К': 'K', 'М': 'M', 'Н': 'H',
+    'О': 'O', 'Р': 'P', 'С': 'C', 'Т': 'T', 'Х': 'X', 'У': 'Y',
+    'а': 'a', 'е': 'e', 'о': 'o', 'р': 'p', 'с': 'c', 'у': 'y', 'х': 'x',
+    // Slovenian-specific lookalikes (Č/Š/Ž)
+    'Ч': 'Č', 'Ш': 'Š', 'Ж': 'Ž',
+    'ч': 'č', 'ш': 'š', 'ж': 'ž',
+    // Phonetic remappings (less common but defensive)
+    'Б': 'B', 'Г': 'G', 'Д': 'D', 'З': 'Z', 'И': 'I', 'Й': 'J',
+    'Л': 'L', 'П': 'P', 'Ф': 'F', 'Ц': 'C',
+    'б': 'b', 'г': 'g', 'д': 'd', 'з': 'z', 'и': 'i', 'й': 'j',
+    'л': 'l', 'п': 'p', 'ф': 'f', 'ц': 'c',
+    'Ы': 'Y', 'ы': 'y', 'Э': 'E', 'э': 'e', 'Ю': 'U', 'ю': 'u',
+    'Я': 'A', 'я': 'a', 'Щ': 'Š', 'щ': 'š',
+    'Ь': '', 'ь': '', 'Ъ': '', 'ъ': ''
+  };
+  function fixCyrillic(s) {
+    return s.replace(/[\u0400-\u04FF]/g, ch =>
+      CYRILLIC_TO_LATIN[ch] !== undefined ? CYRILLIC_TO_LATIN[ch] : ch);
+  }
+
   function escapeHtml(s) {
     return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
@@ -448,11 +497,11 @@
           botNode = addBotMessage('');
         }
         acc += chunk;
-        botNode.innerHTML = renderMarkdown(acc);
+        botNode.innerHTML = renderMarkdown(fixCyrillic(acc));
         scrollToBottom();
       });
       if (acc) {
-        history.push({ role: 'assistant', content: acc });
+        history.push({ role: 'assistant', content: fixCyrillic(acc) });
         saveHistory();
       } else {
         typingNode.remove();
