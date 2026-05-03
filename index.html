@@ -2376,20 +2376,13 @@ const activeSection = { id: 'hero' };
 </script>
 
 <!-- ============================================================
-     AI chat widget
-     ============================================================
-     mock: true  → uporablja vnaprej pripravljene odgovore (lokalno
-                   testiranje brez backend-a). Privzeto vklopljeno,
-                   tako da widget deluje, ko stran odprete lokalno.
-
-     PRED PRODUKCIJO: ko deployate api/chat.js na Vercel,
-     spremenite mock na false (ali odstranite vrstico).
+     AI chat widget — produkcija (kliče api/chat.js → Anthropic API)
 ============================================================ -->
 <script>
   window.EFLITTE_CHAT_CONFIG = {
     endpoint: '/api/chat',
     lang:     'auto',
-    mock:     true
+    mock:     false
   };
 </script>
 <script src="chat-widget.js" defer></script>
