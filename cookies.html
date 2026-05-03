@@ -116,7 +116,8 @@
     Edina lokalna shramba (<em>localStorage</em>), ki jo uporabljamo, je tehnično potrebna za delovanje spletne strani:
   </p>
   <ul>
-    <li><strong>Jezikovna nastavitev</strong> — pomni, ali ste izbrali slovensko ali angleško različico strani. Hrani se izključno v vašem brskalniku in se nikoli ne posreduje na strežnik.</li>
+    <li><strong>Jezikovna nastavitev</strong> (<code>localStorage</code>, ključ <code>eflitte-lang</code>) — pomni, ali ste izbrali slovensko ali angleško različico strani. Hrani se izključno v vašem brskalniku in se nikoli ne posreduje na strežnik.</li>
+    <li><strong>Pogovor s chatbotom</strong> (<code>sessionStorage</code>, ključ <code>eflitte-chat</code>) — če odprete pogovor z AI asistentom, se zgodovina pogovora začasno shrani v vašem brskalniku, da se ohrani kontekst, če osvežite stran. Ti podatki se izbrišejo, ko zaprete zavihek. Vsebina pogovora se ob pošiljanju posreduje storitvi Anthropic za generiranje odgovora — več v <a href="privacy.html">politiki zasebnosti</a>.</li>
   </ul>
   <p>
     Tovrstna shramba je v skladu s členom 5(3) Direktive ePrivacy izvzeta iz zahteve po privolitvi, saj je strogo nujna za delovanje storitve, ki jo je uporabnik zahteval.
@@ -150,6 +151,12 @@
   </div>
   <span class="copy">© 2026 Eflitte. Vse pravice pridržane.</span>
 </footer>
+
+<!-- AI chat widget — pred produkcijo nastavi mock na false -->
+<script>
+  window.EFLITTE_CHAT_CONFIG = { endpoint: '/api/chat', mock: true };
+</script>
+<script src="chat-widget.js" defer></script>
 
 </body>
 </html>

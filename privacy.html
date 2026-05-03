@@ -123,7 +123,8 @@
     <li>naslov elektronske pošte,</li>
     <li>naziv podjetja,</li>
     <li>velikost podjetja (kategorija),</li>
-    <li>vsebina vašega sporočila.</li>
+    <li>vsebina vašega sporočila,</li>
+    <li>vsebina pogovora s chatbotom (samo začasno, v vašem brskalniku — glej spodaj).</li>
   </ul>
   <p>
     Podatke uporabljamo izključno za odgovor na vaše povpraševanje in morebitno nadaljnjo poslovno komunikacijo.
@@ -183,6 +184,26 @@
     Izvajamo ustrezne tehnične in organizacijske ukrepe za zaščito osebnih podatkov pred izgubo, nepooblaščenim dostopom, razkritjem ali uničenjem. Vsi prenosi podatkov prek spletnega mesta so šifrirani z protokolom HTTPS/TLS. V primeru zaznane kršitve zaščite osebnih podatkov vas bomo obvestili nemudoma, vendar ne kasneje kot v 72 urah, in o kršitvi obvestili tudi Informacijskega pooblaščenca.
   </p>
 
+  <h2>Pogovorni asistent (chatbot)</h2>
+  <p>
+    Na spletnem mestu uporabljamo pogovornega AI asistenta, ki vam pomaga pri vprašanjih o naših storitvah. Asistenta poganja jezikovni model podjetja <strong>Anthropic, PBC</strong> (San Francisco, ZDA) prek njihovega API-ja.
+  </p>
+  <p>
+    Ko pošljete sporočilo, se vsebina pogovora posreduje Anthropic, ki generira odgovor in ga vrne nazaj na vašo napravo. <strong>Anthropic vsebine API klicev ne uporablja za učenje svojih modelov</strong> in jih hrani največ 30 dni za namene zaznavanja zlorab, nato pa jih izbriše. Več: <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">commercial terms</a>, <a href="https://privacy.anthropic.com" target="_blank" rel="noopener">privacy.anthropic.com</a>.
+  </p>
+  <p>
+    <strong>Pravna podlaga</strong>: zakoniti interes (člen 6(1)(f) GDPR) za zagotavljanje storitve uporabniške podpore, ki jo aktivno zahtevate s tem, ko začnete pogovor.
+  </p>
+  <p>
+    <strong>Prenos v tretjo državo</strong>: ker Anthropic obdeluje podatke v ZDA, prenos poteka na podlagi standardnih pogodbenih klavzul (SCC) v skladu s členom 46(2)(c) GDPR. Anthropic je certificiran v okviru EU-US Data Privacy Framework.
+  </p>
+  <p>
+    <strong>Hramba pri nas</strong>: vsebine pogovora ne shranjujemo v naši bazi. Pogovor je začasno shranjen samo v vašem brskalniku (<em>sessionStorage</em>) in se izbriše, ko zaprete zavihek. Če želite, lahko pogovor počistite tudi s klikom na ikono za nov pogovor v glavi widgeta.
+  </p>
+  <p>
+    <strong>Priporočilo</strong>: v pogovor z asistentom ne vpisujte občutljivih osebnih podatkov (kreditne kartice, gesla, EMŠO, davčne številke). Za uradna povpraševanja uporabite kontaktni obrazec ali e-pošto <a href="mailto:info@eflitte.si">info@eflitte.si</a>.
+  </p>
+
   <h2>Spremembe te politike</h2>
   <p>
     Pridržujemo si pravico do sprememb in posodobitev politike zasebnosti. O bistvenih spremembah vas bomo obvestili na tem spletnem mestu z navedbo datuma zadnje spremembe na vrhu dokumenta.
@@ -198,6 +219,12 @@
   </div>
   <span class="copy">© 2026 Eflitte. Vse pravice pridržane.</span>
 </footer>
+
+<!-- AI chat widget — pred produkcijo nastavi mock na false -->
+<script>
+  window.EFLITTE_CHAT_CONFIG = { endpoint: '/api/chat', mock: true };
+</script>
+<script src="chat-widget.js" defer></script>
 
 </body>
 </html>
