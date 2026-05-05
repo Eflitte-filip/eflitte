@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title data-i18n="title">Avtomatizacija procesov — EFLITTE | n8n + AI za slovenska podjetja</title>
-<meta name="description" data-i18n="meta.description" content="Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo samodejno. Lead handling, faktura chase, email triage, reporting. Self-hosted, EU regija, GDPR-skladno." />
+<title data-i18n="title">Eflitte</title>
+<meta name="description" data-i18n="meta.description" content="Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo samodejno. Obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, poročanje. Self-hosted, EU regija, GDPR-skladno." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="theme-color" content="#F8FAFC" />
 
@@ -15,9 +15,9 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="sl_SI" />
-<meta property="og:site_name" content="EFLITTE" />
-<meta property="og:title" content="Avtomatizacija procesov — EFLITTE" />
-<meta property="og:description" content="Procesi, ki jih ekipa opravlja ročno, lahko tečejo samodejno. Merljiv prihranek, EU regija, brez vendor lock-ina." />
+<meta property="og:site_name" content="Eflitte" />
+<meta property="og:title" content="Eflitte" />
+<meta property="og:description" content="Procesi, ki jih ekipa opravlja ročno, lahko tečejo samodejno. Merljiv prihranek, EU regija, brez vezanja na ponudnika." />
 <meta property="og:url" content="https://eflitte.si/avtomatizacija" />
 <meta property="og:image" content="https://eflitte.si/og-image.png" />
 
@@ -33,9 +33,9 @@
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Avtomatizacija procesov",
-  "provider": { "@type": "Organization", "name": "EFLITTE", "url": "https://eflitte.si/" },
+  "provider": { "@type": "Organization", "name": "Eflitte", "url": "https://eflitte.si/" },
   "areaServed": { "@type": "Country", "name": "Slovenia" },
-  "description": "Workflow avtomatizacija z n8n in LLM logiko: lead handling, faktura chase, email triage, reporting. Self-hosted infrastruktura v EU regiji.",
+  "description": "Workflow avtomatizacija z n8n in LLM logiko: obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, poročanje. Self-hosted infrastruktura v EU regiji.",
   "serviceType": ["Workflow automation", "AI integration", "Process automation", "Business process automation"]
 }
 </script>
@@ -739,13 +739,14 @@
     <span class="logo-dot"></span>
   </a>
   <ul class="nav-links">
+    <li><a href="/" data-i18n="nv.home">Domov</a></li>
     <li><a href="/web" data-i18n="nv.web">Spletna stran</a></li>
     <li><a href="/avtomatizacija" class="active" data-i18n="nv.auto">Avtomatizacija</a></li>
     <li><a href="/#kontakt" data-i18n="nv.con">Kontakt</a></li>
   </ul>
   <div class="nav-right">
     <button class="lang-toggle">EN</button>
-    <a href="/#kontakt" class="nav-cta" data-i18n="nv.cta">Pogovorimo se</a>
+    <a href="/#kontakt" class="nav-cta" data-i18n="nv.cta">Pišite nam</a>
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -753,10 +754,11 @@
 </nav>
 
 <aside class="drawer" id="drawer" aria-hidden="true">
+  <a href="/" class="drawer-link" data-i18n="nv.home">Domov</a>
   <a href="/web" class="drawer-link" data-i18n="nv.web">Spletna stran</a>
   <a href="/avtomatizacija" class="drawer-link" data-i18n="nv.auto">Avtomatizacija</a>
   <a href="/#kontakt" class="drawer-link" data-i18n="nv.con">Kontakt</a>
-  <a href="/#kontakt" class="drawer-cta" data-i18n="nv.cta">Pogovorimo se</a>
+  <a href="/#kontakt" class="drawer-cta" data-i18n="nv.cta">Pišite nam</a>
   <button class="drawer-lang">EN</button>
 </aside>
 
@@ -774,11 +776,11 @@
       Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo <span class="accent">samodejno</span>.
     </h1>
     <p class="hero-sub" data-reveal data-i18n="hero.s">
-      Lead handling, faktura chase, email triage, mesečno reporting. En specifičen proces hkrati. Merljiv prihranek od prvega meseca, brez vendor lock-ina, vaši podatki ostanejo v EU.
+      Obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, mesečno poročanje. En specifičen proces hkrati. Merljiv prihranek od prvega meseca, brez vezanja na ponudnika, vaši podatki ostanejo v EU.
     </p>
     <div class="hero-actions" data-reveal>
       <a href="/#kontakt" class="btn-primary" data-i18n="hero.c1">
-        Pogovorimo se <span class="arrow">→</span>
+        Pišite nam <span class="arrow">→</span>
       </a>
       <a href="#cases" class="btn-ghost" data-i18n="hero.c2">
         Konkretni primeri
@@ -796,47 +798,47 @@
         Kaj točno <span class="accent">avtomatiziramo</span>.
       </h2>
       <p class="section-lead" data-i18n="uc.lead">
-        Spodaj so štirje tipični prvi sprinti pri slovenskih SMB. Vsak je en proces, en specifičen problem, en sprint. Nato gradimo naprej.
+        Spodaj so štirje tipični prvi sprinti pri slovenskih malih in srednjih podjetjih. Vsak je en proces, en specifičen problem, en sprint. Nato gradimo naprej.
       </p>
     </div>
 
     <div class="usecase-grid">
       <article class="usecase-card" data-reveal>
-        <div class="usecase-num">01 / Sales</div>
-        <h3 data-i18n="uc1.t">Lead handling</h3>
-        <p data-i18n="uc1.p">Spletni obrazec ali e-mail povpraševanje gre skozi AI kvalifikacijo, vpiše se v CRM s pravimi tagi, pošlje se personaliziran follow-up, ekipa dobi Slack notifikacijo z že pripravljenim kontekstom za klic.</p>
+        <div class="usecase-num" data-i18n="uc1.n">01 / Prodaja</div>
+        <h3 data-i18n="uc1.t">Obravnava povpraševanj</h3>
+        <p data-i18n="uc1.p">Spletni obrazec ali e-mail povpraševanje gre skozi AI kvalifikacijo, vpiše se v CRM s pravimi oznakami, pošlje se nadaljevalno sporočilo, ekipa dobi Slack obvestilo z že pripravljenim kontekstom za klic.</p>
         <div class="usecase-flow">
           obrazec → LLM kvalifikacija →<br/>
-          CRM zapis + tag → email follow-up →<br/>
-          Slack ekipa
+          CRM zapis + oznaka → nadaljevalna e-pošta →<br/>
+          obvestilo ekipi
         </div>
       </article>
 
       <article class="usecase-card" data-reveal>
-        <div class="usecase-num">02 / Finance</div>
-        <h3 data-i18n="uc2.t">Faktura chase</h3>
+        <div class="usecase-num" data-i18n="uc2.n">02 / Finance</div>
+        <h3 data-i18n="uc2.t">Opomniki za fakture</h3>
         <p data-i18n="uc2.p">Iz Minimaxa ali e-Računov potegnemo seznam neplačanih faktur. Eskalacijska sekvenca e-mailov (mehki opomnik na 7 dni, trši na 14, eskalacija vodstvu na 30 dni). Dnevno poročilo statusov.</p>
         <div class="usecase-flow">
           Minimax/e-Računi → neplačane → <br/>
           eskalacijska e-pošta sekvenca → <br/>
-          dnevni status report
+          dnevno poročilo statusa
         </div>
       </article>
 
       <article class="usecase-card" data-reveal>
-        <div class="usecase-num">03 / Inbox</div>
-        <h3 data-i18n="uc3.t">Email triage</h3>
-        <p data-i18n="uc3.p">Dohodne e-pošte v skupni inbox (info@, prodaja@) gredo skozi LLM klasifikacijo. Razporeditev v ekipo glede na vsebino, draft odgovora za rutinske primere, eskalacija za vse, kar zahteva človeško presojo.</p>
+        <div class="usecase-num" data-i18n="uc3.n">03 / Vhodna pošta</div>
+        <h3 data-i18n="uc3.t">Razvrščanje e-pošte</h3>
+        <p data-i18n="uc3.p">Dohodne e-pošte v skupni inbox (info@, prodaja@) gredo skozi LLM klasifikacijo. Razporeditev v ekipo glede na vsebino, osnutek odgovora za rutinske primere, eskalacija za vse, kar zahteva človeško presojo.</p>
         <div class="usecase-flow">
-          inbox → LLM klasifikacija →<br/>
-          razporeditev + draft →<br/>
+          vhodna pošta → LLM klasifikacija →<br/>
+          razporeditev + osnutek →<br/>
           ekipa odobri ali popravi
         </div>
       </article>
 
       <article class="usecase-card" data-reveal>
-        <div class="usecase-num">04 / Reporting</div>
-        <h3 data-i18n="uc4.t">Mesečno reporting</h3>
+        <div class="usecase-num" data-i18n="uc4.n">04 / Poročanje</div>
+        <h3 data-i18n="uc4.t">Mesečno poročanje</h3>
         <p data-i18n="uc4.p">Podatki iz različnih sistemov (CRM, ERP, Google Analytics, Stripe) se zbirajo skozi mesec. Prvi delovni dan v mesecu AI sestavi strukturiran povzetek z odstopanji od ciljev in pošlje vodstvu.</p>
         <div class="usecase-flow">
           več virov → zbiranje →<br/>
@@ -852,20 +854,20 @@
 <section class="roi">
   <div class="roi-inner">
     <div data-reveal>
-      <div class="section-label" data-i18n="roi.l">ROI brez fluffa</div>
+      <div class="section-label" data-i18n="roi.l">Donosnost brez praznega govorjenja</div>
       <h2 class="section-title" data-i18n="roi.t">
         Matematika, ne <span class="accent">obljube</span>.
       </h2>
       <p class="roi-lead" data-i18n="roi.lead">
-        Avtomatizacija ima merljiv ROI: koliko ur ekipa porabi na proces × koliko stane ura, minus strošek implementacije in mesečnega vzdrževanja. Pri vsakem projektu te številke določimo skupaj — pred začetkom razvoja, ne po njem.
+        Avtomatizacija ima merljiv donos: koliko ur ekipa porabi na proces × koliko stane ura, minus strošek implementacije in mesečnega vzdrževanja. Pri vsakem projektu te številke določimo skupaj — pred začetkom razvoja, ne po njem.
       </p>
     </div>
 
     <div class="roi-formula" data-reveal>
       <div class="label" data-i18n="roi.ex">Ilustrativna kalkulacija</div>
-      <h3 data-i18n="roi.ex.t">Email triage v 30-osebnem podjetju</h3>
+      <h3 data-i18n="roi.ex.t">Razvrščanje e-pošte v 30-osebnem podjetju</h3>
       <div class="roi-row">
-        <span class="label-l" data-i18n="roi.r1.l">Trenutno: 2 osebi, vsaka 1.5 h/dan na inbox triage</span>
+        <span class="label-l" data-i18n="roi.r1.l">Trenutno: 2 osebi, vsaka 1.5 h/dan na razvrščanje e-pošte</span>
         <span class="value">3 h/dan</span>
       </div>
       <div class="roi-row">
@@ -882,7 +884,7 @@
         <span class="value">≈ 1.650 €/mes</span>
       </div>
       <div class="roi-row">
-        <span class="label-l" data-i18n="roi.r5.l">Z avtomatizacijo: ostane ~ 30 % (presoja, edge cases)</span>
+        <span class="label-l" data-i18n="roi.r5.l">Z avtomatizacijo: ostane ~ 30 % (presoja, izjeme)</span>
         <span class="value">≈ 500 €/mes</span>
       </div>
       <div class="roi-row roi-result">
@@ -890,7 +892,7 @@
         <span class="value">≈ 1.150 €/mes</span>
       </div>
       <p class="roi-note" data-i18n="roi.note">
-        To je ilustrativen primer, ne zavezujoča kalkulacija. Pri konkretnem projektu Process Pregled pokaže realne številke za vašo specifično situacijo — pogosto je razlika večja, ker rutinski procesi v praksi pojejo več časa, kot vodstvo predvideva.
+        To je ilustrativen primer, ne zavezujoča kalkulacija. Pri konkretnem projektu Pregled procesov pokaže realne številke za vašo specifično situacijo — pogosto je razlika večja, ker rutinski procesi v praksi pojejo več časa, kot vodstvo predvideva.
       </p>
     </div>
   </div>
@@ -901,7 +903,7 @@
   <div class="container">
     <div class="rel-grid">
       <div data-reveal>
-        <div class="section-label" data-i18n="rel.l">Zaupanje, ne hype</div>
+        <div class="section-label" data-i18n="rel.l">Zaupanje</div>
         <h2 class="section-title" data-i18n="rel.t">
           Sistem, ki ga lahko <span class="accent">pustite</span>.
         </h2>
@@ -913,36 +915,29 @@
         <div class="rel-item">
           <div class="rel-num">01</div>
           <div>
-            <h4 data-i18n="rel.i1.h">Human-in-the-loop pri kritičnih korakih</h4>
+            <h4 data-i18n="rel.i1.h">Človeška presoja pri kritičnih korakih</h4>
             <p data-i18n="rel.i1.p">AI pripravi, človek odobri. Pri vsem, kar je finančno, pravno ali javno (e-pošta strankam, fakture, plačila) avtomatizacija ustvari osnutek — končna potrditev je vedno na človeku.</p>
           </div>
         </div>
         <div class="rel-item">
           <div class="rel-num">02</div>
           <div>
-            <h4 data-i18n="rel.i2.h">Self-hosted, EU regija</h4>
+            <h4 data-i18n="rel.i2.h">Lastni strežnik, EU regija</h4>
             <p data-i18n="rel.i2.p">n8n teče na vašem strežniku ali EU-shrambi (Frankfurt). Vaši podatki nikoli ne potujejo izven EU, razen v specifične LLM klice — in tudi ti gredo prek EU regij ponudnikov, kjer to omogočajo.</p>
           </div>
         </div>
         <div class="rel-item">
           <div class="rel-num">03</div>
           <div>
-            <h4 data-i18n="rel.i3.h">Monitoring 24/7, alerting na napake</h4>
-            <p data-i18n="rel.i3.p">Vsak workflow ima error handling in alerting. Če se kaj zlomi sredi noči, dobimo notifikacijo prej kot vi. To je razlog za Operations retainer — ne samo "vzdrževanje", ampak aktivni nadzor.</p>
+            <h4 data-i18n="rel.i3.h">Nadzor 24/7, obveščanje o napakah</h4>
+            <p data-i18n="rel.i3.p">Vsak proces ima obravnavo napak in alarme. Če se kaj zlomi sredi noči, dobimo obvestilo prej kot vi. To je razlog za operativno skrb — ne samo "vzdrževanje", ampak aktivni nadzor.</p>
           </div>
         </div>
         <div class="rel-item">
           <div class="rel-num">04</div>
           <div>
-            <h4 data-i18n="rel.i4.h">Brez vendor lock-ina</h4>
-            <p data-i18n="rel.i4.p">n8n je odprta koda. Workflows so vaši — vsi v JSON formatu, dokumentirani. Če kdaj prekinemo sodelovanje, drug partner (ali vaš IT) lahko prevzame brez ponovnega pisanja od nule.</p>
-          </div>
-        </div>
-        <div class="rel-item">
-          <div class="rel-num">05</div>
-          <div>
-            <h4 data-i18n="rel.i5.h">Change management za ekipo</h4>
-            <p data-i18n="rel.i5.p">Notranji odpor je realen problem — zaposleni se bojijo, da jih bo AI nadomestil. Pri vsakem projektu pomagamo pripraviti komunikacijski plan: avtomatizacija premešča delo, ne odpušča ljudi. Dela na tej zgodbi z vodstvom je del paketa.</p>
+            <h4 data-i18n="rel.i4.h">Brez vezanja na ponudnika</h4>
+            <p data-i18n="rel.i4.p">n8n je odprta koda. Procesi so vaši — vsi v JSON formatu, dokumentirani. Če kdaj prekinemo sodelovanje, drug partner (ali vaš IT) lahko prevzame brez ponovnega pisanja od nule.</p>
           </div>
         </div>
       </div>
@@ -956,10 +951,10 @@
     <div data-reveal>
       <div class="section-label" data-i18n="del.l">Kaj dostavimo</div>
       <h2 class="section-title" data-i18n="del.t">
-        Trije <span class="accent">paketi</span>, jasen pristop.
+        Več <span class="accent">poti</span>, jasen pristop.
       </h2>
       <p class="section-lead" data-i18n="del.lead">
-        Tako kot pri spletni strani: začnemo z pregledom, gremo v specifičen sprint, ostanemo skozi retainer. Vsak korak je samostojen — po vsakem se lahko odločite, ali nadaljujemo.
+        Vsak korak je samostojen — po vsakem se lahko odločite, ali nadaljujemo. Začnemo s tem, kar trenutno potrebujete.
       </p>
     </div>
 
@@ -968,14 +963,14 @@
         <div>
           <div class="deliver-num">01 / Discovery</div>
           <h3 data-i18n="d1.t">Pregled procesov</h3>
-          <div class="deliver-meta" data-i18n="d1.m">5–7 delovnih dni · Pisni dokument + 60-min predstavitev</div>
+          <div class="deliver-meta" data-i18n="d1.m">Pisni dokument + predstavitev rezultatov</div>
         </div>
         <div class="deliver-body">
-          <p data-i18n="d1.p">Strukturiran pregled vaših ročnih procesov in tool stack-a. Skupaj identificiramo, kateri procesi so kandidati za avtomatizacijo, koliko ur in denarja prihranijo, in po kakšnem vrstnem redu jih je smiselno reševati.</p>
+          <p data-i18n="d1.p">Strukturiran pregled vaših ročnih procesov in orodij. Skupaj identificiramo, kateri procesi so kandidati za avtomatizacijo, koliko ur in denarja prihranijo, in po kakšnem vrstnem redu jih je smiselno reševati.</p>
           <ul class="deliver-list">
             <li data-i18n="d1.l1">Process mapping: intervjuvi z 2–3 osebami iz ekipe, ki dnevno opravljajo ročno delo</li>
             <li data-i18n="d1.l2">Tool stack inventory: katera orodja se uporabljajo, kateri se pogovarjajo, kateri ne</li>
-            <li data-i18n="d1.l3">5–8 prioritiziranih avtomatizacijskih priložnosti z ROI oceno</li>
+            <li data-i18n="d1.l3">5–8 prioritiziranih avtomatizacijskih priložnosti z oceno donosnosti</li>
             <li data-i18n="d1.l4">Tehnična ocena: kateri procesi so res avtomatizable in kateri ne</li>
             <li data-i18n="d1.l5">Priporočilo prvega sprinta: največji impact ob najmanjši kompleksnosti</li>
           </ul>
@@ -997,7 +992,7 @@
             <li data-i18n="d2.l4">LLM logika z guardrails, prompt engineering, structured outputs</li>
             <li data-i18n="d2.l5">Testiranje na realnih primerih, "tihi tek" pred produkcijskim zagonom</li>
             <li data-i18n="d2.l6">2-urni training za ekipo + dokumentacija</li>
-            <li data-i18n="d2.l7">30 dni podpore po zagonu</li>
+            <li data-i18n="d2.l7">Podpora po zagonu</li>
           </ul>
         </div>
       </article>
@@ -1005,15 +1000,15 @@
       <article class="deliver-card" data-reveal>
         <div>
           <div class="deliver-num">03 / Ongoing</div>
-          <h3 data-i18n="d3.t">Operations Retainer</h3>
-          <div class="deliver-meta" data-i18n="d3.m">Modularna mesečna naročnina · Aktivni nadzor</div>
+          <h3 data-i18n="d3.t">Operativna skrb</h3>
+          <div class="deliver-meta" data-i18n="d3.m">Mesečna skrb · Aktivni nadzor</div>
         </div>
         <div class="deliver-body">
-          <p data-i18n="d3.p">Avtomatizacija ni "set and forget". Sistemi stranke (CRM, ERP) se posodabljajo, API-ji se spreminjajo, podjetje odkriva nove use case-e. Operations Retainer pokriva monitoring, vzdrževanje, in dodajanje novih flow-ov v okviru mesečnega proračuna.</p>
+          <p data-i18n="d3.p">Avtomatizacija ni "postavi in pozabi". Sistemi stranke (CRM, ERP) se posodabljajo, API-ji se spreminjajo, podjetje odkriva nove primere uporabe. Operativna skrb pokriva nadzor, vzdrževanje, in dodajanje novih procesov v okviru mesečnega proračuna.</p>
           <ul class="deliver-list">
-            <li data-i18n="d3.l1">24/7 monitoring vseh workflow-ov, error alerting, uptime SLA</li>
-            <li data-i18n="d3.l2">Mesečni health report: success rate, prihranjene ure, najpogostejši edge case-i</li>
-            <li data-i18n="d3.l3">Razvojni čas mesečno za izboljšave, nove use case-e, optimizacije</li>
+            <li data-i18n="d3.l1">24/7 monitoring vseh procesov, alarmiranje napak, garancija dosegljivosti</li>
+            <li data-i18n="d3.l2">Mesečno poročilo: uspešnost delovanja, prihranjene ure, najpogostejše izjeme</li>
+            <li data-i18n="d3.l3">Razvojni čas mesečno za izboljšave, nove primere uporabe, optimizacije</li>
             <li data-i18n="d3.l4">Adaptacija na spremembe ravnotežja v sistemih stranke (nov ERP, nov CRM, novi API-ji)</li>
             <li data-i18n="d3.l5">Kvartalni 60-min strateški pregled in priporočila</li>
             <li data-i18n="d3.l6">Prioritetna podpora (24h response window)</li>
@@ -1033,7 +1028,7 @@
         Pravo orodje za <span class="accent">pravo nalogo</span>.
       </h2>
       <p class="section-lead" data-i18n="st.lead">
-        Tehnologijo izbiramo glede na potrebo, ne glede na modo. Pri večini SMB projektov je kombinacija spodaj sweet spot: production-grade, dobro dokumentirano, GDPR-skladno, z aktivno skupnostjo. Slovenska orodja (oranžna) so naš kategorialni moat — tuji freelancerji jih ne poznajo.
+        Pri večini projektov je kombinacija spodaj naša prva izbira: produkcijsko zanesljivo, dobro dokumentirano, GDPR-skladno, z aktivno skupnostjo. Slovenska orodja (oranžna) so naš kategorialna prednost — tuji freelancerji jih ne poznajo.
       </p>
     </div>
 
@@ -1075,27 +1070,27 @@
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-question" data-i18n="fq.q1"><span>Naši procesi so preveč specifični. Razumete naše poslovanje?</span><span class="faq-icon"></span></button>
+        <button class="faq-question" data-i18n="fq.q1"><span>Naši procesi so zelo specifični.</span><span class="faq-icon"></span></button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p data-i18n="fq.a1">Process Pregled procesov je zasnovana ravno za to. V prvih dneh intervjuvamo vas in ključne osebe, mapiramo procese in razumemo, kaj je res specifično vašemu poslu in kaj je generično. V praksi je 60–70 % procesov pri SMB podobnih (lead handling, billing, reporting) — preostanek je unique in zahteva individualen pristop. Pregled pokaže, kateri del je kateri.</p>
+          <p data-i18n="fq.a1">Pregled procesov je zasnovana ravno za to. V prvih dneh intervjuvamo vas in ključne osebe, mapiramo procese in razumemo, kaj je res specifično vašemu poslu in kaj je generično. V praksi je 60–70 % procesov v malih podjetjih podobnih (obravnava povpraševanj, fakturiranje, poročanje) — preostanek je edinstven in zahteva individualen pristop. Pregled pokaže, kateri del je kateri.</p>
         </div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-question" data-i18n="fq.q2"><span>Že smo poskusili Zapier ali Make. Ni delovalo.</span><span class="faq-icon"></span></button>
+        <button class="faq-question" data-i18n="fq.q2"><span>Smo poskusili že z Zapier/Make, pa ni blo dosti bolje.</span><span class="faq-icon"></span></button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p data-i18n="fq.a2">To je realistična izkušnja — ad-hoc avtomatizacija deluje do prve kompleksnosti, potem se zlomi in ni nikogar, ki bi to popravil. Razlika med "Zapier postavi sam direktor" in "production-grade sistem" je v error handlingu, monitoringu, dokumentaciji, vzdrževanju in tem, kaj se zgodi, ko se nekaj zlomi sredi noči. Avtomatizacijo zgradimo kot sistem, ne kot hobby projekt.</p>
+          <p data-i18n="fq.a2">To je realistična izkušnja — ad-hoc avtomatizacija deluje do prve kompleksnosti, potem se zlomi in ni nikogar, ki bi to popravil. Razlika med "Zapier postavi sam direktor" in "produkcijsko zanesljivo sistem" je v error handlingu, monitoringu, dokumentaciji, vzdrževanju in tem, kaj se zgodi, ko se nekaj zlomi sredi noči. Avtomatizacijo zgradimo kot sistem, ne kot hobby projekt.</p>
         </div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" data-i18n="fq.q3"><span>Kaj če avtomatizacija naredi nekaj narobe? Kdo je odgovoren?</span><span class="faq-icon"></span></button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p data-i18n="fq.a3">Pri kritičnih korakih (denar, pogodbe, javna komunikacija) avtomatizacija pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, notifikacije) sistem dela samostojno, ampak vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju, ker so to vaši procesi — naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.</p>
+          <p data-i18n="fq.a3">Pri kritičnih korakih (denar, pogodbe, javna komunikacija) avtomatizacija pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, obvestile) sistem dela samostojno, ampak vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju, ker so to vaši procesi — naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.</p>
         </div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" data-i18n="fq.q4"><span>Naša ekipa se boji, da jih boste nadomestili.</span><span class="faq-icon"></span></button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p data-i18n="fq.a4">Realna skrb — in dejanski razlog, zakaj veliko avtomatizacijskih projektov propade ob notranjem odporu. Naš pristop: avtomatizacija premešča delo iz repetitivnega v presoja-zahtevno. Pri vsakem projektu pomagamo pripraviti komunikacijski plan za ekipo — kateri konkretni procesi se avtomatizirajo, kaj ostane človeško delo, kako se vlogovni opisi prilagodijo. To je del paketa, ne posebna storitev.</p>
+          <p data-i18n="fq.a4">Realna skrb — in dejanski razlog, zakaj veliko avtomatizacijskih projektov propade ob notranjem odporu. Naš pristop: avtomatizacija premešča repetitivno delo v delo, ki zahteva samo presojo.</p>
         </div></div>
       </div>
       <div class="faq-item">
@@ -1107,7 +1102,7 @@
       <div class="faq-item">
         <button class="faq-question" data-i18n="fq.q6"><span>Kaj če se avtomatizacija zlomi sredi noči?</span><span class="faq-icon"></span></button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p data-i18n="fq.a6">Vsak workflow ima error handling in alerting. Ko se nekaj ne posreči (API timeout, neveljavni podatki, preseženje rate limita), sistem to zabeleži in pošlje notifikacijo nam — pogosto prej kot stranki sploh kaj zmoti. To je glavni razlog za Operations Retainer: aktivni nadzor in hiter response, ne le pasivno "vzdrževanje".</p>
+          <p data-i18n="fq.a6">Vsak proces ima obravnavo napak in alarme. Ko se nekaj ne posreči (API timeout, neveljavni podatki, preseženje rate limita), sistem to zabeleži in pošlje obvestilo nam — pogosto prej kot stranki sploh kaj zmoti. To je glavni razlog za operativno skrb: aktivni nadzor in hiter odziv, ne le pasivno "vzdrževanje".</p>
         </div></div>
       </div>
       <div class="faq-item">
@@ -1134,7 +1129,7 @@
       30-min pogovor, brez obveznosti. Pogledamo en konkreten ročni proces v vašem podjetju in iskreno povemo, ali se ga splača avtomatizirati — ali ne.
     </p>
     <a href="/#kontakt" class="btn-primary">
-      <span data-i18n="cta.b">Pogovorimo se</span> <span class="arrow">→</span>
+      <span data-i18n="cta.b">Pišite nam</span> <span class="arrow">→</span>
     </a>
   </div>
 </section>
@@ -1144,13 +1139,11 @@
   <div class="footer-grid">
     <div>
       <a href="/" class="footer-brand">Eflitte<span class="footer-brand-dot"></span></a>
-      <p class="footer-tagline" data-i18n="ft.tag">AI infrastruktura za slovenska podjetja.</p>
     </div>
     <div class="footer-col">
       <h5 data-i18n="ft.prod">Produkti</h5>
-      <a href="/web" data-i18n="ft.web">AI-Ready spletna stran</a>
+      <a href="/web" data-i18n="ft.web">AI-pripravljena spletna stran</a>
       <a href="/avtomatizacija" data-i18n="ft.auto">Avtomatizacija</a>
-      <a href="/#kontakt" data-i18n="ft.con">Kontakt</a>
     </div>
     <div class="footer-col">
       <h5 data-i18n="ft.comp">Podjetje</h5>
@@ -1159,18 +1152,9 @@
       <a href="cookies.html" data-i18n="ft.cook">Piškotki</a>
     </div>
     <div class="footer-col">
-      <h5 data-i18n="ft.write">Pišite nam</h5>
+      <h5 data-i18n="ft.write">Kontakt</h5>
       <a href="mailto:info@eflitte.si">info@eflitte.si</a>
       <a href="tel:+38668693988">068 693 988</a>
-      <span data-i18n="ft.loc">Slovenske Konjice, SI</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span data-i18n="ft.copy">© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.</span>
-    <div class="footer-legal">
-      <a href="impressum.html" data-i18n="ft.imp">Impressum</a>
-      <a href="privacy.html" data-i18n="ft.priv">Politika zasebnosti</a>
-      <a href="cookies.html" data-i18n="ft.cook">Piškotki</a>
     </div>
   </div>
 </footer>
@@ -1187,47 +1171,49 @@
   /* i18n */
   (function(){
     const i18n = {
-      "title":{sl:"Avtomatizacija procesov — EFLITTE | n8n + AI za slovenska podjetja",en:"Process automation — EFLITTE | n8n + AI for Slovenian companies"},
-      "nv.web":{sl:"Spletna stran",en:"Website"},"nv.auto":{sl:"Avtomatizacija",en:"Automation"},"nv.con":{sl:"Kontakt",en:"Contact"},"nv.cta":{sl:"Pogovorimo se",en:"Let's talk"},
+      "title":{sl:"Eflitte",en:"Eflitte"},
+      "nv.home":{sl:"Domov",en:"Home"},"nv.web":{sl:"Spletna stran",en:"Website"},"nv.auto":{sl:"Avtomatizacija",en:"Automation"},"nv.con":{sl:"Kontakt",en:"Contact"},"nv.cta":{sl:"Pišite nam",en:"Write to us"},
       "bc.auto":{sl:"Avtomatizacija procesov",en:"Process automation"},
       "hero.t":{sl:"Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo <span class=\"accent\">samodejno</span>.",en:"The processes your team does manually today can run <span class=\"accent\">on their own</span>."},
-      "hero.s":{sl:"Lead handling, faktura chase, email triage, mesečno reporting. En specifičen proces hkrati. Merljiv prihranek od prvega meseca, brez vendor lock-ina, vaši podatki ostanejo v EU.",en:"Lead handling, invoice chase, email triage, monthly reporting. One specific process at a time. Measurable savings from month one, no vendor lock-in, your data stays in the EU."},
-      "hero.c1":{sl:"Pogovorimo se <span class=\"arrow\">→</span>",en:"Let's talk <span class=\"arrow\">→</span>"},"hero.c2":{sl:"Konkretni primeri",en:"Concrete examples"},
+      "hero.s":{sl:"Obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, mesečno poročanje. En specifičen proces hkrati. Merljiv prihranek od prvega meseca, brez vezanja na ponudnika, vaši podatki ostanejo v EU.",en:"Lead handling, invoice chase, email triage, monthly reporting. One specific process at a time. Measurable savings from month one, no vendor lock-in, your data stays in the EU."},
+      "hero.c1":{sl:"Pišite nam <span class=\"arrow\">→</span>",en:"Write to us <span class=\"arrow\">→</span>"},"hero.c2":{sl:"Konkretni primeri",en:"Concrete examples"},
       "uc.l":{sl:"Konkretni primeri",en:"Concrete examples"},"uc.t":{sl:"Kaj točno <span class=\"accent\">avtomatiziramo</span>.",en:"What exactly <span class=\"accent\">we automate</span>."},
-      "uc.lead":{sl:"Spodaj so štirje tipični prvi sprinti pri slovenskih SMB. Vsak je en proces, en specifičen problem, en sprint. Nato gradimo naprej.",en:"Below are four typical first sprints at Slovenian SMBs. Each is one process, one specific problem, one sprint. Then we build further."},
-      "uc1.t":{sl:"Lead handling",en:"Lead handling"},"uc1.p":{sl:"Spletni obrazec ali e-mail povpraševanje gre skozi AI kvalifikacijo, vpiše se v CRM s pravimi tagi, pošlje se personaliziran follow-up, ekipa dobi Slack notifikacijo z že pripravljenim kontekstom za klic.",en:"A web form or email inquiry goes through AI qualification, gets logged in the CRM with proper tags, a personalized follow-up is sent, and the team gets a Slack notification with prepared context for the call."},
-      "uc2.t":{sl:"Faktura chase",en:"Invoice chase"},"uc2.p":{sl:"Iz Minimaxa ali e-Računov potegnemo seznam neplačanih faktur. Eskalacijska sekvenca e-mailov (mehki opomnik na 7 dni, trši na 14, eskalacija vodstvu na 30 dni). Dnevno poročilo statusov.",en:"We pull the list of unpaid invoices from Minimax or e-Računi. Escalation email sequence (gentle at 7 days, firmer at 14, management escalation at 30). Daily status report."},
-      "uc3.t":{sl:"Email triage",en:"Email triage"},"uc3.p":{sl:"Dohodne e-pošte v skupni inbox (info@, prodaja@) gredo skozi LLM klasifikacijo. Razporeditev v ekipo glede na vsebino, draft odgovora za rutinske primere, eskalacija za vse, kar zahteva človeško presojo.",en:"Incoming emails to shared inboxes (info@, sales@) go through LLM classification. Routing to the team by content, draft replies for routine cases, escalation for everything requiring human judgment."},
-      "uc4.t":{sl:"Mesečno reporting",en:"Monthly reporting"},"uc4.p":{sl:"Podatki iz različnih sistemov (CRM, ERP, Google Analytics, Stripe) se zbirajo skozi mesec. Prvi delovni dan v mesecu AI sestavi strukturiran povzetek z odstopanji od ciljev in pošlje vodstvu.",en:"Data from various systems (CRM, ERP, Google Analytics, Stripe) is collected through the month. On the first business day, AI assembles a structured summary with deviations from targets and sends it to leadership."},
-      "roi.l":{sl:"ROI brez fluffa",en:"ROI without fluff"},"roi.t":{sl:"Matematika, ne <span class=\"accent\">obljube</span>.",en:"Math, not <span class=\"accent\">promises</span>."},
-      "roi.lead":{sl:"Avtomatizacija ima merljiv ROI: koliko ur ekipa porabi na proces × koliko stane ura, minus strošek implementacije in mesečnega vzdrževanja. Pri vsakem projektu te številke določimo skupaj — pred začetkom razvoja, ne po njem.",en:"Automation has measurable ROI: hours your team spends × cost per hour, minus implementation and monthly maintenance. We agree on these numbers at every project — before development, not after."},
-      "roi.ex":{sl:"Ilustrativna kalkulacija",en:"Illustrative calculation"},"roi.ex.t":{sl:"Email triage v 30-osebnem podjetju",en:"Email triage in a 30-person company"},
-      "roi.r1.l":{sl:"Trenutno: 2 osebi, vsaka 1.5 h/dan na inbox triage",en:"Currently: 2 people, each 1.5 h/day on inbox triage"},
+      "uc.lead":{sl:"Spodaj so štirje tipični prvi sprinti pri slovenskih malih in srednjih podjetjih. Vsak je en proces, en specifičen problem, en sprint. Nato gradimo naprej.",en:"Below are four typical first sprints at Slovenian SMBs. Each is one process, one specific problem, one sprint. Then we build further."},
+      "uc1.n":{sl:"01 / Prodaja",en:"01 / Sales"},
+      "uc2.n":{sl:"02 / Finance",en:"02 / Finance"},
+      "uc3.n":{sl:"03 / Vhodna pošta",en:"03 / Inbox"},
+      "uc4.n":{sl:"04 / Poročanje",en:"04 / Reporting"},
+      "uc1.t":{sl:"Obravnava povpraševanj",en:"Lead handling"},"uc1.p":{sl:"Spletni obrazec ali e-mail povpraševanje gre skozi AI kvalifikacijo, vpiše se v CRM s pravimi oznakami, pošlje se nadaljevalno sporočilo, ekipa dobi Slack obvestilo z že pripravljenim kontekstom za klic.",en:"A web form or email inquiry goes through AI qualification, gets logged in the CRM with proper tags, a personalized follow-up is sent, and the team gets a Slack notification with prepared context for the call."},
+      "uc2.t":{sl:"Opomniki za fakture",en:"Invoice chase"},"uc2.p":{sl:"Iz Minimaxa ali e-Računov potegnemo seznam neplačanih faktur. Eskalacijska sekvenca e-mailov (mehki opomnik na 7 dni, trši na 14, eskalacija vodstvu na 30 dni). Dnevno poročilo statusov.",en:"We pull the list of unpaid invoices from Minimax or e-Računi. Escalation email sequence (gentle at 7 days, firmer at 14, management escalation at 30). Daily status report."},
+      "uc3.t":{sl:"Razvrščanje e-pošte",en:"Email triage"},"uc3.p":{sl:"Dohodne e-pošte v skupni inbox (info@, prodaja@) gredo skozi LLM klasifikacijo. Razporeditev v ekipo glede na vsebino, osnutek odgovora za rutinske primere, eskalacija za vse, kar zahteva človeško presojo.",en:"Incoming emails to shared inboxes (info@, sales@) go through LLM classification. Routing to the team by content, draft replies for routine cases, escalation for everything requiring human judgment."},
+      "uc4.t":{sl:"Mesečno poročanje",en:"Monthly reporting"},"uc4.p":{sl:"Podatki iz različnih sistemov (CRM, ERP, Google Analytics, Stripe) se zbirajo skozi mesec. Prvi delovni dan v mesecu AI sestavi strukturiran povzetek z odstopanji od ciljev in pošlje vodstvu.",en:"Data from various systems (CRM, ERP, Google Analytics, Stripe) is collected through the month. On the first business day, AI assembles a structured summary with deviations from targets and sends it to leadership."},
+      "roi.l":{sl:"Donosnost brez praznega govorjenja",en:"ROI without fluff"},"roi.t":{sl:"Matematika, ne <span class=\"accent\">obljube</span>.",en:"Math, not <span class=\"accent\">promises</span>."},
+      "roi.lead":{sl:"Avtomatizacija ima merljiv donos: koliko ur ekipa porabi na proces × koliko stane ura, minus strošek implementacije in mesečnega vzdrževanja. Pri vsakem projektu te številke določimo skupaj — pred začetkom razvoja, ne po njem.",en:"Automation has measurable ROI: hours your team spends × cost per hour, minus implementation and monthly maintenance. We agree on these numbers at every project — before development, not after."},
+      "roi.ex":{sl:"Ilustrativna kalkulacija",en:"Illustrative calculation"},"roi.ex.t":{sl:"Razvrščanje e-pošte v 30-osebnem podjetju",en:"Email triage in a 30-person company"},
+      "roi.r1.l":{sl:"Trenutno: 2 osebi, vsaka 1.5 h/dan na razvrščanje e-pošte",en:"Currently: 2 people, each 1.5 h/day on inbox triage"},
       "roi.r2.l":{sl:"Mesečno (22 delovnih dni)",en:"Monthly (22 working days)"},
       "roi.r3.l":{sl:"Polna cena ure (bruto + dajatve + prostor + orodja)",en:"Full hourly cost (gross + contributions + space + tools)"},
       "roi.r4.l":{sl:"Trenutni mesečni strošek tega procesa",en:"Current monthly cost of this process"},
-      "roi.r5.l":{sl:"Z avtomatizacijo: ostane ~ 30 % (presoja, edge cases)",en:"With automation: ~30 % remains (judgment, edge cases)"},
+      "roi.r5.l":{sl:"Z avtomatizacijo: ostane ~ 30 % (presoja, izjeme)",en:"With automation: ~30 % remains (judgment, edge cases)"},
       "roi.r6.l":{sl:"Mesečni prihranek",en:"Monthly savings"},
-      "roi.note":{sl:"To je ilustrativen primer, ne zavezujoča kalkulacija. Pri konkretnem projektu Process Pregled pokaže realne številke za vašo specifično situacijo — pogosto je razlika večja, ker rutinski procesi v praksi pojejo več časa, kot vodstvo predvideva.",en:"This is illustrative, not a binding calculation. For an actual project, Pregled procesov shows real numbers for your specific situation — often the gap is larger, because routine processes in practice eat more time than leadership assumes."},
-      "rel.l":{sl:"Zaupanje, ne hype",en:"Trust, not hype"},"rel.t":{sl:"Sistem, ki ga lahko <span class=\"accent\">pustite</span>.",en:"A system you can <span class=\"accent\">trust</span>."},
+      "roi.note":{sl:"To je ilustrativen primer, ne zavezujoča kalkulacija. Pri konkretnem projektu Pregled procesov pokaže realne številke za vašo specifično situacijo — pogosto je razlika večja, ker rutinski procesi v praksi pojejo več časa, kot vodstvo predvideva.",en:"This is illustrative, not a binding calculation. For an actual project, Process Audit shows real numbers for your specific situation — often the gap is larger, because routine processes in practice eat more time than leadership assumes."},
+      "rel.l":{sl:"Zaupanje",en:"Trust, not hype"},"rel.t":{sl:"Sistem, ki ga lahko <span class=\"accent\">pustite</span>.",en:"A system you can <span class=\"accent\">trust</span>."},
       "rel.lead":{sl:"Vaša ekipa se boji dveh stvari: da AI nekaj naredi narobe, in da podatki uidejo v tujino. Oboje naslavljamo eksplicitno, ne v drobnem tisku.",en:"Your team fears two things: that AI does something wrong, and that data leaks abroad. We address both explicitly, not in the fine print."},
-      "rel.i1.h":{sl:"Human-in-the-loop pri kritičnih korakih",en:"Human-in-the-loop on critical steps"},
+      "rel.i1.h":{sl:"Človeška presoja pri kritičnih korakih",en:"Human-in-the-loop on critical steps"},
       "rel.i1.p":{sl:"AI pripravi, človek odobri. Pri vsem, kar je finančno, pravno ali javno (e-pošta strankam, fakture, plačila) avtomatizacija ustvari osnutek — končna potrditev je vedno na človeku.",en:"AI prepares, human approves. For anything financial, legal or public (customer emails, invoices, payments) automation creates a draft — final approval is always with a human."},
-      "rel.i2.h":{sl:"Self-hosted, EU regija",en:"Self-hosted, EU region"},
+      "rel.i2.h":{sl:"Lastni strežnik, EU regija",en:"Self-hosted, EU region"},
       "rel.i2.p":{sl:"n8n teče na vašem strežniku ali EU-shrambi (Frankfurt). Vaši podatki nikoli ne potujejo izven EU, razen v specifične LLM klice — in tudi ti gredo prek EU regij ponudnikov, kjer to omogočajo.",en:"n8n runs on your server or in EU storage (Frankfurt). Your data never travels outside the EU, except for specific LLM calls — and even those go through EU regions of providers where supported."},
-      "rel.i3.h":{sl:"Monitoring 24/7, alerting na napake",en:"24/7 monitoring, error alerting"},
-      "rel.i3.p":{sl:"Vsak workflow ima error handling in alerting. Če se kaj zlomi sredi noči, dobimo notifikacijo prej kot vi. To je razlog za Operations retainer — ne samo \"vzdrževanje\", ampak aktivni nadzor.",en:"Every workflow has error handling and alerting. If something breaks at 3 AM, we get the notification before you. That's why Operations Retainer is active oversight, not passive maintenance."},
-      "rel.i4.h":{sl:"Brez vendor lock-ina",en:"No vendor lock-in"},
-      "rel.i4.p":{sl:"n8n je odprta koda. Workflows so vaši — vsi v JSON formatu, dokumentirani. Če kdaj prekinemo sodelovanje, drug partner (ali vaš IT) lahko prevzame brez ponovnega pisanja od nule.",en:"n8n is open source. Workflows are yours — all in JSON format, documented. If we ever part ways, another partner (or your IT) can take over without rewriting from scratch."},
-      "rel.i5.h":{sl:"Change management za ekipo",en:"Change management for the team"},
-      "rel.i5.p":{sl:"Notranji odpor je realen problem — zaposleni se bojijo, da jih bo AI nadomestil. Pri vsakem projektu pomagamo pripraviti komunikacijski plan: avtomatizacija premešča delo, ne odpušča ljudi. Dela na tej zgodbi z vodstvom je del paketa.",en:"Internal resistance is a real problem — employees fear AI will replace them. At every project we help prepare a communication plan: automation shifts work, doesn't lay people off. Working on that narrative with leadership is part of the package."},
-      "del.l":{sl:"Kaj dostavimo",en:"What we deliver"},"del.t":{sl:"Trije <span class=\"accent\">paketi</span>, jasen pristop.",en:"Three <span class=\"accent\">packages</span>, clear approach."},
-      "del.lead":{sl:"Tako kot pri spletni strani: začnemo z pregledom, gremo v specifičen sprint, ostanemo skozi retainer. Vsak korak je samostojen — po vsakem se lahko odločite, ali nadaljujemo.",en:"Same as web: start with audit, move into a specific sprint, stay through retainer. Each step is standalone — after each you decide whether to continue."},
-      "d1.t":{sl:"Pregled procesov",en:"Pregled procesov"},"d1.m":{sl:"5–7 delovnih dni · Pisni dokument + 60-min predstavitev",en:"5–7 business days · Written document + 60-min presentation"},
-      "d1.p":{sl:"Strukturiran pregled vaših ročnih procesov in tool stack-a. Skupaj identificiramo, kateri procesi so kandidati za avtomatizacijo, koliko ur in denarja prihranijo, in po kakšnem vrstnem redu jih je smiselno reševati.",en:"Structured review of your manual processes and tool stack. Together we identify which processes are automation candidates, how many hours and euros they save, and in what order they should be tackled."},
+      "rel.i3.h":{sl:"Nadzor 24/7, obveščanje o napakah",en:"24/7 monitoring, error alerting"},
+      "rel.i3.p":{sl:"Vsak proces ima obravnavo napak in alarme. Če se kaj zlomi sredi noči, dobimo obvestilo prej kot vi. To je razlog za operativno skrb — ne samo \"vzdrževanje\", ampak aktivni nadzor.",en:"Every workflow has error handling and alerting. If something breaks at 3 AM, we get the notification before you. That's why Operations Retainer is active oversight, not passive maintenance."},
+      "rel.i4.h":{sl:"Brez vezanja na ponudnika",en:"No vendor lock-in"},
+      "rel.i4.p":{sl:"n8n je odprta koda. Procesi so vaši — vsi v JSON formatu, dokumentirani. Če kdaj prekinemo sodelovanje, drug partner (ali vaš IT) lahko prevzame brez ponovnega pisanja od nule.",en:"n8n is open source. Workflows are yours — all in JSON format, documented. If we ever part ways, another partner (or your IT) can take over without rewriting from scratch."},
+      "del.l":{sl:"Kaj dostavimo",en:"What we deliver"},"del.t":{sl:"Več <span class=\"accent\">poti</span>, jasen pristop.",en:"Three <span class=\"accent\">packages</span>, clear approach."},
+      "del.lead":{sl:"Vsak korak je samostojen — po vsakem se lahko odločite, ali nadaljujemo. Začnemo s tem, kar trenutno potrebujete.",en:"Same as web: start with audit, move into a specific sprint, stay through retainer. Each step is standalone — after each you decide whether to continue."},
+      "d1.t":{sl:"Pregled procesov",en:"Process Audit"},"d1.m":{sl:"Pisni dokument + predstavitev rezultatov",en:"5–7 business days · Written document + 60-min presentation"},
+      "d1.p":{sl:"Strukturiran pregled vaših ročnih procesov in orodij. Skupaj identificiramo, kateri procesi so kandidati za avtomatizacijo, koliko ur in denarja prihranijo, in po kakšnem vrstnem redu jih je smiselno reševati.",en:"Structured review of your manual processes and tool stack. Together we identify which processes are automation candidates, how many hours and euros they save, and in what order they should be tackled."},
       "d1.l1":{sl:"Process mapping: intervjuvi z 2–3 osebami iz ekipe, ki dnevno opravljajo ročno delo",en:"Process mapping: interviews with 2–3 team members doing daily manual work"},
       "d1.l2":{sl:"Tool stack inventory: katera orodja se uporabljajo, kateri se pogovarjajo, kateri ne",en:"Tool stack inventory: what tools are used, which talk to each other, which don't"},
-      "d1.l3":{sl:"5–8 prioritiziranih avtomatizacijskih priložnosti z ROI oceno",en:"5–8 prioritized automation opportunities with ROI estimate"},
+      "d1.l3":{sl:"5–8 prioritiziranih avtomatizacijskih priložnosti z oceno donosnosti",en:"5–8 prioritized automation opportunities with ROI estimate"},
       "d1.l4":{sl:"Tehnična ocena: kateri procesi so res avtomatizable in kateri ne",en:"Technical evaluation: which processes are actually automatable and which aren't"},
       "d1.l5":{sl:"Priporočilo prvega sprinta: največji impact ob najmanjši kompleksnosti",en:"First sprint recommendation: highest impact at lowest complexity"},
       "d2.t":{sl:"Automation Sprint",en:"Automation Sprint"},"d2.m":{sl:"Trajanje glede na obseg · En specifičen proces hkrati",en:"Duration scoped to project · One specific process at a time"},
@@ -1238,42 +1224,42 @@
       "d2.l4":{sl:"LLM logika z guardrails, prompt engineering, structured outputs",en:"LLM logic with guardrails, prompt engineering, structured outputs"},
       "d2.l5":{sl:"Testiranje na realnih primerih, \"tihi tek\" pred produkcijskim zagonom",en:"Testing on real cases, \"silent run\" before production launch"},
       "d2.l6":{sl:"2-urni training za ekipo + dokumentacija",en:"2-hour team training + documentation"},
-      "d2.l7":{sl:"30 dni podpore po zagonu",en:"30 days post-launch support"},
-      "d3.t":{sl:"Operations Retainer",en:"Operations Retainer"},"d3.m":{sl:"Modularna mesečna naročnina · Aktivni nadzor",en:"Modular monthly subscription · Active oversight"},
-      "d3.p":{sl:"Avtomatizacija ni \"set and forget\". Sistemi stranke (CRM, ERP) se posodabljajo, API-ji se spreminjajo, podjetje odkriva nove use case-e. Operations Retainer pokriva monitoring, vzdrževanje, in dodajanje novih flow-ov v okviru mesečnega proračuna.",en:"Automation isn't \"set and forget\". Client systems (CRM, ERP) update, APIs change, the company discovers new use cases. Operations Retainer covers monitoring, maintenance and new flows within a monthly budget."},
-      "d3.l1":{sl:"24/7 monitoring vseh workflow-ov, error alerting, uptime SLA",en:"24/7 monitoring of all workflows, error alerting, uptime SLA"},
-      "d3.l2":{sl:"Mesečni health report: success rate, prihranjene ure, najpogostejši edge case-i",en:"Monthly health report: success rate, hours saved, most common edge cases"},
-      "d3.l3":{sl:"Razvojni čas mesečno za izboljšave, nove use case-e, optimizacije",en:"Monthly development time for improvements, new use cases, optimizations"},
+      "d2.l7":{sl:"Podpora po zagonu",en:"30 days post-launch support"},
+      "d3.t":{sl:"Operativna skrb",en:"Operations Retainer"},"d3.m":{sl:"Mesečna skrb · Aktivni nadzor",en:"Modular monthly subscription · Active oversight"},
+      "d3.p":{sl:"Avtomatizacija ni \"set and forget\". Sistemi stranke (CRM, ERP) se posodabljajo, API-ji se spreminjajo, podjetje odkriva nove primere uporabe. Operativna skrb pokriva nadzor, vzdrževanje, in dodajanje novih procesov v okviru mesečnega proračuna.",en:"Automation isn't \"set and forget\". Client systems (CRM, ERP) update, APIs change, the company discovers new use cases. Operations Retainer covers monitoring, maintenance and new flows within a monthly budget."},
+      "d3.l1":{sl:"24/7 monitoring vseh procesov, alarmiranje napak, garancija dosegljivosti",en:"24/7 monitoring of all workflows, error alerting, garancija dosegljivosti"},
+      "d3.l2":{sl:"Mesečno poročilo: uspešnost delovanja, prihranjene ure, najpogostejše izjeme",en:"Monthly health report: success rate, hours saved, most common edge cases"},
+      "d3.l3":{sl:"Razvojni čas mesečno za izboljšave, nove primere uporabe, optimizacije",en:"Monthly development time for improvements, new use cases, optimizations"},
       "d3.l4":{sl:"Adaptacija na spremembe ravnotežja v sistemih stranke (nov ERP, nov CRM, novi API-ji)",en:"Adapting to changes in client systems (new ERP, new CRM, new APIs)"},
       "d3.l5":{sl:"Kvartalni 60-min strateški pregled in priporočila",en:"Quarterly 60-min strategic review and recommendations"},
       "d3.l6":{sl:"Prioritetna podpora (24h response window)",en:"Priority support (24h response window)"},
       "st.l":{sl:"Orodja, ki uporabljamo",en:"Tools we use"},"st.t":{sl:"Pravo orodje za <span class=\"accent\">pravo nalogo</span>.",en:"The right tool for <span class=\"accent\">the right job</span>."},
-      "st.lead":{sl:"Tehnologijo izbiramo glede na potrebo, ne glede na modo. Pri večini SMB projektov je kombinacija spodaj sweet spot: production-grade, dobro dokumentirano, GDPR-skladno, z aktivno skupnostjo. Slovenska orodja (oranžna) so naš kategorialni moat — tuji freelancerji jih ne poznajo.",en:"We pick technology by need, not fashion. For most SMB projects the combination below is the sweet spot: production-grade, well-documented, GDPR-compliant, with an active community. Slovenian tools (orange) are our category moat — foreign freelancers don't know them."},
+      "st.lead":{sl:"Pri večini projektov je kombinacija spodaj naša prva izbira: produkcijsko zanesljivo, dobro dokumentirano, GDPR-skladno, z aktivno skupnostjo. Slovenska orodja (oranžna) so naš kategorialna prednost — tuji freelancerji jih ne poznajo.",en:"For most projects the combination below is our first choice: produkcijsko zanesljivo, well-documented, GDPR-compliant, with an active community. Slovenian tools (orange) are our category moat — foreign freelancers don't know them."},
       "st.note":{sl:"Lahko gradimo tudi z drugimi orodji, če jih že uporabljate. Cilj ni zamenjati infrastrukture, ampak z AI-jem povezati to, kar že imate.",en:"We can also build with other tools you already use. The goal isn't to replace infrastructure, but to connect what you have with AI."},
       "fq.l":{sl:"Pogosto zastavljena vprašanja",en:"Frequently asked questions"},"fq.t":{sl:"Vprašanja iz <span class=\"accent\">sestankov</span>.",en:"Questions from <span class=\"accent\">meetings</span>."},
-      "fq.q1":{sl:"Naši procesi so preveč specifični. Razumete naše poslovanje?",en:"Our processes are too specific. Do you understand our business?"},
-      "fq.a1":{sl:"Process Pregled procesov je zasnovana ravno za to. V prvih dneh intervjuvamo vas in ključne osebe, mapiramo procese in razumemo, kaj je res specifično vašemu poslu in kaj je generično. V praksi je 60–70 % procesov pri SMB podobnih (lead handling, billing, reporting) — preostanek je unique in zahteva individualen pristop. Pregled pokaže, kateri del je kateri.",en:"Pregled procesov is designed for this. We interview you and key people, map processes, understand what's truly specific and what's generic. In practice, 60–70 % of SMB processes are similar (lead handling, billing, reporting) — the rest is unique. The audit shows which is which."},
-      "fq.q2":{sl:"Že smo poskusili Zapier ali Make. Ni delovalo.",en:"We already tried Zapier or Make. Didn't work."},
-      "fq.a2":{sl:"To je realistična izkušnja — ad-hoc avtomatizacija deluje do prve kompleksnosti, potem se zlomi in ni nikogar, ki bi to popravil. Razlika med \"Zapier postavi sam direktor\" in \"production-grade sistem\" je v error handlingu, monitoringu, dokumentaciji, vzdrževanju in tem, kaj se zgodi, ko se nekaj zlomi sredi noči. Avtomatizacijo zgradimo kot sistem, ne kot hobby projekt.",en:"That's a realistic experience — ad-hoc automation works until the first real complexity, then it breaks and no one can fix it. The difference between \"the director set up Zapier\" and \"production-grade system\" is error handling, monitoring, documentation, maintenance and what happens when something breaks at night."},
+      "fq.q1":{sl:"Naši procesi so zelo specifični.",en:"Our processes are very specific."},
+      "fq.a1":{sl:"Pregled procesov je zasnovana ravno za to. V prvih dneh intervjuvamo vas in ključne osebe, mapiramo procese in razumemo, kaj je res specifično vašemu poslu in kaj je generično. V praksi je 60–70 % procesov v malih podjetjih podobnih (obravnava povpraševanj, fakturiranje, poročanje) — preostanek je edinstven in zahteva individualen pristop. Pregled pokaže, kateri del je kateri.",en:"Process Audit is designed for this. We interview you and key people, map processes, understand what's truly specific and what's generic. In practice, 60–70 % of mala in srednja podjetja processes are similar (lead handling, fakturiranje, reporting) — the rest is unique. The audit shows which is which."},
+      "fq.q2":{sl:"Smo poskusili že z Zapier/Make, pa ni blo dosti bolje.",en:"We already tried Zapier/Make, wasn't much better."},
+      "fq.a2":{sl:"To je realistična izkušnja — ad-hoc avtomatizacija deluje do prve kompleksnosti, potem se zlomi in ni nikogar, ki bi to popravil. Razlika med \"Zapier postavi sam direktor\" in \"produkcijsko zanesljivo sistem\" je v error handlingu, monitoringu, dokumentaciji, vzdrževanju in tem, kaj se zgodi, ko se nekaj zlomi sredi noči. Avtomatizacijo zgradimo kot sistem, ne kot hobby projekt.",en:"That's a realistic experience — ad-hoc automation works until the first real complexity, then it breaks and no one can fix it. The difference between \"the director set up Zapier\" and \"produkcijsko zanesljivo system\" is error handling, monitoring, documentation, maintenance and what happens when something breaks at night."},
       "fq.q3":{sl:"Kaj če avtomatizacija naredi nekaj narobe? Kdo je odgovoren?",en:"What if automation does something wrong? Who's responsible?"},
-      "fq.a3":{sl:"Pri kritičnih korakih (denar, pogodbe, javna komunikacija) avtomatizacija pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, notifikacije) sistem dela samostojno, ampak vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju, ker so to vaši procesi — naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.",en:"For critical steps (money, contracts, public communication) automation prepares a draft, final approval is always human. For routine decisions (email categorization, status updates, notifications) the system runs alone, but every step is logged and traceable. Responsibility stays with your company — ours is that the system is built correctly and errors surface fast."},
+      "fq.a3":{sl:"Pri kritičnih korakih (denar, pogodbe, javna komunikacija) avtomatizacija pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, obvestile) sistem dela samostojno, ampak vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju, ker so to vaši procesi — naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.",en:"For critical steps (money, contracts, public communication) automation prepares a draft, final approval is always human. For routine decisions (email categorization, status updates, notifications) the system runs alone, but every step is logged and traceable. Responsibility stays with your company — ours is that the system is built correctly and errors surface fast."},
       "fq.q4":{sl:"Naša ekipa se boji, da jih boste nadomestili.",en:"Our team is afraid of being replaced."},
-      "fq.a4":{sl:"Realna skrb — in dejanski razlog, zakaj veliko avtomatizacijskih projektov propade ob notranjem odporu. Naš pristop: avtomatizacija premešča delo iz repetitivnega v presoja-zahtevno. Pri vsakem projektu pomagamo pripraviti komunikacijski plan za ekipo — kateri konkretni procesi se avtomatizirajo, kaj ostane človeško delo, kako se vlogovni opisi prilagodijo. To je del paketa, ne posebna storitev.",en:"A real concern — and the actual reason many automation projects die from internal resistance. Our approach: automation shifts work from repetitive to judgment-heavy. At every project we help prepare a team communication plan — what specifically gets automated, what stays human, how role descriptions adapt. Part of the package, not a separate service."},
+      "fq.a4":{sl:"Realna skrb — in dejanski razlog, zakaj veliko avtomatizacijskih projektov propade ob notranjem odporu. Naš pristop: avtomatizacija premešča repetitivno delo v delo, ki zahteva samo presojo.",en:"A real concern — and the actual reason many automation projects die from internal resistance. Our approach: automation shifts repetitive work to judgment-only work."},
       "fq.q5":{sl:"Kje so naši podatki? Gredo v ZDA?",en:"Where is our data? Does it go to the US?"},
       "fq.a5":{sl:"n8n teče na vašem strežniku ali EU shrambi (Frankfurt) — tam ostane vsa logika in zgodovina. LLM klici (Anthropic, OpenAI) gredo prek EU regij ponudnikov, kjer to omogočajo. Anthropic je certificiran v EU-US Data Privacy Framework in podpisuje SCC; OpenAI prav tako. Občutljivi podatki (zdravstvo, finance) lahko obdelujemo z lokalnimi LLM modeli (Llama, Mistral) na vašem strežniku — v tem primeru podatki nikoli ne zapustijo vašega okolja. Pred začetkom projekta podpišemo DPA.",en:"n8n runs on your server or EU storage (Frankfurt) — that's where all logic and history stays. LLM calls (Anthropic, OpenAI) go via providers' EU regions where supported. Anthropic is certified in the EU-US Data Privacy Framework and signs SCC; OpenAI too. For sensitive data we can use local LLMs (Llama, Mistral) on your server — data never leaves your environment. We sign a DPA before project start."},
       "fq.q6":{sl:"Kaj če se avtomatizacija zlomi sredi noči?",en:"What if automation breaks in the middle of the night?"},
-      "fq.a6":{sl:"Vsak workflow ima error handling in alerting. Ko se nekaj ne posreči (API timeout, neveljavni podatki, preseženje rate limita), sistem to zabeleži in pošlje notifikacijo nam — pogosto prej kot stranki sploh kaj zmoti. To je glavni razlog za Operations Retainer: aktivni nadzor in hiter response, ne le pasivno \"vzdrževanje\".",en:"Every workflow has error handling and alerting. When something fails (API timeout, invalid data, rate limit), the system logs it and notifies us — often before anything bothers the client. That's the main reason for Operations Retainer: active oversight and fast response, not passive \"maintenance\"."},
+      "fq.a6":{sl:"Vsak proces ima obravnavo napak in alarme. Ko se nekaj ne posreči (API timeout, neveljavni podatki, preseženje rate limita), sistem to zabeleži in pošlje obvestilo nam — pogosto prej kot stranki sploh kaj zmoti. To je glavni razlog za operativno skrb: aktivni nadzor in hiter odziv, ne le pasivno \"vzdrževanje\".",en:"Every workflow has error handling and alerting. When something fails (API timeout, invalid data, rate limit), the system logs it and notifies us — often before anything bothers the client. That's the main reason for Operations Retainer: active oversight and fast response, not passive \"maintenance\"."},
       "fq.q7":{sl:"Kako dolgo traja, koliko stane?",en:"How long, how much?"},
-      "fq.a7":{sl:"Trajanje sprinta je odvisno od kompleksnosti procesa, števila integracij in obsega podatkov stranke. Ne moremo dati zavezujočega okvirja brez razumevanja konteksta — zato Pregled procesov. Glede cene: brez specifikacij ne moremo dati zavezujoče ponudbe. Specifikacije sprejmemo na info@eflitte.si ali prek 30-min uvodnega pogovora, nato pripravimo pisni predračun.",en:"Sprint duration depends on process complexity, integrations, and data scope. We can't give a binding frame without context — that's what Pregled procesov is for. On price: without specs we can't give a binding quote. Send specs to info@eflitte.si or schedule a 30-min intro call, then we prepare a written quote."},
+      "fq.a7":{sl:"Trajanje sprinta je odvisno od kompleksnosti procesa, števila integracij in obsega podatkov stranke. Ne moremo dati zavezujočega okvirja brez razumevanja konteksta — zato Pregled procesov. Glede cene: brez specifikacij ne moremo dati zavezujoče ponudbe. Specifikacije sprejmemo na info@eflitte.si ali prek 30-min uvodnega pogovora, nato pripravimo pisni predračun.",en:"Sprint duration depends on process complexity, integrations, and data scope. We can't give a binding frame without context — that's what Process Audit is for. On price: without specs we can't give a binding quote. Send specs to info@eflitte.si or schedule a 30-min intro call, then we prepare a written quote."},
       "fq.q8":{sl:"Mora najprej naš IT pregledati?",en:"Does our IT need to review first?"},
       "fq.a8":{sl:"Pri večjih podjetjih je IT pregled standarden in upravičen — gre za vaše sisteme in podatke. Pripravimo tehnični dokument, ki opisuje arhitekturo, dostope, varnost, GDPR-skladnost in plan disaster recovery. Tipično IT pregled traja 1–2 tedna in je del začetka projekta — ne ovira, ampak korak, ki gradi zaupanje.",en:"At larger companies IT review is standard and justified — it concerns your systems and data. We prepare a technical document describing architecture, accesses, security, GDPR compliance and disaster recovery plan. Typical IT review takes 1–2 weeks and is part of project start — not a blocker but a trust-building step."},
       "cta.t":{sl:"Začnimo pri <span class=\"accent\">enem procesu</span>.",en:"Let's start with <span class=\"accent\">one process</span>."},
       "cta.l":{sl:"30-min pogovor, brez obveznosti. Pogledamo en konkreten ročni proces v vašem podjetju in iskreno povemo, ali se ga splača avtomatizirati — ali ne.",en:"30-min call, no strings. We look at one concrete manual process in your company and tell you honestly whether it's worth automating — or not."},
-      "cta.b":{sl:"Pogovorimo se",en:"Let's talk"},
-      "ft.tag":{sl:"AI infrastruktura za slovenska podjetja.",en:"AI infrastructure for Slovenian companies."},
-      "ft.prod":{sl:"Produkti",en:"Products"},"ft.web":{sl:"AI-Ready spletna stran",en:"AI-Ready website"},"ft.auto":{sl:"Avtomatizacija",en:"Automation"},"ft.con":{sl:"Kontakt",en:"Contact"},
+      "cta.b":{sl:"Pišite nam",en:"Write to us"},
+      "ft.tag":{sl:"",en:""},
+      "ft.prod":{sl:"Produkti",en:"Products"},"ft.web":{sl:"AI-pripravljena spletna stran",en:"AI-ready website"},"ft.auto":{sl:"Avtomatizacija",en:"Automation"},"ft.con":{sl:"Kontakt",en:"Contact"},
       "ft.comp":{sl:"Podjetje",en:"Company"},"ft.imp":{sl:"Impressum",en:"Imprint"},"ft.priv":{sl:"Politika zasebnosti",en:"Privacy Policy"},"ft.cook":{sl:"Piškotki",en:"Cookies"},
-      "ft.write":{sl:"Pišite nam",en:"Get in touch"},"ft.loc":{sl:"Slovenske Konjice, SI",en:"Slovenske Konjice, SI"},"ft.copy":{sl:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.",en:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p."}
+      "ft.write":{sl:"Kontakt",en:"Get in touch"},"ft.copy":{sl:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.",en:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p."}
     };
     function apply(lang){
       document.documentElement.lang=lang;
