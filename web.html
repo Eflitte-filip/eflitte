@@ -48,7 +48,9 @@ body{background:var(--bg);color:var(--ink);font-family:"Inter",sans-serif;font-w
 .nav .nav-right{justify-self:end;display:flex;align-items:center;gap:20px}
 .logo{display:inline-flex;align-items:baseline;height:32px;font-family:"Inter",sans-serif;font-weight:700;letter-spacing:-0.035em;color:var(--ink);text-decoration:none}
 .logo-letters{display:flex;align-items:baseline;font-size:28px;line-height:1}
-.logo-letters span{display:inline-block;transition:max-width 0.6s cubic-bezier(.77,.05,.2,1),opacity 0.35s ease;max-width:1em;overflow:hidden;white-space:pre}
+.logo-letters span{display:inline-block;overflow:hidden;white-space:pre;transition:max-width 0.6s cubic-bezier(.77,.05,.2,1),opacity 0.35s ease}
+.logo-letters span.keep{max-width:1em}
+.logo-letters span.hide{max-width:5em;opacity:1}
 .nav.scrolled .logo-letters span.hide{max-width:0;opacity:0}
 .logo-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-left:3px;flex-shrink:0;transition:margin-left 0.6s cubic-bezier(.77,.05,.2,1)}
 .nav.scrolled .logo-dot{margin-left:2px}

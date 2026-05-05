@@ -41,6 +41,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <!-- Structured Data: Organization -->
 <script type="application/ld+json">
@@ -170,9 +171,12 @@
   .logo-letters { display: flex; align-items: baseline; font-size: 28px; line-height: 1; }
   .logo-letters span {
     display: inline-block;
+    overflow: hidden;
+    white-space: pre;
     transition: max-width 0.6s cubic-bezier(.77,.05,.2,1), opacity 0.35s ease;
-    max-width: 1em; overflow: hidden; white-space: pre;
   }
+  .logo-letters span.keep { max-width: 1em; }
+  .logo-letters span.hide { max-width: 5em; opacity: 1; }
   .nav.scrolled .logo-letters span.hide { max-width: 0; opacity: 0; }
   .logo-dot {
     width: 10px; height: 10px;
@@ -265,33 +269,44 @@
     color: #FAF9F5;
   }
 
-  /* Gradient mesh background */
+  /* Layer 0: solid base */
   .hero-bg {
     position: absolute; inset: 0;
     z-index: 0;
+    background: linear-gradient(180deg, #141413 0%, #1a1a18 100%);
+  }
+  /* Layer 1: Three.js sphere canvas */
+  #hero-3d {
+    position: absolute; inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  #hero-3d canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /* Layer 2: vignette so text on the left stays readable over sphere */
+  .hero-vignette {
+    position: absolute; inset: 0;
+    z-index: 2;
+    pointer-events: none;
     background:
-      radial-gradient(ellipse 70% 50% at 80% 20%, rgba(204, 120, 92, 0.18), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(204, 120, 92, 0.10), transparent 50%),
-      linear-gradient(180deg, #141413 0%, #1a1a18 100%);
+      radial-gradient(ellipse at 15% 50%, rgba(20, 20, 19, 0.95) 0%, rgba(20, 20, 19, 0.75) 28%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 80% 20%, rgba(204, 120, 92, 0.10), transparent 60%),
+      linear-gradient(to bottom, transparent 0%, transparent 70%, #141413 100%);
   }
-  .hero-grid {
-    position: absolute; inset: 0; z-index: 1;
-    background-image:
-      linear-gradient(to right, rgba(250,249,245,0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(250,249,245,0.04) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black, transparent 70%);
-  }
+  /* Layer 3: subtle noise on top of everything */
   .hero-noise {
-    position: absolute; inset: 0; z-index: 2;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    position: absolute; inset: 0;
+    z-index: 3;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
     pointer-events: none;
   }
 
   .hero-inner {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -886,6 +901,7 @@
   }
   @media (max-width: 920px) {
     .hero { padding: 130px 22px 80px; min-height: auto; }
+    #hero-3d { opacity: 0.55; }
     .paths, .honest, .process, .faq, .contact { padding: 80px 22px; }
     .cta { padding: 100px 22px 90px; }
     .paths-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -938,7 +954,8 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div id="hero-3d" aria-hidden="true"></div>
+  <div class="hero-vignette"></div>
   <div class="hero-noise"></div>
   <div class="hero-inner">
     <div class="eyebrow" data-i18n="hero.eyebrow">AI agencija · Slovenija</div>
@@ -1495,6 +1512,131 @@
         apply(now === 'en' ? 'sl' : 'en');
       });
     });
+  })();
+
+  /* ---- Three.js hero sphere — Fibonacci point cloud + connections + accent pulse ---- */
+  (function initHero3D(){
+    const container = document.getElementById('hero-3d');
+    if (!container || typeof THREE === 'undefined') return;
+
+    // Mobile perf scaling — fewer points/connections on small screens
+    const isSmall = Math.min(window.innerWidth, window.innerHeight) < 700;
+    const NUM_POINTS = isSmall ? 260 : 480;
+    const MAX_DIST = isSmall ? 0.60 : 0.55;
+    const NUM_ACCENTS = isSmall ? 22 : 36;
+
+    // Scene
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x141413, 0.10);
+
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 50);
+    camera.position.z = 7;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    // Fibonacci sphere of points
+    const radius = 2.4;
+    const points = [];
+    for (let i = 0; i < NUM_POINTS; i++) {
+      const phi = Math.acos(1 - 2 * (i + 0.5) / NUM_POINTS);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+      const r = radius + (Math.random() - 0.5) * 0.28;
+      points.push(new THREE.Vector3(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.sin(phi) * Math.sin(theta),
+        r * Math.cos(phi)
+      ));
+    }
+
+    // Cream point cloud
+    const pointGeom = new THREE.BufferGeometry().setFromPoints(points);
+    const pointMat = new THREE.PointsMaterial({
+      color: 0xFAF9F5, size: 0.04, transparent: true, opacity: 0.8,
+      sizeAttenuation: true, depthWrite: false
+    });
+    const pointsMesh = new THREE.Points(pointGeom, pointMat);
+
+    // Lines between nearby points — terracotta on close pairs, cream on farther
+    const linePositions = [];
+    const lineColors = [];
+    const accentColor = new THREE.Color(0xcc785c);
+    const neutralColor = new THREE.Color(0xFAF9F5);
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const d = points[i].distanceTo(points[j]);
+        if (d < MAX_DIST) {
+          linePositions.push(points[i].x, points[i].y, points[i].z);
+          linePositions.push(points[j].x, points[j].y, points[j].z);
+          const useAccent = d < MAX_DIST * 0.55;
+          const c = useAccent ? accentColor : neutralColor;
+          const a = useAccent ? 1 : 0.28;
+          lineColors.push(c.r * a, c.g * a, c.b * a);
+          lineColors.push(c.r * a, c.g * a, c.b * a);
+        }
+      }
+    }
+    const lineGeom = new THREE.BufferGeometry();
+    lineGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+    lineGeom.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
+    const lineMat = new THREE.LineBasicMaterial({
+      vertexColors: true, transparent: true, opacity: 0.55,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const linesMesh = new THREE.LineSegments(lineGeom, lineMat);
+
+    // Accent (terracotta) glow points
+    const accentPositions = [];
+    for (let i = 0; i < NUM_ACCENTS; i++) {
+      const idx = Math.floor(Math.random() * points.length);
+      const p = points[idx];
+      accentPositions.push(p.x, p.y, p.z);
+    }
+    const accentGeom = new THREE.BufferGeometry();
+    accentGeom.setAttribute('position', new THREE.Float32BufferAttribute(accentPositions, 3));
+    const accentMat = new THREE.PointsMaterial({
+      color: 0xcc785c, size: 0.15, transparent: true, opacity: 1.0,
+      sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const accentsMesh = new THREE.Points(accentGeom, accentMat);
+
+    // Group, position right of center so left text stays clean
+    const group = new THREE.Group();
+    group.add(pointsMesh);
+    group.add(linesMesh);
+    group.add(accentsMesh);
+    group.position.x = 1.2;
+    scene.add(group);
+
+    // Resize
+    window.addEventListener('resize', () => {
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+
+    // Animation loop — pause on tab hide for perf
+    const clock = new THREE.Clock();
+    let paused = false;
+    document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+
+    (function animate() {
+      if (!paused) {
+        const dt = clock.getDelta();
+        const t = clock.getElapsedTime();
+        group.rotation.y += dt * 0.04;
+        accentsMesh.material.opacity = 0.6 + Math.sin(t * 2.2) * 0.28;
+        accentsMesh.material.size = 0.12 + Math.sin(t * 3) * 0.02;
+        linesMesh.material.opacity = 0.45 + Math.sin(t * 0.6) * 0.05;
+        renderer.render(scene, camera);
+      }
+      requestAnimationFrame(animate);
+    })();
   })();
 </script>
 
