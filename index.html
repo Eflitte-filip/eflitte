@@ -121,6 +121,14 @@
     --accent-deep: #B0593F;
     --accent-soft: rgba(204, 120, 92, 0.10);
     --accent-ink: #FAF9F5;
+    /* Deep navy for hero/CTA/footer dark sections (Loop AI inspired) */
+    --navy: #0F172A;
+    --navy-deep: #0A1020;
+    --navy-soft: rgba(15, 23, 42, 0.95);
+    /* Blue accent (used in product showcase cards) */
+    --blue: #1E40AF;
+    --blue-bright: #3B82F6;
+    --blue-soft: rgba(59, 130, 246, 0.08);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -265,20 +273,14 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    background: #141413;
+    background: var(--navy);
     color: #FAF9F5;
   }
 
-  /* Layer 0: solid base */
-  .hero-bg {
-    position: absolute; inset: 0;
-    z-index: 0;
-    background: linear-gradient(180deg, #141413 0%, #1a1a18 100%);
-  }
-  /* Layer 1: Three.js sphere canvas */
+  /* Three.js sphere canvas */
   #hero-3d {
     position: absolute; inset: 0;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
   }
   #hero-3d canvas {
@@ -286,27 +288,19 @@
     width: 100% !important;
     height: 100% !important;
   }
-  /* Layer 2: vignette so text on the left stays readable over sphere */
+  /* Dark vignette so text on the left stays readable over sphere */
   .hero-vignette {
     position: absolute; inset: 0;
-    z-index: 2;
+    z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 15% 50%, rgba(20, 20, 19, 0.95) 0%, rgba(20, 20, 19, 0.75) 28%, transparent 55%),
-      radial-gradient(ellipse 70% 50% at 80% 20%, rgba(204, 120, 92, 0.10), transparent 60%),
-      linear-gradient(to bottom, transparent 0%, transparent 70%, #141413 100%);
-  }
-  /* Layer 3: subtle noise on top of everything */
-  .hero-noise {
-    position: absolute; inset: 0;
-    z-index: 3;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-    pointer-events: none;
+      radial-gradient(ellipse at 15% 50%, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.75) 28%, transparent 55%),
+      linear-gradient(to bottom, transparent 0%, transparent 70%, var(--navy) 100%);
   }
 
   .hero-inner {
     position: relative;
-    z-index: 4;
+    z-index: 2;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -388,12 +382,6 @@
   }
   .btn-ghost:hover { border-color: rgba(250,249,245,0.7); background: rgba(250,249,245,0.06); }
 
-  /* ---------- TWO PATHS ---------- */
-  .paths {
-    background: var(--bg);
-    padding: 120px 40px;
-    position: relative;
-  }
   .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -436,102 +424,97 @@
     max-width: 680px;
   }
 
-  .paths-grid {
+  /* ---------- CATEGORIES (2-card "kaj počnemo") ---------- */
+  .categories {
+    background: var(--bg);
+    padding: 140px 40px 120px;
+  }
+  .cat-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 80px;
+  }
+  .cat-head .section-label {
+    justify-content: center;
+  }
+  .cat-head .section-title {
+    margin: 0 auto;
+  }
+  .cat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-top: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
-  .path-card {
+  .cat-card {
     position: relative;
-    background: var(--surface);
+    background: #FFFFFF;
     border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 56px 48px 48px;
-    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
-    overflow: hidden;
-    text-decoration: none;
-    color: var(--ink);
+    border-radius: 6px;
+    padding: 56px 48px 56px;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    min-height: 480px;
   }
-  .path-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 40% at 100% 0%, var(--accent-soft), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
+  .cat-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
   }
-  .path-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-  .path-card:hover::before { opacity: 1; }
-
-  .path-num {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    color: var(--accent);
+  .cat-mark {
+    width: 44px;
+    height: 44px;
     margin-bottom: 32px;
+    color: var(--blue);
   }
-  .path-card h3 {
+  .cat-mark svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .cat-title {
+    font-family: "Inter", sans-serif;
     font-weight: 700;
-    font-size: 32px;
-    line-height: 1.1;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: 18px;
+    color: var(--navy);
+    margin-bottom: 14px;
   }
-  .path-tagline {
-    font-family: "Instrument Serif", serif;
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1.3;
-    color: var(--accent);
-    margin-bottom: 28px;
-    max-width: 420px;
-  }
-  .path-card p {
+  .cat-lead {
     font-size: 15.5px;
-    line-height: 1.65;
+    line-height: 1.55;
     color: var(--ink-soft);
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+    max-width: 380px;
   }
-  .path-list {
+  .cat-list {
     list-style: none;
-    margin-bottom: 36px;
-  }
-  .path-list li {
-    font-size: 14.5px;
-    color: var(--ink-soft);
-    padding: 10px 0;
-    border-top: 1px solid var(--line);
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .path-list li:first-child { border-top: 1px solid var(--line-strong); }
-  .path-list li::before {
-    content: "";
-    flex-shrink: 0;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-top: 8px;
-  }
-  .path-cta {
     margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--ink);
-    font-weight: 500;
-    font-size: 14.5px;
-    letter-spacing: 0.02em;
-    transition: color 0.25s ease, gap 0.25s ease;
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
   }
-  .path-card:hover .path-cta { color: var(--accent); gap: 14px; }
-  .path-cta .arrow { transition: transform 0.25s ease; }
+  .cat-list li {
+    font-size: 15px;
+    color: var(--navy);
+    font-weight: 500;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    letter-spacing: -0.005em;
+  }
+  .cat-list li:last-child { border-bottom: none; }
+  .cat-bullet {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: inline-block;
+  }
 
   /* ---------- HONEST POSITIONING ---------- */
   .honest {
@@ -659,7 +642,7 @@
 
   /* ---------- CTA ---------- */
   .cta {
-    background: #141413;
+    background: var(--navy);
     color: #FAF9F5;
     padding: 140px 40px 120px;
     text-align: center;
@@ -758,7 +741,7 @@
 
   /* ---------- FOOTER ---------- */
   footer {
-    background: #141413;
+    background: var(--navy);
     color: rgba(250,249,245,0.6);
     padding: 80px 40px 32px;
   }
@@ -902,10 +885,10 @@
   @media (max-width: 920px) {
     .hero { padding: 130px 22px 80px; min-height: auto; }
     #hero-3d { opacity: 0.55; }
-    .paths, .honest, .process, .faq, .contact { padding: 80px 22px; }
+    .categories, .honest, .process, .faq, .contact { padding: 80px 22px; }
     .cta { padding: 100px 22px 90px; }
-    .paths-grid { grid-template-columns: 1fr; gap: 16px; }
-    .path-card { min-height: auto; padding: 40px 28px; }
+    .cat-grid { grid-template-columns: 1fr; gap: 16px; }
+    .cat-card { padding: 40px 28px; }
     .honest-grid { grid-template-columns: 1fr; gap: 40px; }
     .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
     .form-row { grid-template-columns: 1fr; }
@@ -953,82 +936,70 @@
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-bg"></div>
   <div id="hero-3d" aria-hidden="true"></div>
   <div class="hero-vignette"></div>
-  <div class="hero-noise"></div>
   <div class="hero-inner">
     <div class="eyebrow" data-i18n="hero.eyebrow">AI agencija · Slovenija</div>
     <h1 class="hero-title" data-reveal data-i18n="hero.title">
       AI <span class="accent">infrastruktura</span> za slovenska podjetja, ki ne želijo zaostati.
     </h1>
     <p class="hero-sub" data-reveal data-i18n="hero.sub">
-      Bodisi za večjo vidnost na spletu, bodisi za avtomatizacijo notranjih procesov — ali oboje. En partner, dva produkta, ki delujeta skupaj.
+      Spletne strani, chatboti, avtomatizacija. Brez fluffa, brez vendor lock-ina.
     </p>
     <div class="hero-actions" data-reveal>
-      <a href="/web" class="btn-primary" data-i18n="hero.cta1">
-        Spletna stran <span class="arrow">→</span>
-      </a>
-      <a href="/avtomatizacija" class="btn-ghost" data-i18n="hero.cta2">
-        Avtomatizacija
+      <a href="#kontakt" class="btn-primary" data-i18n="hero.cta">
+        Pogovorimo se <span class="arrow">→</span>
       </a>
     </div>
   </div>
 </header>
 
-<!-- TWO PATHS -->
-<section class="paths">
+<!-- WHAT WE DO — 2 vzporedni karti -->
+<section class="categories">
   <div class="container">
-    <div data-reveal>
-      <div class="section-label" data-i18n="paths.label">Kaj počnemo</div>
-      <h2 class="section-title" data-i18n="paths.title">
-        Dva produkta. <span class="accent">En partner.</span>
+    <div class="cat-head" data-reveal>
+      <div class="section-label" data-i18n="cat.label">Kaj počnemo</div>
+      <h2 class="section-title" data-i18n="cat.title">
+        Dva fokusa, <span class="accent">ena ekipa</span>.
       </h2>
-      <p class="section-lead" data-i18n="paths.lead">
-        Zunanja spletna prisotnost in notranja avtomatizacija sta različna problema, ki ju večina podjetij rešuje pri ločenih ponudnikih. Pri nas dobite oboje, povezano z isto AI logiko.
-      </p>
     </div>
 
-    <div class="paths-grid">
-      <a href="/web" class="path-card" data-reveal>
-        <div class="path-num" data-i18n="path1.num">01 / Web</div>
-        <h3 data-i18n="path1.title">AI-Ready spletna stran</h3>
-        <div class="path-tagline" data-i18n="path1.tagline">
-          Vidnost v Googlu in v AI iskalnikih.
+    <div class="cat-grid">
+      <article class="cat-card" data-reveal>
+        <div class="cat-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="18" y="3" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="3" y="18" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="18" y="18" width="11" height="11" rx="2" fill="currentColor"/>
+          </svg>
         </div>
-        <p data-i18n="path1.desc">
-          Sodobna spletna prisotnost, ki rangira tam, kjer vaše stranke iščejo zdaj — Google, ChatGPT, Claude, Perplexity. Z integriranim asistentom, ki kvalificira leade 24/7.
-        </p>
-        <ul class="path-list">
-          <li data-i18n="path1.f1">Custom design, ne template</li>
-          <li data-i18n="path1.f2">Klasični SEO + AI Search Optimization</li>
-          <li data-i18n="path1.f3">Integriran AI asistent, treniran na vsebinah podjetja</li>
-          <li data-i18n="path1.f4">GDPR, hosting, vse legal pages</li>
+        <h3 class="cat-title" data-i18n="cat1.t">Izdelava AI agentov in spletnih strani</h3>
+        <p class="cat-lead" data-i18n="cat1.lead">Vse, kar vaše stranke vidijo in z njim komunicirajo.</p>
+        <ul class="cat-list">
+          <li data-i18n="cat1.l1"><span class="cat-bullet" aria-hidden="true"></span>AI chatbot za podjetja</li>
+          <li data-i18n="cat1.l2"><span class="cat-bullet" aria-hidden="true"></span>Custom HTML spletna stran</li>
+          <li data-i18n="cat1.l3"><span class="cat-bullet" aria-hidden="true"></span>SEO + SEO za AI iskalnike (LLMO/GEO)</li>
         </ul>
-        <span class="path-cta" data-i18n="path1.cta">
-          Več o paketu Web <span class="arrow">→</span>
-        </span>
-      </a>
+      </article>
 
-      <a href="/avtomatizacija" class="path-card" data-reveal>
-        <div class="path-num" data-i18n="path2.num">02 / Operations</div>
-        <h3 data-i18n="path2.title">Avtomatizacija procesov</h3>
-        <div class="path-tagline" data-i18n="path2.tagline">
-          Procesi, ki tečejo sami.
+      <article class="cat-card" data-reveal>
+        <div class="cat-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 16 L13 23 L26 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="16" r="2" fill="currentColor"/>
+            <circle cx="13" cy="23" r="2" fill="currentColor"/>
+            <circle cx="26" cy="9" r="2" fill="currentColor"/>
+          </svg>
         </div>
-        <p data-i18n="path2.desc">
-          Povežemo sisteme, ki jih že uporabljate (CRM, e-pošta, Minimax, dokumenti, Slack), z AI logiko vmes. En specifičen proces hkrati. Merljiv prihranek od prvega meseca.
-        </p>
-        <ul class="path-list">
-          <li data-i18n="path2.f1">Lead handling, faktura chase, email triage, reporting</li>
-          <li data-i18n="path2.f2">Self-hosted infrastruktura, vaši podatki, EU regija</li>
-          <li data-i18n="path2.f3">Human-in-the-loop pri kritičnih korakih</li>
-          <li data-i18n="path2.f4">Monitoring, alerting, mesečni health report</li>
+        <h3 class="cat-title" data-i18n="cat2.t">Optimizacija dela in raziskave</h3>
+        <p class="cat-lead" data-i18n="cat2.lead">Vse, kar v ozadju opravlja vaša ekipa — hitreje in z manj napakami.</p>
+        <ul class="cat-list">
+          <li data-i18n="cat2.l1"><span class="cat-bullet" aria-hidden="true"></span>Avtomatizacija notranjih procesov</li>
+          <li data-i18n="cat2.l2"><span class="cat-bullet" aria-hidden="true"></span>AI upravljanje podatkov in dokumentov</li>
+          <li data-i18n="cat2.l3"><span class="cat-bullet" aria-hidden="true"></span>Optimizacija marketinga in raziskav</li>
         </ul>
-        <span class="path-cta" data-i18n="path2.cta">
-          Več o paketu Operations <span class="arrow">→</span>
-        </span>
-      </a>
+      </article>
     </div>
   </div>
 </section>
@@ -1381,33 +1352,23 @@
 
       "hero.eyebrow": { sl: "AI agencija · Slovenija", en: "AI agency · Slovenia" },
       "hero.title":   { sl: "AI <span class=\"accent\">infrastruktura</span> za slovenska podjetja, ki ne želijo zaostati.", en: "AI <span class=\"accent\">infrastructure</span> for Slovenian companies that don't want to fall behind." },
-      "hero.sub":     { sl: "Bodisi za večjo vidnost na spletu, bodisi za avtomatizacijo notranjih procesov — ali oboje. En partner, dva produkta, ki delujeta skupaj.", en: "Either for greater online visibility, or for automating internal processes — or both. One partner, two products that work together." },
-      "hero.cta1":    { sl: "Spletna stran <span class=\"arrow\">→</span>", en: "Website <span class=\"arrow\">→</span>" },
-      "hero.cta2":    { sl: "Avtomatizacija", en: "Automation" },
+      "hero.sub":     { sl: "Spletne strani, chatboti, avtomatizacija. Brez fluffa, brez vendor lock-ina.", en: "Websites, chatbots, automation. No fluff, no vendor lock-in." },
+      "hero.cta":     { sl: "Pogovorimo se <span class=\"arrow\">→</span>", en: "Let's talk <span class=\"arrow\">→</span>" },
 
-      "paths.label":  { sl: "Kaj počnemo", en: "What we do" },
-      "paths.title":  { sl: "Dva produkta. <span class=\"accent\">En partner.</span>", en: "Two products. <span class=\"accent\">One partner.</span>" },
-      "paths.lead":   { sl: "Zunanja spletna prisotnost in notranja avtomatizacija sta različna problema, ki ju večina podjetij rešuje pri ločenih ponudnikih. Pri nas dobite oboje, povezano z isto AI logiko.", en: "External web presence and internal automation are different problems most companies solve through separate vendors. With us, you get both — connected by the same AI logic." },
+      "cat.label":   { sl: "Kaj počnemo", en: "What we do" },
+      "cat.title":   { sl: "Dva fokusa, <span class=\"accent\">ena ekipa</span>.", en: "Two focuses, <span class=\"accent\">one team</span>." },
 
-      "path1.num":     { sl: "01 / Web", en: "01 / Web" },
-      "path1.title":   { sl: "AI-Ready spletna stran", en: "AI-Ready website" },
-      "path1.tagline": { sl: "Vidnost v Googlu in v AI iskalnikih.", en: "Visibility in Google and in AI search." },
-      "path1.desc":    { sl: "Sodobna spletna prisotnost, ki rangira tam, kjer vaše stranke iščejo zdaj — Google, ChatGPT, Claude, Perplexity. Z integriranim asistentom, ki kvalificira leade 24/7.", en: "Modern web presence that ranks where your customers search now — Google, ChatGPT, Claude, Perplexity. With an integrated assistant that qualifies leads 24/7." },
-      "path1.f1":      { sl: "Custom design, ne template", en: "Custom design, no template" },
-      "path1.f2":      { sl: "Klasični SEO + AI Search Optimization", en: "Classic SEO + AI Search Optimization" },
-      "path1.f3":      { sl: "Integriran AI asistent, treniran na vsebinah podjetja", en: "Integrated AI assistant trained on your content" },
-      "path1.f4":      { sl: "GDPR, hosting, vse legal pages", en: "GDPR, hosting, all legal pages" },
-      "path1.cta":     { sl: "Več o paketu Web <span class=\"arrow\">→</span>", en: "More about Web <span class=\"arrow\">→</span>" },
+      "cat1.t":      { sl: "Izdelava AI agentov in spletnih strani", en: "Building AI agents and websites" },
+      "cat1.lead":   { sl: "Vse, kar vaše stranke vidijo in z njim komunicirajo.", en: "Everything your customers see and interact with." },
+      "cat1.l1":     { sl: "AI chatbot za podjetja", en: "AI chatbot for businesses" },
+      "cat1.l2":     { sl: "Custom HTML spletna stran", en: "Custom HTML website" },
+      "cat1.l3":     { sl: "SEO + SEO za AI iskalnike (LLMO/GEO)", en: "SEO + SEO for AI search (LLMO/GEO)" },
 
-      "path2.num":     { sl: "02 / Operations", en: "02 / Operations" },
-      "path2.title":   { sl: "Avtomatizacija procesov", en: "Process automation" },
-      "path2.tagline": { sl: "Procesi, ki tečejo sami.", en: "Processes that run themselves." },
-      "path2.desc":    { sl: "Povežemo sisteme, ki jih že uporabljate (CRM, e-pošta, Minimax, dokumenti, Slack), z AI logiko vmes. En specifičen proces hkrati. Merljiv prihranek od prvega meseca.", en: "We connect systems you already use (CRM, email, accounting, documents, Slack) with AI logic between them. One specific process at a time. Measurable savings from month one." },
-      "path2.f1":      { sl: "Lead handling, faktura chase, email triage, reporting", en: "Lead handling, invoice chase, email triage, reporting" },
-      "path2.f2":      { sl: "Self-hosted infrastruktura, vaši podatki, EU regija", en: "Self-hosted infrastructure, your data, EU region" },
-      "path2.f3":      { sl: "Human-in-the-loop pri kritičnih korakih", en: "Human-in-the-loop on critical steps" },
-      "path2.f4":      { sl: "Monitoring, alerting, mesečni health report", en: "Monitoring, alerting, monthly health report" },
-      "path2.cta":     { sl: "Več o paketu Operations <span class=\"arrow\">→</span>", en: "More about Operations <span class=\"arrow\">→</span>" },
+      "cat2.t":      { sl: "Optimizacija dela in raziskave", en: "Work optimization and research" },
+      "cat2.lead":   { sl: "Vse, kar v ozadju opravlja vaša ekipa — hitreje in z manj napakami.", en: "Everything your team does behind the scenes — faster and with fewer errors." },
+      "cat2.l1":     { sl: "Avtomatizacija notranjih procesov", en: "Internal process automation" },
+      "cat2.l2":     { sl: "AI upravljanje podatkov in dokumentov", en: "AI data and document management" },
+      "cat2.l3":     { sl: "Optimizacija marketinga in raziskav", en: "Marketing optimization and research" },
 
       "honest.label": { sl: "Filozofija", en: "Philosophy" },
       "honest.title": { sl: "AI <span class=\"accent\">dejansko</span>, ne samo govorjenje o njem.", en: "AI <span class=\"accent\">actually</span>, not just talk about it." },
@@ -1527,7 +1488,7 @@
 
     // Scene
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x141413, 0.10);
+    scene.fog = new THREE.FogExp2(0x0F172A, 0.10);
 
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 50);
     camera.position.z = 7;
