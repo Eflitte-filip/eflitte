@@ -1296,25 +1296,56 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 1080) close(); });
   })();
 
-  /* ---- contact form (stub — replace setTimeout with real endpoint) ---- */
+  /* ---- contact form → Web3Forms → filip@eflitte.si ---- */
   (function(){
     const form = document.getElementById('contactForm');
     const status = document.getElementById('formStatus');
     if (!form) return;
-    form.addEventListener('submit', e => {
+
+    // ⚠️ ZAMENJAJ S TVOJIM Web3Forms ACCESS KEY
+    // 1. Pojdi na https://web3forms.com
+    // 2. Vpiši: filip@eflitte.si → "Create Access Key"
+    // 3. Preveri inbox, klikni verifikacijski link
+    // 4. Skopiraj access key (npr. "abcd1234-5678-...")
+    // 5. Zamenjaj spodnjo vrednost
+    const ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       if (form.hp.value) return; // honeypot
+
       const lang = document.documentElement.lang === 'en' ? 'en' : 'sl';
       status.className = 'form-status';
       status.textContent = lang === 'en' ? 'Sending…' : 'Pošiljanje…';
-      // TODO: replace stub with real endpoint (Formspree / Resend / own API)
-      setTimeout(() => {
-        status.className = 'form-status ok';
+
+      const formData = new FormData(form);
+      formData.append('access_key', ACCESS_KEY);
+      formData.append('subject', `Eflitte kontakt: ${formData.get('name') || 'novo sporočilo'}`);
+      formData.append('from_name', 'Eflitte spletna stran');
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          status.className = 'form-status ok';
+          status.textContent = lang === 'en'
+            ? 'Thanks — we will get back to you within 24 hours.'
+            : 'Hvala — odzvali se bomo v 24 urah.';
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Submit failed');
+        }
+      } catch (err) {
+        status.className = 'form-status err';
         status.textContent = lang === 'en'
-          ? 'Thanks — we will get back to you within 24 hours.'
-          : 'Hvala — odzvali se bomo v 24 urah.';
-        form.reset();
-      }, 600);
+          ? 'Sending failed. Please email info@eflitte.si directly.'
+          : 'Pošiljanje ni uspelo. Pišite na info@eflitte.si.';
+        console.error('Form error:', err);
+      }
     });
   })();
 
