@@ -9,7 +9,7 @@
 <meta name="description" data-i18n="meta.description" content="AI infrastruktura za slovenska podjetja: spletna prisotnost, optimizirana za Google in AI iskalnike, ter avtomatizacija notranjih procesov. En partner za oboje." />
 <meta name="author" content="EFLITTE" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="theme-color" content="#FAF9F5" />
+<meta name="theme-color" content="#F8FAFC" />
 
 <link rel="canonical" href="https://eflitte.si/" />
 <link rel="alternate" hreflang="sl" href="https://eflitte.si/" />
@@ -108,24 +108,27 @@
 
 <style>
   :root {
-    --bg: #FAF9F5;
-    --bg-alt: #F0EEE6;
-    --surface: #F5F3EC;
-    --surface-2: #E8E5DB;
+    /* Light backgrounds — slate (cool) palette to cohere with navy */
+    --bg: #F8FAFC;          /* slate-50 */
+    --bg-alt: #F1F5F9;      /* slate-100 */
+    --surface: #FFFFFF;     /* pure white for cards */
+    --surface-2: #E2E8F0;   /* slate-200 */
+    /* Text — keep slightly warm for readability, but cool the lines */
     --ink: #141413;
     --ink-soft: #3D3D3B;
-    --muted: #6C6B67;
-    --line: rgba(20, 20, 19, 0.10);
-    --line-strong: rgba(20, 20, 19, 0.18);
+    --muted: #64748B;       /* slate-500 (cooler muted) */
+    --line: rgba(15, 23, 42, 0.10);
+    --line-strong: rgba(15, 23, 42, 0.18);
+    /* Brand accent — terracotta (kept for logo + brand moments) */
     --accent: #CC785C;
     --accent-deep: #B0593F;
     --accent-soft: rgba(204, 120, 92, 0.10);
-    --accent-ink: #FAF9F5;
-    /* Deep navy for hero/CTA/footer dark sections (Loop AI inspired) */
+    --accent-ink: #F8FAFC;
+    /* Dark sections — deep navy (slate-900) */
     --navy: #0F172A;
     --navy-deep: #0A1020;
     --navy-soft: rgba(15, 23, 42, 0.95);
-    /* Blue accent (used in product showcase cards) */
+    /* Blue accent — for product cards, info chips */
     --blue: #1E40AF;
     --blue-bright: #3B82F6;
     --blue-soft: rgba(59, 130, 246, 0.08);
@@ -154,7 +157,7 @@
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     column-gap: 32px;
-    background: rgba(250, 249, 245, 0.82);
+    background: rgba(248,250,252, 0.82);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid transparent;
@@ -274,7 +277,7 @@
     align-items: center;
     overflow: hidden;
     background: var(--navy);
-    color: #FAF9F5;
+    color: #F8FAFC;
   }
 
   /* Three.js sphere canvas */
@@ -314,7 +317,7 @@
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(250,249,245,0.6);
+    color: rgba(248,250,252,0.6);
     margin-bottom: 32px;
   }
   .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent); }
@@ -325,7 +328,7 @@
     font-size: clamp(38px, 5.4vw, 76px);
     line-height: 1.02;
     letter-spacing: -0.035em;
-    color: #FAF9F5;
+    color: #F8FAFC;
     margin-bottom: 32px;
     max-width: 980px;
   }
@@ -341,7 +344,7 @@
   .hero-sub {
     font-size: 18px;
     line-height: 1.55;
-    color: rgba(250,249,245,0.78);
+    color: rgba(248,250,252,0.78);
     max-width: 580px;
     margin-bottom: 48px;
   }
@@ -349,7 +352,7 @@
   .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
   .btn-primary {
     padding: 16px 28px;
-    background: #FAF9F5;
+    background: #F8FAFC;
     color: #141413;
     border: none;
     border-radius: 999px;
@@ -370,8 +373,8 @@
   .btn-ghost {
     padding: 16px 24px;
     background: transparent;
-    color: #FAF9F5;
-    border: 1px solid rgba(250,249,245,0.25);
+    color: #F8FAFC;
+    border: 1px solid rgba(248,250,252,0.25);
     border-radius: 999px;
     font-family: inherit;
     font-size: 15px;
@@ -380,7 +383,7 @@
     text-decoration: none;
     transition: border-color 0.25s ease, background 0.25s ease;
   }
-  .btn-ghost:hover { border-color: rgba(250,249,245,0.7); background: rgba(250,249,245,0.06); }
+  .btn-ghost:hover { border-color: rgba(248,250,252,0.7); background: rgba(248,250,252,0.06); }
 
   .container {
     max-width: 1200px;
@@ -643,7 +646,7 @@
   /* ---------- CTA ---------- */
   .cta {
     background: var(--navy);
-    color: #FAF9F5;
+    color: #F8FAFC;
     padding: 140px 40px 120px;
     text-align: center;
     position: relative;
@@ -663,7 +666,7 @@
     line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 24px;
-    color: #FAF9F5;
+    color: #F8FAFC;
   }
   .cta h2 .accent {
     font-family: "Instrument Serif", serif;
@@ -673,7 +676,7 @@
   }
   .cta p {
     font-size: 17px;
-    color: rgba(250,249,245,0.78);
+    color: rgba(248,250,252,0.78);
     max-width: 580px;
     margin: 0 auto 44px;
     line-height: 1.6;
@@ -742,7 +745,7 @@
   /* ---------- FOOTER ---------- */
   footer {
     background: var(--navy);
-    color: rgba(250,249,245,0.6);
+    color: rgba(248,250,252,0.6);
     padding: 80px 40px 32px;
   }
   .footer-grid {
@@ -760,7 +763,7 @@
     letter-spacing: -0.04em;
     font-size: 60px;
     line-height: 1;
-    color: #FAF9F5;
+    color: #F8FAFC;
     display: inline-flex;
     align-items: baseline;
     text-decoration: none;
@@ -774,7 +777,7 @@
   }
   .footer-tagline {
     margin-top: 24px;
-    color: rgba(250,249,245,0.55);
+    color: rgba(248,250,252,0.55);
     font-size: 14.5px;
     line-height: 1.55;
     max-width: 320px;
@@ -785,12 +788,12 @@
     font-size: 11.5px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(250,249,245,0.45);
+    color: rgba(248,250,252,0.45);
     margin-bottom: 18px;
   }
   .footer-col a, .footer-col span {
     display: block;
-    color: rgba(250,249,245,0.78);
+    color: rgba(248,250,252,0.78);
     text-decoration: none;
     font-size: 14.5px;
     padding: 6px 0;
@@ -803,14 +806,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgba(250,249,245,0.42);
+    color: rgba(248,250,252,0.42);
     font-size: 13px;
     flex-wrap: wrap;
     gap: 16px;
   }
   .footer-legal { display: flex; gap: 22px; flex-wrap: wrap; }
   .footer-legal a {
-    color: rgba(250,249,245,0.55);
+    color: rgba(248,250,252,0.55);
     text-decoration: none;
     font-size: 13px;
     transition: color 0.2s ease;
@@ -1009,12 +1012,12 @@
   <div class="container">
     <div class="honest-grid">
       <div data-reveal>
-        <div class="section-label" data-i18n="honest.label">Filozofija</div>
+        <div class="section-label" data-i18n="honest.label">Načela</div>
         <h2 class="section-title" data-i18n="honest.title">
-          AI <span class="accent">dejansko</span>, ne samo govorjenje o njem.
+          Štiri pravila, <span class="accent">brez izjem</span>.
         </h2>
         <p class="section-lead" data-i18n="honest.lead">
-          AI je pretegnen z marketinškim hrupom. Mi delamo nasprotno: za vsako nalogo izberemo pravo orodje (včasih to AI sploh ni), pokažemo, kje deluje in kje (še) ne, in dostavimo sistem, ki teče v produkciji — ne PowerPoint.
+          Pravila, ki si jih zastavljamo. Veljajo za vsako stranko, ne glede na velikost projekta.
         </p>
       </div>
       <div class="honest-list" data-reveal>
@@ -1042,7 +1045,7 @@
         <div class="honest-item">
           <div class="honest-num">04</div>
           <div>
-            <h4 data-i18n="honest.i4.h">Merljivi rezultati, ne obljube</h4>
+            <h4 data-i18n="honest.i4.h">Merljivi rezultati od prvega meseca</h4>
             <p data-i18n="honest.i4.p">Pred razvojem se dogovorimo o konkretnih merilih. Sistem beleži delovanje. Če cilji niso doseženi, odpravimo vzrok ali priznamo, da pristop ni bil pravi.</p>
           </div>
         </div>
@@ -1174,7 +1177,7 @@
         Povejte nam, <span class="accent">kaj iščete</span>.
       </h2>
       <p class="section-lead" data-i18n="form.lead">
-        Pošljite kratek opis vaše situacije. Odzovemo se v 24 urah z naslednjim korakom — pogosto je to brezplačen 30-min pogovor po videoklicu.
+        Pošljite kratek opis vaše situacije.
       </p>
     </div>
 
@@ -1370,16 +1373,16 @@
       "cat2.l2":     { sl: "AI upravljanje podatkov in dokumentov", en: "AI data and document management" },
       "cat2.l3":     { sl: "Optimizacija marketinga in raziskav", en: "Marketing optimization and research" },
 
-      "honest.label": { sl: "Filozofija", en: "Philosophy" },
-      "honest.title": { sl: "AI <span class=\"accent\">dejansko</span>, ne samo govorjenje o njem.", en: "AI <span class=\"accent\">actually</span>, not just talk about it." },
-      "honest.lead":  { sl: "AI je pretegnen z marketinškim hrupom. Mi delamo nasprotno: za vsako nalogo izberemo pravo orodje (včasih to AI sploh ni), pokažemo, kje deluje in kje (še) ne, in dostavimo sistem, ki teče v produkciji — ne PowerPoint.", en: "AI is buried under marketing noise. We do the opposite: for each task we pick the right tool (sometimes that isn't AI), show what works and what (still) doesn't, and ship a system running in production — not a PowerPoint." },
+      "honest.label": { sl: "Načela", en: "Principles" },
+      "honest.title": { sl: "Štiri pravila, <span class=\"accent\">brez izjem</span>.", en: "Four rules, <span class=\"accent\">no exceptions</span>." },
+      "honest.lead":  { sl: "Pravila, ki si jih zastavljamo. Veljajo za vsako stranko, ne glede na velikost projekta.", en: "Rules we hold ourselves to. They apply to every client, regardless of project size." },
       "honest.i1.h":  { sl: "Najpreprostejša rešitev najprej", en: "Simplest solution first" },
       "honest.i1.p":  { sl: "Če vaš problem reši Excel formula ali boljši CRM template, to povemo. AI ne prodajamo zato, ker je v modi.", en: "If your problem is solved by an Excel formula or a better CRM template, we say so. We don't sell AI because it's trending." },
       "honest.i2.h":  { sl: "Vaši podatki ostanejo vaši", en: "Your data stays yours" },
       "honest.i2.p":  { sl: "EU regija, GDPR-skladne pogodbe, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.", en: "EU region, GDPR-compliant agreements, no model training on your content. For sensitive cases, self-hosted setup under your control." },
       "honest.i3.h":  { sl: "Brez vendor lock-ina", en: "No vendor lock-in" },
       "honest.i3.p":  { sl: "Koda, infrastruktura, dostopi — vse v vašem imenu. Če kdaj prevzame partner, bo dobil dokumentiran sistem, ne črne škatle.", en: "Code, infrastructure, accesses — all in your name. If a partner takes over later, they get a documented system, not a black box." },
-      "honest.i4.h":  { sl: "Merljivi rezultati, ne obljube", en: "Measurable results, not promises" },
+      "honest.i4.h":  { sl: "Merljivi rezultati od prvega meseca", en: "Measurable results from month one" },
       "honest.i4.p":  { sl: "Pred razvojem se dogovorimo o konkretnih merilih. Sistem beleži delovanje. Če cilji niso doseženi, odpravimo vzrok ali priznamo, da pristop ni bil pravi.", en: "Before development we agree on concrete metrics. The system logs its operation. If goals aren't met, we fix the cause or admit the approach wasn't right." },
 
       "process.label": { sl: "Kako delamo", en: "How we work" },
@@ -1412,7 +1415,7 @@
 
       "form.label": { sl: "Kontakt", en: "Contact" },
       "form.title": { sl: "Povejte nam, <span class=\"accent\">kaj iščete</span>.", en: "Tell us <span class=\"accent\">what you're looking for</span>." },
-      "form.lead":  { sl: "Pošljite kratek opis vaše situacije. Odzovemo se v 24 urah z naslednjim korakom — pogosto je to brezplačen 30-min pogovor po videoklicu.", en: "Send a short description of your situation. We respond within 24 hours with the next step — usually a free 30-min video call." },
+      "form.lead":  { sl: "Pošljite kratek opis vaše situacije.", en: "Send a short description of your situation." },
       "f.name":     { sl: "Ime in priimek", en: "Full name" },
       "f.email":    { sl: "E-pošta", en: "Email" },
       "f.company":  { sl: "Podjetje", en: "Company" },
@@ -1516,7 +1519,7 @@
     // Cream point cloud
     const pointGeom = new THREE.BufferGeometry().setFromPoints(points);
     const pointMat = new THREE.PointsMaterial({
-      color: 0xFAF9F5, size: 0.04, transparent: true, opacity: 0.8,
+      color: 0xF8FAFC, size: 0.04, transparent: true, opacity: 0.8,
       sizeAttenuation: true, depthWrite: false
     });
     const pointsMesh = new THREE.Points(pointGeom, pointMat);
@@ -1525,7 +1528,7 @@
     const linePositions = [];
     const lineColors = [];
     const accentColor = new THREE.Color(0xcc785c);
-    const neutralColor = new THREE.Color(0xFAF9F5);
+    const neutralColor = new THREE.Color(0xF8FAFC);
     for (let i = 0; i < points.length; i++) {
       for (let j = i + 1; j < points.length; j++) {
         const d = points[i].distanceTo(points[j]);
