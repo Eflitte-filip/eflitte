@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#141413"/>
-  <text x="14" y="46" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="42" fill="#F8FAFC" letter-spacing="-2">E</text>
-  <circle cx="48" cy="44" r="6" fill="#CC785C"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="424 126 516 516">
+  <rect x="424" y="126" width="516" height="516" rx="50" fill="#141413"/>
+  <polygon fill="#faf9f5" points="474.778 543.681 690.577 543.681 690.577 488.783 542.304 488.765 542.304 409.835 678.682 409.924 678.682 355.167 542.304 355.094 542.304 279.117 690.77 279.104 690.77 224.319 474.778 224.319 474.778 543.681"/>
+  <circle fill="#bf7c62" cx="814.896" cy="462.713" r="76.325"/>
 </svg>
