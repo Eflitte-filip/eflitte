@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="title">AI-Ready spletna stran — EFLITTE | Vidnost v Googlu in v AI iskalnikih</title>
+<meta name="description" data-i18n="meta.description" content="V 2026 vaše stranke ne iščejo več samo na Googlu. Spletna prisotnost, optimizirana za Google, ChatGPT, Claude in Perplexity, z integriranim AI asistentom." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#FAF9F5" />
+<link rel="canonical" href="https://eflitte.si/web" />
+<link rel="alternate" hreflang="sl" href="https://eflitte.si/web" />
+<link rel="alternate" hreflang="en" href="https://eflitte.si/web?lang=en" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="sl_SI" />
+<meta property="og:site_name" content="EFLITTE" />
+<meta property="og:title" content="AI-Ready spletna stran — EFLITTE" />
+<meta property="og:description" content="V 2026 vaše stranke ne iščejo več samo na Googlu." />
+<meta property="og:url" content="https://eflitte.si/web" />
+<meta property="og:image" content="https://eflitte.si/og-image.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{ "@context":"https://schema.org","@type":"Service","name":"AI-Ready spletna stran",
+  "provider":{"@type":"Organization","name":"EFLITTE","url":"https://eflitte.si/"},
+  "areaServed":{"@type":"Country","name":"Slovenia"},
+  "description":"Sodobna spletna stran, optimizirana za Google in AI iskalnike (ChatGPT, Claude, Perplexity), z integriranim AI asistentom.",
+  "serviceType":["Web design","SEO","AI Search Optimization","Chatbot integration"]}
+</script>
+
+<style>
+:root{--bg:#FAF9F5;--bg-alt:#F0EEE6;--surface:#F5F3EC;--ink:#141413;--ink-soft:#3D3D3B;--muted:#6C6B67;--line:rgba(20,20,19,0.10);--line-strong:rgba(20,20,19,0.18);--accent:#CC785C;--accent-soft:rgba(204,120,92,0.10)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Inter",sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#FAF9F5}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:32px;background:rgba(250,249,245,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:padding 0.4s ease,border-color 0.4s ease}
+.nav.scrolled{padding:14px 40px;border-bottom-color:var(--line)}
+.nav .logo{justify-self:start}
+.nav .nav-links{justify-self:center}
+.nav .nav-right{justify-self:end;display:flex;align-items:center;gap:20px}
+.logo{display:inline-flex;align-items:baseline;height:32px;font-family:"Inter",sans-serif;font-weight:700;letter-spacing:-0.035em;color:var(--ink);text-decoration:none}
+.logo-letters{display:flex;align-items:baseline;font-size:28px;line-height:1}
+.logo-letters span{display:inline-block;transition:max-width 0.6s cubic-bezier(.77,.05,.2,1),opacity 0.35s ease;max-width:1em;overflow:hidden;white-space:pre}
+.nav.scrolled .logo-letters span.hide{max-width:0;opacity:0}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-left:3px;flex-shrink:0;transition:margin-left 0.6s cubic-bezier(.77,.05,.2,1)}
+.nav.scrolled .logo-dot{margin-left:2px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:500;white-space:nowrap;transition:color 0.2s ease;position:relative}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--accent)}
+.nav-links a:hover{color:var(--ink)}
+.lang-toggle{background:none;border:none;color:var(--ink-soft);font-family:inherit;font-size:13px;font-weight:500;letter-spacing:0.05em;cursor:pointer;padding:6px 10px;transition:color 0.2s ease}
+.lang-toggle:hover{color:var(--ink)}
+.nav-cta{padding:10px 20px;min-width:140px;background:var(--ink);color:var(--bg);border:none;border-radius:999px;font-family:inherit;font-size:13.5px;font-weight:500;text-align:center;cursor:pointer;text-decoration:none;transition:background 0.25s ease,transform 0.25s ease;display:inline-block}
+.nav-cta:hover{background:#2A2A28;transform:translateY(-1px)}
+.nav-burger{display:none;width:32px;height:32px;background:none;border:none;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:transform 0.3s ease,opacity 0.3s ease}
+body.menu-open .nav-burger span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+body.menu-open .nav-burger span:nth-child(2){opacity:0}
+body.menu-open .nav-burger span:nth-child(3){transform:translateY(-4px) rotate(-45deg)}
+.drawer{position:fixed;top:0;right:0;width:320px;max-width:90vw;height:100vh;background:var(--bg);border-left:1px solid var(--line);z-index:99;padding:100px 32px 32px;transform:translateX(100%);transition:transform 0.4s cubic-bezier(.77,.05,.2,1);visibility:hidden;display:flex;flex-direction:column;gap:8px}
+body.menu-open .drawer{transform:translateX(0);visibility:visible}
+.drawer-link{color:var(--ink);text-decoration:none;font-size:18px;font-weight:500;padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer-cta{margin-top:24px;padding:14px 20px;background:var(--ink);color:var(--bg);text-decoration:none;text-align:center;border-radius:999px;font-weight:500;font-size:14.5px}
+.drawer-lang{margin-top:12px;background:none;border:1px solid var(--line);padding:12px;border-radius:999px;font-family:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer}
+
+/* HERO - light variant */
+.hero{position:relative;padding:180px 40px 120px;background:var(--bg);overflow:hidden}
+.hero-bg-pattern{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 30%,var(--accent-soft),transparent 60%),radial-gradient(ellipse 50% 40% at 0% 80%,rgba(204,120,92,0.06),transparent 50%);pointer-events:none}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(20,20,19,0.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(20,20,19,0.03) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent 80%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:1200px;width:100%;margin:0 auto}
+.breadcrumb{font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:36px;display:inline-flex;align-items:center;gap:10px}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s ease}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb .sep{color:var(--accent)}
+h1.hero-title{font-family:"Inter",sans-serif;font-weight:700;font-size:clamp(40px,6vw,84px);line-height:1.0;letter-spacing:-0.04em;color:var(--ink);margin-bottom:36px;max-width:1100px}
+h1.hero-title .accent{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;letter-spacing:-0.01em;color:var(--accent);display:inline-block}
+.hero-sub{font-size:19px;line-height:1.55;color:var(--ink-soft);max-width:680px;margin-bottom:48px}
+.hero-sub em{font-style:italic;color:var(--accent)}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-primary{padding:16px 28px;background:var(--ink);color:var(--bg);border:none;border-radius:999px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:background 0.25s ease,transform 0.25s ease}
+.btn-primary:hover{background:#2A2A28;transform:translateY(-1px)}
+.btn-primary .arrow{transition:transform 0.25s ease}
+.btn-primary:hover .arrow{transform:translateX(4px)}
+.btn-ghost{padding:16px 24px;background:transparent;color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color 0.25s ease,background 0.25s ease;display:inline-flex;align-items:center}
+.btn-ghost:hover{border-color:var(--ink);background:var(--surface)}
+
+/* COMMON */
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:inline-flex;align-items:center;gap:10px}
+.section-label::before{content:"";width:28px;height:1px;background:var(--accent)}
+.section-title{font-family:"Inter",sans-serif;font-weight:700;font-size:clamp(32px,4.2vw,56px);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);margin-bottom:24px;max-width:880px}
+.section-title .accent{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;letter-spacing:-0.005em;color:var(--accent)}
+.section-lead{font-size:17.5px;line-height:1.6;color:var(--ink-soft);max-width:720px}
+
+/* WAKEUP */
+.wakeup{background:#141413;color:#FAF9F5;padding:140px 40px;position:relative;overflow:hidden}
+.wakeup::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(204,120,92,0.18),transparent 60%);pointer-events:none}
+.wakeup-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.wakeup .section-label{color:rgba(250,249,245,0.55)}
+.wakeup .section-title{color:#FAF9F5}
+.wakeup .section-title .accent{color:var(--accent)}
+.wakeup-lead{font-size:18px;line-height:1.6;color:rgba(250,249,245,0.78);max-width:720px;margin-bottom:56px}
+.test-card{margin-top:48px;background:rgba(250,249,245,0.04);border:1px solid rgba(250,249,245,0.10);border-radius:4px;padding:36px 40px;max-width:720px}
+.test-card .label{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.test-card h3{font-weight:600;font-size:22px;letter-spacing:-0.015em;margin-bottom:16px;color:#FAF9F5}
+.test-card p{font-size:15.5px;line-height:1.65;color:rgba(250,249,245,0.78)}
+.test-prompt{margin-top:20px;padding:18px 22px;background:rgba(250,249,245,0.06);border-left:2px solid var(--accent);font-family:"JetBrains Mono",monospace;font-size:13.5px;line-height:1.55;color:rgba(250,249,245,0.92);border-radius:0 4px 4px 0}
+
+/* DELIVERY */
+.delivery{padding:140px 40px;background:var(--bg)}
+.delivery-grid{margin-top:80px;display:grid;gap:24px}
+.deliver-card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:48px;display:grid;grid-template-columns:240px 1fr;gap:60px;transition:border-color 0.3s ease}
+.deliver-card:hover{border-color:var(--line-strong)}
+.deliver-num{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.1em;color:var(--accent);margin-bottom:8px}
+.deliver-card h3{font-weight:700;font-size:28px;line-height:1.1;letter-spacing:-0.02em;margin-bottom:8px}
+.deliver-meta{font-family:"Instrument Serif",serif;font-style:italic;font-size:17px;color:var(--accent);line-height:1.4}
+.deliver-body p{font-size:15.5px;line-height:1.65;color:var(--ink-soft);margin-bottom:20px}
+.deliver-list{list-style:none;margin-top:20px}
+.deliver-list li{font-size:14.5px;color:var(--ink-soft);padding:10px 0;border-top:1px solid var(--line);display:flex;align-items:flex-start;gap:12px}
+.deliver-list li:first-child{border-top:1px solid var(--line-strong)}
+.deliver-list li::before{content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px}
+
+/* WHY */
+.why{padding:140px 40px;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.why-list{display:grid;gap:36px;margin-top:40px}
+.why-item{display:grid;grid-template-columns:36px 1fr;gap:20px}
+.why-num{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);letter-spacing:0.05em;padding-top:4px}
+.why-item h4{font-weight:600;font-size:18px;letter-spacing:-0.01em;margin-bottom:8px}
+.why-item p{font-size:15.5px;line-height:1.6;color:var(--ink-soft)}
+
+/* FAQ */
+.faq{background:var(--bg);padding:140px 40px}
+.faq-head{margin-bottom:56px;max-width:720px}
+.faq-list{max-width:900px;border-top:1px solid var(--line-strong)}
+.faq-item{border-bottom:1px solid var(--line-strong)}
+.faq-question{width:100%;padding:28px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;font-weight:400;font-size:21px;line-height:1.25;letter-spacing:-0.015em;color:var(--ink)}
+.faq-icon{flex-shrink:0;width:22px;height:22px;position:relative;margin-top:6px}
+.faq-icon::before,.faq-icon::after{content:"";position:absolute;background:var(--ink);transition:transform 0.35s cubic-bezier(.77,.05,.2,1)}
+.faq-icon::before{left:0;top:50%;width:100%;height:1.5px;transform:translateY(-50%)}
+.faq-icon::after{top:0;left:50%;width:1.5px;height:100%;transform:translateX(-50%)}
+.faq-item.open .faq-icon::after{transform:translateX(-50%) rotate(90deg)}
+.faq-answer{overflow:hidden;max-height:0;transition:max-height 0.45s cubic-bezier(.77,.05,.2,1)}
+.faq-answer-inner{padding:0 0 28px 0}
+.faq-answer-inner p{font-size:16px;line-height:1.65;color:var(--ink-soft);max-width:720px}
+
+/* CTA */
+.cta{background:#141413;color:#FAF9F5;padding:140px 40px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(204,120,92,0.18),transparent 60%);pointer-events:none}
+.cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.cta h2{font-weight:700;font-size:clamp(34px,4.4vw,60px);line-height:1.05;letter-spacing:-0.03em;margin-bottom:24px;color:#FAF9F5}
+.cta h2 .accent{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;color:var(--accent)}
+.cta p{font-size:17px;color:rgba(250,249,245,0.78);max-width:580px;margin:0 auto 44px;line-height:1.6}
+.cta .btn-primary{background:#FAF9F5;color:#141413}
+.cta .btn-primary:hover{background:#FFFFFF}
+
+/* FOOTER */
+footer{background:#141413;color:rgba(250,249,245,0.6);padding:80px 40px 32px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.08);align-items:start}
+.footer-brand{font-weight:700;letter-spacing:-0.04em;font-size:60px;line-height:1;color:#FAF9F5;display:inline-flex;align-items:baseline;text-decoration:none}
+.footer-brand-dot{width:18px;height:18px;background:var(--accent);border-radius:50%;margin-left:5px;display:inline-block}
+.footer-tagline{margin-top:24px;color:rgba(250,249,245,0.55);font-size:14.5px;line-height:1.55;max-width:320px}
+.footer-col h5{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,249,245,0.45);margin-bottom:18px}
+.footer-col a,.footer-col span{display:block;color:rgba(250,249,245,0.78);text-decoration:none;font-size:14.5px;padding:6px 0;transition:color 0.2s ease}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{max-width:1200px;margin:32px auto 0;display:flex;justify-content:space-between;align-items:center;color:rgba(250,249,245,0.42);font-size:13px;flex-wrap:wrap;gap:16px}
+.footer-legal{display:flex;gap:22px;flex-wrap:wrap}
+.footer-legal a{color:rgba(250,249,245,0.55);text-decoration:none;font-size:13px;transition:color 0.2s ease}
+.footer-legal a:hover{color:var(--accent)}
+
+/* REVEAL */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s cubic-bezier(.2,.7,.2,1)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media (max-width:1080px){.nav{padding:18px 22px;grid-template-columns:1fr auto}.nav.scrolled{padding:12px 22px}.nav-links{display:none}.nav-burger{display:flex}.nav-right .lang-toggle,.nav-right .nav-cta{display:none}}
+@media (max-width:920px){.hero{padding:130px 22px 80px}.wakeup,.delivery,.why,.faq,.cta{padding:80px 22px}.deliver-card{grid-template-columns:1fr;gap:24px;padding:32px}.why-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr;gap:40px;padding:0 0 40px}.footer-brand{font-size:48px}footer{padding:56px 22px 32px}.footer-bottom{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="/" class="logo" aria-label="Eflitte">
+    <span class="logo-letters"><span class="keep">E</span><span class="hide">flitte</span></span>
+    <span class="logo-dot"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/web" class="active" data-i18n="nav.web">Spletna stran</a></li>
+    <li><a href="/avtomatizacija" data-i18n="nav.auto">Avtomatizacija</a></li>
+    <li><a href="/#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle" aria-label="Toggle language">EN</button>
+    <a href="/#kontakt" class="nav-cta" data-i18n="nav.cta">Pogovorimo se</a>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <a href="/web" class="drawer-link" data-i18n="nav.web">Spletna stran</a>
+  <a href="/avtomatizacija" class="drawer-link" data-i18n="nav.auto">Avtomatizacija</a>
+  <a href="/#kontakt" class="drawer-link" data-i18n="nav.contact">Kontakt</a>
+  <a href="/#kontakt" class="drawer-cta" data-i18n="nav.cta">Pogovorimo se</a>
+  <button class="drawer-lang">EN</button>
+</aside>
+
+<header class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <nav class="breadcrumb"><a href="/">Eflitte</a><span class="sep">/</span><span data-i18n="bc">AI-Ready spletna stran</span></nav>
+    <h1 class="hero-title" data-reveal data-i18n="hero.t">V 2026 vaše stranke ne iščejo več samo na <span class="accent">Googlu</span>.</h1>
+    <p class="hero-sub" data-reveal data-i18n="hero.s">Spletna prisotnost, optimizirana za Google <em>in</em> za AI iskalnike (ChatGPT, Claude, Perplexity), z integriranim asistentom, ki kvalificira leade 24/7. En projekt, en partner, povezana logika.</p>
+    <div class="hero-actions" data-reveal>
+      <a href="/#kontakt" class="btn-primary" data-i18n="hero.c1">Rezerviraj 30-min pogovor <span class="arrow">→</span></a>
+      <a href="#what" class="btn-ghost" data-i18n="hero.c2">Kaj točno dostavimo</a>
+    </div>
+  </div>
+</header>
+
+<section class="wakeup">
+  <div class="wakeup-inner">
+    <div data-reveal>
+      <div class="section-label" data-i18n="wake.l">Premik, ki ga večina spregleda</div>
+      <h2 class="section-title" data-i18n="wake.t">Dokler ste bili v Googlu, ste bili <span class="accent">vidni</span>.</h2>
+      <p class="wakeup-lead" data-i18n="wake.lead">ChatGPT je preselil del iskanja iz brskalnika v pogovor. Ko nekdo vpraša "katera podjetja v Sloveniji ponujajo X" — ChatGPT, Claude in Perplexity že odgovarjajo. Vprašanje je, ali ste v tistem odgovoru vi, ali vaš konkurent.</p>
+    </div>
+    <div class="test-card" data-reveal>
+      <div class="label" data-i18n="wake.tl">5-minutni test</div>
+      <h3 data-i18n="wake.th">Preverite svojo trenutno AI-vidnost</h3>
+      <p data-i18n="wake.tp1">Odprite ChatGPT, Claude ali Perplexity in vpišite spodnji prompt — zamenjajte panogo z vašo:</p>
+      <div class="test-prompt" data-i18n="wake.tprompt">"Katera so najbolj relevantna [vaša panoga] podjetja v Sloveniji za [vaš tip stranke]? Naštej 5–10 z opisom."</div>
+      <p style="margin-top:18px" data-i18n="wake.tp2">Če vas v odgovoru ni — ali, kar je hujše, AI o vas pove napačno stvar — to je problem. Klasični SEO te težave ne reši, ker AI iskalniki indeksirajo drugače: berejo strukturirane podatke, ekstrakcije iz vsebine, citation-friendly markup. Stran iz leta 2022 nima ničesar, kar AI lahko prebere.</p>
+    </div>
+  </div>
+</section>
+
+<section class="delivery" id="what">
+  <div class="container">
+    <div data-reveal>
+      <div class="section-label" data-i18n="del.l">Kaj dostavimo</div>
+      <h2 class="section-title" data-i18n="del.t">Štirje <span class="accent">paketi</span>, en pristop.</h2>
+      <p class="section-lead" data-i18n="del.lead">Vsak paket pokriva drug del poti. Začneva pri tem, kar trenutno potrebujete — od audita za razumevanje stanja, do polne implementacije in dolgoročne skrbi.</p>
+    </div>
+
+    <div class="delivery-grid">
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">01 / Discovery</div>
+          <h3 data-i18n="d1.t">Web Audit</h3>
+          <div class="deliver-meta" data-i18n="d1.m">5–7 delovnih dni · Pisni dokument + 60-min predstavitev</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d1.p">Strukturiran pregled vaše trenutne spletne prisotnosti. Pokrijemo SEO health, AI-vidnost, konverzijski potencial in konkurenčno primerjavo. Izhod je prioritiziran akcijski plan.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d1.l1">Tehnični SEO crawl: indeksacija, hitrost, mobilna izkušnja, schema markup</li>
+            <li data-i18n="d1.l2">AI-vidnost test: kako se pojavljate v ChatGPT, Claude, Perplexity in Google AI Overviews</li>
+            <li data-i18n="d1.l3">Konverzijski review: CTA, lead capture, trust signals, struktura</li>
+            <li data-i18n="d1.l4">Konkurenčna primerjava: 3 najmočnejši konkurenti, vrzeli, priložnosti</li>
+            <li data-i18n="d1.l5">3–5 prioritiziranih priporočil z oceno ROI in težavnosti</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">02 / Build</div>
+          <h3 data-i18n="d2.t">AI-Ready spletna stran</h3>
+          <div class="deliver-meta" data-i18n="d2.m">6–10 tednov · Custom design + AI Search Optimization + integriran asistent</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d2.p">Sodobna spletna stran, zgrajena za današnjo realnost iskanja. Kompletno opremljena za Google IN AI iskalnike, z integriranim AI asistentom, ki je naložen z vsebinami vašega podjetja.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d2.l1">Custom design v kodi (ne WordPress, ne template) — optimizirano za hitrost in mobilne naprave</li>
+            <li data-i18n="d2.l2">Tehnični SEO temelji: schema markup, sitemap, GSC setup, page speed</li>
+            <li data-i18n="d2.l3">AI Search Optimization: strukturirana vsebina, FAQ schema, citation-friendly markup, GEO/LLMO strategija</li>
+            <li data-i18n="d2.l4">Integriran AI asistent, treniran na vsebinah podjetja (FAQ, ponudba, dokumenti, ton komunikacije)</li>
+            <li data-i18n="d2.l5">Pravne strani, hosting setup, DNS, SSL, GSC verifikacija</li>
+            <li data-i18n="d2.l6">30 dni post-launch podpore za manjše popravke</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">03 / Targeted</div>
+          <h3 data-i18n="d3.t">Chatbot Sprint</h3>
+          <div class="deliver-meta" data-i18n="d3.m">1.5–2 tedna · Za podjetja z obstoječo stranjo</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d3.p">Za podjetja, ki imajo obstoječo spletno stran in hočejo dodati pametnega asistenta. Tipično: hoteli, glamping, restavracije, manjše storitvene dejavnosti — kjer 24/7 dostopnost in večjezičnost rešujeta konkretne operativne probleme.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d3.l1">Setup AI asistenta na obstoječi spletni strani (widget pristop)</li>
+            <li data-i18n="d3.l2">Naložen z vsebinami: cenik, ponudba, FAQ, hišni red, dostop, kontakt</li>
+            <li data-i18n="d3.l3">Multi-language: SL + EN vključeno (DE/IT za doplačilo)</li>
+            <li data-i18n="d3.l4">Lead capture: povpraševanja na e-pošto ali v booking sistem</li>
+            <li data-i18n="d3.l5">Osnovna analytika in 1-urni training za ekipo</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">04 / Ongoing</div>
+          <h3 data-i18n="d4.t">Care &amp; Grow Retainer</h3>
+          <div class="deliver-meta" data-i18n="d4.m">Modularna mesečna naročnina · Minimum 6 mesecev</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d4.p">Po launchu sistem ne zahteva zgolj vzdrževanja, ampak nadgrajevanje — nove vsebine, optimizacije konverzije, prilagoditve algoritmom AI iskalnikov, dodajanje use case-ov chatbota. Modularna struktura, ki raste z vami.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d4.l1">Hosting, monitoring, varnostne posodobitve, SSL renewal</li>
+            <li data-i18n="d4.l2">Mesečno reporting: SEO ranking, traffic, AI chatbot logi (kaj obiskovalci dejansko sprašujejo)</li>
+            <li data-i18n="d4.l3">Dela na izboljšavah: nove sekcije, vsebina, A/B testi CTA, optimizacija chatbota</li>
+            <li data-i18n="d4.l4">Kvartalni 60-min strateški pregled in priporočila</li>
+            <li data-i18n="d4.l5">Prioritetna podpora (24h response window)</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <div class="why-grid">
+      <div data-reveal>
+        <div class="section-label" data-i18n="why.l">Zakaj ne klasična web agencija</div>
+        <h2 class="section-title" data-i18n="why.t">Drugačno orodje za <span class="accent">drugačen čas</span>.</h2>
+        <p class="section-lead" data-i18n="why.lead">V Sloveniji obstaja na desetine spletnih agencij. Večina dela kvalitetno, a po istem template-u, ki je iz leta 2018. Spodaj je razlika.</p>
+      </div>
+      <div class="why-list" data-reveal>
+        <div class="why-item"><div class="why-num">01</div><div><h4 data-i18n="why.1h">AI Search Optimization, ne samo Google SEO</h4><p data-i18n="why.1p">Klasični SEO ostaja, dodajamo plast: strukturirano vsebino, ki jo AI iskalniki dejansko berejo, citation markup, FAQ schema, pristop GEO/LLMO. To je razlika med biti viden v ChatGPT-ju in biti nevidnen.</p></div></div>
+        <div class="why-item"><div class="why-num">02</div><div><h4 data-i18n="why.2h">Custom v kodi, ne WordPress template</h4><p data-i18n="why.2p">Generične WordPress strani so počasne, težko prilagodljive in podobne sto drugim. Pišemo v čisti kodi (HTML/CSS/JS, brez build koraka) — hitre, prilagojene, pod vašim nadzorom.</p></div></div>
+        <div class="why-item"><div class="why-num">03</div><div><h4 data-i18n="why.3h">Chatbot, ki ni Tidio</h4><p data-i18n="why.3p">Generični chatbot z gumbom "AI" je nujno splošno-namenski. Naš asistent je treniran na vsebinah vašega podjetja, pozna vaše procese, dokumente, ton — in zna reči "tega ne vem", namesto da si izmisli odgovor.</p></div></div>
+        <div class="why-item"><div class="why-num">04</div><div><h4 data-i18n="why.4h">En partner za tri stvari</h4><p data-i18n="why.4p">Tipično podjetje plačuje web agencijo, SEO svetovalca in chatbot subscription. Trije računi, trije vendorji, nič ne komunicira med sabo. Pri nas je to ena povezana logika.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <div class="faq-head" data-reveal>
+      <div class="section-label" data-i18n="faq.l">Pogosto zastavljena</div>
+      <h2 class="section-title" data-i18n="faq.t">Vprašanja, ki vas <span class="accent">verjetno zanimajo</span>.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-question"><span data-i18n="fq1">Pred 2 letoma smo redizajnali stran. Zakaj bi vlagali ponovno?</span><span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner"><p data-i18n="fa1">Pred 2 letoma je obstajala v glavnem samo Google indeksacija. Danes obstaja paralelna AI indeksacija (ChatGPT, Perplexity, Google AI Overviews) z drugačnimi pravili. Stran iz 2022 ni bila zgrajena s tem v mislih. Vprašanje ni "ali je stran lepa", ampak "ali AI iskalniki vidijo, kdo ste". Pogosto najprej naredimo nadgradnjo obstoječe strani namesto popolne prenove — če je tehnično mogoče. Audit pokaže, kateri pristop je smiseln.</p></div></div></div>
+      <div class="faq-item"><button class="faq-question"><span data-i18n="fq2">Mi smo specifična panoga. Razumete našo stranko?</span><span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner"><p data-i18n="fa2">Audit faza je zasnovana ravno za to. V prvih dneh študiramo vašo panogo, intervjuvamo vas in 1–2 osebi iz ekipe, preučimo konkurenco. Naša prednost ni, da že znamo vašo panogo bolje od vas — ampak da prinesemo strukturirano zunanjo perspektivo in tehnično ekspertizo, ki jo večina v vaši panogi nima. Vi prinesete kontekst, mi metodologijo.</p></div></div></div>
+      <div class="faq-item"><button class="faq-question"><span data-i18n="fq3">Kaj če AI chatbot reče kaj narobe?</span><span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner"><p data-i18n="fa3">Chatbot zgradimo s tremi varovali: (1) treniran je na specifičnih vsebinah vašega podjetja, ne splošnem internetu, (2) sistemski prompt mu jasno določa, o čem sme govoriti in kdaj naj reče "tega ne vem, pišite na info@", (3) pred public launch-om imamo 14-dnevni "tihi test", kjer vi vidite vsak pogovor in lahko popravite ton. Po launchu beležimo vse pogovore — vsako napako lahko izsledimo in popravimo prompt.</p></div></div></div>
+      <div class="faq-item"><button class="faq-question"><span data-i18n="fq4">Imate reference?</span><span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner"><p data-i18n="fa4">Najboljša referenca je trenutno spletna stran, ki jo gledate — gradili smo jo z istim pristopom, ki ga prodajamo. Z dosedanjimi strankami imamo NDA dogovore, zato konkretnih projektov ne moremo javno izpostavljati. Med uvodnim pogovorom z veseljem govorimo o pristopu in pokažemo konkretne demo elemente — chatbot, AI Search Optimization rezultati, hitrost, struktura.</p></div></div></div>
+      <div class="faq-item"><button class="faq-question"><span data-i18n="fq5">Kako dolgo traja, koliko stane?</span><span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner"><p data-i18n="fa5">Časovne okvirje smo opredelili pri vsakem paketu (audit 5–7 dni, glavna stran 6–10 tednov, chatbot sprint 1.5–2 tedna). Glede cene: brez konkretnih specifikacij ne moremo dati zavezujoče ponudbe — število podstrani, jeziki, integracije in zahtevnost chatbota močno vplivajo. Specifikacije sprejmemo na info@eflitte.si ali prek 30-min uvodnega klica, nato pripravimo pisni predračun.</p></div></div></div>
+      <div class="faq-item"><button class="faq-question"><span data-i18n="fq6">Kako varujete naše podatke in podatke obiskovalcev?</span><span class="faq-icon"></span></button><div class="faq-answer"><div class="faq-answer-inner"><p data-i18n="fa6">Hosting v EU regiji (Frankfurt). Pogovori s chatbotom se ne shranjujejo v naši bazi — pretok podatkov gre prek API klica do Anthropic ali OpenAI (oba EU-skladna prek SCC + EU-US Data Privacy Framework), odgovor se prikaže v brskalniku in zaključi. Pri reguliranih panogah (zdravstvo, finance) gradimo self-hosted setup z lokalnimi LLM modeli, kjer občutljivi podatki nikoli ne zapustijo vašega okolja. Vse pred začetkom projekta zapečatimo s podpisom DPA.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2 data-i18n="cta.t">Začnimo s <span class="accent">pogovorom</span>.</h2>
+    <p data-i18n="cta.l">Tridesetminutni klic, brez obveznosti. Pogledamo vašo trenutno stran, preverimo AI-vidnost, in iskreno povemo, kateri od paketov (če sploh) vam dejansko koristi.</p>
+    <a href="/#kontakt" class="btn-primary"><span data-i18n="cta.b">Rezerviraj 30-min pogovor</span> <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="footer-brand">Eflitte<span class="footer-brand-dot"></span></a>
+      <p class="footer-tagline" data-i18n="ft.tag">AI infrastruktura za slovenska podjetja. Spletna prisotnost in operativna avtomatizacija pod eno streho.</p>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.prod">Produkti</h5>
+      <a href="/web" data-i18n="ft.web">AI-Ready spletna stran</a>
+      <a href="/avtomatizacija" data-i18n="ft.auto">Avtomatizacija</a>
+      <a href="/#kontakt" data-i18n="ft.con">Kontakt</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.comp">Podjetje</h5>
+      <a href="impressum.html" data-i18n="ft.imp">Impressum</a>
+      <a href="privacy.html" data-i18n="ft.priv">Politika zasebnosti</a>
+      <a href="cookies.html" data-i18n="ft.cook">Piškotki</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.write">Pišite nam</h5>
+      <a href="mailto:info@eflitte.si">info@eflitte.si</a>
+      <a href="tel:+38668693988">068 693 988</a>
+      <span data-i18n="ft.loc">Slovenske Konjice, SI</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="ft.copy">© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.</span>
+    <div class="footer-legal">
+      <a href="impressum.html" data-i18n="ft.imp">Impressum</a>
+      <a href="privacy.html" data-i18n="ft.priv">Politika zasebnosti</a>
+      <a href="cookies.html" data-i18n="ft.cook">Piškotki</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){const n=document.getElementById('nav');const f=()=>n.classList.toggle('scrolled',scrollY>8);addEventListener('scroll',f,{passive:true});f()})();
+(function(){const e=document.querySelectorAll('[data-reveal]');if(!('IntersectionObserver' in window)){e.forEach(x=>x.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:0.12,rootMargin:'0px 0px -40px 0px'});e.forEach(x=>io.observe(x))})();
+(function(){document.querySelectorAll('.faq-item').forEach(it=>{const b=it.querySelector('.faq-question'),a=it.querySelector('.faq-answer');b.addEventListener('click',()=>{const o=it.classList.toggle('open');a.style.maxHeight=o?a.scrollHeight+'px':'0'})})})();
+(function(){const b=document.querySelector('.nav-burger'),d=document.getElementById('drawer');if(!b||!d)return;const c=()=>document.body.classList.remove('menu-open'),o=()=>document.body.classList.add('menu-open');b.addEventListener('click',()=>document.body.classList.contains('menu-open')?c():o());d.querySelectorAll('a').forEach(a=>a.addEventListener('click',c));addEventListener('keydown',e=>{if(e.key==='Escape')c()})})();
+(function(){
+  const i18n={
+    "title":{sl:"AI-Ready spletna stran — EFLITTE",en:"AI-Ready website — EFLITTE"},
+    "nav.web":{sl:"Spletna stran",en:"Website"},"nav.auto":{sl:"Avtomatizacija",en:"Automation"},"nav.contact":{sl:"Kontakt",en:"Contact"},"nav.cta":{sl:"Pogovorimo se",en:"Let's talk"},
+    "bc":{sl:"AI-Ready spletna stran",en:"AI-Ready website"},
+    "hero.t":{sl:"V 2026 vaše stranke ne iščejo več samo na <span class=\"accent\">Googlu</span>.",en:"In 2026 your customers don't search <span class=\"accent\">only on Google</span> anymore."},
+    "hero.s":{sl:"Spletna prisotnost, optimizirana za Google <em>in</em> za AI iskalnike (ChatGPT, Claude, Perplexity), z integriranim asistentom, ki kvalificira leade 24/7. En projekt, en partner, povezana logika.",en:"Web presence optimized for Google <em>and</em> AI search (ChatGPT, Claude, Perplexity), with an integrated assistant that qualifies leads 24/7. One project, one partner, connected logic."},
+    "hero.c1":{sl:"Rezerviraj 30-min pogovor <span class=\"arrow\">→</span>",en:"Book a 30-min call <span class=\"arrow\">→</span>"},
+    "hero.c2":{sl:"Kaj točno dostavimo",en:"What we deliver"},
+    "wake.l":{sl:"Premik, ki ga večina spregleda",en:"The shift most people miss"},
+    "wake.t":{sl:"Dokler ste bili v Googlu, ste bili <span class=\"accent\">vidni</span>.",en:"As long as you were in Google, you were <span class=\"accent\">visible</span>."},
+    "wake.lead":{sl:"ChatGPT je preselil del iskanja iz brskalnika v pogovor. Ko nekdo vpraša 'katera podjetja v Sloveniji ponujajo X' — ChatGPT, Claude in Perplexity že odgovarjajo. Vprašanje je, ali ste v tistem odgovoru vi, ali vaš konkurent.",en:"ChatGPT has moved part of search out of the browser into conversation. When someone asks 'which companies in Slovenia offer X' — ChatGPT, Claude and Perplexity already answer. The question is whether you're in that answer — or your competitor is."},
+    "wake.tl":{sl:"5-minutni test",en:"5-minute test"},
+    "wake.th":{sl:"Preverite svojo trenutno AI-vidnost",en:"Check your current AI visibility"},
+    "wake.tp1":{sl:"Odprite ChatGPT, Claude ali Perplexity in vpišite spodnji prompt — zamenjajte panogo z vašo:",en:"Open ChatGPT, Claude or Perplexity and paste the prompt below — replace the industry with your own:"},
+    "wake.tprompt":{sl:"\"Katera so najbolj relevantna [vaša panoga] podjetja v Sloveniji za [vaš tip stranke]? Naštej 5–10 z opisom.\"",en:"\"What are the most relevant [your industry] companies in Slovenia for [your customer type]? List 5–10 with description.\""},
+    "wake.tp2":{sl:"Če vas v odgovoru ni — ali, kar je hujše, AI o vas pove napačno stvar — to je problem. Klasični SEO te težave ne reši, ker AI iskalniki indeksirajo drugače: berejo strukturirane podatke, ekstrakcije iz vsebine, citation-friendly markup. Stran iz leta 2022 nima ničesar, kar AI lahko prebere.",en:"If you're not in the answer — or worse, the AI gets you wrong — that's a problem. Classic SEO doesn't fix it, because AI search indexes differently: it reads structured data, content extractions, citation-friendly markup. A site from 2022 has none of what AI can read."},
+    "del.l":{sl:"Kaj dostavimo",en:"What we deliver"},
+    "del.t":{sl:"Štirje <span class=\"accent\">paketi</span>, en pristop.",en:"Four <span class=\"accent\">packages</span>, one approach."},
+    "del.lead":{sl:"Vsak paket pokriva drug del poti. Začneva pri tem, kar trenutno potrebujete — od audita za razumevanje stanja, do polne implementacije in dolgoročne skrbi.",en:"Each package covers a different part of the path. We start with what you need now — from an audit, to full implementation and long-term care."},
+    "d1.t":{sl:"Web Audit",en:"Web Audit"},
+    "d1.m":{sl:"5–7 delovnih dni · Pisni dokument + 60-min predstavitev",en:"5–7 business days · Written document + 60-min presentation"},
+    "d1.p":{sl:"Strukturiran pregled vaše trenutne spletne prisotnosti. Pokrijemo SEO health, AI-vidnost, konverzijski potencial in konkurenčno primerjavo. Izhod je prioritiziran akcijski plan.",en:"Structured review of your current web presence. SEO health, AI visibility, conversion potential, competitive comparison. Output is a prioritized action plan."},
+    "d1.l1":{sl:"Tehnični SEO crawl: indeksacija, hitrost, mobilna izkušnja, schema markup",en:"Technical SEO crawl: indexation, speed, mobile UX, schema markup"},
+    "d1.l2":{sl:"AI-vidnost test: kako se pojavljate v ChatGPT, Claude, Perplexity in Google AI Overviews",en:"AI visibility test: how you appear in ChatGPT, Claude, Perplexity, Google AI Overviews"},
+    "d1.l3":{sl:"Konverzijski review: CTA, lead capture, trust signals, struktura",en:"Conversion review: CTA, lead capture, trust signals, structure"},
+    "d1.l4":{sl:"Konkurenčna primerjava: 3 najmočnejši konkurenti, vrzeli, priložnosti",en:"Competitive analysis: 3 strongest competitors, gaps, opportunities"},
+    "d1.l5":{sl:"3–5 prioritiziranih priporočil z oceno ROI in težavnosti",en:"3–5 prioritized recommendations with ROI and difficulty estimates"},
+    "d2.t":{sl:"AI-Ready spletna stran",en:"AI-Ready website"},
+    "d2.m":{sl:"6–10 tednov · Custom design + AI Search Optimization + integriran asistent",en:"6–10 weeks · Custom design + AI Search Optimization + integrated assistant"},
+    "d2.p":{sl:"Sodobna spletna stran, zgrajena za današnjo realnost iskanja. Kompletno opremljena za Google IN AI iskalnike, z integriranim AI asistentom, ki je naložen z vsebinami vašega podjetja.",en:"Modern website built for today's search reality. Fully equipped for Google AND AI search, with an integrated AI assistant trained on your content."},
+    "d2.l1":{sl:"Custom design v kodi (ne WordPress, ne template) — optimizirano za hitrost in mobilne naprave",en:"Custom design in code (no WordPress, no template) — optimized for speed and mobile"},
+    "d2.l2":{sl:"Tehnični SEO temelji: schema markup, sitemap, GSC setup, page speed",en:"Technical SEO foundations: schema markup, sitemap, GSC setup, page speed"},
+    "d2.l3":{sl:"AI Search Optimization: strukturirana vsebina, FAQ schema, citation-friendly markup, GEO/LLMO strategija",en:"AI Search Optimization: structured content, FAQ schema, citation-friendly markup, GEO/LLMO strategy"},
+    "d2.l4":{sl:"Integriran AI asistent, treniran na vsebinah podjetja (FAQ, ponudba, dokumenti, ton komunikacije)",en:"Integrated AI assistant trained on your content"},
+    "d2.l5":{sl:"Pravne strani, hosting setup, DNS, SSL, GSC verifikacija",en:"Legal pages, hosting setup, DNS, SSL, GSC verification"},
+    "d2.l6":{sl:"30 dni post-launch podpore za manjše popravke",en:"30 days post-launch support for minor fixes"},
+    "d3.t":{sl:"Chatbot Sprint",en:"Chatbot Sprint"},
+    "d3.m":{sl:"1.5–2 tedna · Za podjetja z obstoječo stranjo",en:"1.5–2 weeks · For companies with an existing website"},
+    "d3.p":{sl:"Za podjetja, ki imajo obstoječo spletno stran in hočejo dodati pametnega asistenta. Tipično: hoteli, glamping, restavracije, manjše storitvene dejavnosti — kjer 24/7 dostopnost in večjezičnost rešujeta konkretne operativne probleme.",en:"For companies with an existing site that want to add a smart assistant. Typically: hotels, glamping, restaurants, small service businesses — where 24/7 availability and multi-language solve concrete operational problems."},
+    "d3.l1":{sl:"Setup AI asistenta na obstoječi spletni strani (widget pristop)",en:"AI assistant setup on existing website (widget approach)"},
+    "d3.l2":{sl:"Naložen z vsebinami: cenik, ponudba, FAQ, hišni red, dostop, kontakt",en:"Loaded with content: pricing, offerings, FAQ, house rules, directions, contact"},
+    "d3.l3":{sl:"Multi-language: SL + EN vključeno (DE/IT za doplačilo)",en:"Multi-language: SL + EN included (DE/IT additional)"},
+    "d3.l4":{sl:"Lead capture: povpraševanja na e-pošto ali v booking sistem",en:"Lead capture: inquiries to email or booking system"},
+    "d3.l5":{sl:"Osnovna analytika in 1-urni training za ekipo",en:"Basic analytics and 1-hour team training"},
+    "d4.t":{sl:"Care &amp; Grow Retainer",en:"Care &amp; Grow Retainer"},
+    "d4.m":{sl:"Modularna mesečna naročnina · Minimum 6 mesecev",en:"Modular monthly subscription · 6-month minimum"},
+    "d4.p":{sl:"Po launchu sistem ne zahteva zgolj vzdrževanja, ampak nadgrajevanje — nove vsebine, optimizacije konverzije, prilagoditve algoritmom AI iskalnikov, dodajanje use case-ov chatbota. Modularna struktura, ki raste z vami.",en:"After launch the system needs not just maintenance but extension — new content, conversion optimizations, adjustments to AI search algorithms, expanding chatbot use cases. Modular structure that grows with you."},
+    "d4.l1":{sl:"Hosting, monitoring, varnostne posodobitve, SSL renewal",en:"Hosting, monitoring, security updates, SSL renewal"},
+    "d4.l2":{sl:"Mesečno reporting: SEO ranking, traffic, AI chatbot logi (kaj obiskovalci dejansko sprašujejo)",en:"Monthly reporting: SEO ranking, traffic, AI chatbot logs"},
+    "d4.l3":{sl:"Dela na izboljšavah: nove sekcije, vsebina, A/B testi CTA, optimizacija chatbota",en:"Improvement work: new sections, content, A/B testing, chatbot tuning"},
+    "d4.l4":{sl:"Kvartalni 60-min strateški pregled in priporočila",en:"Quarterly 60-min strategic review"},
+    "d4.l5":{sl:"Prioritetna podpora (24h response window)",en:"Priority support (24h response window)"},
+    "why.l":{sl:"Zakaj ne klasična web agencija",en:"Why not a classic web agency"},
+    "why.t":{sl:"Drugačno orodje za <span class=\"accent\">drugačen čas</span>.",en:"Different tools for <span class=\"accent\">different times</span>."},
+    "why.lead":{sl:"V Sloveniji obstaja na desetine spletnih agencij. Večina dela kvalitetno, a po istem template-u, ki je iz leta 2018. Spodaj je razlika.",en:"There are dozens of web agencies in Slovenia. Most do quality work, but on the same template from 2018. Here's the difference."},
+    "why.1h":{sl:"AI Search Optimization, ne samo Google SEO",en:"AI Search Optimization, not just Google SEO"},
+    "why.1p":{sl:"Klasični SEO ostaja, dodajamo plast: strukturirano vsebino, ki jo AI iskalniki dejansko berejo, citation markup, FAQ schema, pristop GEO/LLMO. To je razlika med biti viden v ChatGPT-ju in biti nevidnen.",en:"Classic SEO stays; we add a layer: structured content AI search reads, citation markup, FAQ schema, a GEO/LLMO approach."},
+    "why.2h":{sl:"Custom v kodi, ne WordPress template",en:"Custom in code, not WordPress template"},
+    "why.2p":{sl:"Generične WordPress strani so počasne, težko prilagodljive in podobne sto drugim. Pišemo v čisti kodi (HTML/CSS/JS, brez build koraka) — hitre, prilagojene, pod vašim nadzorom.",en:"Generic WordPress sites are slow, hard to customize and look like a hundred others. We write clean code — fast, custom, under your control."},
+    "why.3h":{sl:"Chatbot, ki ni Tidio",en:"A chatbot that isn't Tidio"},
+    "why.3p":{sl:"Generični chatbot z gumbom \"AI\" je nujno splošno-namenski. Naš asistent je treniran na vsebinah vašega podjetja, pozna vaše procese, dokumente, ton — in zna reči \"tega ne vem\", namesto da si izmisli odgovor.",en:"A generic chatbot with an \"AI\" button is by necessity general-purpose. Our assistant is trained on your content and can say \"I don't know\" instead of inventing an answer."},
+    "why.4h":{sl:"En partner za tri stvari",en:"One partner for three things"},
+    "why.4p":{sl:"Tipično podjetje plačuje web agencijo, SEO svetovalca in chatbot subscription. Trije računi, trije vendorji, nič ne komunicira med sabo. Pri nas je to ena povezana logika.",en:"A typical company pays a web agency, SEO consultant and chatbot subscription. Three vendors, nothing connects. With us, it's one connected logic."},
+    "faq.l":{sl:"Pogosto zastavljena",en:"Frequently asked"},
+    "faq.t":{sl:"Vprašanja, ki vas <span class=\"accent\">verjetno zanimajo</span>.",en:"Questions you're <span class=\"accent\">probably wondering</span>."},
+    "fq1":{sl:"Pred 2 letoma smo redizajnali stran. Zakaj bi vlagali ponovno?",en:"We redesigned 2 years ago. Why invest again?"},
+    "fa1":{sl:"Pred 2 letoma je obstajala v glavnem samo Google indeksacija. Danes obstaja paralelna AI indeksacija (ChatGPT, Perplexity, Google AI Overviews) z drugačnimi pravili. Stran iz 2022 ni bila zgrajena s tem v mislih. Vprašanje ni \"ali je stran lepa\", ampak \"ali AI iskalniki vidijo, kdo ste\". Pogosto najprej naredimo nadgradnjo obstoječe strani namesto popolne prenove — če je tehnično mogoče. Audit pokaže, kateri pristop je smiseln.",en:"Two years ago there was mainly only Google indexing. Today there's parallel AI indexing (ChatGPT, Perplexity, Google AI Overviews) with different rules. A 2022 site wasn't built with that in mind. The question isn't \"is the site pretty\", but \"can AI search see who you are\". Often we upgrade the existing site instead of full redesign — if technically possible. The audit shows which path makes sense."},
+    "fq2":{sl:"Mi smo specifična panoga. Razumete našo stranko?",en:"We're in a specific industry. Do you understand our customer?"},
+    "fa2":{sl:"Audit faza je zasnovana ravno za to. V prvih dneh študiramo vašo panogo, intervjuvamo vas in 1–2 osebi iz ekipe, preučimo konkurenco. Naša prednost ni, da že znamo vašo panogo bolje od vas — ampak da prinesemo strukturirano zunanjo perspektivo in tehnično ekspertizo, ki jo večina v vaši panogi nima. Vi prinesete kontekst, mi metodologijo.",en:"The audit phase is designed for this. We study your industry, interview you and 1–2 team members, examine competitors. Our edge isn't that we already know your industry better than you — but that we bring a structured outside perspective and technical expertise. You bring the context, we bring the methodology."},
+    "fq3":{sl:"Kaj če AI chatbot reče kaj narobe?",en:"What if the AI chatbot says something wrong?"},
+    "fa3":{sl:"Chatbot zgradimo s tremi varovali: (1) treniran je na specifičnih vsebinah vašega podjetja, ne splošnem internetu, (2) sistemski prompt mu jasno določa, o čem sme govoriti in kdaj naj reče \"tega ne vem, pišite na info@\", (3) pred public launch-om imamo 14-dnevni \"tihi test\", kjer vi vidite vsak pogovor in lahko popravite ton. Po launchu beležimo vse pogovore — vsako napako lahko izsledimo in popravimo prompt.",en:"We build the chatbot with three safeguards: (1) trained on your specific content, not the open internet, (2) system prompt defines scope and when to say \"I don't know\", (3) before launch we run a 14-day \"silent test\" where you see every conversation. After launch we log all conversations — every mistake can be traced and the prompt fixed."},
+    "fq4":{sl:"Imate reference?",en:"Do you have references?"},
+    "fa4":{sl:"Najboljša referenca je trenutno spletna stran, ki jo gledate — gradili smo jo z istim pristopom, ki ga prodajamo. Z dosedanjimi strankami imamo NDA dogovore, zato konkretnih projektov ne moremo javno izpostavljati. Med uvodnim pogovorom z veseljem govorimo o pristopu in pokažemo konkretne demo elemente — chatbot, AI Search Optimization rezultati, hitrost, struktura.",en:"The best reference is the website you're looking at — built with the same approach we sell. With existing clients we have NDAs, so we can't publicly showcase projects. During the intro call we walk through the approach and show concrete demo elements."},
+    "fq5":{sl:"Kako dolgo traja, koliko stane?",en:"How long, how much?"},
+    "fa5":{sl:"Časovne okvirje smo opredelili pri vsakem paketu (audit 5–7 dni, glavna stran 6–10 tednov, chatbot sprint 1.5–2 tedna). Glede cene: brez konkretnih specifikacij ne moremo dati zavezujoče ponudbe — število podstrani, jeziki, integracije in zahtevnost chatbota močno vplivajo. Specifikacije sprejmemo na info@eflitte.si ali prek 30-min uvodnega klica, nato pripravimo pisni predračun.",en:"Time frames are at each package (audit 5–7 days, main site 6–10 weeks, chatbot sprint 1.5–2 weeks). On price: without concrete specs we can't give a binding quote. Send specs to info@eflitte.si or via a 30-min intro call, then we prepare a written quote."},
+    "fq6":{sl:"Kako varujete naše podatke in podatke obiskovalcev?",en:"How do you protect our data and visitors' data?"},
+    "fa6":{sl:"Hosting v EU regiji (Frankfurt). Pogovori s chatbotom se ne shranjujejo v naši bazi — pretok podatkov gre prek API klica do Anthropic ali OpenAI (oba EU-skladna prek SCC + EU-US Data Privacy Framework), odgovor se prikaže v brskalniku in zaključi. Pri reguliranih panogah (zdravstvo, finance) gradimo self-hosted setup z lokalnimi LLM modeli, kjer občutljivi podatki nikoli ne zapustijo vašega okolja. Vse pred začetkom projekta zapečatimo s podpisom DPA.",en:"Hosting in EU region (Frankfurt). Chatbot conversations are not stored in our database — data flows via API call to Anthropic or OpenAI (both EU-compliant via SCC + EU-US Data Privacy Framework), the response is shown in the browser. For regulated industries (healthcare, finance) we build self-hosted setups with local LLMs, where sensitive data never leaves your environment. Sealed with a DPA before project start."},
+    "cta.t":{sl:"Začnimo s <span class=\"accent\">pogovorom</span>.",en:"Let's start with a <span class=\"accent\">conversation</span>."},
+    "cta.l":{sl:"Tridesetminutni klic, brez obveznosti. Pogledamo vašo trenutno stran, preverimo AI-vidnost, in iskreno povemo, kateri od paketov (če sploh) vam dejansko koristi.",en:"30-min call, no strings. We look at your site, check AI visibility, and tell you honestly which package (if any) actually fits."},
+    "cta.b":{sl:"Rezerviraj 30-min pogovor",en:"Book a 30-min call"},
+    "ft.tag":{sl:"AI infrastruktura za slovenska podjetja. Spletna prisotnost in operativna avtomatizacija pod eno streho.",en:"AI infrastructure for Slovenian companies. Web presence and operational automation under one roof."},
+    "ft.prod":{sl:"Produkti",en:"Products"},
+    "ft.web":{sl:"AI-Ready spletna stran",en:"AI-Ready website"},
+    "ft.auto":{sl:"Avtomatizacija",en:"Automation"},
+    "ft.con":{sl:"Kontakt",en:"Contact"},
+    "ft.comp":{sl:"Podjetje",en:"Company"},
+    "ft.imp":{sl:"Impressum",en:"Imprint"},
+    "ft.priv":{sl:"Politika zasebnosti",en:"Privacy Policy"},
+    "ft.cook":{sl:"Piškotki",en:"Cookies"},
+    "ft.write":{sl:"Pišite nam",en:"Get in touch"},
+    "ft.loc":{sl:"Slovenske Konjice, SI",en:"Slovenske Konjice, SI"},
+    "ft.copy":{sl:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.",en:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p."}
+  };
+  function apply(lang){
+    document.documentElement.lang=lang;
+    if(i18n.title&&i18n.title[lang])document.title=i18n.title[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const t=i18n[el.getAttribute('data-i18n')];if(t&&t[lang]!==undefined)el.innerHTML=t[lang]});
+    document.querySelectorAll('.lang-toggle,.drawer-lang').forEach(b=>b.textContent=lang==='en'?'SL':'EN');
+    try{localStorage.setItem('eflitte-lang',lang)}catch(e){}
+  }
+  let s='sl';try{s=localStorage.getItem('eflitte-lang')||'sl'}catch(e){}
+  if(s==='en')apply('en');
+  document.querySelectorAll('.lang-toggle,.drawer-lang').forEach(b=>b.addEventListener('click',()=>{const c=document.documentElement.lang==='en'?'en':'sl';apply(c==='en'?'sl':'en')}));
+})();
+</script>
+
+<script>window.EFLITTE_CHAT_CONFIG={endpoint:'/api/chat',lang:'auto',mock:false}</script>
+<script src="chat-widget.js" defer></script>
+</body>
+</html>

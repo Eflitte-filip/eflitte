@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Cream background to match brand -->
+  <rect width="64" height="64" rx="12" fill="#FAF9F5"/>
+  <!-- Stylized "E" mark from logo -->
+  <text x="14" y="46" font-family="Inter, sans-serif" font-weight="700" font-size="42" fill="#141413" letter-spacing="-2">E</text>
+  <!-- Brand dot -->
+  <circle cx="48" cy="44" r="6" fill="#CC785C"/>
+</svg>

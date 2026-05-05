@@ -2,9 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Homepage -->
   <url>
     <loc>https://eflitte.si/</loc>
-    <lastmod>2026-05-03</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="sl" href="https://eflitte.si/" />
@@ -12,23 +13,44 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://eflitte.si/" />
   </url>
 
+  <!-- AI-Ready Website (product line landing) -->
+  <url>
+    <loc>https://eflitte.si/web</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://eflitte.si/web" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://eflitte.si/web?lang=en" />
+  </url>
+
+  <!-- Process Automation (product line landing) -->
+  <url>
+    <loc>https://eflitte.si/avtomatizacija</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://eflitte.si/avtomatizacija" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://eflitte.si/avtomatizacija?lang=en" />
+  </url>
+
+  <!-- Legal pages -->
   <url>
     <loc>https://eflitte.si/privacy.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://eflitte.si/cookies.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://eflitte.si/impressum.html</loc>
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

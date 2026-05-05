@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title data-i18n="title">Avtomatizacija procesov — EFLITTE | n8n + AI za slovenska podjetja</title>
+<meta name="description" data-i18n="meta.description" content="Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo samodejno. Lead handling, faktura chase, email triage, reporting. Self-hosted, EU regija, GDPR-skladno." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#FAF9F5" />
+
+<link rel="canonical" href="https://eflitte.si/avtomatizacija" />
+<link rel="alternate" hreflang="sl" href="https://eflitte.si/avtomatizacija" />
+<link rel="alternate" hreflang="en" href="https://eflitte.si/avtomatizacija?lang=en" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="sl_SI" />
+<meta property="og:site_name" content="EFLITTE" />
+<meta property="og:title" content="Avtomatizacija procesov — EFLITTE" />
+<meta property="og:description" content="Procesi, ki jih ekipa opravlja ročno, lahko tečejo samodejno. Merljiv prihranek, EU regija, brez vendor lock-ina." />
+<meta property="og:url" content="https://eflitte.si/avtomatizacija" />
+<meta property="og:image" content="https://eflitte.si/og-image.png" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Avtomatizacija procesov",
+  "provider": { "@type": "Organization", "name": "EFLITTE", "url": "https://eflitte.si/" },
+  "areaServed": { "@type": "Country", "name": "Slovenia" },
+  "description": "Workflow avtomatizacija z n8n in LLM logiko: lead handling, faktura chase, email triage, reporting. Self-hosted infrastruktura v EU regiji.",
+  "serviceType": ["Workflow automation", "AI integration", "Process automation", "Business process automation"]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #FAF9F5;
+    --bg-alt: #F0EEE6;
+    --surface: #F5F3EC;
+    --surface-2: #E8E5DB;
+    --ink: #141413;
+    --ink-soft: #3D3D3B;
+    --muted: #6C6B67;
+    --line: rgba(20, 20, 19, 0.10);
+    --line-strong: rgba(20, 20, 19, 0.18);
+    --accent: #CC785C;
+    --accent-deep: #B0593F;
+    --accent-soft: rgba(204, 120, 92, 0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #FAF9F5; }
+
+  /* ===== NAV (shared) ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 40px;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; column-gap: 32px;
+    background: rgba(250,249,245,0.82);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: padding 0.4s ease, border-color 0.4s ease;
+  }
+  .nav.scrolled { padding: 14px 40px; border-bottom-color: var(--line); }
+  .nav .logo { justify-self: start; }
+  .nav .nav-links { justify-self: center; }
+  .nav .nav-right { justify-self: end; display: flex; align-items: center; gap: 20px; }
+  .logo {
+    display: inline-flex; align-items: baseline; height: 32px;
+    font-family: "Inter", sans-serif; font-weight: 700; letter-spacing: -0.035em;
+    color: var(--ink); text-decoration: none;
+  }
+  .logo-letters { display: flex; align-items: baseline; font-size: 28px; line-height: 1; }
+  .logo-letters span {
+    display: inline-block;
+    transition: max-width 0.6s cubic-bezier(.77,.05,.2,1), opacity 0.35s ease;
+    max-width: 1em; overflow: hidden; white-space: pre;
+  }
+  .nav.scrolled .logo-letters span.hide { max-width: 0; opacity: 0; }
+  .logo-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-left: 3px; flex-shrink: 0;
+    transition: margin-left 0.6s cubic-bezier(.77,.05,.2,1);
+  }
+  .nav.scrolled .logo-dot { margin-left: 2px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--ink-soft); text-decoration: none;
+    font-size: 14.5px; font-weight: 500; white-space: nowrap;
+    transition: color 0.2s ease; position: relative;
+  }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after {
+    content: ""; position: absolute;
+    left: 0; bottom: -4px; width: 100%; height: 1px;
+    background: var(--accent);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .lang-toggle {
+    background: none; border: none;
+    color: var(--ink-soft); font-family: inherit;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
+    cursor: pointer; padding: 6px 10px;
+    transition: color 0.2s ease;
+  }
+  .lang-toggle:hover { color: var(--ink); }
+  .nav-cta {
+    padding: 10px 20px; min-width: 140px;
+    background: var(--ink); color: var(--bg);
+    border: none; border-radius: 999px;
+    font-family: inherit; font-size: 13.5px; font-weight: 500;
+    text-align: center; cursor: pointer; text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
+  .nav-burger {
+    display: none; width: 32px; height: 32px;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; justify-content: center; align-items: center; gap: 6px;
+  }
+  .nav-burger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  body.menu-open .nav-burger span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+  body.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
+  body.menu-open .nav-burger span:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
+
+  .drawer {
+    position: fixed; top: 0; right: 0;
+    width: 320px; max-width: 90vw; height: 100vh;
+    background: var(--bg); border-left: 1px solid var(--line);
+    z-index: 99; padding: 100px 32px 32px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(.77,.05,.2,1);
+    visibility: hidden; display: flex; flex-direction: column; gap: 8px;
+  }
+  body.menu-open .drawer { transform: translateX(0); visibility: visible; }
+  .drawer-link {
+    color: var(--ink); text-decoration: none;
+    font-size: 18px; font-weight: 500;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+  }
+  .drawer-cta {
+    margin-top: 24px; padding: 14px 20px;
+    background: var(--ink); color: var(--bg);
+    text-decoration: none; text-align: center;
+    border-radius: 999px; font-weight: 500; font-size: 14.5px;
+  }
+  .drawer-lang {
+    margin-top: 12px; background: none;
+    border: 1px solid var(--line); padding: 12px;
+    border-radius: 999px; font-family: inherit;
+    font-size: 13px; color: var(--ink-soft); cursor: pointer;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    padding: 180px 40px 120px;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 0% 30%, var(--accent-soft), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 100% 80%, rgba(204,120,92,0.06), transparent 50%);
+    pointer-events: none;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(20,20,19,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20,20,19,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent 80%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1200px; width: 100%; margin: 0 auto;
+  }
+  .breadcrumb {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 36px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb .sep { color: var(--accent); }
+
+  h1.hero-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 36px;
+    max-width: 1100px;
+  }
+  h1.hero-title .accent {
+    font-family: "Instrument Serif", serif;
+    font-style: italic; font-weight: 400;
+    letter-spacing: -0.01em; color: var(--accent);
+    display: inline-block;
+  }
+  .hero-sub {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 16px 28px;
+    background: var(--ink); color: var(--bg);
+    border: none; border-radius: 999px;
+    font-family: inherit; font-size: 15px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .btn-primary:hover { background: #2A2A28; transform: translateY(-1px); }
+  .btn-primary .arrow { transition: transform 0.25s ease; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-ghost {
+    padding: 16px 24px;
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-family: inherit; font-size: 15px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-ghost:hover { border-color: var(--ink); background: var(--surface); }
+
+  /* ===== COMMON ===== */
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+  .section-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4.2vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 880px;
+  }
+  .section-title .accent {
+    font-family: "Instrument Serif", serif;
+    font-style: italic; font-weight: 400;
+    letter-spacing: -0.005em;
+    color: var(--accent);
+  }
+  .section-lead {
+    font-size: 17.5px; line-height: 1.6;
+    color: var(--ink-soft); max-width: 720px;
+  }
+
+  /* ===== USE CASES — concrete examples ===== */
+  .usecases {
+    padding: 140px 40px;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+  .usecase-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 36px 32px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .usecase-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .usecase-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .usecase-card h3 {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .usecase-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .usecase-flow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink);
+    background: var(--surface);
+    padding: 14px 16px;
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.7;
+    word-break: break-word;
+  }
+
+  /* ===== ROI MATH ===== */
+  .roi {
+    background: #141413;
+    color: #FAF9F5;
+    padding: 140px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .roi::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 20% 50%, rgba(204,120,92,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .roi-inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+  .roi .section-label { color: rgba(250,249,245,0.55); }
+  .roi .section-title { color: #FAF9F5; }
+  .roi .section-title .accent { color: var(--accent); }
+  .roi-lead {
+    font-size: 18px; line-height: 1.6;
+    color: rgba(250,249,245,0.78);
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+
+  .roi-formula {
+    margin-top: 48px;
+    background: rgba(250,249,245,0.04);
+    border: 1px solid rgba(250,249,245,0.10);
+    border-radius: 4px;
+    padding: 40px 44px;
+    max-width: 760px;
+  }
+  .roi-formula .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .roi-formula h3 {
+    font-weight: 600; font-size: 22px;
+    color: #FAF9F5; letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+  .roi-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(250,249,245,0.08);
+    align-items: baseline;
+  }
+  .roi-row:last-of-type { border-bottom: none; }
+  .roi-row .label-l {
+    font-size: 14.5px;
+    color: rgba(250,249,245,0.78);
+  }
+  .roi-row .value {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14.5px;
+    color: #FAF9F5;
+    font-weight: 500;
+  }
+  .roi-divider {
+    height: 1px;
+    background: rgba(250,249,245,0.20);
+    margin: 8px 0;
+  }
+  .roi-result {
+    margin-top: 8px;
+    padding-top: 16px;
+  }
+  .roi-result .label-l {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .roi-result .value {
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .roi-note {
+    font-size: 13.5px;
+    color: rgba(250,249,245,0.55);
+    margin-top: 24px;
+    line-height: 1.55;
+  }
+
+  /* ===== RELIABILITY ===== */
+  .reliability {
+    padding: 140px 40px;
+    background: var(--bg);
+  }
+  .rel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .rel-list { display: grid; gap: 36px; margin-top: 40px; }
+  .rel-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 20px;
+  }
+  .rel-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px; color: var(--accent);
+    letter-spacing: 0.05em; padding-top: 4px;
+  }
+  .rel-item h4 {
+    font-weight: 600; font-size: 18px;
+    letter-spacing: -0.01em; margin-bottom: 8px;
+  }
+  .rel-item p {
+    font-size: 15.5px; line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ===== DELIVERY ===== */
+  .delivery {
+    padding: 140px 40px;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--line);
+  }
+  .delivery-grid {
+    margin-top: 80px;
+    display: grid; gap: 24px;
+  }
+  .deliver-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 60px;
+    transition: border-color 0.3s ease;
+  }
+  .deliver-card:hover { border-color: var(--line-strong); }
+  .deliver-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .deliver-card h3 {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .deliver-meta {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+  .deliver-body p {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .deliver-list {
+    list-style: none;
+    margin-top: 20px;
+  }
+  .deliver-list li {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .deliver-list li:first-child { border-top: 1px solid var(--line-strong); }
+  .deliver-list li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 8px;
+  }
+
+  /* ===== TECH STACK / SI TOOLS ===== */
+  .stack {
+    padding: 140px 40px;
+    background: var(--bg);
+  }
+  .stack-tags {
+    display: flex; flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 40px;
+  }
+  .stack-tags span {
+    padding: 10px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .stack-tags span.highlight {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-deep);
+  }
+  .stack-note {
+    margin-top: 36px;
+    font-size: 14.5px;
+    color: var(--muted);
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    background: var(--bg-alt);
+    padding: 140px 40px;
+    border-top: 1px solid var(--line);
+  }
+  .faq-head { margin-bottom: 56px; max-width: 720px; }
+  .faq-list { max-width: 900px; border-top: 1px solid var(--line-strong); }
+  .faq-item { border-bottom: 1px solid var(--line-strong); }
+  .faq-question {
+    width: 100%;
+    padding: 28px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 24px;
+    background: none; border: none; cursor: pointer;
+    text-align: left; font-family: inherit;
+    font-weight: 400; font-size: 21px;
+    line-height: 1.25; letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .faq-icon {
+    flex-shrink: 0; width: 22px; height: 22px;
+    position: relative; margin-top: 6px;
+  }
+  .faq-icon::before, .faq-icon::after {
+    content: ""; position: absolute;
+    background: var(--ink);
+    transition: transform 0.35s cubic-bezier(.77,.05,.2,1);
+  }
+  .faq-icon::before { left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
+  .faq-icon::after { top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
+  .faq-item.open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(.77,.05,.2,1); }
+  .faq-answer-inner { padding: 0 0 28px 0; }
+  .faq-answer-inner p {
+    font-size: 16px; line-height: 1.65;
+    color: var(--ink-soft); max-width: 720px;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    background: #141413; color: #FAF9F5;
+    padding: 140px 40px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 40% at 50% 0%, rgba(204,120,92,0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+  .cta h2 {
+    font-weight: 700;
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.05; letter-spacing: -0.03em;
+    margin-bottom: 24px; color: #FAF9F5;
+  }
+  .cta h2 .accent {
+    font-family: "Instrument Serif", serif;
+    font-style: italic; font-weight: 400; color: var(--accent);
+  }
+  .cta p {
+    font-size: 17px; color: rgba(250,249,245,0.78);
+    max-width: 580px; margin: 0 auto 44px;
+    line-height: 1.6;
+  }
+  .cta .btn-primary { background: #FAF9F5; color: #141413; }
+  .cta .btn-primary:hover { background: #FFFFFF; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #141413; color: rgba(250,249,245,0.6);
+    padding: 80px 40px 32px;
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px; padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    align-items: start;
+  }
+  .footer-brand {
+    font-weight: 700; letter-spacing: -0.04em;
+    font-size: 60px; line-height: 1; color: #FAF9F5;
+    display: inline-flex; align-items: baseline;
+    text-decoration: none;
+  }
+  .footer-brand-dot {
+    width: 18px; height: 18px;
+    background: var(--accent); border-radius: 50%;
+    margin-left: 5px; display: inline-block;
+  }
+  .footer-tagline {
+    margin-top: 24px; color: rgba(250,249,245,0.55);
+    font-size: 14.5px; line-height: 1.55; max-width: 320px;
+  }
+  .footer-col h5 {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 500; font-size: 11.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(250,249,245,0.45);
+    margin-bottom: 18px;
+  }
+  .footer-col a, .footer-col span {
+    display: block; color: rgba(250,249,245,0.78);
+    text-decoration: none; font-size: 14.5px;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1200px; margin: 32px auto 0;
+    display: flex; justify-content: space-between;
+    align-items: center;
+    color: rgba(250,249,245,0.42);
+    font-size: 13px;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-legal { display: flex; gap: 22px; flex-wrap: wrap; }
+  .footer-legal a {
+    color: rgba(250,249,245,0.55);
+    text-decoration: none; font-size: 13px;
+    transition: color 0.2s ease;
+  }
+  .footer-legal a:hover { color: var(--accent); }
+
+  /* REVEAL */
+  [data-reveal] {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+  }
+  [data-reveal].in { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1080px) {
+    .nav { padding: 18px 22px; grid-template-columns: 1fr auto; }
+    .nav.scrolled { padding: 12px 22px; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .nav-right .lang-toggle, .nav-right .nav-cta { display: none; }
+  }
+  @media (max-width: 920px) {
+    .hero { padding: 130px 22px 80px; }
+    .usecases, .roi, .reliability, .delivery, .stack, .faq, .cta { padding: 80px 22px; }
+    .usecase-grid { grid-template-columns: 1fr; gap: 16px; }
+    .deliver-card { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
+    .rel-grid { grid-template-columns: 1fr; gap: 40px; }
+    .roi-formula { padding: 28px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; padding: 0 0 40px; }
+    .footer-brand { font-size: 48px; }
+    footer { padding: 56px 22px 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="/" class="logo" aria-label="Eflitte">
+    <span class="logo-letters">
+      <span class="keep">E</span><span class="hide">flitte</span>
+    </span>
+    <span class="logo-dot"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/web" data-i18n="nv.web">Spletna stran</a></li>
+    <li><a href="/avtomatizacija" class="active" data-i18n="nv.auto">Avtomatizacija</a></li>
+    <li><a href="/#kontakt" data-i18n="nv.con">Kontakt</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle">EN</button>
+    <a href="/#kontakt" class="nav-cta" data-i18n="nv.cta">Pogovorimo se</a>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <a href="/web" class="drawer-link" data-i18n="nv.web">Spletna stran</a>
+  <a href="/avtomatizacija" class="drawer-link" data-i18n="nv.auto">Avtomatizacija</a>
+  <a href="/#kontakt" class="drawer-link" data-i18n="nv.con">Kontakt</a>
+  <a href="/#kontakt" class="drawer-cta" data-i18n="nv.cta">Pogovorimo se</a>
+  <button class="drawer-lang">EN</button>
+</aside>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <nav class="breadcrumb">
+      <a href="/">Eflitte</a>
+      <span class="sep">/</span>
+      <span data-i18n="bc.auto">Avtomatizacija procesov</span>
+    </nav>
+    <h1 class="hero-title" data-reveal data-i18n="hero.t">
+      Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo <span class="accent">samodejno</span>.
+    </h1>
+    <p class="hero-sub" data-reveal data-i18n="hero.s">
+      Lead handling, faktura chase, email triage, mesečno reporting. En specifičen proces hkrati. Merljiv prihranek od prvega meseca, brez vendor lock-ina, vaši podatki ostanejo v EU.
+    </p>
+    <div class="hero-actions" data-reveal>
+      <a href="/#kontakt" class="btn-primary" data-i18n="hero.c1">
+        Rezerviraj 30-min pogovor <span class="arrow">→</span>
+      </a>
+      <a href="#cases" class="btn-ghost" data-i18n="hero.c2">
+        Konkretni primeri
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- USE CASES -->
+<section class="usecases" id="cases">
+  <div class="container">
+    <div data-reveal>
+      <div class="section-label" data-i18n="uc.l">Konkretni primeri</div>
+      <h2 class="section-title" data-i18n="uc.t">
+        Kaj točno <span class="accent">avtomatiziramo</span>.
+      </h2>
+      <p class="section-lead" data-i18n="uc.lead">
+        Spodaj so štirje tipični prvi sprinti pri slovenskih SMB. Vsak je en proces, en specifičen problem, en sprint. Nato gradimo naprej.
+      </p>
+    </div>
+
+    <div class="usecase-grid">
+      <article class="usecase-card" data-reveal>
+        <div class="usecase-num">01 / Sales</div>
+        <h3 data-i18n="uc1.t">Lead handling</h3>
+        <p data-i18n="uc1.p">Spletni obrazec ali e-mail povpraševanje gre skozi AI kvalifikacijo, vpiše se v CRM s pravimi tagi, pošlje se personaliziran follow-up, ekipa dobi Slack notifikacijo z že pripravljenim kontekstom za klic.</p>
+        <div class="usecase-flow">
+          obrazec → LLM kvalifikacija →<br/>
+          CRM zapis + tag → email follow-up →<br/>
+          Slack ekipa
+        </div>
+      </article>
+
+      <article class="usecase-card" data-reveal>
+        <div class="usecase-num">02 / Finance</div>
+        <h3 data-i18n="uc2.t">Faktura chase</h3>
+        <p data-i18n="uc2.p">Iz Minimaxa ali e-Računov potegnemo seznam neplačanih faktur. Eskalacijska sekvenca e-mailov (mehki opomnik na 7 dni, trši na 14, eskalacija vodstvu na 30 dni). Dnevno poročilo statusov.</p>
+        <div class="usecase-flow">
+          Minimax/e-Računi → neplačane → <br/>
+          eskalacijska e-pošta sekvenca → <br/>
+          dnevni status report
+        </div>
+      </article>
+
+      <article class="usecase-card" data-reveal>
+        <div class="usecase-num">03 / Inbox</div>
+        <h3 data-i18n="uc3.t">Email triage</h3>
+        <p data-i18n="uc3.p">Dohodne e-pošte v skupni inbox (info@, prodaja@) gredo skozi LLM klasifikacijo. Razporeditev v ekipo glede na vsebino, draft odgovora za rutinske primere, eskalacija za vse, kar zahteva človeško presojo.</p>
+        <div class="usecase-flow">
+          inbox → LLM klasifikacija →<br/>
+          razporeditev + draft →<br/>
+          ekipa odobri ali popravi
+        </div>
+      </article>
+
+      <article class="usecase-card" data-reveal>
+        <div class="usecase-num">04 / Reporting</div>
+        <h3 data-i18n="uc4.t">Mesečno reporting</h3>
+        <p data-i18n="uc4.p">Podatki iz različnih sistemov (CRM, ERP, Google Analytics, Stripe) se zbirajo skozi mesec. Prvi delovni dan v mesecu AI sestavi strukturiran povzetek z odstopanji od ciljev in pošlje vodstvu.</p>
+        <div class="usecase-flow">
+          več virov → zbiranje →<br/>
+          AI povzetek + odstopanja →<br/>
+          dokument vodstvu
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ROI MATH -->
+<section class="roi">
+  <div class="roi-inner">
+    <div data-reveal>
+      <div class="section-label" data-i18n="roi.l">ROI brez fluffa</div>
+      <h2 class="section-title" data-i18n="roi.t">
+        Matematika, ne <span class="accent">obljube</span>.
+      </h2>
+      <p class="roi-lead" data-i18n="roi.lead">
+        Avtomatizacija ima merljiv ROI: koliko ur ekipa porabi na proces × koliko stane ura, minus strošek implementacije in mesečnega vzdrževanja. Pri vsakem projektu te številke določimo skupaj — pred začetkom razvoja, ne po njem.
+      </p>
+    </div>
+
+    <div class="roi-formula" data-reveal>
+      <div class="label" data-i18n="roi.ex">Ilustrativna kalkulacija</div>
+      <h3 data-i18n="roi.ex.t">Email triage v 30-osebnem podjetju</h3>
+      <div class="roi-row">
+        <span class="label-l" data-i18n="roi.r1.l">Trenutno: 2 osebi, vsaka 1.5 h/dan na inbox triage</span>
+        <span class="value">3 h/dan</span>
+      </div>
+      <div class="roi-row">
+        <span class="label-l" data-i18n="roi.r2.l">Mesečno (22 delovnih dni)</span>
+        <span class="value">66 h/mesec</span>
+      </div>
+      <div class="roi-row">
+        <span class="label-l" data-i18n="roi.r3.l">Polna cena ure (bruto + dajatve + prostor + orodja)</span>
+        <span class="value">≈ 25 €/h</span>
+      </div>
+      <div class="roi-divider"></div>
+      <div class="roi-row">
+        <span class="label-l" data-i18n="roi.r4.l">Trenutni mesečni strošek tega procesa</span>
+        <span class="value">≈ 1.650 €/mes</span>
+      </div>
+      <div class="roi-row">
+        <span class="label-l" data-i18n="roi.r5.l">Z avtomatizacijo: ostane ~ 30 % (presoja, edge cases)</span>
+        <span class="value">≈ 500 €/mes</span>
+      </div>
+      <div class="roi-row roi-result">
+        <span class="label-l" data-i18n="roi.r6.l">Mesečni prihranek</span>
+        <span class="value">≈ 1.150 €/mes</span>
+      </div>
+      <p class="roi-note" data-i18n="roi.note">
+        To je ilustrativen primer, ne zavezujoča kalkulacija. Pri konkretnem projektu Process Audit pokaže realne številke za vašo specifično situacijo — pogosto je razlika večja, ker rutinski procesi v praksi pojejo več časa, kot vodstvo predvideva.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- RELIABILITY -->
+<section class="reliability">
+  <div class="container">
+    <div class="rel-grid">
+      <div data-reveal>
+        <div class="section-label" data-i18n="rel.l">Zaupanje, ne hype</div>
+        <h2 class="section-title" data-i18n="rel.t">
+          Sistem, ki ga lahko <span class="accent">pustite</span>.
+        </h2>
+        <p class="section-lead" data-i18n="rel.lead">
+          Vaša ekipa se boji dveh stvari: da AI nekaj naredi narobe, in da podatki uidejo v tujino. Oboje naslavljamo eksplicitno, ne v drobnem tisku.
+        </p>
+      </div>
+      <div class="rel-list" data-reveal>
+        <div class="rel-item">
+          <div class="rel-num">01</div>
+          <div>
+            <h4 data-i18n="rel.i1.h">Human-in-the-loop pri kritičnih korakih</h4>
+            <p data-i18n="rel.i1.p">AI pripravi, človek odobri. Pri vsem, kar je finančno, pravno ali javno (e-pošta strankam, fakture, plačila) avtomatizacija ustvari osnutek — končna potrditev je vedno na človeku.</p>
+          </div>
+        </div>
+        <div class="rel-item">
+          <div class="rel-num">02</div>
+          <div>
+            <h4 data-i18n="rel.i2.h">Self-hosted, EU regija</h4>
+            <p data-i18n="rel.i2.p">n8n teče na vašem strežniku ali EU-shrambi (Frankfurt). Vaši podatki nikoli ne potujejo izven EU, razen v specifične LLM klice — in tudi ti gredo prek EU regij ponudnikov, kjer to omogočajo.</p>
+          </div>
+        </div>
+        <div class="rel-item">
+          <div class="rel-num">03</div>
+          <div>
+            <h4 data-i18n="rel.i3.h">Monitoring 24/7, alerting na napake</h4>
+            <p data-i18n="rel.i3.p">Vsak workflow ima error handling in alerting. Če se kaj zlomi sredi noči, dobimo notifikacijo prej kot vi. To je razlog za Operations retainer — ne samo "vzdrževanje", ampak aktivni nadzor.</p>
+          </div>
+        </div>
+        <div class="rel-item">
+          <div class="rel-num">04</div>
+          <div>
+            <h4 data-i18n="rel.i4.h">Brez vendor lock-ina</h4>
+            <p data-i18n="rel.i4.p">n8n je odprta koda. Workflows so vaši — vsi v JSON formatu, dokumentirani. Če kdaj prekinemo sodelovanje, drug partner (ali vaš IT) lahko prevzame brez ponovnega pisanja od nule.</p>
+          </div>
+        </div>
+        <div class="rel-item">
+          <div class="rel-num">05</div>
+          <div>
+            <h4 data-i18n="rel.i5.h">Change management za ekipo</h4>
+            <p data-i18n="rel.i5.p">Notranji odpor je realen problem — zaposleni se bojijo, da jih bo AI nadomestil. Pri vsakem projektu pomagamo pripraviti komunikacijski plan: avtomatizacija premešča delo, ne odpušča ljudi. Dela na tej zgodbi z vodstvom je del paketa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery">
+  <div class="container">
+    <div data-reveal>
+      <div class="section-label" data-i18n="del.l">Kaj dostavimo</div>
+      <h2 class="section-title" data-i18n="del.t">
+        Trije <span class="accent">paketi</span>, jasen pristop.
+      </h2>
+      <p class="section-lead" data-i18n="del.lead">
+        Tako kot pri spletni strani: začnemo z auditom, gremo v specifičen sprint, ostanemo skozi retainer. Vsak korak je samostojen — po vsakem se lahko odločite, ali nadaljujemo.
+      </p>
+    </div>
+
+    <div class="delivery-grid">
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">01 / Discovery</div>
+          <h3 data-i18n="d1.t">Process Audit</h3>
+          <div class="deliver-meta" data-i18n="d1.m">5–7 delovnih dni · Pisni dokument + 60-min predstavitev</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d1.p">Strukturiran pregled vaših ročnih procesov in tool stack-a. Skupaj identificiramo, kateri procesi so kandidati za avtomatizacijo, koliko ur in denarja prihranijo, in po kakšnem vrstnem redu jih je smiselno reševati.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d1.l1">Process mapping: intervjuvi z 2–3 osebami iz ekipe, ki dnevno opravljajo ročno delo</li>
+            <li data-i18n="d1.l2">Tool stack inventory: katera orodja se uporabljajo, kateri se pogovarjajo, kateri ne</li>
+            <li data-i18n="d1.l3">5–8 prioritiziranih avtomatizacijskih priložnosti z ROI oceno</li>
+            <li data-i18n="d1.l4">Tehnična ocena: kateri procesi so res avtomatizable in kateri ne</li>
+            <li data-i18n="d1.l5">Priporočilo prvega sprinta: največji impact ob najmanjši kompleksnosti</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">02 / Build</div>
+          <h3 data-i18n="d2.t">Automation Sprint</h3>
+          <div class="deliver-meta" data-i18n="d2.m">Trajanje glede na obseg · En specifičen proces hkrati</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d2.p">Implementacija enega specifičnega procesa od idejne zasnove do produkcijskega delovanja. Tedenski sprinti, sprotni prikazi napredka. Po zaključku ekipa dobi delujoč sistem in dokumentacijo, ki omogoča nadaljnjo rast.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d2.l1">Setup self-hosted n8n instance ali konfiguracija obstoječe</li>
+            <li data-i18n="d2.l2">Workflow razvoj z error handlingom, retry logiko, alertingom</li>
+            <li data-i18n="d2.l3">Integracije s sistemi stranke (Minimax, e-Računi, Pipedrive, Outlook, Slack itd.)</li>
+            <li data-i18n="d2.l4">LLM logika z guardrails, prompt engineering, structured outputs</li>
+            <li data-i18n="d2.l5">Testiranje na realnih primerih, "tihi tek" pred produkcijskim launch-om</li>
+            <li data-i18n="d2.l6">2-urni training za ekipo + dokumentacija</li>
+            <li data-i18n="d2.l7">30 dni post-launch podpore</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="deliver-card" data-reveal>
+        <div>
+          <div class="deliver-num">03 / Ongoing</div>
+          <h3 data-i18n="d3.t">Operations Retainer</h3>
+          <div class="deliver-meta" data-i18n="d3.m">Modularna mesečna naročnina · Aktivni nadzor</div>
+        </div>
+        <div class="deliver-body">
+          <p data-i18n="d3.p">Avtomatizacija ni "set and forget". Sistemi stranke (CRM, ERP) se posodabljajo, API-ji se spreminjajo, podjetje odkriva nove use case-e. Operations Retainer pokriva monitoring, vzdrževanje, in dodajanje novih flow-ov v okviru mesečnega proračuna.</p>
+          <ul class="deliver-list">
+            <li data-i18n="d3.l1">24/7 monitoring vseh workflow-ov, error alerting, uptime SLA</li>
+            <li data-i18n="d3.l2">Mesečni health report: success rate, prihranjene ure, najpogostejši edge case-i</li>
+            <li data-i18n="d3.l3">Razvojni čas mesečno za izboljšave, nove use case-e, optimizacije</li>
+            <li data-i18n="d3.l4">Adaptacija na spremembe ravnotežja v sistemih stranke (nov ERP, nov CRM, novi API-ji)</li>
+            <li data-i18n="d3.l5">Kvartalni 60-min strateški pregled in priporočila</li>
+            <li data-i18n="d3.l6">Prioritetna podpora (24h response window)</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="stack">
+  <div class="container">
+    <div data-reveal>
+      <div class="section-label" data-i18n="st.l">Orodja, ki uporabljamo</div>
+      <h2 class="section-title" data-i18n="st.t">
+        Pravo orodje za <span class="accent">pravo nalogo</span>.
+      </h2>
+      <p class="section-lead" data-i18n="st.lead">
+        Tehnologijo izbiramo glede na potrebo, ne glede na modo. Pri večini SMB projektov je kombinacija spodaj sweet spot: production-grade, dobro dokumentirano, GDPR-skladno, z aktivno skupnostjo. Slovenska orodja (oranžna) so naš kategorialni moat — tuji freelancerji jih ne poznajo.
+      </p>
+    </div>
+
+    <div class="stack-tags" data-reveal>
+      <span>n8n</span>
+      <span>Make.com</span>
+      <span>Anthropic Claude</span>
+      <span>OpenAI GPT</span>
+      <span>Postgres + pgvector</span>
+      <span>Qdrant</span>
+      <span>Vercel</span>
+      <span>Supabase</span>
+      <span>Pipedrive</span>
+      <span>HubSpot</span>
+      <span>Slack / Microsoft Teams</span>
+      <span>Gmail / Outlook 365</span>
+      <span>Google Drive / OneDrive</span>
+      <span>Stripe</span>
+      <span class="highlight">Minimax</span>
+      <span class="highlight">e-Računi</span>
+      <span class="highlight">Saop iCenter</span>
+      <span class="highlight">Pantheon</span>
+    </div>
+
+    <p class="stack-note" data-i18n="st.note">
+      Lahko gradimo tudi z drugimi orodji, če jih že uporabljate. Cilj ni zamenjati infrastrukture, ampak z AI-jem povezati to, kar že imate.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-head" data-reveal>
+      <div class="section-label" data-i18n="fq.l">Pogosto zastavljena</div>
+      <h2 class="section-title" data-i18n="fq.t">
+        Vprašanja iz <span class="accent">sestankov</span>.
+      </h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q1"><span>Naši procesi so preveč specifični. Razumete naše poslovanje?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a1">Process Audit faza je zasnovana ravno za to. V prvih dneh intervjuvamo vas in ključne osebe, mapiramo procese in razumemo, kaj je res specifično vašemu poslu in kaj je generično. V praksi je 60–70 % procesov pri SMB podobnih (lead handling, billing, reporting) — preostanek je unique in zahteva individualen pristop. Audit pokaže, kateri del je kateri.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q2"><span>Že smo poskusili Zapier ali Make. Ni delovalo.</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a2">To je realistična izkušnja — ad-hoc avtomatizacija deluje do prve kompleksnosti, potem se zlomi in ni nikogar, ki bi to popravil. Razlika med "Zapier postavi sam direktor" in "production-grade sistem" je v error handlingu, monitoringu, dokumentaciji, vzdrževanju in tem, kaj se zgodi, ko se nekaj zlomi sredi noči. Avtomatizacijo zgradimo kot sistem, ne kot hobby projekt.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q3"><span>Kaj če avtomatizacija naredi nekaj narobe? Kdo je odgovoren?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a3">Pri kritičnih korakih (denar, pogodbe, javna komunikacija) avtomatizacija pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, notifikacije) sistem dela samostojno, ampak vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju, ker so to vaši procesi — naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q4"><span>Naša ekipa se boji, da jih boste nadomestili.</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a4">Realna skrb — in dejanski razlog, zakaj veliko avtomatizacijskih projektov propade ob notranjem odporu. Naš pristop: avtomatizacija premešča delo iz repetitivnega v presoja-zahtevno. Pri vsakem projektu pomagamo pripraviti komunikacijski plan za ekipo — kateri konkretni procesi se avtomatizirajo, kaj ostane človeško delo, kako se vlogovni opisi prilagodijo. To je del paketa, ne posebna storitev.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q5"><span>Kje so naši podatki? Gredo v ZDA?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a5">n8n teče na vašem strežniku ali EU shrambi (Frankfurt) — tam ostane vsa logika in zgodovina. LLM klici (Anthropic, OpenAI) gredo prek EU regij ponudnikov, kjer to omogočajo. Anthropic je certificiran v EU-US Data Privacy Framework in podpisuje SCC; OpenAI prav tako. Občutljivi podatki (zdravstvo, finance) lahko obdelujemo z lokalnimi LLM modeli (Llama, Mistral) na vašem strežniku — v tem primeru podatki nikoli ne zapustijo vašega okolja. Pred začetkom projekta podpišemo DPA.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q6"><span>Kaj če se avtomatizacija zlomi sredi noči?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a6">Vsak workflow ima error handling in alerting. Ko se nekaj ne posreči (API timeout, neveljavni podatki, preseženje rate limita), sistem to zabeleži in pošlje notifikacijo nam — pogosto prej kot stranki sploh kaj zmoti. To je glavni razlog za Operations Retainer: aktivni nadzor in hiter response, ne le pasivno "vzdrževanje".</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q7"><span>Kako dolgo traja, koliko stane?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a7">Trajanje sprinta je odvisno od kompleksnosti procesa, števila integracij in obsega podatkov stranke. Ne moremo dati zavezujočega okvirja brez razumevanja konteksta — zato Process Audit. Glede cene: brez specifikacij ne moremo dati zavezujoče ponudbe. Specifikacije sprejmemo na info@eflitte.si ali prek 30-min uvodnega pogovora, nato pripravimo pisni predračun.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" data-i18n="fq.q8"><span>Mora najprej naš IT pregledati?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p data-i18n="fq.a8">Pri večjih podjetjih je IT pregled standarden in upravičen — gre za vaše sisteme in podatke. Pripravimo tehnični dokument, ki opisuje arhitekturo, dostope, varnost, GDPR-skladnost in plan disaster recovery. Tipično IT pregled traja 1–2 tedna in je del začetka projekta — ne ovira, ampak korak, ki gradi zaupanje.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <h2 data-i18n="cta.t">Začnimo pri <span class="accent">enem procesu</span>.</h2>
+    <p data-i18n="cta.l">
+      30-min pogovor, brez obveznosti. Pogledamo en konkreten ročni proces v vašem podjetju in iskreno povemo, ali se ga splača avtomatizirati — ali ne.
+    </p>
+    <a href="/#kontakt" class="btn-primary">
+      <span data-i18n="cta.b">Rezerviraj 30-min pogovor</span> <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="footer-brand">Eflitte<span class="footer-brand-dot"></span></a>
+      <p class="footer-tagline" data-i18n="ft.tag">AI infrastruktura za slovenska podjetja. Spletna prisotnost in operativna avtomatizacija pod eno streho.</p>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.prod">Produkti</h5>
+      <a href="/web" data-i18n="ft.web">AI-Ready spletna stran</a>
+      <a href="/avtomatizacija" data-i18n="ft.auto">Avtomatizacija</a>
+      <a href="/#kontakt" data-i18n="ft.con">Kontakt</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.comp">Podjetje</h5>
+      <a href="impressum.html" data-i18n="ft.imp">Impressum</a>
+      <a href="privacy.html" data-i18n="ft.priv">Politika zasebnosti</a>
+      <a href="cookies.html" data-i18n="ft.cook">Piškotki</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="ft.write">Pišite nam</h5>
+      <a href="mailto:info@eflitte.si">info@eflitte.si</a>
+      <a href="tel:+38668693988">068 693 988</a>
+      <span data-i18n="ft.loc">Slovenske Konjice, SI</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="ft.copy">© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.</span>
+    <div class="footer-legal">
+      <a href="impressum.html" data-i18n="ft.imp">Impressum</a>
+      <a href="privacy.html" data-i18n="ft.priv">Politika zasebnosti</a>
+      <a href="cookies.html" data-i18n="ft.cook">Piškotki</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* nav scroll */
+  (function(){const n=document.getElementById('nav');const s=()=>n.classList.toggle('scrolled',window.scrollY>8);window.addEventListener('scroll',s,{passive:true});s();})();
+  /* reveal */
+  (function(){const e=document.querySelectorAll('[data-reveal]');if(!('IntersectionObserver' in window)){e.forEach(x=>x.classList.add('in'));return;}const io=new IntersectionObserver(es=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});e.forEach(x=>io.observe(x));})();
+  /* faq */
+  (function(){document.querySelectorAll('.faq-item').forEach(i=>{const b=i.querySelector('.faq-question');const a=i.querySelector('.faq-answer');b.addEventListener('click',()=>{const o=i.classList.toggle('open');a.style.maxHeight=o?a.scrollHeight+'px':'0';});});})();
+  /* drawer */
+  (function(){const b=document.querySelector('.nav-burger');const d=document.getElementById('drawer');if(!b||!d)return;function c(){document.body.classList.remove('menu-open');}function o(){document.body.classList.add('menu-open');}b.addEventListener('click',()=>document.body.classList.contains('menu-open')?c():o());d.querySelectorAll('a').forEach(a=>a.addEventListener('click',c));document.addEventListener('keydown',e=>{if(e.key==='Escape')c();});})();
+  /* i18n */
+  (function(){
+    const i18n = {
+      "title":{sl:"Avtomatizacija procesov — EFLITTE | n8n + AI za slovenska podjetja",en:"Process automation — EFLITTE | n8n + AI for Slovenian companies"},
+      "nv.web":{sl:"Spletna stran",en:"Website"},"nv.auto":{sl:"Avtomatizacija",en:"Automation"},"nv.con":{sl:"Kontakt",en:"Contact"},"nv.cta":{sl:"Pogovorimo se",en:"Let's talk"},
+      "bc.auto":{sl:"Avtomatizacija procesov",en:"Process automation"},
+      "hero.t":{sl:"Procesi, ki jih danes vaša ekipa opravlja ročno, lahko tečejo <span class=\"accent\">samodejno</span>.",en:"The processes your team does manually today can run <span class=\"accent\">on their own</span>."},
+      "hero.s":{sl:"Lead handling, faktura chase, email triage, mesečno reporting. En specifičen proces hkrati. Merljiv prihranek od prvega meseca, brez vendor lock-ina, vaši podatki ostanejo v EU.",en:"Lead handling, invoice chase, email triage, monthly reporting. One specific process at a time. Measurable savings from month one, no vendor lock-in, your data stays in the EU."},
+      "hero.c1":{sl:"Rezerviraj 30-min pogovor <span class=\"arrow\">→</span>",en:"Book a 30-min call <span class=\"arrow\">→</span>"},"hero.c2":{sl:"Konkretni primeri",en:"Concrete examples"},
+      "uc.l":{sl:"Konkretni primeri",en:"Concrete examples"},"uc.t":{sl:"Kaj točno <span class=\"accent\">avtomatiziramo</span>.",en:"What exactly <span class=\"accent\">we automate</span>."},
+      "uc.lead":{sl:"Spodaj so štirje tipični prvi sprinti pri slovenskih SMB. Vsak je en proces, en specifičen problem, en sprint. Nato gradimo naprej.",en:"Below are four typical first sprints at Slovenian SMBs. Each is one process, one specific problem, one sprint. Then we build further."},
+      "uc1.t":{sl:"Lead handling",en:"Lead handling"},"uc1.p":{sl:"Spletni obrazec ali e-mail povpraševanje gre skozi AI kvalifikacijo, vpiše se v CRM s pravimi tagi, pošlje se personaliziran follow-up, ekipa dobi Slack notifikacijo z že pripravljenim kontekstom za klic.",en:"A web form or email inquiry goes through AI qualification, gets logged in the CRM with proper tags, a personalized follow-up is sent, and the team gets a Slack notification with prepared context for the call."},
+      "uc2.t":{sl:"Faktura chase",en:"Invoice chase"},"uc2.p":{sl:"Iz Minimaxa ali e-Računov potegnemo seznam neplačanih faktur. Eskalacijska sekvenca e-mailov (mehki opomnik na 7 dni, trši na 14, eskalacija vodstvu na 30 dni). Dnevno poročilo statusov.",en:"We pull the list of unpaid invoices from Minimax or e-Računi. Escalation email sequence (gentle at 7 days, firmer at 14, management escalation at 30). Daily status report."},
+      "uc3.t":{sl:"Email triage",en:"Email triage"},"uc3.p":{sl:"Dohodne e-pošte v skupni inbox (info@, prodaja@) gredo skozi LLM klasifikacijo. Razporeditev v ekipo glede na vsebino, draft odgovora za rutinske primere, eskalacija za vse, kar zahteva človeško presojo.",en:"Incoming emails to shared inboxes (info@, sales@) go through LLM classification. Routing to the team by content, draft replies for routine cases, escalation for everything requiring human judgment."},
+      "uc4.t":{sl:"Mesečno reporting",en:"Monthly reporting"},"uc4.p":{sl:"Podatki iz različnih sistemov (CRM, ERP, Google Analytics, Stripe) se zbirajo skozi mesec. Prvi delovni dan v mesecu AI sestavi strukturiran povzetek z odstopanji od ciljev in pošlje vodstvu.",en:"Data from various systems (CRM, ERP, Google Analytics, Stripe) is collected through the month. On the first business day, AI assembles a structured summary with deviations from targets and sends it to leadership."},
+      "roi.l":{sl:"ROI brez fluffa",en:"ROI without fluff"},"roi.t":{sl:"Matematika, ne <span class=\"accent\">obljube</span>.",en:"Math, not <span class=\"accent\">promises</span>."},
+      "roi.lead":{sl:"Avtomatizacija ima merljiv ROI: koliko ur ekipa porabi na proces × koliko stane ura, minus strošek implementacije in mesečnega vzdrževanja. Pri vsakem projektu te številke določimo skupaj — pred začetkom razvoja, ne po njem.",en:"Automation has measurable ROI: hours your team spends × cost per hour, minus implementation and monthly maintenance. We agree on these numbers at every project — before development, not after."},
+      "roi.ex":{sl:"Ilustrativna kalkulacija",en:"Illustrative calculation"},"roi.ex.t":{sl:"Email triage v 30-osebnem podjetju",en:"Email triage in a 30-person company"},
+      "roi.r1.l":{sl:"Trenutno: 2 osebi, vsaka 1.5 h/dan na inbox triage",en:"Currently: 2 people, each 1.5 h/day on inbox triage"},
+      "roi.r2.l":{sl:"Mesečno (22 delovnih dni)",en:"Monthly (22 working days)"},
+      "roi.r3.l":{sl:"Polna cena ure (bruto + dajatve + prostor + orodja)",en:"Full hourly cost (gross + contributions + space + tools)"},
+      "roi.r4.l":{sl:"Trenutni mesečni strošek tega procesa",en:"Current monthly cost of this process"},
+      "roi.r5.l":{sl:"Z avtomatizacijo: ostane ~ 30 % (presoja, edge cases)",en:"With automation: ~30 % remains (judgment, edge cases)"},
+      "roi.r6.l":{sl:"Mesečni prihranek",en:"Monthly savings"},
+      "roi.note":{sl:"To je ilustrativen primer, ne zavezujoča kalkulacija. Pri konkretnem projektu Process Audit pokaže realne številke za vašo specifično situacijo — pogosto je razlika večja, ker rutinski procesi v praksi pojejo več časa, kot vodstvo predvideva.",en:"This is illustrative, not a binding calculation. For an actual project, Process Audit shows real numbers for your specific situation — often the gap is larger, because routine processes in practice eat more time than leadership assumes."},
+      "rel.l":{sl:"Zaupanje, ne hype",en:"Trust, not hype"},"rel.t":{sl:"Sistem, ki ga lahko <span class=\"accent\">pustite</span>.",en:"A system you can <span class=\"accent\">trust</span>."},
+      "rel.lead":{sl:"Vaša ekipa se boji dveh stvari: da AI nekaj naredi narobe, in da podatki uidejo v tujino. Oboje naslavljamo eksplicitno, ne v drobnem tisku.",en:"Your team fears two things: that AI does something wrong, and that data leaks abroad. We address both explicitly, not in the fine print."},
+      "rel.i1.h":{sl:"Human-in-the-loop pri kritičnih korakih",en:"Human-in-the-loop on critical steps"},
+      "rel.i1.p":{sl:"AI pripravi, človek odobri. Pri vsem, kar je finančno, pravno ali javno (e-pošta strankam, fakture, plačila) avtomatizacija ustvari osnutek — končna potrditev je vedno na človeku.",en:"AI prepares, human approves. For anything financial, legal or public (customer emails, invoices, payments) automation creates a draft — final approval is always with a human."},
+      "rel.i2.h":{sl:"Self-hosted, EU regija",en:"Self-hosted, EU region"},
+      "rel.i2.p":{sl:"n8n teče na vašem strežniku ali EU-shrambi (Frankfurt). Vaši podatki nikoli ne potujejo izven EU, razen v specifične LLM klice — in tudi ti gredo prek EU regij ponudnikov, kjer to omogočajo.",en:"n8n runs on your server or in EU storage (Frankfurt). Your data never travels outside the EU, except for specific LLM calls — and even those go through EU regions of providers where supported."},
+      "rel.i3.h":{sl:"Monitoring 24/7, alerting na napake",en:"24/7 monitoring, error alerting"},
+      "rel.i3.p":{sl:"Vsak workflow ima error handling in alerting. Če se kaj zlomi sredi noči, dobimo notifikacijo prej kot vi. To je razlog za Operations retainer — ne samo \"vzdrževanje\", ampak aktivni nadzor.",en:"Every workflow has error handling and alerting. If something breaks at 3 AM, we get the notification before you. That's why Operations Retainer is active oversight, not passive maintenance."},
+      "rel.i4.h":{sl:"Brez vendor lock-ina",en:"No vendor lock-in"},
+      "rel.i4.p":{sl:"n8n je odprta koda. Workflows so vaši — vsi v JSON formatu, dokumentirani. Če kdaj prekinemo sodelovanje, drug partner (ali vaš IT) lahko prevzame brez ponovnega pisanja od nule.",en:"n8n is open source. Workflows are yours — all in JSON format, documented. If we ever part ways, another partner (or your IT) can take over without rewriting from scratch."},
+      "rel.i5.h":{sl:"Change management za ekipo",en:"Change management for the team"},
+      "rel.i5.p":{sl:"Notranji odpor je realen problem — zaposleni se bojijo, da jih bo AI nadomestil. Pri vsakem projektu pomagamo pripraviti komunikacijski plan: avtomatizacija premešča delo, ne odpušča ljudi. Dela na tej zgodbi z vodstvom je del paketa.",en:"Internal resistance is a real problem — employees fear AI will replace them. At every project we help prepare a communication plan: automation shifts work, doesn't lay people off. Working on that narrative with leadership is part of the package."},
+      "del.l":{sl:"Kaj dostavimo",en:"What we deliver"},"del.t":{sl:"Trije <span class=\"accent\">paketi</span>, jasen pristop.",en:"Three <span class=\"accent\">packages</span>, clear approach."},
+      "del.lead":{sl:"Tako kot pri spletni strani: začnemo z auditom, gremo v specifičen sprint, ostanemo skozi retainer. Vsak korak je samostojen — po vsakem se lahko odločite, ali nadaljujemo.",en:"Same as web: start with audit, move into a specific sprint, stay through retainer. Each step is standalone — after each you decide whether to continue."},
+      "d1.t":{sl:"Process Audit",en:"Process Audit"},"d1.m":{sl:"5–7 delovnih dni · Pisni dokument + 60-min predstavitev",en:"5–7 business days · Written document + 60-min presentation"},
+      "d1.p":{sl:"Strukturiran pregled vaših ročnih procesov in tool stack-a. Skupaj identificiramo, kateri procesi so kandidati za avtomatizacijo, koliko ur in denarja prihranijo, in po kakšnem vrstnem redu jih je smiselno reševati.",en:"Structured review of your manual processes and tool stack. Together we identify which processes are automation candidates, how many hours and euros they save, and in what order they should be tackled."},
+      "d1.l1":{sl:"Process mapping: intervjuvi z 2–3 osebami iz ekipe, ki dnevno opravljajo ročno delo",en:"Process mapping: interviews with 2–3 team members doing daily manual work"},
+      "d1.l2":{sl:"Tool stack inventory: katera orodja se uporabljajo, kateri se pogovarjajo, kateri ne",en:"Tool stack inventory: what tools are used, which talk to each other, which don't"},
+      "d1.l3":{sl:"5–8 prioritiziranih avtomatizacijskih priložnosti z ROI oceno",en:"5–8 prioritized automation opportunities with ROI estimate"},
+      "d1.l4":{sl:"Tehnična ocena: kateri procesi so res avtomatizable in kateri ne",en:"Technical evaluation: which processes are actually automatable and which aren't"},
+      "d1.l5":{sl:"Priporočilo prvega sprinta: največji impact ob najmanjši kompleksnosti",en:"First sprint recommendation: highest impact at lowest complexity"},
+      "d2.t":{sl:"Automation Sprint",en:"Automation Sprint"},"d2.m":{sl:"Trajanje glede na obseg · En specifičen proces hkrati",en:"Duration scoped to project · One specific process at a time"},
+      "d2.p":{sl:"Implementacija enega specifičnega procesa od idejne zasnove do produkcijskega delovanja. Tedenski sprinti, sprotni prikazi napredka. Po zaključku ekipa dobi delujoč sistem in dokumentacijo, ki omogoča nadaljnjo rast.",en:"Implementation of one specific process from concept to production. Weekly sprints, ongoing progress demos. At the end, the team gets a working system and documentation that enables further growth."},
+      "d2.l1":{sl:"Setup self-hosted n8n instance ali konfiguracija obstoječe",en:"Self-hosted n8n setup or configuration of existing"},
+      "d2.l2":{sl:"Workflow razvoj z error handlingom, retry logiko, alertingom",en:"Workflow development with error handling, retry logic, alerting"},
+      "d2.l3":{sl:"Integracije s sistemi stranke (Minimax, e-Računi, Pipedrive, Outlook, Slack itd.)",en:"Integrations with client systems (accounting, CRM, email, chat, etc.)"},
+      "d2.l4":{sl:"LLM logika z guardrails, prompt engineering, structured outputs",en:"LLM logic with guardrails, prompt engineering, structured outputs"},
+      "d2.l5":{sl:"Testiranje na realnih primerih, \"tihi tek\" pred produkcijskim launch-om",en:"Testing on real cases, \"silent run\" before production launch"},
+      "d2.l6":{sl:"2-urni training za ekipo + dokumentacija",en:"2-hour team training + documentation"},
+      "d2.l7":{sl:"30 dni post-launch podpore",en:"30 days post-launch support"},
+      "d3.t":{sl:"Operations Retainer",en:"Operations Retainer"},"d3.m":{sl:"Modularna mesečna naročnina · Aktivni nadzor",en:"Modular monthly subscription · Active oversight"},
+      "d3.p":{sl:"Avtomatizacija ni \"set and forget\". Sistemi stranke (CRM, ERP) se posodabljajo, API-ji se spreminjajo, podjetje odkriva nove use case-e. Operations Retainer pokriva monitoring, vzdrževanje, in dodajanje novih flow-ov v okviru mesečnega proračuna.",en:"Automation isn't \"set and forget\". Client systems (CRM, ERP) update, APIs change, the company discovers new use cases. Operations Retainer covers monitoring, maintenance and new flows within a monthly budget."},
+      "d3.l1":{sl:"24/7 monitoring vseh workflow-ov, error alerting, uptime SLA",en:"24/7 monitoring of all workflows, error alerting, uptime SLA"},
+      "d3.l2":{sl:"Mesečni health report: success rate, prihranjene ure, najpogostejši edge case-i",en:"Monthly health report: success rate, hours saved, most common edge cases"},
+      "d3.l3":{sl:"Razvojni čas mesečno za izboljšave, nove use case-e, optimizacije",en:"Monthly development time for improvements, new use cases, optimizations"},
+      "d3.l4":{sl:"Adaptacija na spremembe ravnotežja v sistemih stranke (nov ERP, nov CRM, novi API-ji)",en:"Adapting to changes in client systems (new ERP, new CRM, new APIs)"},
+      "d3.l5":{sl:"Kvartalni 60-min strateški pregled in priporočila",en:"Quarterly 60-min strategic review and recommendations"},
+      "d3.l6":{sl:"Prioritetna podpora (24h response window)",en:"Priority support (24h response window)"},
+      "st.l":{sl:"Orodja, ki uporabljamo",en:"Tools we use"},"st.t":{sl:"Pravo orodje za <span class=\"accent\">pravo nalogo</span>.",en:"The right tool for <span class=\"accent\">the right job</span>."},
+      "st.lead":{sl:"Tehnologijo izbiramo glede na potrebo, ne glede na modo. Pri večini SMB projektov je kombinacija spodaj sweet spot: production-grade, dobro dokumentirano, GDPR-skladno, z aktivno skupnostjo. Slovenska orodja (oranžna) so naš kategorialni moat — tuji freelancerji jih ne poznajo.",en:"We pick technology by need, not fashion. For most SMB projects the combination below is the sweet spot: production-grade, well-documented, GDPR-compliant, with an active community. Slovenian tools (orange) are our category moat — foreign freelancers don't know them."},
+      "st.note":{sl:"Lahko gradimo tudi z drugimi orodji, če jih že uporabljate. Cilj ni zamenjati infrastrukture, ampak z AI-jem povezati to, kar že imate.",en:"We can also build with other tools you already use. The goal isn't to replace infrastructure, but to connect what you have with AI."},
+      "fq.l":{sl:"Pogosto zastavljena",en:"Frequently asked"},"fq.t":{sl:"Vprašanja iz <span class=\"accent\">sestankov</span>.",en:"Questions from <span class=\"accent\">meetings</span>."},
+      "fq.q1":{sl:"Naši procesi so preveč specifični. Razumete naše poslovanje?",en:"Our processes are too specific. Do you understand our business?"},
+      "fq.a1":{sl:"Process Audit faza je zasnovana ravno za to. V prvih dneh intervjuvamo vas in ključne osebe, mapiramo procese in razumemo, kaj je res specifično vašemu poslu in kaj je generično. V praksi je 60–70 % procesov pri SMB podobnih (lead handling, billing, reporting) — preostanek je unique in zahteva individualen pristop. Audit pokaže, kateri del je kateri.",en:"Process Audit is designed for this. We interview you and key people, map processes, understand what's truly specific and what's generic. In practice, 60–70 % of SMB processes are similar (lead handling, billing, reporting) — the rest is unique. The audit shows which is which."},
+      "fq.q2":{sl:"Že smo poskusili Zapier ali Make. Ni delovalo.",en:"We already tried Zapier or Make. Didn't work."},
+      "fq.a2":{sl:"To je realistična izkušnja — ad-hoc avtomatizacija deluje do prve kompleksnosti, potem se zlomi in ni nikogar, ki bi to popravil. Razlika med \"Zapier postavi sam direktor\" in \"production-grade sistem\" je v error handlingu, monitoringu, dokumentaciji, vzdrževanju in tem, kaj se zgodi, ko se nekaj zlomi sredi noči. Avtomatizacijo zgradimo kot sistem, ne kot hobby projekt.",en:"That's a realistic experience — ad-hoc automation works until the first real complexity, then it breaks and no one can fix it. The difference between \"the director set up Zapier\" and \"production-grade system\" is error handling, monitoring, documentation, maintenance and what happens when something breaks at night."},
+      "fq.q3":{sl:"Kaj če avtomatizacija naredi nekaj narobe? Kdo je odgovoren?",en:"What if automation does something wrong? Who's responsible?"},
+      "fq.a3":{sl:"Pri kritičnih korakih (denar, pogodbe, javna komunikacija) avtomatizacija pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, notifikacije) sistem dela samostojno, ampak vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju, ker so to vaši procesi — naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.",en:"For critical steps (money, contracts, public communication) automation prepares a draft, final approval is always human. For routine decisions (email categorization, status updates, notifications) the system runs alone, but every step is logged and traceable. Responsibility stays with your company — ours is that the system is built correctly and errors surface fast."},
+      "fq.q4":{sl:"Naša ekipa se boji, da jih boste nadomestili.",en:"Our team is afraid of being replaced."},
+      "fq.a4":{sl:"Realna skrb — in dejanski razlog, zakaj veliko avtomatizacijskih projektov propade ob notranjem odporu. Naš pristop: avtomatizacija premešča delo iz repetitivnega v presoja-zahtevno. Pri vsakem projektu pomagamo pripraviti komunikacijski plan za ekipo — kateri konkretni procesi se avtomatizirajo, kaj ostane človeško delo, kako se vlogovni opisi prilagodijo. To je del paketa, ne posebna storitev.",en:"A real concern — and the actual reason many automation projects die from internal resistance. Our approach: automation shifts work from repetitive to judgment-heavy. At every project we help prepare a team communication plan — what specifically gets automated, what stays human, how role descriptions adapt. Part of the package, not a separate service."},
+      "fq.q5":{sl:"Kje so naši podatki? Gredo v ZDA?",en:"Where is our data? Does it go to the US?"},
+      "fq.a5":{sl:"n8n teče na vašem strežniku ali EU shrambi (Frankfurt) — tam ostane vsa logika in zgodovina. LLM klici (Anthropic, OpenAI) gredo prek EU regij ponudnikov, kjer to omogočajo. Anthropic je certificiran v EU-US Data Privacy Framework in podpisuje SCC; OpenAI prav tako. Občutljivi podatki (zdravstvo, finance) lahko obdelujemo z lokalnimi LLM modeli (Llama, Mistral) na vašem strežniku — v tem primeru podatki nikoli ne zapustijo vašega okolja. Pred začetkom projekta podpišemo DPA.",en:"n8n runs on your server or EU storage (Frankfurt) — that's where all logic and history stays. LLM calls (Anthropic, OpenAI) go via providers' EU regions where supported. Anthropic is certified in the EU-US Data Privacy Framework and signs SCC; OpenAI too. For sensitive data we can use local LLMs (Llama, Mistral) on your server — data never leaves your environment. We sign a DPA before project start."},
+      "fq.q6":{sl:"Kaj če se avtomatizacija zlomi sredi noči?",en:"What if automation breaks in the middle of the night?"},
+      "fq.a6":{sl:"Vsak workflow ima error handling in alerting. Ko se nekaj ne posreči (API timeout, neveljavni podatki, preseženje rate limita), sistem to zabeleži in pošlje notifikacijo nam — pogosto prej kot stranki sploh kaj zmoti. To je glavni razlog za Operations Retainer: aktivni nadzor in hiter response, ne le pasivno \"vzdrževanje\".",en:"Every workflow has error handling and alerting. When something fails (API timeout, invalid data, rate limit), the system logs it and notifies us — often before anything bothers the client. That's the main reason for Operations Retainer: active oversight and fast response, not passive \"maintenance\"."},
+      "fq.q7":{sl:"Kako dolgo traja, koliko stane?",en:"How long, how much?"},
+      "fq.a7":{sl:"Trajanje sprinta je odvisno od kompleksnosti procesa, števila integracij in obsega podatkov stranke. Ne moremo dati zavezujočega okvirja brez razumevanja konteksta — zato Process Audit. Glede cene: brez specifikacij ne moremo dati zavezujoče ponudbe. Specifikacije sprejmemo na info@eflitte.si ali prek 30-min uvodnega pogovora, nato pripravimo pisni predračun.",en:"Sprint duration depends on process complexity, integrations, and data scope. We can't give a binding frame without context — that's what Process Audit is for. On price: without specs we can't give a binding quote. Send specs to info@eflitte.si or schedule a 30-min intro call, then we prepare a written quote."},
+      "fq.q8":{sl:"Mora najprej naš IT pregledati?",en:"Does our IT need to review first?"},
+      "fq.a8":{sl:"Pri večjih podjetjih je IT pregled standarden in upravičen — gre za vaše sisteme in podatke. Pripravimo tehnični dokument, ki opisuje arhitekturo, dostope, varnost, GDPR-skladnost in plan disaster recovery. Tipično IT pregled traja 1–2 tedna in je del začetka projekta — ne ovira, ampak korak, ki gradi zaupanje.",en:"At larger companies IT review is standard and justified — it concerns your systems and data. We prepare a technical document describing architecture, accesses, security, GDPR compliance and disaster recovery plan. Typical IT review takes 1–2 weeks and is part of project start — not a blocker but a trust-building step."},
+      "cta.t":{sl:"Začnimo pri <span class=\"accent\">enem procesu</span>.",en:"Let's start with <span class=\"accent\">one process</span>."},
+      "cta.l":{sl:"30-min pogovor, brez obveznosti. Pogledamo en konkreten ročni proces v vašem podjetju in iskreno povemo, ali se ga splača avtomatizirati — ali ne.",en:"30-min call, no strings. We look at one concrete manual process in your company and tell you honestly whether it's worth automating — or not."},
+      "cta.b":{sl:"Rezerviraj 30-min pogovor",en:"Book a 30-min call"},
+      "ft.tag":{sl:"AI infrastruktura za slovenska podjetja. Spletna prisotnost in operativna avtomatizacija pod eno streho.",en:"AI infrastructure for Slovenian companies. Web presence and operational automation under one roof."},
+      "ft.prod":{sl:"Produkti",en:"Products"},"ft.web":{sl:"AI-Ready spletna stran",en:"AI-Ready website"},"ft.auto":{sl:"Avtomatizacija",en:"Automation"},"ft.con":{sl:"Kontakt",en:"Contact"},
+      "ft.comp":{sl:"Podjetje",en:"Company"},"ft.imp":{sl:"Impressum",en:"Imprint"},"ft.priv":{sl:"Politika zasebnosti",en:"Privacy Policy"},"ft.cook":{sl:"Piškotki",en:"Cookies"},
+      "ft.write":{sl:"Pišite nam",en:"Get in touch"},"ft.loc":{sl:"Slovenske Konjice, SI",en:"Slovenske Konjice, SI"},"ft.copy":{sl:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.",en:"© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p."}
+    };
+    function apply(lang){
+      document.documentElement.lang=lang;
+      if(i18n.title&&i18n.title[lang])document.title=i18n.title[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const t=i18n[el.getAttribute('data-i18n')];if(t&&t[lang]!==undefined)el.innerHTML=t[lang]});
+      document.querySelectorAll('.lang-toggle,.drawer-lang').forEach(b=>b.textContent=lang==='en'?'SL':'EN');
+      try{localStorage.setItem('eflitte-lang',lang)}catch(e){}
+    }
+    let s='sl';try{s=localStorage.getItem('eflitte-lang')||'sl'}catch(e){}
+    if(s==='en')apply('en');
+    document.querySelectorAll('.lang-toggle,.drawer-lang').forEach(b=>b.addEventListener('click',()=>{const c=document.documentElement.lang==='en'?'en':'sl';apply(c==='en'?'sl':'en')}));
+  })();
+</script>
+
+<script>window.EFLITTE_CHAT_CONFIG={endpoint:'/api/chat',lang:'auto',mock:false}</script>
+<script src="chat-widget.js" defer></script>
+</body>
+</html>
