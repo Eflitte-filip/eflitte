@@ -1333,9 +1333,11 @@
         if (data.success) {
           status.className = 'form-status ok';
           status.textContent = lang === 'en'
-            ? 'Thanks — we will get back to you within 24 hours.'
-            : 'Hvala — odzvali se bomo v 24 urah.';
+            ? 'Thanks — redirecting…'
+            : 'Hvala — preusmerjanje…';
           form.reset();
+          // Redirect na /hvala stran (Google Ads conversion tracking)
+          setTimeout(() => { window.location.href = '/hvala'; }, 800);
         } else {
           throw new Error(data.message || 'Submit failed');
         }
