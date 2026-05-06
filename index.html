@@ -1,1614 +1,187 @@
-<!DOCTYPE html>
-<html lang="sl">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<!-- Primary SEO -->
-<title data-i18n="title">Eflitte — AI rešitve &amp; avtomatizacija</title>
-<meta name="description" data-i18n="meta.description" content="Eflitte je slovenska AI agencija: spletne strani, chatboti, avtomatizacija." />
-<meta name="author" content="Eflitte" />
-<meta name="robots" content="index, follow, max-image-preview:large" />
-<meta name="theme-color" content="#F8FAFC" />
-
-<link rel="canonical" href="https://eflitte.si/" />
-<link rel="alternate" hreflang="sl" href="https://eflitte.si/" />
-<link rel="alternate" hreflang="en" href="https://eflitte.si/?lang=en" />
-<link rel="alternate" hreflang="x-default" href="https://eflitte.si/" />
-
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="sl_SI" />
-<meta property="og:locale:alternate" content="en_US" />
-<meta property="og:site_name" content="Eflitte" />
-<meta property="og:title" content="Eflitte" />
-<meta property="og:description" content="Spletna prisotnost, optimizirana za Google in AI iskalnike. Avtomatizacija notranjih procesov. En partner za oboje." />
-<meta property="og:url" content="https://eflitte.si/" />
-<meta property="og:image" content="https://eflitte.si/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Eflitte" />
-<meta name="twitter:description" content="Eflitte" />
-<meta name="twitter:image" content="https://eflitte.si/og-image.png" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<!-- Structured Data: Organization -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://eflitte.si/#organization",
-  "name": "Eflitte",
-  "alternateName": "Eflitte",
-  "legalName": "EFLITTE, FILIP NOE KOVAČIČ s.p.",
-  "foundingDate": "2023-12-01",
-  "founder": { "@type": "Person", "name": "Filip Noe Kovačič" },
-  "taxID": "SI73916803",
-  "url": "https://eflitte.si/",
-  "logo": "https://eflitte.si/logo.png",
-  "image": "https://eflitte.si/og-image.png",
-  "description": "AI agencija za slovenska podjetja. Dva produkta: AI-pripravljena spletna prisotnost in avtomatizacija notranjih procesov.",
-  "email": "info@eflitte.si",
-  "telephone": ["+386-68-693-988"],
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "SI",
-    "addressRegion": "Štajerska",
-    "postalCode": "3210"
-  },
-  "areaServed": { "@type": "Country", "name": "Slovenia" },
-  "knowsAbout": [
-    "AI Search Optimization", "Generative Engine Optimization",
-    "Workflow Automation", "n8n", "RAG Systems",
-    "Conversational AI", "Process Automation", "GDPR Compliant AI"
-  ]
-}
-</script>
-
-<!-- Structured Data: ProfessionalService -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://eflitte.si/#localbusiness",
-  "name": "Eflitte",
-  "url": "https://eflitte.si/",
-  "image": "https://eflitte.si/og-image.png",
-  "telephone": "+386-68-693-988",
-  "email": "info@eflitte.si",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "SI",
-    "addressRegion": "Štajerska",
-    "postalCode": "3210"
-  },
-  "areaServed": [
-    { "@type": "Country", "name": "Slovenia" },
-    { "@type": "City", "name": "Maribor" },
-    { "@type": "City", "name": "Celje" },
-    { "@type": "City", "name": "Ljubljana" },
-    { "@type": "City", "name": "Velenje" }
-  ]
-}
-</script>
-
-<style>
-  :root {
-    /* Light backgrounds — slate (cool) palette to cohere with navy */
-    --bg: #F8FAFC;          /* slate-50 */
-    --bg-alt: #F1F5F9;      /* slate-100 */
-    --surface: #FFFFFF;     /* pure white for cards */
-    --surface-2: #E2E8F0;   /* slate-200 */
-    /* Text — keep slightly warm for readability, but cool the lines */
-    --ink: #141413;
-    --ink-soft: #3D3D3B;
-    --muted: #64748B;       /* slate-500 (cooler muted) */
-    --line: rgba(20, 20, 19, 0.10);
-    --line-strong: rgba(20, 20, 19, 0.18);
-    /* Brand accent — terracotta (kept for logo + brand moments) */
-    --accent: #CC785C;
-    --accent-deep: #B0593F;
-    --accent-soft: rgba(204, 120, 92, 0.10);
-    --accent-ink: #F8FAFC;
-    /* Dark sections — deep navy (slate-900) */
-    --navy: #141413;
-    --navy-deep: #0A0A09;
-    --navy-soft: rgba(20, 20, 19, 0.95);
-    /* Blue accent — for product cards, info chips */
-    --blue: #141413;
-    --blue-bright: #141413;
-    --blue-soft: rgba(20, 20, 19, 0.08);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  ::selection { background: var(--accent); color: var(--accent-ink); }
-
-  /* ---------- NAV ---------- */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 22px 40px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    column-gap: 32px;
-    background: rgba(248,250,252, 0.82);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid transparent;
-    transition: padding 0.4s ease, border-color 0.4s ease;
-  }
-  .nav.scrolled { padding: 14px 40px; border-bottom-color: var(--line); }
-  .nav .logo { justify-self: start; }
-  .nav .nav-links { justify-self: center; }
-  .nav .nav-right { justify-self: end; display: flex; align-items: center; gap: 20px; }
-
-  .logo {
-    position: relative;
-    display: inline-flex;
-    align-items: baseline;
-    height: 32px;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .logo-letters { display: flex; align-items: baseline; font-size: 28px; line-height: 1; }
-  .logo-letters span {
-    display: inline-block;
-    overflow: hidden;
-    white-space: pre;
-    transition: max-width 0.6s cubic-bezier(.77,.05,.2,1), opacity 0.35s ease;
-  }
-  .logo-letters span.keep { max-width: 1em; }
-  .logo-letters span.hide { max-width: 5em; opacity: 1; }
-  .nav.scrolled .logo-letters span.hide { max-width: 0; opacity: 0; }
-  .logo-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-left: 3px;
-    flex-shrink: 0;
-    transition: margin-left 0.6s cubic-bezier(.77,.05,.2,1);
-  }
-  .nav.scrolled .logo-dot { margin-left: 2px; }
-
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 14.5px;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: color 0.2s ease;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: ""; position: absolute;
-    left: 0; bottom: -4px;
-    width: 100%; height: 1px;
-    background: var(--accent);
-    transform: scaleX(0); transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
-
-  .lang-toggle {
-    background: none; border: none;
-    color: var(--ink-soft);
-    font-family: inherit;
-    font-size: 13px; font-weight: 500;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    padding: 6px 10px;
-    transition: color 0.2s ease;
-  }
-  .lang-toggle:hover { color: var(--ink); }
-
-  .nav-cta {
-    padding: 10px 20px;
-    min-width: 140px;
-    background: var(--ink);
-    color: var(--bg);
-    border: none;
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 13.5px; font-weight: 500;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.25s ease, transform 0.25s ease;
-  }
-  .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
-
-  .nav-burger {
-    display: none;
-    width: 32px; height: 32px;
-    background: none; border: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-  }
-  .nav-burger span {
-    display: block;
-    width: 22px; height: 1.5px;
-    background: var(--ink);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-  body.menu-open .nav-burger span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-  body.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
-  body.menu-open .nav-burger span:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
-
-  /* ---------- HERO ---------- */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    padding: 160px 40px 120px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: var(--navy);
-    color: #F8FAFC;
-  }
-
-  /* Three.js sphere canvas */
-  #hero-3d {
-    position: absolute; inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  #hero-3d canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-  }
-  /* Dark vignette so text on the left stays readable over sphere */
-  .hero-vignette {
-    position: absolute; inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 15% 50%, rgba(20, 20, 19, 0.95) 0%, rgba(20, 20, 19, 0.75) 28%, transparent 55%),
-      linear-gradient(to bottom, transparent 0%, transparent 70%, var(--navy) 100%);
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11.5px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(248,250,252,0.6);
-    margin-bottom: 32px;
-  }
-  .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent); }
-
-  h1.hero-title {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-size: clamp(38px, 5.4vw, 76px);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    color: #F8FAFC;
-    margin-bottom: 32px;
-    max-width: 980px;
-  }
-  h1.hero-title .accent {
-    font-family: "Instrument Serif", serif;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--accent);
-    display: inline-block;
-  }
-
-  .hero-attribution {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    color: rgba(248,250,252,0.55);
-    margin-top: -16px;
-    margin-bottom: 36px;
-    line-height: 1.5;
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    line-height: 1.55;
-    color: rgba(248,250,252,0.78);
-    max-width: 580px;
-    margin-bottom: 48px;
-  }
-
-  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 16px 28px;
-    background: #F8FAFC;
-    color: #141413;
-    border: none;
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.25s ease, transform 0.25s ease;
-  }
-  .btn-primary:hover { background: #FFFFFF; transform: translateY(-1px); }
-  .btn-primary .arrow { transition: transform 0.25s ease; }
-  .btn-primary:hover .arrow { transform: translateX(4px); }
-
-  .btn-ghost {
-    padding: 16px 24px;
-    background: transparent;
-    color: #F8FAFC;
-    border: 1px solid rgba(248,250,252,0.25);
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-color 0.25s ease, background 0.25s ease;
-  }
-  .btn-ghost:hover { border-color: rgba(248,250,252,0.7); background: rgba(248,250,252,0.06); }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .section-label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11.5px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 18px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-label::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
-
-  .section-title {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-size: clamp(32px, 4.2vw, 56px);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    margin-bottom: 24px;
-    max-width: 880px;
-  }
-  .section-title .accent {
-    font-family: "Instrument Serif", serif;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: -0.005em;
-    color: var(--accent);
-  }
-  .section-lead {
-    font-size: 17.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 680px;
-  }
-
-  /* ---------- CATEGORIES (2-card "kaj počnemo") ---------- */
-  .categories {
-    background: var(--bg);
-    padding: 140px 40px 120px;
-  }
-  .cat-head {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 80px;
-  }
-  .cat-head .section-label {
-    justify-content: center;
-  }
-  .cat-head .section-title {
-    margin: 0 auto;
-  }
-  .cat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .cat-card {
-    position: relative;
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 56px 48px 56px;
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  .cat-card:hover {
-    border-color: var(--blue);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(20, 20, 19, 0.06);
-  }
-  .cat-mark {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 32px;
-    color: var(--blue);
-  }
-  .cat-mark svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .cat-title {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-size: clamp(22px, 2.2vw, 28px);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--navy);
-    margin-bottom: 14px;
-  }
-  .cat-lead {
-    font-size: 15.5px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin-bottom: 32px;
-    max-width: 380px;
-  }
-  .cat-list {
-    list-style: none;
-    margin-top: auto;
-    border-top: 1px solid var(--line);
-    padding-top: 8px;
-  }
-  .cat-list li {
-    font-size: 15px;
-    color: var(--navy);
-    font-weight: 500;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    letter-spacing: -0.005em;
-  }
-  .cat-list li:last-child { border-bottom: none; }
-  .cat-bullet {
-    flex-shrink: 0;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--blue);
-    display: inline-block;
-  }
-
-  /* ---------- HONEST POSITIONING ---------- */
-  .honest {
-    background: var(--bg-alt);
-    padding: 120px 40px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .honest-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .honest-list { display: grid; gap: 36px; margin-top: 48px; }
-  .honest-item {
-    display: grid;
-    grid-template-columns: 36px 1fr;
-    gap: 20px;
-  }
-  .honest-num {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    padding-top: 4px;
-  }
-  .honest-item h4 {
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-  }
-  .honest-item p {
-    font-size: 15.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-  /* ---------- PROCESS ---------- */
-  .process {
-    background: var(--bg);
-    padding: 120px 40px;
-  }
-  .process-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    margin-top: 80px;
-  }
-  .process-step {
-    border-top: 1px solid var(--line-strong);
-    padding-top: 28px;
-  }
-  .step-num {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    display: block;
-    margin-bottom: 18px;
-  }
-  .process-step h4 {
-    font-weight: 600;
-    font-size: 19px;
-    letter-spacing: -0.015em;
-    margin-bottom: 12px;
-  }
-  .process-step p {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-  /* ---------- FAQ ---------- */
-  .faq {
-    background: var(--bg-alt);
-    border-top: 1px solid var(--line);
-    padding: 120px 40px;
-  }
-  .faq-head { margin-bottom: 56px; max-width: 720px; }
-  .faq-list { max-width: 900px; border-top: 1px solid var(--line-strong); }
-  .faq-item { border-bottom: 1px solid var(--line-strong); }
-  .faq-question {
-    width: 100%;
-    padding: 28px 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-  }
-  .faq-icon {
-    flex-shrink: 0;
-    width: 22px; height: 22px;
-    position: relative;
-    margin-top: 6px;
-  }
-  .faq-icon::before, .faq-icon::after {
-    content: "";
-    position: absolute;
-    background: var(--ink);
-    transition: transform 0.35s cubic-bezier(.77,.05,.2,1);
-  }
-  .faq-icon::before { left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
-  .faq-icon::after { top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
-  .faq-item.open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
-  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(.77,.05,.2,1); }
-  .faq-answer-inner { padding: 0 0 28px 0; }
-  .faq-answer-inner p {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    max-width: 720px;
-  }
-
-  /* ---------- CTA ---------- */
-  .cta {
-    background: var(--navy);
-    color: #F8FAFC;
-    padding: 140px 40px 120px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta::before {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 50% 40% at 50% 0%, rgba(204, 120, 92, 0.18), transparent 60%);
-    pointer-events: none;
-  }
-  .cta-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
-  .cta h2 {
-    font-weight: 700;
-    font-size: clamp(34px, 4.4vw, 60px);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 24px;
-    color: #F8FAFC;
-  }
-  .cta h2 .accent {
-    font-family: "Instrument Serif", serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-  }
-  .cta p {
-    font-size: 17px;
-    color: rgba(248,250,252,0.78);
-    max-width: 580px;
-    margin: 0 auto 44px;
-    line-height: 1.6;
-  }
-
-  /* ---------- CONTACT FORM ---------- */
-  .contact { background: var(--bg); padding: 120px 40px; }
-  .contact-inner { max-width: 720px; margin: 0 auto; }
-  .form-grid { display: grid; gap: 24px; margin-top: 56px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .form-field { display: flex; flex-direction: column; gap: 8px; }
-  .form-field label {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 14px 16px;
-    font-family: inherit;
-    font-size: 15px;
-    color: var(--ink);
-    transition: border-color 0.25s ease, background 0.25s ease;
-  }
-  .form-field input:focus,
-  .form-field select:focus,
-  .form-field textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: #FFFFFF;
-  }
-  .form-field textarea { resize: vertical; min-height: 140px; line-height: 1.55; }
-  .hp { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
-  .form-submit {
-    align-self: flex-start;
-    margin-top: 12px;
-    padding: 16px 32px;
-    background: var(--ink);
-    color: var(--bg);
-    border: none;
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: background 0.25s ease;
-  }
-  .form-submit:hover { background: #2A2A28; }
-  .form-status {
-    margin-top: 16px;
-    font-size: 14.5px;
-    color: var(--muted);
-  }
-  .form-status.ok { color: #2D7A3E; }
-  .form-status.err { color: #B0593F; }
-
-  /* ---------- FOOTER ---------- */
-  footer {
-    background: var(--navy);
-    color: rgba(248,250,252,0.6);
-    padding: 80px 40px 32px;
-  }
-  .footer-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 60px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    align-items: start;
-  }
-  .footer-brand {
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    font-size: 60px;
-    line-height: 1;
-    color: #F8FAFC;
-    display: inline-flex;
-    align-items: baseline;
-    text-decoration: none;
-  }
-  .footer-brand-dot {
-    width: 18px; height: 18px;
-    background: var(--accent);
-    border-radius: 50%;
-    margin-left: 5px;
-    display: inline-block;
-  }
-  .footer-tagline {
-    margin-top: 24px;
-    color: rgba(248,250,252,0.55);
-    font-size: 14.5px;
-    line-height: 1.55;
-    max-width: 320px;
-  }
-  .footer-col h5 {
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 500;
-    font-size: 11.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(248,250,252,0.45);
-    margin-bottom: 18px;
-  }
-  .footer-col a, .footer-col span {
-    display: block;
-    color: rgba(248,250,252,0.78);
-    text-decoration: none;
-    font-size: 14.5px;
-    padding: 6px 0;
-    transition: color 0.2s ease;
-  }
-  .footer-col a:hover { color: var(--accent); }
-  .footer-bottom {
-    max-width: 1200px;
-    margin: 32px auto 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: rgba(248,250,252,0.42);
-    font-size: 13px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .footer-legal { display: flex; gap: 22px; flex-wrap: wrap; }
-  .footer-legal a {
-    color: rgba(248,250,252,0.55);
-    text-decoration: none;
-    font-size: 13px;
-    transition: color 0.2s ease;
-  }
-  .footer-legal a:hover { color: var(--accent); }
-
-  /* ---------- REVEAL ON SCROLL ---------- */
-  [data-reveal] {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
-  }
-  [data-reveal].in { opacity: 1; transform: none; }
-
-  /* ---------- DRAWER ---------- */
-  .drawer {
-    position: fixed;
-    top: 0; right: 0;
-    width: 320px;
-    max-width: 90vw;
-    height: 100vh;
-    background: var(--bg);
-    border-left: 1px solid var(--line);
-    z-index: 99;
-    padding: 100px 32px 32px;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(.77,.05,.2,1);
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  body.menu-open .drawer { transform: translateX(0); visibility: visible; }
-  .drawer-link {
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .drawer-cta {
-    margin-top: 24px;
-    padding: 14px 20px;
-    background: var(--ink);
-    color: var(--bg);
-    text-decoration: none;
-    text-align: center;
-    border-radius: 999px;
-    font-weight: 500;
-    font-size: 14.5px;
-  }
-  .drawer-lang {
-    margin-top: 12px;
-    background: none; border: 1px solid var(--line);
-    padding: 12px;
-    border-radius: 999px;
-    font-family: inherit;
-    font-size: 13px;
-    color: var(--ink-soft);
-    cursor: pointer;
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 1080px) {
-    .nav { padding: 18px 22px; grid-template-columns: 1fr auto; }
-    .nav.scrolled { padding: 12px 22px; }
-    .nav-links { display: none; }
-    .nav-burger { display: flex; }
-    .nav-right .lang-toggle, .nav-right .nav-cta { display: none; }
-  }
-  @media (max-width: 920px) {
-    .hero { padding: 130px 22px 80px; min-height: auto; }
-    #hero-3d { opacity: 0.55; }
-    .categories, .honest, .process, .faq, .contact { padding: 80px 22px; }
-    .cta { padding: 100px 22px 90px; }
-    .cat-grid { grid-template-columns: 1fr; gap: 16px; }
-    .cat-card { padding: 40px 28px; }
-    .honest-grid { grid-template-columns: 1fr; gap: 40px; }
-    .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; gap: 40px; padding: 0 0 40px; }
-    .footer-brand { font-size: 48px; }
-    footer { padding: 56px 22px 32px; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; }
-  }
-  @media (max-width: 560px) {
-    .process-grid { grid-template-columns: 1fr; }
-    h1.hero-title { font-size: 38px; }
-  }
-</style>
-
-<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2026.05" />
-<link rel="shortcut icon" href="/favicon.ico?v=2026.05" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026.05" />
-<meta name="apple-mobile-web-app-title" content="Eflitte" />
-<link rel="manifest" href="/site.webmanifest?v=2026.05" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Author" content="Eflitte">
+  <meta name="Description" content="Eflitte je slovenska AI agencija: spletne strani, chatboti, avtomatizacija.">
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.5">
+  <style type="text/css">
+    body {background-color: #f6f9fb}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010; background-color: #bf634a; min-height: 15.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 11.0px 'Helvetica Neue'; color: #000000; color: rgba(0, 0, 0, 0.85); -webkit-text-stroke: rgba(0, 0, 0, 0.85); background-color: #101010; min-height: 13.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 14.5px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb; background-color: #101010}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.0px 'Helvetica Neue'; color: #2e2f2d; -webkit-text-stroke: #2e2f2d}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb; min-height: 15.0px}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.55); -webkit-text-stroke: rgba(246, 249, 251, 0.55)}
+    p.p10 {margin: 0.0px 0.0px 48.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.78); -webkit-text-stroke: rgba(246, 249, 251, 0.78)}
+    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010}
+    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 11.5px 'Helvetica Neue'; color: #526078; -webkit-text-stroke: #526078}
+    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010; min-height: 15.0px}
+    p.p16 {margin: 0.0px 0.0px 32.0px 0.0px; font: 15.5px 'Helvetica Neue'; color: #2e2f2d; -webkit-text-stroke: #2e2f2d}
+    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #526078; -webkit-text-stroke: #526078}
+    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.5px 'Helvetica Neue'; color: #2e2f2d; -webkit-text-stroke: #2e2f2d}
+    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #bf634a; -webkit-text-stroke: #bf634a}
+    p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.5px 'Helvetica Neue'; color: #2e2f2d; -webkit-text-stroke: #2e2f2d}
+    p.p24 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.5px 'Helvetica Neue'; color: #2e2f2d; -webkit-text-stroke: #2e2f2d}
+    p.p25 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010}
+    p.p26 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010; min-height: 24.0px}
+    p.p27 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #2e2f2d; -webkit-text-stroke: #2e2f2d}
+    p.p29 {margin: 0.0px 88.0px 44.0px 88.0px; text-align: center; text-indent: -88.0px; font: 17.0px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.78); -webkit-text-stroke: rgba(246, 249, 251, 0.78)}
+    p.p30 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 15.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010}
+    p.p31 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010; background-color: #ffffff; min-height: 18.0px}
+    p.p32 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #526078; -webkit-text-stroke: #526078; background-color: #f6f9fb}
+    p.p33 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010; background-color: #ffffff}
+    p.p34 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px Times; color: #101010; -webkit-text-stroke: #101010; background-color: #ffffff}
+    p.p35 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; background-color: #ffffff; min-height: 13.0px}
+    p.p36 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 15.0px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb}
+    p.p37 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.5px 'Helvetica Neue'; color: #526078; -webkit-text-stroke: #526078; min-height: 17.0px}
+    p.p38 {margin: 0.0px 0.0px 0.0px 0.0px; font: 48.0px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb; background-color: #101010}
+    p.p39 {margin: 0.0px 0.0px 0.0px 0.0px; font: 48.0px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb; background-color: #bf634a; min-height: 56.0px}
+    p.p41 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.5px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.78); -webkit-text-stroke: rgba(246, 249, 251, 0.78)}
+    li.li11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010}
+    span.s1 {font-kerning: none; background-color: rgba(246, 249, 251, 0.82)}
+    span.s2 {font-kerning: none}
+    span.s3 {font-kerning: none; background-color: #f6f9fb}
+    span.s4 {font-kerning: none; background-color: #101010}
+    span.s5 {font-kerning: none; color: #bf634a; background-color: #101010; -webkit-text-stroke: 0px #bf634a}
+    span.s6 {font-kerning: none; color: #bf634a; background-color: #f6f9fb; -webkit-text-stroke: 0px #bf634a}
+    span.s7 {font-kerning: none; background-color: #ffffff}
+    span.s8 {background-color: #101010; -webkit-text-stroke: 0px #000000}
+    span.s9 {font: 12.0px 'Helvetica Neue'; font-kerning: none; background-color: #ffffff}
+    span.s10 {font-kerning: none; background-color: #eef2f7}
+    span.s11 {font-kerning: none; color: #bf634a; background-color: #eef2f7; -webkit-text-stroke: 0px #bf634a}
+    span.s12 {font: 15.0px Times; font-kerning: none}
+    span.s13 {font: 15.0px 'Helvetica Neue'; font-kerning: none}
+    span.s14 {font: 48.0px 'Helvetica Neue'; font-kerning: none; color: #f6f9fb; background-color: #101010; -webkit-text-stroke: 0px #f6f9fb}
+    span.s15 {font: 14.5px 'Helvetica Neue'; font-kerning: none; color: rgba(246, 249, 251, 0.78); -webkit-text-stroke: 0px rgba(246, 249, 251, 0.78)}
+    ul.ul1 {list-style-type: disc}
+  </style>
 </head>
 <body>
-
-<nav class="nav" id="nav">
-  <a href="/" class="logo" aria-label="Eflitte">
-    <span class="logo-letters">
-      <span class="keep">E</span><span class="hide">flitte</span>
-    </span>
-    <span class="logo-dot" aria-hidden="true"></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/" data-i18n="nav.home">Domov</a></li>
-    <li><a href="/web" data-i18n="nav.web">Spletna stran</a></li>
-    <li><a href="/avtomatizacija" data-i18n="nav.auto">Avtomatizacija</a></li>
-    <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
-  </ul>
-  <div class="nav-right">
-    <button class="lang-toggle" aria-label="Toggle language">EN</button>
-    <a href="#kontakt" class="nav-cta" data-i18n="nav.cta">Pišite nam</a>
-    <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<aside class="drawer" id="drawer" aria-hidden="true">
-  <a href="/" class="drawer-link" data-i18n="nav.home">Domov</a>
-  <a href="/web" class="drawer-link" data-i18n="nav.web">Spletna stran</a>
-  <a href="/avtomatizacija" class="drawer-link" data-i18n="nav.auto">Avtomatizacija</a>
-  <a href="#kontakt" class="drawer-link" data-i18n="nav.contact">Kontakt</a>
-  <a href="#kontakt" class="drawer-cta" data-i18n="nav.cta">Pišite nam</a>
-  <button class="drawer-lang">EN</button>
-</aside>
-
-<!-- HERO -->
-<header class="hero">
-  <div id="hero-3d" aria-hidden="true"></div>
-  <div class="hero-vignette"></div>
-  <div class="hero-inner">
-    <h1 class="hero-title" data-reveal data-i18n="hero.title">
-      AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class="accent">uporabljajo</span>, nadomestili tiste, ki ga ne.
-    </h1>
-    <div class="hero-attribution" data-reveal data-i18n="hero.attribution">
-      — Ginni Rometty, nekdanja izvršna direktorica IBM
-    </div>
-    <p class="hero-sub" data-reveal data-i18n="hero.sub">
-      Spletne strani, chatboti, avtomatizacija. Skupaj ugotovimo, kje AI res prinaša vrednost in kje (še) ne.
-    </p>
-    <div class="hero-actions" data-reveal>
-      <a href="#kontakt" class="btn-primary" data-i18n="hero.cta">
-        Pišite nam <span class="arrow">→</span>
-      </a>
-    </div>
-  </div>
-</header>
-
-<!-- WHAT WE DO — 2 vzporedni karti -->
-<section class="categories">
-  <div class="container">
-    <div class="cat-head" data-reveal>
-      <div class="section-label" data-i18n="cat.label">Kaj počnemo</div>
-      <h2 class="section-title" data-i18n="cat.title">
-        Dva fokusa, <span class="accent">ena ekipa</span>.
-      </h2>
-    </div>
-
-    <div class="cat-grid">
-      <article class="cat-card" data-reveal>
-        <div class="cat-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <rect x="18" y="3" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <rect x="3" y="18" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <rect x="18" y="18" width="11" height="11" rx="2" fill="currentColor"/>
-          </svg>
-        </div>
-        <h3 class="cat-title" data-i18n="cat1.t">Izdelava AI agentov in spletnih strani</h3>
-        <p class="cat-lead" data-i18n="cat1.lead">Vse, kar vaše stranke vidijo in z njim komunicirajo.</p>
-        <ul class="cat-list">
-          <li data-i18n="cat1.l1"><span class="cat-bullet" aria-hidden="true"></span>AI chatbot za podjetja</li>
-          <li data-i18n="cat1.l2"><span class="cat-bullet" aria-hidden="true"></span>Custom HTML spletna stran</li>
-          <li data-i18n="cat1.l3"><span class="cat-bullet" aria-hidden="true"></span>SEO + SEO za AI iskalnike (LLMO/GEO)</li>
-        </ul>
-      </article>
-
-      <article class="cat-card" data-reveal>
-        <div class="cat-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 16 L13 23 L26 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="6" cy="16" r="2" fill="currentColor"/>
-            <circle cx="13" cy="23" r="2" fill="currentColor"/>
-            <circle cx="26" cy="9" r="2" fill="currentColor"/>
-          </svg>
-        </div>
-        <h3 class="cat-title" data-i18n="cat2.t">Optimizacija dela in raziskave</h3>
-        <p class="cat-lead" data-i18n="cat2.lead">Vse, kar v ozadju opravlja vaša ekipa — hitreje in z manj napakami.</p>
-        <ul class="cat-list">
-          <li data-i18n="cat2.l1"><span class="cat-bullet" aria-hidden="true"></span>Avtomatizacija notranjih procesov</li>
-          <li data-i18n="cat2.l2"><span class="cat-bullet" aria-hidden="true"></span>AI upravljanje podatkov in dokumentov</li>
-          <li data-i18n="cat2.l3"><span class="cat-bullet" aria-hidden="true"></span>Optimizacija marketinga in raziskav</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- HONEST POSITIONING -->
-<section class="honest">
-  <div class="container">
-    <div class="honest-grid">
-      <div data-reveal>
-        <div class="section-label" data-i18n="honest.label">Načela</div>
-        <h2 class="section-title" data-i18n="honest.title">
-          Dve pravili, <span class="accent">brez izjem</span>.
-        </h2>
-        <p class="section-lead" data-i18n="honest.lead">
-          Pravila, ki si jih zastavljamo. Veljajo za vsako stranko, ne glede na velikost projekta.
-        </p>
-      </div>
-      <div class="honest-list" data-reveal>
-        <div class="honest-item">
-          <div class="honest-num">01</div>
-          <div>
-            <h4 data-i18n="honest.i1.h">Najpreprostejša rešitev najprej</h4>
-            <p data-i18n="honest.i1.p">Če vaš problem reši Excel formula ali boljši CRM template, to povemo. AI ne prodajamo zato, ker je v modi.</p>
-          </div>
-        </div>
-        <div class="honest-item">
-          <div class="honest-num">02</div>
-          <div>
-            <h4 data-i18n="honest.i2.h">Vaši podatki ostanejo vaši</h4>
-            <p data-i18n="honest.i2.p">EU regija, GDPR-skladne pogodbe, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="container">
-    <div data-reveal>
-      <div class="section-label" data-i18n="process.label">Kako delamo</div>
-      <h2 class="section-title" data-i18n="process.title">
-        Od <span class="accent">razumevanja</span> do produkcije.
-      </h2>
-    </div>
-    <div class="process-grid">
-      <div class="process-step" data-reveal>
-        <span class="step-num">01</span>
-        <h4 data-i18n="process.s1.h">Razumevanje</h4>
-        <p data-i18n="process.s1.p">Preden ponujamo rešitev, sprašujemo. Vaš proces, vaši sistemi, vaše meje. Brez tega vsaka rešitev mimo cilja.</p>
-      </div>
-      <div class="process-step" data-reveal>
-        <span class="step-num">02</span>
-        <h4 data-i18n="process.s2.h">Plačan pregled</h4>
-        <p data-i18n="process.s2.p">Strukturiran pregled trenutnega stanja, prioritizirane priložnosti, jasen naslednji korak. Pisni dokument + 60-min predstavitev.</p>
-      </div>
-      <div class="process-step" data-reveal>
-        <span class="step-num">03</span>
-        <h4 data-i18n="process.s3.h">Implementacija</h4>
-        <p data-i18n="process.s3.p">Tedenski sprinti, sprotni prikazi napredka. Po vsakem ključnem koraku lahko prekinete brez kazni.</p>
-      </div>
-      <div class="process-step" data-reveal>
-        <span class="step-num">04</span>
-        <h4 data-i18n="process.s4.h">Skrb</h4>
-        <p data-i18n="process.s4.p">Sistemi se s časom spreminjajo, tako tudi vaše potrebe. Modularna mesečna naročnina, ki ohranja sistem v ravnovesju.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq">
-  <div class="container">
-    <div class="faq-head" data-reveal>
-      <div class="section-label" data-i18n="faq.label">Pogosto zastavljena vprašanja</div>
-      <h2 class="section-title" data-i18n="faq.title">
-        Iskreni <span class="accent">odgovori</span>.
-      </h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question" data-i18n="faq.q1">
-          <span>Kaj točno je razlika med AI agencijo in klasično web/IT agencijo?</span>
-          <span class="faq-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p data-i18n="faq.a1">Klasična web agencija dela strani z generičnimi orodji (WordPress, template-i) in običajno ne razume AI plasti. Klasična IT agencija dela tehnično dobro, ampak redko razmišlja o pozicioniranju in copy-ju. Pri nas je AI plast del vsake odločitve — od kako stran rangira v ChatGPT-ju do kako interna logika obravnava vašo e-pošto. To ni dodatek, je integralni del rešitve.</p>
-          </div>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" data-i18n="faq.q2">
-          <span>Kako varujete naše podatke?</span>
-          <span class="faq-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p data-i18n="faq.a2">Občutljivi podatki ostanejo v EU podatkovnih centrih ali v vašem lastnem okolju. Ne gredo v javno zalogo in ne služijo za učenje modelov. Pred začetkom projekta podpišemo dogovor o obdelavi podatkov (DPA). Pri reguliranih panogah (zdravstvo, finance) gradimo EU-only setup z dodatnimi varovali.</p>
-          </div>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" data-i18n="faq.q3">
-          <span>Zakaj bi uvajali AI, če že imamo ChatGPT?</span>
-          <span class="faq-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p data-i18n="faq.a3">ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da AI deluje neposredno v vaših procesih — z dovoljenji, beležkami in nadzorom — brez ročnega posredovanja in brez tveganja, da gredo občutljivi podatki ven.</p>
-          </div>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" data-i18n="faq.q4">
-          <span>Ali bomo po uvedbi odvisni od vas?</span>
-          <span class="faq-icon" aria-hidden="true"></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <p data-i18n="faq.a4">Koda je vaša, dostavimo jo z dokumentacijo. Infrastruktura je v vašem imenu. Če se nekoč odločite delati z drugim partnerjem ali vzeti razvoj v lastno ekipo, vam to omogočamo. Ne gradimo lock-ina; gradimo odnos, v katerem ostanete, ker vam to koristi.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-  <div class="cta-inner">
-    <h2 data-i18n="cta.title">Pišite <span class="accent">nam</span>.</h2>
-    <p data-i18n="cta.lead">Tridesetminutni pogovor, brez obveznosti. Pogledamo vaš konkreten primer in iskreno povemo, ali je smiselno nadaljevati — ali ne.</p>
-    <a href="#kontakt" class="btn-primary">
-      <span data-i18n="cta.btn">Pišite nam</span> <span class="arrow">→</span>
-    </a>
-  </div>
-</section>
-
-<!-- CONTACT FORM -->
-<section class="contact" id="kontakt">
-  <div class="contact-inner">
-    <div data-reveal>
-      <div class="section-label" data-i18n="form.label">Kontakt</div>
-      <h2 class="section-title" data-i18n="form.title">
-        Povejte nam, <span class="accent">kaj iščete</span>.
-      </h2>
-      <p class="section-lead" data-i18n="form.lead">
-        Pošljite kratek opis vaše situacije.
-      </p>
-    </div>
-
-    <form class="form-grid" id="contactForm" novalidate>
-      <div class="form-row">
-        <div class="form-field">
-          <label for="f-name" data-i18n="f.name">Ime in priimek</label>
-          <input id="f-name" name="name" type="text" required autocomplete="name" />
-        </div>
-        <div class="form-field">
-          <label for="f-email" data-i18n="f.email">E-pošta</label>
-          <input id="f-email" name="email" type="email" required autocomplete="email" />
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label for="f-company" data-i18n="f.company">Podjetje</label>
-          <input id="f-company" name="company" type="text" autocomplete="organization" />
-        </div>
-        <div class="form-field">
-          <label for="f-size" data-i18n="f.size">Velikost podjetja</label>
-          <select id="f-size" name="size">
-            <option value="" data-i18n="f.size.0">Izberite…</option>
-            <option value="micro" data-i18n="f.size.1">Mikro (do 10)</option>
-            <option value="small" data-i18n="f.size.2">Malo (10–50)</option>
-            <option value="medium" data-i18n="f.size.3">Srednje (50–250)</option>
-            <option value="large" data-i18n="f.size.4">Veliko (250+)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-field">
-        <label for="f-interest" data-i18n="f.interest">Kaj vas zanima</label>
-        <select id="f-interest" name="interest">
-          <option value="" data-i18n="f.interest.0">Izberite…</option>
-          <option value="web" data-i18n="f.interest.1">AI-pripravljena spletna stran</option>
-          <option value="auto" data-i18n="f.interest.2">Avtomatizacija procesov</option>
-          <option value="both" data-i18n="f.interest.3">Oboje / nisem še siguren</option>
-          <option value="other" data-i18n="f.interest.4">Drugo</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="f-message" data-i18n="f.message">Vaše sporočilo</label>
-        <textarea id="f-message" name="message" required data-i18n-ph="f.message.ph"
-          placeholder="Kratek opis vaše situacije — kaj počnete, kje vidite priložnost, kaj ste že poskusili, kakšne so vaše prioritete."></textarea>
-      </div>
-      <input type="text" name="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <button type="submit" class="form-submit">
-        <span data-i18n="f.submit">Pošlji sporočilo</span> <span class="arrow">→</span>
-      </button>
-      <div class="form-status" id="formStatus"></div>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <a href="/" class="footer-brand">Eflitte<span class="footer-brand-dot"></span></a>
-    </div>
-    <div class="footer-col">
-      <h5 data-i18n="footer.products">Produkti</h5>
-      <a href="/web" data-i18n="footer.web">AI-pripravljena spletna stran</a>
-      <a href="/avtomatizacija" data-i18n="footer.auto">Avtomatizacija</a>
-    </div>
-    <div class="footer-col">
-      <h5 data-i18n="footer.company">Podjetje</h5>
-      <a href="impressum.html" data-i18n="footer.impressum">Impressum</a>
-      <a href="privacy.html" data-i18n="footer.privacy">Politika zasebnosti</a>
-      <a href="cookies.html" data-i18n="footer.cookies">Piškotki</a>
-    </div>
-    <div class="footer-col">
-      <h5 data-i18n="footer.contact_h">Kontakt</h5>
-      <a href="mailto:info@eflitte.si">info@eflitte.si</a>
-      <a href="tel:+38668693988">068 693 988</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  /* ---- nav scroll behavior ---- */
-  (function(){
-    const nav = document.getElementById('nav');
-    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  })();
-
-  /* ---- reveal on scroll ---- */
-  (function(){
-    const els = document.querySelectorAll('[data-reveal]');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(el => el.classList.add('in'));
-      return;
-    }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    els.forEach(el => io.observe(el));
-  })();
-
-  /* ---- FAQ ---- */
-  (function(){
-    document.querySelectorAll('.faq-item').forEach(item => {
-      const btn = item.querySelector('.faq-question');
-      const ans = item.querySelector('.faq-answer');
-      btn.addEventListener('click', () => {
-        const open = item.classList.toggle('open');
-        ans.style.maxHeight = open ? ans.scrollHeight + 'px' : '0';
-      });
-    });
-  })();
-
-  /* ---- mobile drawer ---- */
-  (function(){
-    const burger = document.querySelector('.nav-burger');
-    const drawer = document.getElementById('drawer');
-    if (!burger || !drawer) return;
-    function close(){ document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true'); }
-    function open(){ document.body.classList.add('menu-open'); burger.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false'); }
-    burger.addEventListener('click', () => document.body.classList.contains('menu-open') ? close() : open());
-    drawer.querySelectorAll('.drawer-link, .drawer-cta').forEach(a => a.addEventListener('click', close));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    window.addEventListener('resize', () => { if (window.innerWidth > 1080) close(); });
-  })();
-
-  /* ---- contact form → Web3Forms → filip@eflitte.si ---- */
-  (function(){
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    if (!form) return;
-
-    // ⚠️ ZAMENJAJ S TVOJIM Web3Forms ACCESS KEY
-    // 1. Pojdi na https://web3forms.com
-    // 2. Vpiši: filip@eflitte.si → "Create Access Key"
-    // 3. Preveri inbox, klikni verifikacijski link
-    // 4. Skopiraj access key (npr. "abcd1234-5678-...")
-    // 5. Zamenjaj spodnjo vrednost
-    const ACCESS_KEY = '4b867a82-186f-472b-a0af-1feca90a04f0';
-
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      if (form.hp.value) return; // honeypot
-
-      const lang = document.documentElement.lang === 'en' ? 'en' : 'sl';
-      status.className = 'form-status';
-      status.textContent = lang === 'en' ? 'Sending…' : 'Pošiljanje…';
-
-      const formData = new FormData(form);
-      formData.append('access_key', ACCESS_KEY);
-      formData.append('subject', `Eflitte kontakt: ${formData.get('name') || 'novo sporočilo'}`);
-      formData.append('from_name', 'Eflitte spletna stran');
-
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData
-        });
-        const data = await res.json();
-
-        if (data.success) {
-          status.className = 'form-status ok';
-          status.textContent = lang === 'en'
-            ? 'Thanks — redirecting…'
-            : 'Hvala — preusmerjanje…';
-          form.reset();
-          // Redirect na /hvala stran (Google Ads conversion tracking)
-          setTimeout(() => { window.location.href = '/hvala'; }, 800);
-        } else {
-          throw new Error(data.message || 'Submit failed');
-        }
-      } catch (err) {
-        status.className = 'form-status err';
-        status.textContent = lang === 'en'
-          ? 'Sending failed. Please email info@eflitte.si directly.'
-          : 'Pošiljanje ni uspelo. Pišite na info@eflitte.si.';
-        console.error('Form error:', err);
-      }
-    });
-  })();
-
-  /* ---- i18n ---- */
-  (function(){
-    const i18n = {
-      "title":   { sl: "Eflitte — AI rešitve &amp; avtomatizacija", en: "Eflitte — AI solutions &amp; automation" },
-      "nav.home":     { sl: "Domov", en: "Home" },
-      "nav.web":      { sl: "Spletna stran", en: "Website" },
-      "nav.auto":     { sl: "Avtomatizacija", en: "Automation" },
-      "nav.contact":  { sl: "Kontakt", en: "Contact" },
-      "nav.cta":      { sl: "Pišite nam", en: "Write to us" },
-
-      "hero.title":   { sl: "AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class=\"accent\">uporabljajo</span>, nadomestili tiste, ki ga ne.", en: "AI won't replace humans. But those who use it will replace those who don't." },
-      "hero.attribution": { sl: "— Ginni Rometty, nekdanja izvršna direktorica IBM", en: "— Ginni Rometty, former CEO of IBM" },
-      "hero.sub":     { sl: "Spletne strani, chatboti, avtomatizacija. Skupaj ugotovimo, kje AI res prinaša vrednost in kje (še) ne.", en: "Websites, chatbots, automation. Together we figure out where AI actually adds value — and where it (still) doesn't." },
-      "hero.cta":     { sl: "Pišite nam <span class=\"arrow\">→</span>", en: "Write to us <span class=\"arrow\">→</span>" },
-
-      "cat.label":   { sl: "Kaj počnemo", en: "What we do" },
-      "cat.title":   { sl: "Dva fokusa, <span class=\"accent\">ena ekipa</span>.", en: "Two focuses, <span class=\"accent\">one team</span>." },
-
-      "cat1.t":      { sl: "Izdelava AI agentov in spletnih strani", en: "Building AI agents and websites" },
-      "cat1.lead":   { sl: "Vse, kar vaše stranke vidijo in z njim komunicirajo.", en: "Everything your customers see and interact with." },
-      "cat1.l1":     { sl: "AI chatbot za podjetja", en: "AI chatbot for businesses" },
-      "cat1.l2":     { sl: "Custom HTML spletna stran", en: "Custom HTML website" },
-      "cat1.l3":     { sl: "SEO + SEO za AI iskalnike (LLMO/GEO)", en: "SEO + SEO for AI search (LLMO/GEO)" },
-
-      "cat2.t":      { sl: "Optimizacija dela in raziskave", en: "Work optimization and research" },
-      "cat2.lead":   { sl: "Vse, kar v ozadju opravlja vaša ekipa — hitreje in z manj napakami.", en: "Everything your team does behind the scenes — faster and with fewer errors." },
-      "cat2.l1":     { sl: "Avtomatizacija notranjih procesov", en: "Internal process automation" },
-      "cat2.l2":     { sl: "AI upravljanje podatkov in dokumentov", en: "AI data and document management" },
-      "cat2.l3":     { sl: "Optimizacija marketinga in raziskav", en: "Marketing optimization and research" },
-
-      "honest.label": { sl: "Načela", en: "Principles" },
-      "honest.title": { sl: "Dve pravili, <span class=\"accent\">brez izjem</span>.", en: "Two rules, <span class=\"accent\">no exceptions</span>." },
-      "honest.lead":  { sl: "Pravila, ki si jih zastavljamo. Veljajo za vsako stranko, ne glede na velikost projekta.", en: "Rules we hold ourselves to. They apply to every client, regardless of project size." },
-      "honest.i1.h":  { sl: "Najpreprostejša rešitev najprej", en: "Simplest solution first" },
-      "honest.i1.p":  { sl: "Če vaš problem reši Excel formula ali boljši CRM template, to povemo. AI ne prodajamo zato, ker je v modi.", en: "If your problem is solved by an Excel formula or a better CRM template, we say so. We don't sell AI because it's trending." },
-      "honest.i2.h":  { sl: "Vaši podatki ostanejo vaši", en: "Your data stays yours" },
-      "honest.i2.p":  { sl: "EU regija, GDPR-skladne pogodbe, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.", en: "EU region, GDPR-compliant agreements, no model training on your content. For sensitive cases, self-hosted setup under your control." },
-      "process.label": { sl: "Kako delamo", en: "How we work" },
-      "process.title": { sl: "Od <span class=\"accent\">razumevanja</span> do produkcije.", en: "From <span class=\"accent\">understanding</span> to production." },
-      "process.s1.h":  { sl: "Razumevanje", en: "Understanding" },
-      "process.s1.p":  { sl: "Preden ponujamo rešitev, sprašujemo. Vaš proces, vaši sistemi, vaše meje. Brez tega vsaka rešitev mimo cilja.", en: "Before proposing a solution, we ask. Your process, your systems, your limits. Without this, every solution misses." },
-      "process.s2.h":  { sl: "Plačan pregled", en: "Paid audit" },
-      "process.s2.p":  { sl: "Strukturiran pregled trenutnega stanja, prioritizirane priložnosti, jasen naslednji korak. Pisni dokument + 60-min predstavitev.", en: "Structured review of the current state, prioritized opportunities, clear next step. Written document + 60-min presentation." },
-      "process.s3.h":  { sl: "Implementacija", en: "Implementation" },
-      "process.s3.p":  { sl: "Tedenski sprinti, sprotni prikazi napredka. Po vsakem ključnem koraku lahko prekinete brez kazni.", en: "Weekly sprints, ongoing progress demos. After each key step you can pause without penalty." },
-      "process.s4.h":  { sl: "Skrb", en: "Ongoing care" },
-      "process.s4.p":  { sl: "Sistemi se s časom spreminjajo, tako tudi vaše potrebe. Modularna mesečna naročnina, ki ohranja sistem v ravnovesju.", en: "Systems change with time, and so do your needs. A modular monthly subscription that keeps the system balanced." },
-
-      "faq.label": { sl: "Pogosto zastavljena vprašanja", en: "Frequently asked questions" },
-      "faq.title": { sl: "Iskreni <span class=\"accent\">odgovori</span>.", en: "Honest <span class=\"accent\">answers</span>." },
-      "faq.q1": { sl: "Kaj točno je razlika med AI agencijo in klasično web/IT agencijo?", en: "What's the actual difference between an AI agency and a classic web/IT agency?" },
-      "faq.a1": { sl: "Klasična web agencija dela strani z generičnimi orodji (WordPress, template-i) in običajno ne razume AI plasti. Klasična IT agencija dela tehnično dobro, ampak redko razmišlja o pozicioniranju in copy-ju. Pri nas je AI plast del vsake odločitve — od kako stran rangira v ChatGPT-ju do kako interna logika obravnava vašo e-pošto. To ni dodatek, je integralni del rešitve.", en: "A classic web agency builds sites with generic tools (WordPress, templates) and usually doesn't understand the AI layer. A classic IT agency is technically strong but rarely thinks about positioning and copy. With us, the AI layer is part of every decision — from how a site ranks in ChatGPT to how internal logic handles your email. It's not an add-on; it's integral." },
-      "faq.q2": { sl: "Kako varujete naše podatke?", en: "How do you protect our data?" },
-      "faq.a2": { sl: "Občutljivi podatki ostanejo v EU podatkovnih centrih ali v vašem lastnem okolju. Ne gredo v javno zalogo in ne služijo za učenje modelov. Pred začetkom projekta podpišemo dogovor o obdelavi podatkov (DPA). Pri reguliranih panogah (zdravstvo, finance) gradimo EU-only setup z dodatnimi varovali.", en: "Sensitive data stays in EU data centres or your own environment. It doesn't go into public pools and doesn't train models. Before starting we sign a data processing agreement (DPA). For regulated industries (healthcare, finance) we build EU-only setups with additional safeguards." },
-      "faq.q3": { sl: "Zakaj bi uvajali AI, če že imamo ChatGPT?", en: "Why implement AI if we already have ChatGPT?" },
-      "faq.a3": { sl: "ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da AI deluje neposredno v vaših procesih — z dovoljenji, beležkami in nadzorom — brez ročnega posredovanja in brez tveganja, da gredo občutljivi podatki ven.", en: "ChatGPT is an excellent personal assistant. For a company, it means every employee manually copies data into an app outside your infrastructure. Systemic implementation means AI runs directly inside your processes — with permissions, logging and oversight — without manual handoff and without sensitive data leaking out." },
-      "faq.q4": { sl: "Ali bomo po uvedbi odvisni od vas?", en: "Will we become dependent on you?" },
-      "faq.a4": { sl: "Koda je vaša, dostavimo jo z dokumentacijo. Infrastruktura je v vašem imenu. Če se nekoč odločite delati z drugim partnerjem ali vzeti razvoj v lastno ekipo, vam to omogočamo. Ne gradimo lock-ina; gradimo odnos, v katerem ostanete, ker vam to koristi.", en: "The code is yours, shipped with documentation. The infrastructure is in your name. If you later choose to work with another partner or bring it in-house, we make that possible. We don't build lock-in; we build a relationship you stay in because it benefits you." },
-
-      "cta.title": { sl: "Pišite <span class=\"accent\">nam</span>.", en: "Write <span class=\"accent\">to us</span>." },
-      "cta.lead":  { sl: "Tridesetminutni pogovor, brez obveznosti. Pogledamo vaš konkreten primer in iskreno povemo, ali je smiselno nadaljevati — ali ne.", en: "A thirty-minute conversation, no strings attached. We look at your specific case and tell you honestly whether it's worth pursuing — or not." },
-      "cta.btn":   { sl: "Pišite nam", en: "Write to us" },
-
-      "form.label": { sl: "Kontakt", en: "Contact" },
-      "form.title": { sl: "Povejte nam, <span class=\"accent\">kaj iščete</span>.", en: "Tell us <span class=\"accent\">what you're looking for</span>." },
-      "form.lead":  { sl: "Pošljite kratek opis vaše situacije.", en: "Send a short description of your situation." },
-      "f.name":     { sl: "Ime in priimek", en: "Full name" },
-      "f.email":    { sl: "E-pošta", en: "Email" },
-      "f.company":  { sl: "Podjetje", en: "Company" },
-      "f.size":     { sl: "Velikost podjetja", en: "Company size" },
-      "f.size.0":   { sl: "Izberite…", en: "Select…" },
-      "f.size.1":   { sl: "Mikro (do 10)", en: "Micro (up to 10)" },
-      "f.size.2":   { sl: "Malo (10–50)", en: "Small (10–50)" },
-      "f.size.3":   { sl: "Srednje (50–250)", en: "Medium (50–250)" },
-      "f.size.4":   { sl: "Veliko (250+)", en: "Large (250+)" },
-      "f.interest": { sl: "Kaj vas zanima", en: "What you're interested in" },
-      "f.interest.0": { sl: "Izberite…", en: "Select…" },
-      "f.interest.1": { sl: "AI-pripravljena spletna stran", en: "AI-ready website" },
-      "f.interest.2": { sl: "Avtomatizacija procesov", en: "Process automation" },
-      "f.interest.3": { sl: "Oboje / nisem še siguren", en: "Both / not sure yet" },
-      "f.interest.4": { sl: "Drugo", en: "Other" },
-      "f.message":   { sl: "Vaše sporočilo", en: "Your message" },
-      "f.message.ph":{ sl: "Kratek opis vaše situacije — kaj počnete, kje vidite priložnost, kaj ste že poskusili, kakšne so vaše prioritete.", en: "Brief description of your situation — what you do, where you see the opportunity, what you've tried, what your priorities are." },
-      "f.submit":    { sl: "Pošlji sporočilo", en: "Send message" },
-
-      "footer.tagline":  { sl: "", en: "" },
-      "footer.products": { sl: "Produkti", en: "Products" },
-      "footer.web":      { sl: "AI-pripravljena spletna stran", en: "AI-ready website" },
-      "footer.auto":     { sl: "Avtomatizacija", en: "Automation" },
-      "footer.contact":  { sl: "Kontakt", en: "Contact" },
-      "footer.company":  { sl: "Podjetje", en: "Company" },
-      "footer.contact_h":{ sl: "Kontakt", en: "Get in touch" },
-      "footer.copy":     { sl: "© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p.", en: "© 2026 EFLITTE, FILIP NOE KOVAČIČ s.p." },
-      "footer.privacy":  { sl: "Politika zasebnosti", en: "Privacy Policy" },
-      "footer.cookies":  { sl: "Piškotki", en: "Cookies" },
-      "footer.impressum":{ sl: "Impressum", en: "Imprint" }
-    };
-
-    function apply(lang){
-      document.documentElement.lang = lang;
-      document.title = i18n["title"][lang] || document.title;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const t = i18n[el.getAttribute('data-i18n')];
-        if (t && t[lang] !== undefined) el.innerHTML = t[lang];
-      });
-      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-        const t = i18n[el.getAttribute('data-i18n-ph')];
-        if (t && t[lang] !== undefined) el.placeholder = t[lang];
-      });
-      document.querySelectorAll('.lang-toggle, .drawer-lang').forEach(btn => {
-        btn.textContent = lang === 'en' ? 'SL' : 'EN';
-      });
-      try { localStorage.setItem('eflitte-lang', lang); } catch(e) {}
-    }
-
-    let saved = 'sl';
-    try { saved = localStorage.getItem('eflitte-lang') || 'sl'; } catch(e) {}
-    if (saved === 'en') apply('en');
-
-    document.querySelectorAll('.lang-toggle, .drawer-lang').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const now = document.documentElement.lang === 'en' ? 'en' : 'sl';
-        apply(now === 'en' ? 'sl' : 'en');
-      });
-    });
-  })();
-
-  /* ---- Three.js hero sphere — Fibonacci point cloud + connections + accent pulse ---- */
-  (function initHero3D(){
-    const container = document.getElementById('hero-3d');
-    if (!container || typeof THREE === 'undefined') return;
-
-    // Mobile perf scaling — fewer points/connections on small screens
-    const isSmall = Math.min(window.innerWidth, window.innerHeight) < 700;
-    const NUM_POINTS = isSmall ? 260 : 480;
-    const MAX_DIST = isSmall ? 0.60 : 0.55;
-    const NUM_ACCENTS = isSmall ? 22 : 36;
-
-    // Scene
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x141413, 0.10);
-
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 50);
-    camera.position.z = 7;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-
-    // Fibonacci sphere of points
-    const radius = 2.4;
-    const points = [];
-    for (let i = 0; i < NUM_POINTS; i++) {
-      const phi = Math.acos(1 - 2 * (i + 0.5) / NUM_POINTS);
-      const theta = Math.PI * (1 + Math.sqrt(5)) * i;
-      const r = radius + (Math.random() - 0.5) * 0.28;
-      points.push(new THREE.Vector3(
-        r * Math.sin(phi) * Math.cos(theta),
-        r * Math.sin(phi) * Math.sin(theta),
-        r * Math.cos(phi)
-      ));
-    }
-
-    // Cream point cloud
-    const pointGeom = new THREE.BufferGeometry().setFromPoints(points);
-    const pointMat = new THREE.PointsMaterial({
-      color: 0xF8FAFC, size: 0.04, transparent: true, opacity: 0.8,
-      sizeAttenuation: true, depthWrite: false
-    });
-    const pointsMesh = new THREE.Points(pointGeom, pointMat);
-
-    // Lines between nearby points — terracotta on close pairs, cream on farther
-    const linePositions = [];
-    const lineColors = [];
-    const accentColor = new THREE.Color(0xcc785c);
-    const neutralColor = new THREE.Color(0xF8FAFC);
-    for (let i = 0; i < points.length; i++) {
-      for (let j = i + 1; j < points.length; j++) {
-        const d = points[i].distanceTo(points[j]);
-        if (d < MAX_DIST) {
-          linePositions.push(points[i].x, points[i].y, points[i].z);
-          linePositions.push(points[j].x, points[j].y, points[j].z);
-          const useAccent = d < MAX_DIST * 0.55;
-          const c = useAccent ? accentColor : neutralColor;
-          const a = useAccent ? 1 : 0.28;
-          lineColors.push(c.r * a, c.g * a, c.b * a);
-          lineColors.push(c.r * a, c.g * a, c.b * a);
-        }
-      }
-    }
-    const lineGeom = new THREE.BufferGeometry();
-    lineGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-    lineGeom.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
-    const lineMat = new THREE.LineBasicMaterial({
-      vertexColors: true, transparent: true, opacity: 0.55,
-      depthWrite: false, blending: THREE.AdditiveBlending
-    });
-    const linesMesh = new THREE.LineSegments(lineGeom, lineMat);
-
-    // Accent (terracotta) glow points
-    const accentPositions = [];
-    for (let i = 0; i < NUM_ACCENTS; i++) {
-      const idx = Math.floor(Math.random() * points.length);
-      const p = points[idx];
-      accentPositions.push(p.x, p.y, p.z);
-    }
-    const accentGeom = new THREE.BufferGeometry();
-    accentGeom.setAttribute('position', new THREE.Float32BufferAttribute(accentPositions, 3));
-    const accentMat = new THREE.PointsMaterial({
-      color: 0xcc785c, size: 0.15, transparent: true, opacity: 1.0,
-      sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending
-    });
-    const accentsMesh = new THREE.Points(accentGeom, accentMat);
-
-    // Group, position right of center so left text stays clean
-    const group = new THREE.Group();
-    group.add(pointsMesh);
-    group.add(linesMesh);
-    group.add(accentsMesh);
-    group.position.x = 1.2;
-    scene.add(group);
-
-    // Resize
-    window.addEventListener('resize', () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    });
-
-    // Animation loop — pause on tab hide for perf
-    const clock = new THREE.Clock();
-    let paused = false;
-    document.addEventListener('visibilitychange', () => { paused = document.hidden; });
-
-    (function animate() {
-      if (!paused) {
-        const dt = clock.getDelta();
-        const t = clock.getElapsedTime();
-        group.rotation.y += dt * 0.04;
-        accentsMesh.material.opacity = 0.6 + Math.sin(t * 2.2) * 0.28;
-        accentsMesh.material.size = 0.12 + Math.sin(t * 3) * 0.02;
-        linesMesh.material.opacity = 0.45 + Math.sin(t * 0.6) * 0.05;
-        renderer.render(scene, camera);
-      }
-      requestAnimationFrame(animate);
-    })();
-  })();
-</script>
-
-<!-- AI chat widget -->
-<script>
-  window.EFLITTE_CHAT_CONFIG = { endpoint: '/api/chat', lang: 'auto', mock: false };
-</script>
-<script src="chat-widget.js" defer></script>
-
+<p class="p1"><span class="s1"><a href="file:///">E<span class="s2"></span></a></span></p>
+<p class="p1"><span class="s1"><a href="file:///">flitte<span class="s2"></span></a></span></p>
+<p class="p2"><span class="s2"><a href="file:///"></a></span><br></p>
+<p class="p3"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2"></span><br></p>
+<p class="p3"><span class="s2"></span><br></p>
+<p class="p4"><span class="s3"><a href="file:///">Domov<span class="s2"></span></a></span></p>
+<p class="p4"><span class="s3"><a href="file:///web">Spletna stran<span class="s2"></span></a></span></p>
+<p class="p4"><span class="s3"><a href="file:///avtomatizacija">Avtomatizacija<span class="s2"></span></a></span></p>
+<p class="p4"><span class="s3">Kontakt</span></p>
+<p class="p5"><span class="s2">Pišite nam</span></p>
+<p class="p6"><span class="s3">EN</span></p>
+<p class="p7"><span class="s2"></span><br></p>
+<p class="p7"><span class="s2"></span><br></p>
+<h1 style="margin: 0.0px 0.0px 32.0px 0.0px; font: 43.2px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb"><span class="s4">AI ne bo nadmestil ljudi. Bodo pa tisti, ki ga </span><span class="s5">uporabljajo</span><span class="s4">, nadomestili tiste, ki ga ne.</span></h1>
+<p class="p9"><span class="s4">— Ginni Rometty, nekdanja izvršna direktorica IBM</span></p>
+<p class="p10"><span class="s4">Spletne strani, chatboti, avtomatizacija. Skupaj ugotovimo, kje AI res prinaša vrednost in kje (še) ne.</span></p>
+<p class="p11"><span class="s3">Pišite nam</span></p>
+<p class="p11"><span class="s3">→</span></p>
+<p class="p12"><span class="s3">KAJ POČNEMO</span></p>
+<h2 style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 33.6px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Dva fokusa, </span><span class="s6">ena ekipa</span><span class="s3">.</span></h2>
+<p class="p14"><span class="s2"></span><br></p>
+<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s7">Izdelava AI agentov in spletnih strani</span></h3>
+<p class="p16"><span class="s7">Vse, kar vaše stranke vidijo in z njim komunicirajo.</span></p>
+<ul class="ul1">
+  <li class="li11"><span class="s8"></span><span class="s4"><br>
+</span><span class="s7">AI chatbot za podjetja</span><span class="s9"> </span><span class="s4"><br>
+</span><span class="s7">Custom HTML spletna stran</span><span class="s9"> </span><span class="s4"><br>
+</span><span class="s7">SEO + SEO za AI iskalnike (LLMO/GEO)</span></li>
+</ul>
+<p class="p14"><span class="s2"></span><br></p>
+<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s7">Optimizacija dela in raziskave</span></h3>
+<p class="p16"><span class="s7">Vse, kar v ozadju opravlja vaša ekipa — hitreje in z manj napakami.</span></p>
+<ul class="ul1">
+  <li class="li11"><span class="s8"></span><span class="s4"><br>
+</span><span class="s7">Avtomatizacija notranjih procesov</span><span class="s9"> </span><span class="s4"><br>
+</span><span class="s7">AI upravljanje podatkov in dokumentov</span><span class="s9"> </span><span class="s4"><br>
+</span><span class="s7">Optimizacija marketinga in raziskav</span></li>
+</ul>
+<p class="p17"><span class="s10">NAČELA</span></p>
+<h2 style="margin: 0.0px 0.0px 24.0px 0.0px; font: 33.6px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s10">Dve pravili, </span><span class="s11">brez izjem</span><span class="s10">.</span></h2>
+<p class="p19"><span class="s10">Pravila, ki si jih zastavljamo. Veljajo za vsako stranko, ne glede na velikost projekta.</span></p>
+<p class="p20"><span class="s10">01</span></p>
+<h4 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s10">Najpreprostejša rešitev najprej</span></h4>
+<p class="p22"><span class="s10">Če vaš problem reši Excel formula ali boljši CRM template, to povemo. AI ne prodajamo zato, ker je v modi.</span></p>
+<p class="p20"><span class="s10">02</span></p>
+<h4 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 18.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s10">Vaši podatki ostanejo vaši</span></h4>
+<p class="p22"><span class="s10">EU regija, GDPR-skladne pogodbe, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.</span></p>
+<p class="p17"><span class="s3">KAKO DELAMO</span></p>
+<h2 style="margin: 0.0px 0.0px 24.0px 0.0px; font: 33.6px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Od </span><span class="s6">razumevanja</span><span class="s3"> do produkcije.</span></h2>
+<p class="p20"><span class="s3">01</span></p>
+<h4 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 19.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Razumevanje</span></h4>
+<p class="p24"><span class="s3">Preden ponujamo rešitev, sprašujemo. Vaš proces, vaši sistemi, vaše meje. Brez tega vsaka rešitev mimo cilja.</span></p>
+<p class="p20"><span class="s3">02</span></p>
+<h4 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 19.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Plačan pregled</span></h4>
+<p class="p24"><span class="s3">Strukturiran pregled trenutnega stanja, prioritizirane priložnosti, jasen naslednji korak. Pisni dokument + 60-min predstavitev.</span></p>
+<p class="p20"><span class="s3">03</span></p>
+<h4 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 19.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Implementacija</span></h4>
+<p class="p24"><span class="s3">Tedenski sprinti, sprotni prikazi napredka. Po vsakem ključnem koraku lahko prekinete brez kazni.</span></p>
+<p class="p20"><span class="s3">04</span></p>
+<h4 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 19.0px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Skrb</span></h4>
+<p class="p24"><span class="s3">Sistemi se s časom spreminjajo, tako tudi vaše potrebe. Modularna mesečna naročnina, ki ohranja sistem v ravnovesju.</span></p>
+<p class="p17"><span class="s10">POGOSTO ZASTAVLJENA VPRAŠANJA</span></p>
+<h2 style="margin: 0.0px 0.0px 24.0px 0.0px; font: 33.6px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s10">Iskreni </span><span class="s11">odgovori</span><span class="s10">.</span></h2>
+<p class="p25"><span class="s10">Kaj točno je razlika med AI agencijo in klasično web/IT agencijo?</span></p>
+<p class="p26"><span class="s2"></span><br></p>
+<p class="p27"><span class="s10">Klasična web agencija dela strani z generičnimi orodji (WordPress, template-i) in običajno ne razume AI plasti. Klasična IT agencija dela tehnično dobro, ampak redko razmišlja o pozicioniranju in copy-ju. Pri nas je AI plast del vsake odločitve — od kako stran rangira v ChatGPT-ju do kako interna logika obravnava vašo e-pošto. To ni dodatek, je integralni del rešitve.</span></p>
+<p class="p25"><span class="s10">Kako varujete naše podatke?</span></p>
+<p class="p26"><span class="s2"></span><br></p>
+<p class="p27"><span class="s10">Občutljivi podatki ostanejo v EU podatkovnih centrih ali v vašem lastnem okolju. Ne gredo v javno zalogo in ne služijo za učenje modelov. Pred začetkom projekta podpišemo dogovor o obdelavi podatkov (DPA). Pri reguliranih panogah (zdravstvo, finance) gradimo EU-only setup z dodatnimi varovali.</span></p>
+<p class="p25"><span class="s10">Zakaj bi uvajali AI, če že imamo ChatGPT?</span></p>
+<p class="p26"><span class="s2"></span><br></p>
+<p class="p27"><span class="s10">ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da AI deluje neposredno v vaših procesih — z dovoljenji, beležkami in nadzorom — brez ročnega posredovanja in brez tveganja, da gredo občutljivi podatki ven.</span></p>
+<p class="p25"><span class="s10">Ali bomo po uvedbi odvisni od vas?</span></p>
+<p class="p26"><span class="s2"></span><br></p>
+<p class="p27"><span class="s10">Koda je vaša, dostavimo jo z dokumentacijo. Infrastruktura je v vašem imenu. Če se nekoč odločite delati z drugim partnerjem ali vzeti razvoj v lastno ekipo, vam to omogočamo. Ne gradimo lock-ina; gradimo odnos, v katerem ostanete, ker vam to koristi.</span></p>
+<h2 style="margin: 0.0px 0.0px 24.0px 0.0px; text-align: center; font: 35.2px 'Helvetica Neue'; color: #f6f9fb; -webkit-text-stroke: #f6f9fb"><span class="s4">Pišite </span><span class="s5">nam</span><span class="s4">.</span></h2>
+<p class="p29"><span class="s4">Tridesetminutni pogovor, brez obveznosti. Pogledamo vaš konkreten primer in iskreno povemo, ali je smiselno nadaljevati — ali ne.</span></p>
+<p class="p30"><span class="s3">Pišite nam</span></p>
+<p class="p30"><span class="s3">→</span></p>
+<p class="p17"><span class="s3">KONTAKT</span></p>
+<h2 style="margin: 0.0px 0.0px 24.0px 0.0px; font: 33.6px 'Helvetica Neue'; color: #101010; -webkit-text-stroke: #101010"><span class="s3">Povejte nam, </span><span class="s6">kaj iščete</span><span class="s3">.</span></h2>
+<p class="p19"><span class="s3">Pošljite kratek opis vaše situacije.</span></p>
+<p class="p17"><span class="s3">IME IN PRIIMEK</span></p>
+<p class="p31"><span class="s2"></span><br></p>
+<p class="p17"><span class="s3">E-POŠTA</span></p>
+<p class="p31"><span class="s2"></span><br></p>
+<p class="p17"><span class="s3">PODJETJE</span></p>
+<p class="p31"><span class="s2"></span><br></p>
+<p class="p32"><span class="s2">VELIKOST PODJETJA</span></p>
+<p class="p33"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">Izberite…</span></p>
+<p class="p34"><span class="s13"><span class="Apple-converted-space">            </span></span><span class="s2">Mikro (do 10)</span></p>
+<p class="p33"><span class="s2"><span class="Apple-converted-space">            </span></span><span class="s12">Malo (10–50)</span></p>
+<p class="p34"><span class="s13"><span class="Apple-converted-space">            </span></span><span class="s2">Srednje (50–250)</span></p>
+<p class="p34"><span class="s13"><span class="Apple-converted-space">            </span></span><span class="s2">Veliko (250+)</span></p>
+<p class="p31"><span class="s2"><span class="Apple-converted-space">          </span></span></p>
+<p class="p32"><span class="s2">KAJ VAS ZANIMA</span></p>
+<p class="p33"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s12">Izberite…</span></p>
+<p class="p34"><span class="s13"><span class="Apple-converted-space">          </span></span><span class="s2">AI-pripravljena spletna stran</span></p>
+<p class="p34"><span class="s13"><span class="Apple-converted-space">          </span></span><span class="s2">Avtomatizacija procesov</span></p>
+<p class="p34"><span class="s13"><span class="Apple-converted-space">          </span></span><span class="s2">Oboje / nisem še siguren</span></p>
+<p class="p33"><span class="s2"><span class="Apple-converted-space">          </span></span><span class="s12">Drugo</span></p>
+<p class="p31"><span class="s2"><span class="Apple-converted-space">        </span></span></p>
+<p class="p17"><span class="s3">VAŠE SPOROČILO</span></p>
+<p class="p35"><span class="s2"></span><br></p>
+<p class="p36"><span class="s4">Pošlji sporočilo</span></p>
+<p class="p36"><span class="s4">→</span></p>
+<p class="p37"><span class="s2"></span><br></p>
+<p class="p38"><span class="s2"><a href="file:///">Eflitte<span class="s14"></span></a></span></p>
+<p class="p39"><span class="s2"><a href="file:///"></a></span><br></p>
+<h5 style="margin: 0.0px 0.0px 18.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.45); -webkit-text-stroke: rgba(246, 249, 251, 0.45)"><span class="s4">PRODUKTI</span></h5>
+<p class="p41"><span class="s4"><a href="file:///web">AI-pripravljena spletna stran<span class="s15"></span></a></span></p>
+<p class="p41"><span class="s4"><a href="file:///avtomatizacija">Avtomatizacija<span class="s15"></span></a></span></p>
+<h5 style="margin: 0.0px 0.0px 18.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.45); -webkit-text-stroke: rgba(246, 249, 251, 0.45)"><span class="s4">PODJETJE</span></h5>
+<p class="p41"><span class="s4"><a href="file:///Users/propuls1on/Documents/GitHub/eflitte/impressum.html">Impressum<span class="s15"></span></a></span></p>
+<p class="p41"><span class="s4"><a href="file:///Users/propuls1on/Documents/GitHub/eflitte/privacy.html">Politika zasebnosti<span class="s15"></span></a></span></p>
+<p class="p41"><span class="s4"><a href="file:///Users/propuls1on/Documents/GitHub/eflitte/cookies.html">Piškotki<span class="s15"></span></a></span></p>
+<h5 style="margin: 0.0px 0.0px 18.0px 0.0px; font: 11.5px 'Helvetica Neue'; color: #f6f9fb; color: rgba(246, 249, 251, 0.45); -webkit-text-stroke: rgba(246, 249, 251, 0.45)"><span class="s4">KONTAKT</span></h5>
+<p class="p41"><span class="s4"><a href="mailto:info@eflitte.si">info@eflitte.si<span class="s15"></span></a></span></p>
+<p class="p41"><span class="s4"><a href="tel:+38668693988">068 693 988<span class="s15"></span></a></span></p>
 </body>
 </html>
