@@ -909,6 +909,69 @@
     .process-grid { grid-template-columns: 1fr; }
     h1.hero-title { font-size: 38px; }
   }
+
+  /* ==================================================================
+     ŠIROKI EKRANI — boljša izraba prostora na velikih monitorjih
+     Postopno povečamo containerje in stranske robove, da na 1440p,
+     1600p in 4K monitorjih ni preveč praznega prostora ob straneh.
+     ================================================================== */
+  @media (min-width: 1280px) {
+    .nav { padding: 22px 56px; }
+    .nav.scrolled { padding: 14px 56px; }
+    .hero { padding: 170px 56px 130px; }
+    .categories,
+    .honest,
+    .process,
+    .faq,
+    .contact { padding: 130px 56px; }
+    .cta { padding: 150px 56px 130px; }
+    footer { padding: 90px 56px 32px; }
+
+    .hero-inner,
+    .container,
+    .footer-grid,
+    .footer-bottom { max-width: 1320px; }
+    .cat-grid { max-width: 1280px; }
+  }
+
+  @media (min-width: 1600px) {
+    .nav { padding: 24px 80px; }
+    .nav.scrolled { padding: 14px 80px; }
+    .hero { padding: 190px 80px 150px; }
+    .categories,
+    .honest,
+    .process,
+    .faq,
+    .contact { padding: 150px 80px; }
+    .cta { padding: 170px 80px 150px; }
+    footer { padding: 100px 80px 36px; }
+
+    .hero-inner,
+    .container,
+    .footer-grid,
+    .footer-bottom { max-width: 1440px; }
+    .cat-grid { max-width: 1380px; }
+    h1.hero-title { max-width: 1100px; }
+  }
+
+  @media (min-width: 2000px) {
+    .nav { padding: 26px 120px; }
+    .nav.scrolled { padding: 16px 120px; }
+    .hero { padding: 210px 120px 170px; }
+    .categories,
+    .honest,
+    .process,
+    .faq,
+    .contact { padding: 170px 120px; }
+    .cta { padding: 190px 120px 170px; }
+    footer { padding: 110px 120px 40px; }
+
+    .hero-inner,
+    .container,
+    .footer-grid,
+    .footer-bottom { max-width: 1560px; }
+    .cat-grid { max-width: 1480px; }
+  }
 </style>
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />

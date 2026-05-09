@@ -183,6 +183,32 @@ footer{background:var(--navy);color:rgba(248,250,252,0.6);padding:80px 40px 32px
 /* RESPONSIVE */
 @media (max-width:1080px){.nav{padding:18px 22px;grid-template-columns:1fr auto}.nav.scrolled{padding:12px 22px}.nav-links{display:none}.nav-burger{display:flex}.nav-right .lang-toggle,.nav-right .nav-cta{display:none}}
 @media (max-width:920px){.hero{padding:130px 22px 80px}.wakeup,.delivery,.why,.faq,.cta{padding:80px 22px}.deliver-card{grid-template-columns:1fr;gap:24px;padding:32px}.why-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr;gap:40px;padding:0 0 40px}.footer-brand{font-size:48px}footer{padding:56px 22px 32px}.footer-bottom{flex-direction:column;align-items:flex-start}}
+
+/* ŠIROKI EKRANI — boljša izraba prostora na velikih monitorjih */
+@media (min-width:1280px){
+  .nav{padding:22px 56px}
+  .nav.scrolled{padding:14px 56px}
+  .hero{padding:200px 56px 140px}
+  .wakeup,.delivery,.why,.faq,.cta{padding:150px 56px}
+  footer{padding:90px 56px 32px}
+  .hero-inner,.container,.wakeup-inner,.footer-grid,.footer-bottom{max-width:1320px}
+}
+@media (min-width:1600px){
+  .nav{padding:24px 80px}
+  .nav.scrolled{padding:14px 80px}
+  .hero{padding:220px 80px 160px}
+  .wakeup,.delivery,.why,.faq,.cta{padding:170px 80px}
+  footer{padding:100px 80px 36px}
+  .hero-inner,.container,.wakeup-inner,.footer-grid,.footer-bottom{max-width:1440px}
+}
+@media (min-width:2000px){
+  .nav{padding:26px 120px}
+  .nav.scrolled{padding:16px 120px}
+  .hero{padding:240px 120px 180px}
+  .wakeup,.delivery,.why,.faq,.cta{padding:190px 120px}
+  footer{padding:110px 120px 40px}
+  .hero-inner,.container,.wakeup-inner,.footer-grid,.footer-bottom{max-width:1560px}
+}
 </style>
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />

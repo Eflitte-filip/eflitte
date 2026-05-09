@@ -729,6 +729,54 @@
     footer { padding: 56px 22px 32px; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ==================================================================
+     ŠIROKI EKRANI — boljša izraba prostora na velikih monitorjih
+     ================================================================== */
+  @media (min-width: 1280px) {
+    .nav { padding: 22px 56px; }
+    .nav.scrolled { padding: 14px 56px; }
+    .hero { padding: 200px 56px 140px; }
+    .usecases, .roi, .reliability, .delivery, .stack, .faq { padding: 150px 56px; }
+    .cta { padding: 150px 56px; }
+    footer { padding: 90px 56px 32px; }
+
+    .hero-inner,
+    .container,
+    .roi-inner,
+    .footer-grid,
+    .footer-bottom { max-width: 1320px; }
+  }
+
+  @media (min-width: 1600px) {
+    .nav { padding: 24px 80px; }
+    .nav.scrolled { padding: 14px 80px; }
+    .hero { padding: 220px 80px 160px; }
+    .usecases, .roi, .reliability, .delivery, .stack, .faq { padding: 170px 80px; }
+    .cta { padding: 170px 80px; }
+    footer { padding: 100px 80px 36px; }
+
+    .hero-inner,
+    .container,
+    .roi-inner,
+    .footer-grid,
+    .footer-bottom { max-width: 1440px; }
+  }
+
+  @media (min-width: 2000px) {
+    .nav { padding: 26px 120px; }
+    .nav.scrolled { padding: 16px 120px; }
+    .hero { padding: 240px 120px 180px; }
+    .usecases, .roi, .reliability, .delivery, .stack, .faq { padding: 190px 120px; }
+    .cta { padding: 190px 120px; }
+    footer { padding: 110px 120px 40px; }
+
+    .hero-inner,
+    .container,
+    .roi-inner,
+    .footer-grid,
+    .footer-bottom { max-width: 1560px; }
+  }
 </style>
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />
