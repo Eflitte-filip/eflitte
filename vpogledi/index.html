@@ -37,9 +37,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<!-- Three.js for hero 3D animation -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -159,50 +156,20 @@
   }
   .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
 
-  /* HERO — dark with Three.js animation */
+  /* HERO */
   .hero {
-    position: relative;
     padding: 180px 40px 100px;
-    overflow: hidden;
-    background: var(--navy);
-    color: #F8FAFC;
+    max-width: 1200px; margin: 0 auto;
   }
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* Three.js canvas */
-  #hero-3d {
-    position: absolute; inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  #hero-3d canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-  }
-  .hero-vignette {
-    position: absolute; inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse at 15% 50%, rgba(20, 20, 19, 0.95) 0%, rgba(20, 20, 19, 0.75) 28%, transparent 55%),
-      linear-gradient(to bottom, transparent 0%, transparent 70%, var(--navy) 100%);
-  }
-
   .breadcrumb {
     font-family: "JetBrains Mono", monospace;
     font-size: 11.5px; font-weight: 500;
     letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(248,250,252,0.55); margin-bottom: 36px;
+    color: var(--muted); margin-bottom: 36px;
     display: inline-flex; align-items: center; gap: 10px;
   }
-  .breadcrumb a { color: rgba(248,250,252,0.55); text-decoration: none; }
-  .breadcrumb a:hover { color: #F8FAFC; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--ink); }
   .breadcrumb .sep { color: var(--accent); }
 
   h1.hero-title {
@@ -210,7 +177,6 @@
     font-size: clamp(40px, 6vw, 72px);
     line-height: 1.05; letter-spacing: -0.035em;
     margin-bottom: 24px; max-width: 900px;
-    color: #F8FAFC;
   }
   h1.hero-title .accent {
     font-family: "Instrument Serif", serif;
@@ -219,7 +185,7 @@
   }
   .hero-lead {
     font-size: 19px; line-height: 1.55;
-    color: rgba(248,250,252,0.75); max-width: 680px;
+    color: var(--ink-soft); max-width: 680px;
   }
 
   /* ARTICLE GRID */
@@ -328,6 +294,22 @@
     font-size: 13px; color: rgba(248,250,252,0.5);
   }
 
+  @media (max-width: 1080px) {
+    .nav .nav-links { display: none; }
+  }
+  @media (min-width: 1280px) {
+    .nav { padding: 22px 56px; }
+    .nav.scrolled { padding: 14px 56px; }
+  }
+  @media (min-width: 1600px) {
+    .nav { padding: 24px 80px; }
+    .nav.scrolled { padding: 14px 80px; }
+  }
+  @media (min-width: 2000px) {
+    .nav { padding: 26px 120px; }
+    .nav.scrolled { padding: 16px 120px; }
+  }
+
   @media (max-width: 840px) {
     .nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
     .nav .nav-links { display: none; }
@@ -361,21 +343,17 @@
 </nav>
 
 <header class="hero">
-  <div id="hero-3d" aria-hidden="true"></div>
-  <div class="hero-vignette"></div>
-  <div class="hero-inner">
-    <div class="breadcrumb">
-      <a href="/">Domov</a>
-      <span class="sep">/</span>
-      <span>Vpogledi</span>
-    </div>
-    <h1 class="hero-title">
-      Vpogledi v <span class="accent">AI, GEO in avtomatizacijo</span>.
-    </h1>
-    <p class="hero-lead">
-      Iskreni članki o AI v poslovnem okolju — kaj deluje, kaj ne, koliko stane, zakaj je GDPR pomemben in kako se podjetja iz Slovenije pripravljajo na svet, kjer ChatGPT in Perplexity nadomeščata Google.
-    </p>
+  <div class="breadcrumb">
+    <a href="/">Domov</a>
+    <span class="sep">/</span>
+    <span>Vpogledi</span>
   </div>
+  <h1 class="hero-title">
+    Vpogledi v <span class="accent">AI, GEO in avtomatizacijo</span>.
+  </h1>
+  <p class="hero-lead">
+    Iskreni članki o AI v poslovnem okolju — kaj deluje, kaj ne, koliko stane, zakaj je GDPR pomemben in kako se podjetja iz Slovenije pripravljajo na svet, kjer ChatGPT in Perplexity nadomeščata Google.
+  </p>
 </header>
 
 <section class="articles">
@@ -471,124 +449,6 @@
   </div>
   <div class="footer-bottom">© 2026 Eflitte</div>
 </footer>
-
-<script>
-  /* ---- Three.js hero sphere — Fibonacci point cloud + connections + accent pulse ---- */
-  (function initHero3D(){
-    const container = document.getElementById('hero-3d');
-    if (!container || typeof THREE === 'undefined') return;
-
-    const isSmall = Math.min(window.innerWidth, window.innerHeight) < 700;
-    const NUM_POINTS = isSmall ? 260 : 480;
-    const MAX_DIST = isSmall ? 0.60 : 0.55;
-    const NUM_ACCENTS = isSmall ? 22 : 36;
-
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x141413, 0.10);
-
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 50);
-    camera.position.z = 7;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-
-    const radius = 2.4;
-    const points = [];
-    for (let i = 0; i < NUM_POINTS; i++) {
-      const phi = Math.acos(1 - 2 * (i + 0.5) / NUM_POINTS);
-      const theta = Math.PI * (1 + Math.sqrt(5)) * i;
-      const r = radius + (Math.random() - 0.5) * 0.28;
-      points.push(new THREE.Vector3(
-        r * Math.sin(phi) * Math.cos(theta),
-        r * Math.sin(phi) * Math.sin(theta),
-        r * Math.cos(phi)
-      ));
-    }
-
-    const pointGeom = new THREE.BufferGeometry().setFromPoints(points);
-    const pointMat = new THREE.PointsMaterial({
-      color: 0xF8FAFC, size: 0.04, transparent: true, opacity: 0.8,
-      sizeAttenuation: true, depthWrite: false
-    });
-    const pointsMesh = new THREE.Points(pointGeom, pointMat);
-
-    const linePositions = [];
-    const lineColors = [];
-    const accentColor = new THREE.Color(0xcc785c);
-    const neutralColor = new THREE.Color(0xF8FAFC);
-    for (let i = 0; i < points.length; i++) {
-      for (let j = i + 1; j < points.length; j++) {
-        const d = points[i].distanceTo(points[j]);
-        if (d < MAX_DIST) {
-          linePositions.push(points[i].x, points[i].y, points[i].z);
-          linePositions.push(points[j].x, points[j].y, points[j].z);
-          const useAccent = d < MAX_DIST * 0.55;
-          const c = useAccent ? accentColor : neutralColor;
-          const a = useAccent ? 1 : 0.28;
-          lineColors.push(c.r * a, c.g * a, c.b * a);
-          lineColors.push(c.r * a, c.g * a, c.b * a);
-        }
-      }
-    }
-    const lineGeom = new THREE.BufferGeometry();
-    lineGeom.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-    lineGeom.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
-    const lineMat = new THREE.LineBasicMaterial({
-      vertexColors: true, transparent: true, opacity: 0.55,
-      depthWrite: false, blending: THREE.AdditiveBlending
-    });
-    const linesMesh = new THREE.LineSegments(lineGeom, lineMat);
-
-    const accentPositions = [];
-    for (let i = 0; i < NUM_ACCENTS; i++) {
-      const idx = Math.floor(Math.random() * points.length);
-      const p = points[idx];
-      accentPositions.push(p.x, p.y, p.z);
-    }
-    const accentGeom = new THREE.BufferGeometry();
-    accentGeom.setAttribute('position', new THREE.Float32BufferAttribute(accentPositions, 3));
-    const accentMat = new THREE.PointsMaterial({
-      color: 0xcc785c, size: 0.15, transparent: true, opacity: 1.0,
-      sizeAttenuation: true, depthWrite: false, blending: THREE.AdditiveBlending
-    });
-    const accentsMesh = new THREE.Points(accentGeom, accentMat);
-
-    const group = new THREE.Group();
-    group.add(pointsMesh);
-    group.add(linesMesh);
-    group.add(accentsMesh);
-    group.position.x = 1.2;
-    scene.add(group);
-
-    window.addEventListener('resize', () => {
-      const w = container.clientWidth;
-      const h = container.clientHeight;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    });
-
-    const clock = new THREE.Clock();
-    let paused = false;
-    document.addEventListener('visibilitychange', () => { paused = document.hidden; });
-
-    (function animate() {
-      if (!paused) {
-        const dt = clock.getDelta();
-        const t = clock.getElapsedTime();
-        group.rotation.y += dt * 0.04;
-        accentsMesh.material.opacity = 0.6 + Math.sin(t * 2.2) * 0.28;
-        accentsMesh.material.size = 0.12 + Math.sin(t * 3) * 0.02;
-        linesMesh.material.opacity = 0.45 + Math.sin(t * 0.6) * 0.05;
-        renderer.render(scene, camera);
-      }
-      requestAnimationFrame(animate);
-    })();
-  })();
-</script>
 
 <script>
   /* nav scroll behavior — toggles .scrolled class for logo letter collapse */

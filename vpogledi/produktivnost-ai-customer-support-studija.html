@@ -414,6 +414,22 @@
   footer a:hover { color: var(--accent); }
   .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; font-size: 13px; color: rgba(248,250,252,0.5); }
 
+  @media (max-width: 1080px) {
+    .nav .nav-links { display: none; }
+  }
+  @media (min-width: 1280px) {
+    .nav { padding: 22px 56px; }
+    .nav.scrolled { padding: 14px 56px; }
+  }
+  @media (min-width: 1600px) {
+    .nav { padding: 24px 80px; }
+    .nav.scrolled { padding: 14px 80px; }
+  }
+  @media (min-width: 2000px) {
+    .nav { padding: 26px 120px; }
+    .nav.scrolled { padding: 16px 120px; }
+  }
+
   @media (max-width: 840px) {
     .nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
     .nav .nav-links { display: none; }
