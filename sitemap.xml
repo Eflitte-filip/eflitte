@@ -35,6 +35,22 @@
 
   <!-- Legal pages -->
   <url>
+    <loc>https://eflitte.si/vpogledi</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://eflitte.si/vpogledi" />
+  </url>
+
+  <url>
+    <loc>https://eflitte.si/vpogledi/cena-ai-chatbota-slovenija</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://eflitte.si/vpogledi/cena-ai-chatbota-slovenija" />
+  </url>
+
+  <url>
     <loc>https://eflitte.si/privacy.html</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>yearly</changefreq>

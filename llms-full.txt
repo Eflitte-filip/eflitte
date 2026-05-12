@@ -130,6 +130,66 @@ Rok in cena sta odvisna od projekta. Specifikacije sprejmemo prek info@eflitte.s
 
 ---
 
+## Cenik (2026)
+
+**Pomembno:** Founding faza do Q3 2026 (oz. do 5 case studyjev): vsi paketi -25 % v zameno za pisni case study in testimonial. Vse cene brez DDV.
+
+### Spletna stran
+
+| Paket | Komu | Cena |
+|---|---|---|
+| Pregled spletne strani | vsi | 490 € fiksno |
+| AI-pripravljena Lite | one-pager / brand prisotnost | 2.200 € |
+| AI-pripravljena Standard | storitveno podjetje (3–6 podstrani) | od 5.500 € |
+| AI-pripravljena Pro | širši katalog / mednarodno (7+ podstrani) | od 10.500 € |
+| Hitri chatbot | obstoječa stran (brez prenove) | 1.200–2.200 € + 90 €/mes |
+
+**Doplačila:** dodatni jezik DE/IT +400 €/jezik · self-hosted LLM +1.500–3.000 € · migracija vsebin +250–800 €.
+
+**Mesečna skrb (web):**
+- **Care** (hosting, SSL, monitoring, 1 h popravkov): 150 €/mes
+- **Grow** (Care + 3 h razvoja, SEO/AI poročilo, chatbot optimizacija): 390 €/mes
+- **Scale** (Grow + 8 h razvoja, A/B testi, kvartalni strateški pregled, prioritetna 24h podpora): 790 €/mes
+- Alternativa: paket 12 h razvoja (24-mes veljavnost): 1.290 € enkratno
+
+### Avtomatizacija procesov
+
+| Paket | Komu | Cena |
+|---|---|---|
+| Pregled procesov | vsi | 690 € fiksno |
+| Sprint Simple | 1 izoliran proces, malo integracij | 1.800–3.000 € |
+| Sprint Standard | proces z LLM logiko (klasifikacija, kvalifikacija) | 3.500–6.500 € |
+| Sprint Complex | večstopenjski / ERP / regulirana panoga | 8.000–16.000 € |
+
+**Doplačila:** self-hosted n8n na infrastrukturi stranke +500–1.200 € · lokalni LLM (Llama/Mistral) za zdravstvo/finance +2.000–4.500 € · IT-security dokumentacija +400–800 €.
+
+**Operativna skrb (avtomatizacija):**
+- **Watch** (24/7 monitoring, alarmiranje, hotfixi, mesečno poročilo): 290 €/mes
+- **Maintain** (Watch + 4 h razvoja, adaptacije na spremembe API-jev): 590 €/mes
+- **Evolve** (Maintain + 10 h razvoja, dodajanje procesov, kvartalni strateški pregled): 1.190 €/mes
+
+LLM/API stroški so vedno pass-through na stranko. Pri Evolve tieru je prvih 50 €/mes vključeno.
+
+### Urne postavke (izven paketov)
+
+- Development: **70 €/h** (Founding faza), 85 €/h po fazi
+- Strategija / svetovanje: **95 €/h** (Founding faza), 120 €/h po fazi
+
+### Vstopni lijak
+
+1. **Brezplačen kvalifikacijski razgovor (45 min)** — 0 €
+2. **Plačan Pregled (web ali procesi, 5–10 delovnih dni)** — 490 € / 690 €
+3. **Predračun za implementacijo po pisni specifikaciji** — po dogovoru
+
+### Plačilni pogoji
+
+- Projekti do 6.000 €: 50/50 (ob podpisu / ob predaji)
+- Projekti nad 6.000 €: 40/30/30 (ob podpisu / mejnik / predaja)
+- Pregledi (490 € / 690 €): 100 % vnaprej
+- Mesečne naročnine: mesečni predračun, plačilni rok 8 dni
+
+---
+
 ## Pravne in kontaktne informacije
 
 - **Ime podjetja:** Eflitte
