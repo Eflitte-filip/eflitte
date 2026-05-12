@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Vpogledi — Eflitte | Članki o AI, GEO, avtomatizaciji</title>
+<meta name="description" content="Vpogledi Eflitte: članki o AI agencijah, GEO/LLMO optimizaciji za ChatGPT in Perplexity, avtomatizaciji procesov, GDPR in AI v slovenskih podjetjih." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#F8FAFC" />
+
+<link rel="canonical" href="https://eflitte.si/vpogledi" />
+<link rel="alternate" hreflang="sl" href="https://eflitte.si/vpogledi" />
+<link rel="alternate" hreflang="x-default" href="https://eflitte.si/vpogledi" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="sl_SI" />
+<meta property="og:site_name" content="Eflitte" />
+<meta property="og:title" content="Vpogledi — Eflitte" />
+<meta property="og:description" content="Članki o AI agencijah, GEO/LLMO, avtomatizaciji in GDPR v slovenskih podjetjih." />
+<meta property="og:url" content="https://eflitte.si/vpogledi" />
+<meta property="og:image" content="https://eflitte.si/og-image.png" />
+<meta property="og:image:alt" content="Eflitte — Vpogledi." />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Vpogledi — Eflitte" />
+<meta name="twitter:description" content="Članki o AI, GEO/LLMO in avtomatizaciji." />
+<meta name="twitter:image" content="https://eflitte.si/og-image.png" />
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2026.05" />
+<link rel="shortcut icon" href="/favicon.ico?v=2026.05" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026.05" />
+<meta name="apple-mobile-web-app-title" content="Eflitte" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://eflitte.si/vpogledi#webpage",
+  "url": "https://eflitte.si/vpogledi",
+  "name": "Vpogledi — Eflitte",
+  "description": "Članki Eflitte o AI agencijah, GEO/LLMO optimizaciji, avtomatizaciji procesov in GDPR-skladni implementaciji AI v slovenskih podjetjih.",
+  "inLanguage": "sl-SI",
+  "dateModified": "2026-05-12",
+  "publisher": {"@id": "https://eflitte.si/#organization"},
+  "isPartOf": {"@id": "https://eflitte.si/#website"},
+  "breadcrumb": {"@id": "https://eflitte.si/vpogledi#breadcrumb"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://eflitte.si/vpogledi#breadcrumb",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Domov", "item": "https://eflitte.si/"},
+    {"@type": "ListItem", "position": 2, "name": "Vpogledi", "item": "https://eflitte.si/vpogledi"}
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg: #F8FAFC;
+    --bg-alt: #F1F5F9;
+    --surface: #FFFFFF;
+    --ink: #141413;
+    --ink-soft: #3D3D3B;
+    --muted: #64748B;
+    --line: rgba(20,20,19,0.10);
+    --line-strong: rgba(20,20,19,0.18);
+    --accent: #CC785C;
+    --accent-deep: #B0593F;
+    --accent-soft: rgba(204,120,92,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 40px;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; column-gap: 32px;
+    background: rgba(248,250,252,0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .logo { justify-self: start; }
+  .nav .nav-links { justify-self: center; }
+  .nav .nav-right { justify-self: end; }
+  .logo {
+    display: inline-flex; align-items: baseline;
+    font-weight: 700; font-size: 28px; letter-spacing: -0.025em;
+    color: var(--ink); text-decoration: none;
+  }
+  .logo-dot {
+    display: inline-block; width: 9px; height: 9px;
+    background: var(--accent); border-radius: 50%; margin-left: 2px;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--ink-soft); text-decoration: none;
+    font-size: 14.5px; font-weight: 500;
+    transition: color 0.2s ease; position: relative;
+  }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after {
+    content: ""; position: absolute; left: 0; bottom: -4px;
+    width: 100%; height: 1px; background: var(--accent);
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    padding: 10px 20px; background: var(--ink); color: var(--bg);
+    border-radius: 999px; text-decoration: none; font-size: 13.5px; font-weight: 500;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    padding: 180px 40px 100px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .breadcrumb {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 36px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb .sep { color: var(--accent); }
+
+  h1.hero-title {
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.05; letter-spacing: -0.035em;
+    margin-bottom: 24px; max-width: 900px;
+  }
+  h1.hero-title .accent {
+    font-family: "Instrument Serif", serif;
+    font-style: italic; font-weight: 400;
+    color: var(--accent);
+  }
+  .hero-lead {
+    font-size: 19px; line-height: 1.55;
+    color: var(--ink-soft); max-width: 680px;
+  }
+
+  /* ARTICLE GRID */
+  .articles {
+    padding: 60px 40px 140px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 28px;
+  }
+  .article-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 32px;
+    text-decoration: none;
+    color: inherit;
+    display: flex; flex-direction: column;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .article-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .card-meta {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex; gap: 14px; align-items: center;
+  }
+  .card-meta .dot {
+    width: 4px; height: 4px; background: var(--accent); border-radius: 50%;
+  }
+  .card-title {
+    font-size: 22px; font-weight: 600;
+    line-height: 1.25; letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .card-excerpt {
+    font-size: 15px; color: var(--ink-soft);
+    line-height: 1.55; margin-bottom: 28px;
+    flex: 1;
+  }
+  .card-cta {
+    font-size: 14px; font-weight: 500;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .card-cta .arrow { transition: transform 0.2s ease; }
+  .article-card:hover .card-cta .arrow { transform: translateX(4px); }
+
+  .placeholder-card {
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    border-radius: 14px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    color: var(--muted);
+    min-height: 260px;
+  }
+  .placeholder-card .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .placeholder-card .text {
+    font-size: 15px; line-height: 1.5; max-width: 240px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #141413; color: rgba(248,250,252,0.6);
+    padding: 56px 40px 32px;
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(248,250,252,0.1);
+  }
+  footer .logo { color: rgba(248,250,252,0.95); font-size: 24px; }
+  footer h5 {
+    font-size: 12px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.12em; color: rgba(248,250,252,0.55);
+    margin-bottom: 16px;
+  }
+  footer ul { list-style: none; }
+  footer li { margin-bottom: 8px; }
+  footer a {
+    color: rgba(248,250,252,0.75); text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  footer a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    padding-top: 24px;
+    font-size: 13px; color: rgba(248,250,252,0.5);
+  }
+
+  @media (max-width: 840px) {
+    .nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
+    .nav .nav-links { display: none; }
+    .hero { padding: 130px 22px 60px; }
+    h1.hero-title { font-size: 38px; }
+    .hero-lead { font-size: 16px; }
+    .articles { padding: 40px 22px 100px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="/">Domov</a></li>
+    <li><a href="/web">Spletna stran</a></li>
+    <li><a href="/avtomatizacija">Avtomatizacija</a></li>
+    <li><a href="/vpogledi" class="active">Vpogledi</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/#kontakt" class="nav-cta">Pišite nam</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="breadcrumb">
+    <a href="/">Domov</a>
+    <span class="sep">/</span>
+    <span>Vpogledi</span>
+  </div>
+  <h1 class="hero-title">
+    Vpogledi v <span class="accent">AI, GEO in avtomatizacijo</span>.
+  </h1>
+  <p class="hero-lead">
+    Iskreni članki o AI v poslovnem okolju — kaj deluje, kaj ne, koliko stane, zakaj je GDPR pomemben in kako se podjetja iz Slovenije pripravljajo na svet, kjer ChatGPT in Perplexity nadomeščata Google.
+  </p>
+</header>
+
+<section class="articles">
+  <div class="articles-grid">
+
+    <!-- Article 1 -->
+    <a href="/vpogledi/cena-ai-chatbota-slovenija" class="article-card">
+      <div class="card-meta">
+        <span>12. maj 2026</span>
+        <span class="dot"></span>
+        <span>9 min branja</span>
+      </div>
+      <h2 class="card-title">Koliko stane AI chatbot za podjetje v Sloveniji (2026)</h2>
+      <p class="card-excerpt">
+        Realistični cenovni razponi, kaj vse vpliva na ceno, razlika med one-time investicijo in mesečno naročnino, ter skrite postavke, ki jih morate vprašati pred podpisom.
+      </p>
+      <span class="card-cta">Preberi članek <span class="arrow">→</span></span>
+    </a>
+
+    <!-- Placeholder for upcoming articles -->
+    <div class="placeholder-card">
+      <div class="label">Kmalu</div>
+      <p class="text">AI in GDPR: kaj mora vedeti slovensko podjetje</p>
+    </div>
+
+    <div class="placeholder-card">
+      <div class="label">Kmalu</div>
+      <p class="text">AI agencija vs spletna agencija: kdaj potrebujete kaj</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+      <p style="margin-top: 16px; font-size: 14px; line-height: 1.5; max-width: 320px;">
+        Slovenska AI agencija. AI-pripravljene spletne strani in avtomatizacija procesov za podjetja v EU.
+      </p>
+    </div>
+    <div>
+      <h5>Produkti</h5>
+      <ul>
+        <li><a href="/web">Spletna stran</a></li>
+        <li><a href="/avtomatizacija">Avtomatizacija</a></li>
+        <li><a href="/vpogledi">Vpogledi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Podjetje</h5>
+      <ul>
+        <li><a href="/impressum.html">Impressum</a></li>
+        <li><a href="/privacy.html">Zasebnost</a></li>
+        <li><a href="/cookies.html">Piškotki</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kontakt</h5>
+      <ul>
+        <li><a href="mailto:info@eflitte.si">info@eflitte.si</a></li>
+        <li><a href="tel:+38668693988">068 693 988</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Eflitte</div>
+</footer>
+
+</body>
+</html>
