@@ -66,8 +66,13 @@
   },
   "isPartOf": {"@id": "https://eflitte.si/#website"},
   "articleSection": "Vpogledi",
-  "keywords": "AI chatbot cena, cena chatbota Slovenija, AI agencija, GEO, LLMO, GDPR AI",
-  "wordCount": 1850
+  "keywords": "AI chatbot cena, cena chatbota Slovenija, AI agencija, GEO, LLMO, GDPR AI, EU AI Act 2026, transparentnost AI",
+  "wordCount": 2400,
+  "citation": [
+    {"@type": "CreativeWork", "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai", "name": "European Commission AI Act"},
+    {"@type": "CreativeWork", "url": "https://usmsystems.com/small-business-ai-adoption-statistics/", "name": "Small Business AI Adoption Statistics 2025"},
+    {"@type": "CreativeWork", "url": "https://www.fullview.io/blog/ai-chatbot-statistics", "name": "AI Chatbot Statistics 2025"}
+  ]
 }
 </script>
 
@@ -172,6 +177,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Osnovni FAQ chatbot 2–3 tedne. Chatbot z RAG in eno integracijo 4–8 tednov. Kompleksen sistem z več integracijami, večjezičnostjo in self-hosted infrastrukturo 8–16 tednov. Ti roki vključujejo testiranje (tipično 14-dnevni 'tihi test' pred zagonom). Hitrejši roki so možni, vendar običajno na račun testiranja — kar se kasneje pokaže kot napake v produkciji."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ali moj chatbot izpolnjuje EU AI Act, ki stopi v veljavo avgusta 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uredba EU 2024/1689 (EU AI Act) stopi v polno veljavo 2. avgusta 2026. Chatboti spadajo v kategorijo 'limited risk' z obvezno transparentnostjo po členu 50 — uporabnik mora vedeti, da se pogovarja z AI. Globe sežejo do 35 milijonov EUR ali 7 % globalnega prihodka, kar presega GDPR. Kot deployer (uporabnik AI sistema) ste odgovorni vi, ne samo ponudnik chatbota. Vsi chatboti pri Eflitte so že v osnovi opremljeni z disclosure logiko in audit logom, brez doplačila."
       }
     }
   ]
@@ -324,6 +337,86 @@
     transition: color 0.2s ease;
   }
   .article-content a:hover { color: var(--accent); }
+  .article-content a.cite {
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--muted);
+    vertical-align: super;
+    line-height: 0;
+    padding: 0 2px;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    margin-left: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .article-content a.cite:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .stat-callout {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .stat-callout .num {
+    font-family: "Instrument Serif", serif;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: block;
+    letter-spacing: -0.02em;
+  }
+  .stat-callout .desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .stat-callout .src {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-top: 10px;
+    display: block;
+  }
+  .stat-callout .src a { color: var(--muted); }
+  .stat-callout .src a:hover { color: var(--accent); }
+  .sources-section {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .sources-section h3 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .sources-section ol {
+    list-style: decimal;
+    padding-left: 24px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .sources-section li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .sources-section a {
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 2px;
+    word-break: break-word;
+  }
   .article-content ul, .article-content ol {
     padding-left: 24px; margin-bottom: 28px;
     color: var(--ink-soft);
@@ -532,6 +625,21 @@
 
   <div class="article-content">
 
+    <h2>Pred ceno: koliko podjetij v EU sploh uporablja AI?</h2>
+    <p>
+      Po podatkih <strong>Eurostat</strong> uporablja AI tehnologije približno <strong>20 % vseh EU podjetij</strong>, med velikimi organizacijami pa adopcija dosega <strong>55 %</strong>.<a href="#vir-1" class="cite">1</a> Med malimi in srednjimi podjetji rast ni linearna: <strong>U.S. Chamber of Commerce</strong> poroča, da je v 2025 generativni AI uporabljalo 58 % malih podjetij — kar je skok s 40 % v letu 2024.<a href="#vir-2" class="cite">2</a> <strong>Gartner</strong> napoveduje, da bo do 2027 <strong>25 % organizacij</strong> uporabljalo chatbote kot primarni kanal za stike s strankami.<a href="#vir-3" class="cite">3</a>
+    </p>
+
+    <div class="stat-callout">
+      <span class="num">62 %</span>
+      <span class="desc">potrošnikov raje uporabi chatbot kot čaka na človeka v podpori.</span>
+      <span class="src">Vir: <a href="https://www.fullview.io/blog/ai-chatbot-statistics" target="_blank" rel="nofollow noopener">Fullview, AI Chatbot Statistics 2025</a></span>
+    </div>
+
+    <p>
+      Slovenija pri EU povprečju zaostaja, vendar trend kaže ujemanje s preostankom regije. Razlogi za adopcijo so v MSP enaki kot drugod: <strong>24/7 dostopnost</strong>, znižanje stroškov podpore (po podatkih industrijskih raziskav do <strong>30 %</strong>), avtomatizacija do <strong>80 % rutinskih vprašanj</strong>, in pritisk konkurence — <strong>72 % podjetij</strong> meni, da bodo AI asistenti potrebni za ohranjanje konkurenčnosti.<a href="#vir-4" class="cite">4</a>
+    </p>
+
     <h2>Kaj sploh je "AI chatbot za podjetje"?</h2>
     <p>
       <strong>AI chatbot za podjetje</strong> je virtualni asistent, ki s pomočjo velikih jezikovnih modelov (LLM) — tipično <strong>Anthropic Claude</strong> ali <strong>OpenAI GPT</strong> — odgovarja na vprašanja obiskovalcev spletne strani ali notranjih uporabnikov. Razlika od splošnega ChatGPT-ja je v tem, da je <strong>treniran na specifičnih vsebinah vašega podjetja</strong>: cenikih, FAQ-ih, dokumentaciji, internih wiki straneh, bazi izdelkov.
@@ -539,6 +647,19 @@
     <p>
       V praksi se delitev v Sloveniji 2026 zarisuje takole: <strong>(1) preprost FAQ asistent</strong> z vnaprej definiranim naborom odgovorov, <strong>(2) RAG sistem</strong> (Retrieval-Augmented Generation), ki bere dokumente in baze, <strong>(3) operativni agent</strong>, ki dejansko izvaja akcije v vaših sistemih — rezervira termin, ustvari predračun, posodobi naročilo.
     </p>
+
+    <h2>EU AI Act 2026: kaj to pomeni za vaš chatbot</h2>
+    <p>
+      Pred ceno je še en faktor, ki ga slovenska podjetja pogosto spregledajo: <strong>Uredba EU 2024/1689 (EU AI Act)</strong> stopi v polno veljavo <strong>2. avgusta 2026</strong>.<a href="#vir-5" class="cite">5</a> Chatboti spadajo v kategorijo "limited risk" — kar pomeni jasno <strong>obveznost transparentnosti po členu 50</strong>: uporabnik mora vedeti, da se pogovarja z AI, ne s človekom.
+    </p>
+    <p>
+      To ni teoretično. Globe presegajo GDPR: <strong>do 35 milijonov EUR ali 7 % globalnega prihodka</strong> — kar je več, kar pač sankcionirani postopek doseže.<a href="#vir-6" class="cite">6</a> Odgovornost ne pade samo na ponudnika AI — kot <em>deployer</em> ste odgovorni tudi vi. <em>Alhena AI</em> ugotavlja, da kljub temu, da <strong>83 % e-commerce blagovnih znamk uporablja AI chatbote</strong>, jih je šele <strong>26 %</strong> začelo s skladnostjo z EU AI Act.<a href="#vir-7" class="cite">7</a>
+    </p>
+    <div class="callout">
+      <p>
+        <strong>Konkretne implikacije za ceno chatbota:</strong> chatbot, postavljen pred avgustom 2026, brez transparentnostnih varovalk, bo zahteval retrofit. Vsak resen ponudnik v Sloveniji od Q2 2026 naprej vključi disclosure logiko, opt-out možnost in audit log v osnovno ponudbo. Pri Eflitte je to del osnovnega setup-a — ne premium dodatek.
+      </p>
+    </div>
 
     <h2>Cenovni razponi za AI chatbot v Sloveniji 2026</h2>
     <p>
@@ -661,7 +782,19 @@
 
   </div>
 
-  <!-- FAQ -->
+  <!-- Sources -->
+  <section class="sources-section">
+    <h3>Viri</h3>
+    <ol>
+      <li id="vir-1">Eurostat. <em>Use of artificial intelligence in EU enterprises</em>. Citirano v <a href="https://www.getmyai.ai/blog/eu-ai-act-ai-chatbots-guide/" target="_blank" rel="nofollow noopener">EU AI Act for AI Chatbots: Enterprise Compliance Guide</a>.</li>
+      <li id="vir-2">U.S. Chamber of Commerce. <em>Empowering Small Business Report 2025</em>. Povzetek: <a href="https://usmsystems.com/small-business-ai-adoption-statistics/" target="_blank" rel="nofollow noopener">Small Business AI Adoption Statistics 2025</a>.</li>
+      <li id="vir-3">Gartner. <em>Customer Service Trends 2025–2027</em>. Citirano v <a href="https://www.fullview.io/blog/ai-chatbot-statistics" target="_blank" rel="nofollow noopener">Fullview: AI Chatbot Statistics</a>.</li>
+      <li id="vir-4">MarketingLTB. <em>Chatbot Statistics 2026: 99+ Stats &amp; Insights</em>. <a href="https://marketingltb.com/blog/statistics/chatbot-statistics/" target="_blank" rel="nofollow noopener">marketingltb.com/blog/statistics/chatbot-statistics</a>.</li>
+      <li id="vir-5">European Commission. <em>AI Act</em>. Uradna stran: <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="nofollow noopener">digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai</a>.</li>
+      <li id="vir-6">Legalnodes. <em>EU AI Act 2026 Updates: Compliance Requirements and Business Risks</em>. <a href="https://www.legalnodes.com/article/eu-ai-act-2026-updates-compliance-requirements-and-business-risks" target="_blank" rel="nofollow noopener">legalnodes.com</a>.</li>
+      <li id="vir-7">Alhena AI. <em>EU AI Act for Ecommerce: Compliance Guide 2026</em>. <a href="https://alhena.ai/blog/eu-ai-act-ecommerce-compliance/" target="_blank" rel="nofollow noopener">alhena.ai/blog/eu-ai-act-ecommerce-compliance</a>.</li>
+    </ol>
+  </section>
   <section class="faq-section">
     <div class="faq-label">Pogosto zastavljena vprašanja</div>
     <h2>Vprašanja o ceni AI chatbota</h2>
@@ -705,6 +838,11 @@
       <div class="faq-item">
         <button class="faq-question"><span>Koliko časa traja implementacija AI chatbota?</span><span class="faq-icon"></span></button>
         <div class="faq-answer"><div class="faq-answer-inner"><p>Osnovni FAQ chatbot 2–3 tedne. Chatbot z RAG in eno integracijo 4–8 tednov. Kompleksen sistem z več integracijami, večjezičnostjo in self-hosted infrastrukturo 8–16 tednov. Ti roki vključujejo testiranje (tipično 14-dnevni "tihi test" pred zagonom). Hitrejši roki so možni, vendar običajno na račun testiranja — kar se kasneje pokaže kot napake v produkciji.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Ali moj chatbot izpolnjuje EU AI Act, ki stopi v veljavo avgusta 2026?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Uredba EU 2024/1689 (EU AI Act) stopi v polno veljavo 2. avgusta 2026. Chatboti spadajo v kategorijo "limited risk" z obvezno transparentnostjo po členu 50 — uporabnik mora vedeti, da se pogovarja z AI. Globe sežejo do 35 milijonov EUR ali 7 % globalnega prihodka, kar presega GDPR. Kot deployer (uporabnik AI sistema) ste odgovorni vi, ne samo ponudnik chatbota. Vsi chatboti pri Eflitte so že v osnovi opremljeni z disclosure logiko in audit logom, brez doplačila.</p></div></div>
       </div>
     </div>
   </section>
