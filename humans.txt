@@ -1,0 +1,13 @@
+/* TEAM */
+
+Founder: Filip Noe Kovačič
+Contact: info@eflitte.si
+From: Slovenske Konjice, Slovenija
+
+/* SITE */
+
+Last update: 2026-05-12
+Language: Slovenian / English
+Standards: HTML5, CSS3, ES2022, JSON-LD (Schema.org), llms.txt, ai.txt
+Components: Custom HTML (no build step), n8n, Anthropic Claude, OpenAI GPT, Vercel (EU)
+Approach: AI-ready, GEO/LLMO optimized, GDPR-compliant, EU region hosting

@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title data-i18n="title">Eflitte — AI rešitve &amp; avtomatizacija</title>
-<meta name="description" data-i18n="meta.description" content="Eflitte je slovenska AI agencija: spletne strani, chatboti, avtomatizacija." />
+<meta name="description" data-i18n="meta.description" content="Eflitte je slovenska AI agencija (EU regija, GDPR-skladno). Gradimo AI-pripravljene spletne strani, optimizirane za ChatGPT, Claude in Perplexity, ter avtomatiziramo notranje procese z n8n in LLM logiko. Brez vendor lock-ina." />
 <meta name="author" content="Eflitte" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="theme-color" content="#F8FAFC" />
@@ -26,11 +26,13 @@
 <meta property="og:image" content="https://eflitte.si/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Eflitte — slovenska AI agencija. AI-pripravljene spletne strani in avtomatizacija procesov." />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Eflitte" />
-<meta name="twitter:description" content="Eflitte" />
+<meta name="twitter:title" content="Eflitte — slovenska AI agencija" />
+<meta name="twitter:description" content="AI-pripravljene spletne strani, optimizirane za ChatGPT in Perplexity. Avtomatizacija notranjih procesov. EU regija, GDPR-skladno." />
 <meta name="twitter:image" content="https://eflitte.si/og-image.png" />
+<meta name="twitter:image:alt" content="Eflitte — slovenska AI agencija." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -329,6 +331,26 @@
     letter-spacing: -0.01em;
     color: var(--accent);
     display: inline-block;
+  }
+
+  .hero-eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(248,250,252,0.55);
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+  .hero-eyebrow .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 10px 2px 0;
+    vertical-align: middle;
   }
 
   .hero-attribution {
@@ -980,6 +1002,81 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026.05" />
 <meta name="apple-mobile-web-app-title" content="Eflitte" />
 <link rel="manifest" href="/site.webmanifest?v=2026.05" />
+
+<!-- GEO schema injected by Eflitte build -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://eflitte.si/#website",
+  "url": "https://eflitte.si/",
+  "name": "Eflitte",
+  "description": "Slovenska AI agencija: AI-pripravljene spletne strani, chatboti, avtomatizacija notranjih procesov.",
+  "inLanguage": [
+    "sl-SI",
+    "en-US"
+  ],
+  "publisher": {
+    "@id": "https://eflitte.si/#organization"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://eflitte.si/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kaj točno je razlika med AI agencijo in klasično web/IT agencijo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Klasična web agencija dela strani z generičnimi orodji (WordPress, template-i) in običajno ne razume AI plasti. Klasična IT agencija dela tehnično dobro, ampak redko razmišlja o pozicioniranju in copy-ju. Pri nas je AI plast del vsake odločitve — od kako stran rangira v ChatGPT-ju do kako interna logika obravnava vašo e-pošto. To ni dodatek, je integralni del rešitve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kako varujete naše podatke?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Občutljivi podatki ostanejo v EU podatkovnih centrih ali v vašem lastnem okolju. Ne gredo v javno zalogo in ne služijo za učenje modelov. Pred začetkom projekta podpišemo dogovor o obdelavi podatkov (DPA). Pri reguliranih panogah (zdravstvo, finance) gradimo EU-only setup z dodatnimi varovali."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zakaj bi uvajali AI, če že imamo ChatGPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da AI deluje neposredno v vaših procesih — z dovoljenji, beležkami in nadzorom — brez ročnega posredovanja in brez tveganja, da gredo občutljivi podatki ven."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ali bomo po uvedbi odvisni od vas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Koda je vaša, dostavimo jo z dokumentacijo. Infrastruktura je v vašem imenu. Če se nekoč odločite delati z drugim partnerjem ali vzeti razvoj v lastno ekipo, vam to omogočamo. Ne gradimo lock-ina; gradimo odnos, v katerem ostanete, ker vam to koristi."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://eflitte.si/#webpage",
+  "url": "https://eflitte.si/",
+  "name": "Eflitte — AI rešitve & avtomatizacija",
+  "description": "Slovenska AI agencija: AI-pripravljene spletne strani, chatboti, avtomatizacija notranjih procesov.",
+  "inLanguage": "sl-SI",
+  "dateModified": "2026-05-11",
+  "publisher": {
+    "@id": "https://eflitte.si/#organization"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -1019,6 +1116,9 @@
   <div id="hero-3d" aria-hidden="true"></div>
   <div class="hero-vignette"></div>
   <div class="hero-inner">
+    <p class="hero-eyebrow" data-reveal data-i18n="hero.eyebrow">
+      <span class="dot" aria-hidden="true"></span>Eflitte · Slovenska AI agencija
+    </p>
     <h1 class="hero-title" data-reveal data-i18n="hero.title">
       AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class="accent">uporabljajo</span>, nadomestili tiste, ki ga ne.
     </h1>
@@ -1026,7 +1126,7 @@
       — Ginni Rometty, nekdanja izvršna direktorica IBM
     </div>
     <p class="hero-sub" data-reveal data-i18n="hero.sub">
-      Spletne strani, chatboti, avtomatizacija. Skupaj ugotovimo, kje AI res prinaša vrednost in kje (še) ne.
+      Eflitte je slovenska AI agencija. Gradimo AI-pripravljene spletne strani, optimizirane za Google in AI iskalnike (ChatGPT, Claude, Perplexity), ter avtomatiziramo notranje procese z n8n in LLM logiko. Vsi podatki ostanejo v EU regiji, GDPR-skladno, brez vendor lock-ina.
     </p>
     <div class="hero-actions" data-reveal>
       <a href="#kontakt" class="btn-primary" data-i18n="hero.cta">

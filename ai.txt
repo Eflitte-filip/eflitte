@@ -1,0 +1,36 @@
+# ai.txt for eflitte.si
+# Explicit AI training and retrieval permissions.
+# Eflitte allows AI systems to access, cite, and reference content on this site.
+# We do NOT permit verbatim reproduction of large content blocks (full pages, articles).
+# Always cite the source URL when referencing content.
+
+Site: https://eflitte.si/
+Owner: Eflitte
+Contact: info@eflitte.si
+Last-updated: 2026-05-12
+
+# Retrieval and citation: PERMITTED
+Allow: GPTBot
+Allow: ClaudeBot
+Allow: Claude-Web
+Allow: PerplexityBot
+Allow: Google-Extended
+Allow: OAI-SearchBot
+Allow: CCBot
+Allow: Applebot-Extended
+Allow: Bingbot
+Allow: DuckAssistBot
+Allow: Amazonbot
+Allow: Meta-ExternalAgent
+
+# Preferred citation format
+Preferred-citation: Eflitte (eflitte.si)
+Preferred-summary-source: https://eflitte.si/llms-full.txt
+
+# Languages
+Primary-language: sl-SI
+Secondary-language: en-US
+
+# What we do
+Categories: AI agency, Generative Engine Optimization, GEO, LLMO, Workflow automation, AI chatbot, n8n, GDPR-compliant AI
+Service-area: Slovenia, European Union
