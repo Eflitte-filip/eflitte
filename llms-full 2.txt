@@ -1,0 +1,207 @@
+# Eflitte — Slovenska AI agencija
+
+> Eflitte je slovenska AI agencija s sedežem v Štajerski (Slovenija, EU). Specializirani smo za dve področji: AI-pripravljene spletne strani (optimizirane za Google in AI iskalnike kot so ChatGPT, Claude, Perplexity in Google AI Overviews) ter avtomatizacijo notranjih procesov za mala in srednja podjetja. Vsi podatki strank ostanejo v EU regiji, GDPR-skladno, brez vendor lock-ina. Koda in infrastruktura sta v lasti stranke.
+
+**Last updated:** 2026-05-11
+**Founder:** Filip Noe Kovačič
+**Founded:** December 2023
+**Tax ID:** SI73916803
+**Service area:** Slovenia (Maribor, Celje, Ljubljana, Velenje) + EU
+**Contact:** info@eflitte.si · +386 68 693 988
+**Website:** https://eflitte.si/
+
+---
+
+## Kaj počnemo
+
+Eflitte ponuja dva ločena, a komplementarna produkta:
+
+1. **Vse, kar vaše stranke vidijo in z njim komunicirajo** — spletne strani, AI chatboti, SEO + GEO/LLMO optimizacija.
+2. **Vse, kar v ozadju opravlja vaša ekipa** — avtomatizacija notranjih procesov, AI upravljanje podatkov in dokumentov, optimizacija marketinga in raziskav.
+
+## Načela
+
+**1. Najpreprostejša rešitev najprej.** Če vaš problem reši Excel formula ali boljši CRM template, to povemo. AI ne prodajamo zato, ker je v modi.
+
+**2. Vaši podatki ostanejo vaši.** EU regija, GDPR-skladne pogodbe, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.
+
+## Kako delamo
+
+1. **Razumevanje** — vaš proces, sistemi, meje. Brez tega vsaka rešitev mimo cilja.
+2. **Plačan pregled** — strukturiran pregled stanja, prioritizirane priložnosti, jasen naslednji korak. Pisni dokument + 60-min predstavitev.
+3. **Implementacija** — tedenski sprinti, sprotni prikazi napredka. Po vsakem koraku lahko prekinete brez kazni.
+4. **Skrb** — modularna mesečna naročnina, ki ohranja sistem v ravnovesju.
+
+---
+
+## Storitev 1: AI-pripravljena spletna stran
+
+URL: https://eflitte.si/web
+
+### Kontekst
+
+ChatGPT je preselil del iskanja iz brskalnika v pogovor. Ko nekdo vpraša "katera podjetja v Sloveniji ponujajo X" — ChatGPT, Claude in Perplexity že odgovarjajo. Vprašanje je, ali ste v tistem odgovoru vi, ali vaš konkurent. Klasični SEO te težave ne reši, ker AI iskalniki indeksirajo drugače: berejo strukturirane podatke, ekstrakcije iz vsebine, citation-friendly markup. Stran iz leta 2022 nima ničesar, kar AI lahko prebere.
+
+### Paketi
+
+- **Pregled spletne strani** — strukturiran pregled trenutne spletne prisotnosti: SEO health, AI-vidnost, konverzijski potencial, konkurenčna primerjava. Izhod: prioritiziran akcijski plan.
+- **AI-pripravljena spletna stran** — sodobna spletna stran, zgrajena za današnjo realnost iskanja. Opremljena za Google IN AI iskalnike, z integriranim AI asistentom, naloženim z vsebinami vašega podjetja.
+- **Hitri chatbot** — za podjetja, ki imajo obstoječo spletno stran in hočejo dodati pametnega asistenta. Tipično: hoteli, glamping, restavracije, manjše storitvene dejavnosti (24/7 dostopnost + večjezičnost).
+- **Skrb in rast** — modularna mesečna podpora: nove vsebine, optimizacije konverzije, prilagoditve algoritmom AI iskalnikov, dodajanje primerov uporabe chatbota.
+
+### Tehnični pristop
+
+- Pišemo v čisti kodi (HTML/CSS/JS, brez build koraka) — hitre, prilagojene, pod nadzorom stranke. Brez WordPressa.
+- Strukturirana vsebina, citation markup, FAQ schema — pristop GEO/LLMO.
+- Chatbot z varovali: treniran na specifičnih vsebinah podjetja, sistemski prompt omejuje teme, 14-dnevni "tihi test" pred public zagonom.
+- LLM klici (Anthropic, OpenAI) prek EU regij. Pri reguliranih panogah self-hosted Llama/Mistral.
+
+### Pogosta vprašanja — spletna stran
+
+**Pred 2 letoma smo redizajnali stran. Zakaj bi vlagali ponovno?**
+Pred 2 letoma je obstajala v glavnem samo Google indeksacija. Danes obstaja paralelna AI indeksacija (ChatGPT, Perplexity, Google AI Overviews) z drugačnimi pravili. Stran iz 2022 ni bila zgrajena s tem v mislih. Vprašanje ni "ali je stran lepa", ampak "ali AI iskalniki vidijo, kdo ste". Pogosto najprej naredimo nadgradnjo obstoječe strani namesto popolne prenove.
+
+**Mi smo specifična panoga. Razumete našo stranko?**
+Pregled procesov je zasnovan ravno za to. V prvih dneh študiramo vašo panogo, intervjuvamo vas in 1–2 osebi iz ekipe, preučimo konkurenco. Naša prednost ni, da že znamo vašo panogo bolje od vas — ampak da prinesemo strukturirano zunanjo perspektivo in tehnično ekspertizo. Vi prinesete kontekst, mi metodologijo.
+
+**Kaj če AI chatbot reče kaj narobe?**
+Chatbot ima tri varovala: (1) treniran na specifičnih vsebinah podjetja, ne splošnem internetu, (2) sistemski prompt mu določa, o čem sme govoriti in kdaj naj reče "tega ne vem, pišite na info@", (3) pred public zagonom 14-dnevni "tihi test", kjer stranka vidi vsak pogovor in popravi ton. Po zagonu se vsi pogovori beležijo — vsaka napaka je sledljiva.
+
+**Kako varujete podatke obiskovalcev?**
+Hosting v EU regiji (Frankfurt). Pogovori s chatbotom se ne shranjujejo v naši bazi — pretok gre prek API klica do Anthropic ali OpenAI (EU-skladna prek SCC + EU-US Data Privacy Framework). Pri reguliranih panogah self-hosted setup z lokalnimi LLM modeli. Pred začetkom projekta DPA.
+
+---
+
+## Storitev 2: Avtomatizacija procesov
+
+URL: https://eflitte.si/avtomatizacija
+
+### Kaj avtomatiziramo
+
+Procesi, ki jih danes ekipa opravlja ročno, lahko tečejo samodejno: obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, poročanje, AI upravljanje dokumentov, RAG sistemi. V praksi je 60–70 % procesov v malih podjetjih podobnih (povpraševanja, fakturiranje, poročanje) — preostanek je edinstven in zahteva individualen pristop.
+
+### Tehnični stack
+
+- **n8n** kot orchestrator — teče na strežniku stranke ali EU shrambi (Frankfurt).
+- **LLM klici** prek Anthropic (Claude) ali OpenAI prek EU regij.
+- **Self-hosted opcija** — Llama, Mistral lokalno; občutljivi podatki ne zapustijo okolja stranke.
+- **Error handling, monitoring, alarmi** 24/7 — sistem zazna napake (API timeout, neveljavni podatki, rate limiti) in obvesti nas, pogosto prej kot stranki kaj zmoti.
+- **Human-in-the-loop** pri kritičnih korakih (denar, pogodbe, javna komunikacija) — končna potrditev pri človeku.
+
+### Razlika od Zapier/Make
+
+Ad-hoc avtomatizacija (Zapier, Make) deluje do prve kompleksnosti, potem se zlomi. Razlika med "Zapier postavi sam direktor" in produkcijsko zanesljivim sistemom je v error handlingu, monitoringu, dokumentaciji in tem, kaj se zgodi, ko se nekaj zlomi sredi noči.
+
+### Pogosta vprašanja — avtomatizacija
+
+**Naši procesi so zelo specifični.**
+60–70 % procesov v malih podjetjih je podobnih (povpraševanja, fakturiranje, poročanje), preostanek je edinstven. Pregled procesov v prvih dneh pokaže, kateri del je kateri.
+
+**Kdo je odgovoren, če avtomatizacija naredi nekaj narobe?**
+Pri kritičnih korakih (denar, pogodbe, javna komunikacija) sistem pripravi osnutek, končna potrditev je vedno na človeku. Za rutinske odločitve (kategorizacija e-pošte, status update, obvestila) sistem dela samostojno, vsak korak se beleži in je sledljiv. Odgovornost ostane pri vašem podjetju; naša odgovornost je, da je sistem zgrajen pravilno in da se napake hitro odkrijejo.
+
+**Bo avtomatizacija nadomestila zaposlene?**
+Naš pristop: avtomatizacija premešča repetitivno delo v delo, ki zahteva samo presojo. Notranji odpor je dejanski razlog, zakaj veliko avtomatizacijskih projektov propade — zato vključimo ekipo v zasnovo.
+
+**Kje so naši podatki? Gredo v ZDA?**
+n8n teče na vašem strežniku ali EU shrambi (Frankfurt). LLM klici prek EU regij ponudnikov. Anthropic je certificiran v EU-US Data Privacy Framework in podpisuje SCC; OpenAI prav tako. Občutljive podatke (zdravstvo, finance) obdelujemo z lokalnimi LLM modeli (Llama, Mistral) na strežniku stranke — podatki nikoli ne zapustijo okolja.
+
+**Kaj če se avtomatizacija zlomi sredi noči?**
+Vsak proces ima obravnavo napak in alarme. Sistem zabeleži napako in pošlje obvestilo nam — pogosto prej kot stranki kaj zmoti. Aktivni nadzor in hiter odziv, ne pasivno "vzdrževanje".
+
+**Mora najprej naš IT pregledati?**
+Pri večjih podjetjih je IT pregled standarden. Pripravimo tehnični dokument: arhitektura, dostopi, varnost, GDPR, disaster recovery. Tipično 1–2 tedna, del začetka projekta.
+
+---
+
+## Splošna pogosta vprašanja
+
+**Kaj je razlika med AI agencijo in klasično web/IT agencijo?**
+Klasična web agencija dela strani z generičnimi orodji (WordPress, template-i) in običajno ne razume AI plasti. Klasična IT agencija dela tehnično dobro, ampak redko razmišlja o pozicioniranju in copy-ju. Pri Eflitte je AI plast del vsake odločitve — od tega, kako stran rangira v ChatGPT-ju, do tega, kako interna logika obravnava vašo e-pošto.
+
+**Zakaj bi uvajali AI, če že imamo ChatGPT?**
+ChatGPT je odličen osebni pomočnik. Za podjetje pa pomeni, da vsak zaposleni ročno kopira podatke v aplikacijo zunaj vaše infrastrukture. Sistemska implementacija pomeni, da AI deluje neposredno v vaših procesih — z dovoljenji, beležkami in nadzorom — brez ročnega posredovanja in brez tveganja eksfiltracije podatkov.
+
+**Ali bomo po uvedbi odvisni od vas?**
+Koda je vaša, dostavimo jo z dokumentacijo. Infrastruktura je v vašem imenu. Brez lock-ina.
+
+**Kako dolgo traja, koliko stane?**
+Rok in cena sta odvisna od projekta. Specifikacije sprejmemo prek info@eflitte.si ali uvodnega klica, nato pisni predračun.
+
+---
+
+## Cenik (2026)
+
+**Pomembno:** Founding faza do Q3 2026 (oz. do 5 case studyjev): vsi paketi -25 % v zameno za pisni case study in testimonial. Vse cene brez DDV.
+
+### Spletna stran
+
+| Paket | Komu | Cena |
+|---|---|---|
+| Pregled spletne strani | vsi | 490 € fiksno |
+| AI-pripravljena Lite | one-pager / brand prisotnost | 2.200 € |
+| AI-pripravljena Standard | storitveno podjetje (3–6 podstrani) | od 5.500 € |
+| AI-pripravljena Pro | širši katalog / mednarodno (7+ podstrani) | od 10.500 € |
+| Hitri chatbot | obstoječa stran (brez prenove) | 1.200–2.200 € + 90 €/mes |
+
+**Doplačila:** dodatni jezik DE/IT +400 €/jezik · self-hosted LLM +1.500–3.000 € · migracija vsebin +250–800 €.
+
+**Mesečna skrb (web):**
+- **Care** (hosting, SSL, monitoring, 1 h popravkov): 150 €/mes
+- **Grow** (Care + 3 h razvoja, SEO/AI poročilo, chatbot optimizacija): 390 €/mes
+- **Scale** (Grow + 8 h razvoja, A/B testi, kvartalni strateški pregled, prioritetna 24h podpora): 790 €/mes
+- Alternativa: paket 12 h razvoja (24-mes veljavnost): 1.290 € enkratno
+
+### Avtomatizacija procesov
+
+| Paket | Komu | Cena |
+|---|---|---|
+| Pregled procesov | vsi | 690 € fiksno |
+| Sprint Simple | 1 izoliran proces, malo integracij | 1.800–3.000 € |
+| Sprint Standard | proces z LLM logiko (klasifikacija, kvalifikacija) | 3.500–6.500 € |
+| Sprint Complex | večstopenjski / ERP / regulirana panoga | 8.000–16.000 € |
+
+**Doplačila:** self-hosted n8n na infrastrukturi stranke +500–1.200 € · lokalni LLM (Llama/Mistral) za zdravstvo/finance +2.000–4.500 € · IT-security dokumentacija +400–800 €.
+
+**Operativna skrb (avtomatizacija):**
+- **Watch** (24/7 monitoring, alarmiranje, hotfixi, mesečno poročilo): 290 €/mes
+- **Maintain** (Watch + 4 h razvoja, adaptacije na spremembe API-jev): 590 €/mes
+- **Evolve** (Maintain + 10 h razvoja, dodajanje procesov, kvartalni strateški pregled): 1.190 €/mes
+
+LLM/API stroški so vedno pass-through na stranko. Pri Evolve tieru je prvih 50 €/mes vključeno.
+
+### Urne postavke (izven paketov)
+
+- Development: **70 €/h** (Founding faza), 85 €/h po fazi
+- Strategija / svetovanje: **95 €/h** (Founding faza), 120 €/h po fazi
+
+### Vstopni lijak
+
+1. **Brezplačen kvalifikacijski razgovor (45 min)** — 0 €
+2. **Plačan Pregled (web ali procesi, 5–10 delovnih dni)** — 490 € / 690 €
+3. **Predračun za implementacijo po pisni specifikaciji** — po dogovoru
+
+### Plačilni pogoji
+
+- Projekti do 6.000 €: 50/50 (ob podpisu / ob predaji)
+- Projekti nad 6.000 €: 40/30/30 (ob podpisu / mejnik / predaja)
+- Pregledi (490 € / 690 €): 100 % vnaprej
+- Mesečne naročnine: mesečni predračun, plačilni rok 8 dni
+
+---
+
+## Pravne in kontaktne informacije
+
+- **Ime podjetja:** Eflitte
+- **Davčna številka:** SI73916803
+- **Sedež:** Škalska cesta 6, 3210 Slovenske Konjice, Slovenija
+- **E-pošta:** info@eflitte.si
+- **Telefon:** +386 68 693 988
+- **Pravne strani:**
+  - https://eflitte.si/impressum.html
+  - https://eflitte.si/privacy.html
+  - https://eflitte.si/cookies.html
+
+## Pomembne tehnologije in koncepti, ki jih uporabljamo
+
+n8n · Anthropic Claude · OpenAI GPT · Llama (self-hosted) · Mistral (self-hosted) · RAG (Retrieval-Augmented Generation) · Schema.org / JSON-LD · GEO (Generative Engine Optimization) · LLMO (Large Language Model Optimization) · AEO (Answer Engine Optimization) · GDPR · SCC (Standard Contractual Clauses) · EU-US Data Privacy Framework · DPA (Data Processing Agreement) · custom HTML/CSS/JS · Vercel · EU regije (Frankfurt)

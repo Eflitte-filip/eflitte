@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>404 — Stran ne obstaja · Eflitte</title>
+<meta name="description" content="Iskana stran ne obstaja. Vrnite se na domačo stran Eflitte ali preglejte naše storitve: AI-pripravljene spletne strani in avtomatizacija procesov." />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://eflitte.si/" />
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2026.05" />
+<link rel="shortcut icon" href="/favicon.ico?v=2026.05" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026.05" />
+<meta name="apple-mobile-web-app-title" content="Eflitte" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #FAF9F5;
+    --ink: #141413;
+    --ink-soft: #3D3D3A;
+    --muted: #6B6B68;
+    --line: rgba(20,20,19,0.10);
+    --accent: #CC785C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    padding: 22px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-weight: 700; font-size: 28px; letter-spacing: -0.025em;
+    color: var(--ink); text-decoration: none;
+    display: inline-flex; align-items: baseline;
+  }
+  .logo-dot {
+    display: inline-block; width: 9px; height: 9px;
+    background: var(--accent); border-radius: 50%; margin-left: 1px;
+  }
+  .back-link {
+    font-size: 13px; font-weight: 500; color: var(--ink-soft);
+    text-decoration: none; letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--ink); }
+  .back-link::before { content: "← "; opacity: 0.6; }
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+  }
+  .card-404 {
+    max-width: 640px;
+    text-align: center;
+  }
+  .err-code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  h1 em {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .lead {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    transition: border-color 0.2s ease;
+  }
+  .btn-secondary:hover { border-color: var(--ink); }
+  .quick-links {
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+    margin-top: 8px;
+  }
+  .quick-links-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .quick-links-list {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+  }
+  .quick-links-list a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 14.5px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .quick-links-list a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  footer {
+    background: #141413; color: rgba(250,249,245,0.6);
+    padding: 32px 40px; text-align: center; font-size: 13px;
+  }
+  footer a { color: rgba(250,249,245,0.7); text-decoration: none; padding: 0 12px; }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 720px) {
+    .nav { padding: 18px 22px; }
+    main { padding: 40px 22px; }
+    h1 { font-size: 32px; }
+    .lead { font-size: 15.5px; }
+    .actions { flex-direction: column; }
+    .actions a { width: 100%; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://eflitte.si/404#webpage",
+  "url": "https://eflitte.si/404",
+  "name": "404 — Stran ne obstaja",
+  "description": "Iskana stran ne obstaja. Vrnite se na domačo stran Eflitte.",
+  "inLanguage": "sl-SI",
+  "publisher": {"@id": "https://eflitte.si/#organization"},
+  "isPartOf": {"@id": "https://eflitte.si/#website"}
+}
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+  <a href="/" class="back-link">Nazaj na domačo stran</a>
+</nav>
+
+<main>
+  <div class="card-404">
+    <span class="err-code">404 · Stran ne obstaja</span>
+    <h1>Te strani <em>žal ni</em>.</h1>
+    <p class="lead">
+      Mogoče je bila premaknjena, preimenovana ali pa preprosto nikoli ni obstajala.
+      Spodaj so povezave, ki vas verjetno zanimajo.
+    </p>
+    <div class="actions">
+      <a href="/" class="btn-primary">Domov</a>
+      <a href="/#kontakt" class="btn-secondary">Pišite nam</a>
+    </div>
+    <div class="quick-links">
+      <div class="quick-links-label">Kaj počnemo</div>
+      <ul class="quick-links-list">
+        <li><a href="/web">AI-pripravljena spletna stran</a></li>
+        <li><a href="/avtomatizacija">Avtomatizacija procesov</a></li>
+        <li><a href="/impressum.html">Impressum</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a href="/impressum.html">Impressum</a> ·
+  <a href="/privacy.html">Politika zasebnosti</a> ·
+  <a href="/cookies.html">Piškotki</a>
+</footer>
+
+</body>
+</html>

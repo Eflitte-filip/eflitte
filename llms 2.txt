@@ -1,0 +1,28 @@
+# Eflitte
+
+> Eflitte je slovenska AI agencija s sedežem v Štajerski (Slovenija). Gradimo AI-pripravljene spletne strani in avtomatiziramo notranje procese za mala in srednja podjetja v EU. Podatki strank ostanejo v EU regiji, GDPR-skladno, brez vendor lock-ina.
+
+Dva produkta, ena ekipa:
+
+- **AI-pripravljena spletna stran**: custom HTML stran, optimizirana za Google in AI iskalnike (ChatGPT, Claude, Perplexity, Google AI Overviews), z integriranim AI chatbotom in strukturiranimi podatki za citiranje.
+- **Avtomatizacija procesov**: workflow avtomatizacija z n8n in LLM logiko — obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, AI upravljanje dokumentov, RAG sistemi. Self-hosted v EU regiji.
+
+Pristop: najprej najpreprostejša rešitev (če Excel formula reši problem, to povemo). Plačan pregled stanja → tedenski sprinti → modularna mesečna skrb. Koda in infrastruktura ostaneta v lasti stranke.
+
+## Storitve
+
+- [AI-pripravljena spletna stran](https://eflitte.si/web): SEO + GEO/LLMO, custom dizajn, AI chatbot z varovali (Anthropic/OpenAI EU regije ali self-hosted Llama/Mistral)
+- [Avtomatizacija procesov](https://eflitte.si/avtomatizacija): n8n workflow, RAG, AI dokumenti, error handling in monitoring 24/7
+
+## Podjetje
+
+- [Domov](https://eflitte.si/): pregled storitev, način dela, FAQ
+- [Impressum](https://eflitte.si/impressum.html): pravne informacije
+- [Politika zasebnosti](https://eflitte.si/privacy.html): GDPR, obdelava podatkov, EU regija
+- [Politika piškotkov](https://eflitte.si/cookies.html)
+
+## Kontakt
+
+- E-pošta: info@eflitte.si
+- Telefon: +386 68 693 988
+- Območje: Slovenija (Maribor, Celje, Ljubljana, Velenje) + EU

@@ -1,0 +1,26 @@
+# robots.txt for eflitte.si
+
+User-agent: *
+Allow: /
+
+# Allow legitimate AI assistants to read for citations
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap
+Sitemap: https://eflitte.si/sitemap.xml
