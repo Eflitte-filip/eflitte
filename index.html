@@ -541,67 +541,6 @@
     display: inline-block;
   }
 
-  /* ---------- SHOWCASE (V AKCIJI) ---------- */
-  .showcase {
-    background: var(--bg-alt);
-    padding: 120px 40px;
-  }
-  .showcase .cat-head { margin-bottom: 64px; }
-  .showcase-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1240px;
-    margin: 0 auto;
-  }
-  .showcase-card {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .showcase-card:hover {
-    border-color: var(--line-strong);
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(20, 20, 19, 0.07);
-  }
-  .showcase-preview {
-    aspect-ratio: 4 / 3;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .showcase-preview svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .showcase-meta {
-    padding: 28px 28px 32px;
-  }
-  .showcase-title {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 10px;
-  }
-  .showcase-lead {
-    font-size: 14.5px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-
   /* ---------- HONEST POSITIONING ---------- */
   .honest {
     background: var(--bg-alt);
@@ -976,10 +915,9 @@
   @media (max-width: 920px) {
     .hero { padding: 130px 22px 80px; min-height: auto; }
     #hero-3d { opacity: 0.55; }
-    .categories, .showcase, .honest, .process, .faq, .contact { padding: 80px 22px; }
+    .categories, .honest, .process, .faq, .contact { padding: 80px 22px; }
     .cta { padding: 100px 22px 90px; }
     .cat-grid { grid-template-columns: 1fr; gap: 16px; }
-    .showcase-grid { grid-template-columns: 1fr; gap: 16px; }
     .cat-card { padding: 40px 28px; }
     .honest-grid { grid-template-columns: 1fr; gap: 40px; }
     .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1004,7 +942,6 @@
     .nav.scrolled { padding: 14px 56px; }
     .hero { padding: 170px 56px 130px; }
     .categories,
-    .showcase,
     .honest,
     .process,
     .faq,
@@ -1017,7 +954,6 @@
     .footer-grid,
     .footer-bottom { max-width: 1320px; }
     .cat-grid { max-width: 1280px; }
-    .showcase-grid { max-width: 1280px; }
   }
 
   @media (min-width: 1600px) {
@@ -1025,7 +961,6 @@
     .nav.scrolled { padding: 14px 80px; }
     .hero { padding: 190px 80px 150px; }
     .categories,
-    .showcase,
     .honest,
     .process,
     .faq,
@@ -1038,7 +973,6 @@
     .footer-grid,
     .footer-bottom { max-width: 1440px; }
     .cat-grid { max-width: 1380px; }
-    .showcase-grid { max-width: 1380px; }
     h1.hero-title { max-width: 1100px; }
   }
 
@@ -1047,7 +981,6 @@
     .nav.scrolled { padding: 16px 120px; }
     .hero { padding: 210px 120px 170px; }
     .categories,
-    .showcase,
     .honest,
     .process,
     .faq,
@@ -1060,7 +993,6 @@
     .footer-grid,
     .footer-bottom { max-width: 1560px; }
     .cat-grid { max-width: 1480px; }
-    .showcase-grid { max-width: 1480px; }
   }
 </style>
 
@@ -1159,7 +1091,6 @@
     <li><a href="/" data-i18n="nav.home">Domov</a></li>
     <li><a href="/web" data-i18n="nav.web">Spletna stran</a></li>
     <li><a href="/avtomatizacija" data-i18n="nav.auto">Avtomatizacija</a></li>
-    <li><a href="/vpogledi" data-i18n="nav.insights">Vpogledi</a></li>
     <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
   </ul>
   <div class="nav-right">
@@ -1175,7 +1106,6 @@
   <a href="/" class="drawer-link" data-i18n="nav.home">Domov</a>
   <a href="/web" class="drawer-link" data-i18n="nav.web">Spletna stran</a>
   <a href="/avtomatizacija" class="drawer-link" data-i18n="nav.auto">Avtomatizacija</a>
-  <a href="/vpogledi" class="drawer-link" data-i18n="nav.insights">Vpogledi</a>
   <a href="#kontakt" class="drawer-link" data-i18n="nav.contact">Kontakt</a>
   <a href="#kontakt" class="drawer-cta" data-i18n="nav.cta">Pišite nam</a>
   <button class="drawer-lang">EN</button>
@@ -1205,187 +1135,6 @@
     </div>
   </div>
 </header>
-
-<!-- SHOWCASE — V AKCIJI -->
-<section class="showcase">
-  <div class="container">
-    <div class="cat-head" data-reveal>
-      <div class="section-label" data-i18n="showcase.label">V akciji</div>
-      <h2 class="section-title" data-i18n="showcase.title">
-        Kaj zares <span class="accent">naredimo</span>.
-      </h2>
-    </div>
-
-    <div class="showcase-grid">
-
-      <!-- CARD 1 — Chatbot -->
-      <article class="showcase-card" data-reveal>
-        <div class="showcase-preview" aria-hidden="true">
-          <svg viewBox="0 0 360 270" xmlns="http://www.w3.org/2000/svg" role="img">
-            <defs>
-              <linearGradient id="sc1-bg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#FFFFFF"/>
-                <stop offset="100%" stop-color="#FAFAF9"/>
-              </linearGradient>
-            </defs>
-            <!-- window frame -->
-            <rect x="20" y="14" width="320" height="242" rx="12" fill="url(#sc1-bg)" stroke="#E2E8F0" stroke-width="1"/>
-            <!-- header -->
-            <rect x="20" y="14" width="320" height="40" rx="12" fill="#F8FAFC"/>
-            <rect x="20" y="42" width="320" height="12" fill="#F8FAFC"/>
-            <circle cx="38" cy="34" r="5" fill="#CC785C"/>
-            <text x="50" y="38" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#141413">Hotel Sotočje</text>
-            <text x="50" y="48" font-family="Inter, sans-serif" font-size="8.5" fill="#64748B">Spletni asistent · v živo</text>
-            <line x1="20" y1="55" x2="340" y2="55" stroke="#E2E8F0" stroke-width="1"/>
-
-            <!-- bot message bubble -->
-            <rect x="36" y="70" width="180" height="34" rx="10" fill="#F1F5F9"/>
-            <text x="46" y="84" font-family="Inter, sans-serif" font-size="10" fill="#141413">Pozdravljeni v Sotočju!</text>
-            <text x="46" y="97" font-family="Inter, sans-serif" font-size="10" fill="#141413">Kako vam lahko pomagam?</text>
-
-            <!-- user message bubble (right aligned) -->
-            <rect x="138" y="116" width="186" height="34" rx="10" fill="#CC785C"/>
-            <text x="148" y="130" font-family="Inter, sans-serif" font-size="10" fill="#FFFFFF">Soba za 2 osebi,</text>
-            <text x="148" y="143" font-family="Inter, sans-serif" font-size="10" fill="#FFFFFF">12.–14. junij?</text>
-
-            <!-- bot message bubble 2 -->
-            <rect x="36" y="162" width="220" height="48" rx="10" fill="#F1F5F9"/>
-            <text x="46" y="176" font-family="Inter, sans-serif" font-size="10" fill="#141413">Imamo 3 proste sobe.</text>
-            <text x="46" y="189" font-family="Inter, sans-serif" font-size="10" fill="#141413">Superior 189 €/noč,</text>
-            <text x="46" y="202" font-family="Inter, sans-serif" font-size="10" fill="#141413">pogled na reko.</text>
-
-            <!-- input bar -->
-            <rect x="32" y="222" width="244" height="22" rx="11" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-            <text x="44" y="237" font-family="Inter, sans-serif" font-size="9.5" fill="#94A3B8">Napišite sporočilo …</text>
-            <rect x="286" y="222" width="38" height="22" rx="11" fill="#141413"/>
-            <path d="M298 233 L305 233 M302 230 L305 233 L302 236" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-        <div class="showcase-meta">
-          <h3 class="showcase-title" data-i18n="showcase1.t">Chatbot, ki govori vaš jezik.</h3>
-          <p class="showcase-lead" data-i18n="showcase1.lead">Pomaga obiskovalcem 24/7 in jih vodi do konkretne zahteve — ne le splošen FAQ.</p>
-        </div>
-      </article>
-
-      <!-- CARD 2 — GEO/LLMO -->
-      <article class="showcase-card" data-reveal>
-        <div class="showcase-preview" aria-hidden="true">
-          <svg viewBox="0 0 360 270" xmlns="http://www.w3.org/2000/svg" role="img">
-            <!-- window frame -->
-            <rect x="20" y="14" width="320" height="242" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-
-            <!-- prompt bar -->
-            <rect x="36" y="30" width="288" height="38" rx="8" fill="#141413"/>
-            <text x="50" y="46" font-family="Inter, sans-serif" font-size="10" fill="#94A3B8">Vprašanje</text>
-            <text x="50" y="60" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#FFFFFF">Najboljši boutique hotel ob Soči?</text>
-
-            <!-- AI engine chips -->
-            <rect x="36" y="80" width="50" height="18" rx="9" fill="#F1F5F9"/>
-            <text x="61" y="92" font-family="Inter, sans-serif" font-size="8.5" font-weight="500" fill="#141413" text-anchor="middle">ChatGPT</text>
-            <rect x="92" y="80" width="58" height="18" rx="9" fill="#F1F5F9"/>
-            <text x="121" y="92" font-family="Inter, sans-serif" font-size="8.5" font-weight="500" fill="#141413" text-anchor="middle">Perplexity</text>
-            <rect x="156" y="80" width="46" height="18" rx="9" fill="#F1F5F9"/>
-            <text x="179" y="92" font-family="Inter, sans-serif" font-size="8.5" font-weight="500" fill="#141413" text-anchor="middle">Gemini</text>
-            <rect x="208" y="80" width="40" height="18" rx="9" fill="#F1F5F9"/>
-            <text x="228" y="92" font-family="Inter, sans-serif" font-size="8.5" font-weight="500" fill="#141413" text-anchor="middle">Claude</text>
-
-            <!-- result card (Eflitte) — highlighted -->
-            <rect x="36" y="110" width="288" height="50" rx="8" fill="#FFFFFF" stroke="#CC785C" stroke-width="1.8"/>
-            <circle cx="50" cy="125" r="5" fill="#CC785C"/>
-            <text x="62" y="128" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#141413">Hotel Sotočje</text>
-            <rect x="240" y="118" width="74" height="16" rx="8" fill="#CC785C" opacity="0.12"/>
-            <text x="277" y="129" font-family="Inter, sans-serif" font-size="8.5" font-weight="600" fill="#B0593F" text-anchor="middle">Citirano #1</text>
-            <text x="50" y="146" font-family="Inter, sans-serif" font-size="9" fill="#64748B">sotocje.si · Boutique hotel &amp; restavracija</text>
-
-            <!-- other results — greyed -->
-            <rect x="36" y="170" width="288" height="32" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-            <rect x="50" y="180" width="90" height="6" rx="3" fill="#CBD5E1"/>
-            <rect x="50" y="190" width="170" height="5" rx="2.5" fill="#E2E8F0"/>
-
-            <rect x="36" y="210" width="288" height="32" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-            <rect x="50" y="220" width="70" height="6" rx="3" fill="#CBD5E1"/>
-            <rect x="50" y="230" width="150" height="5" rx="2.5" fill="#E2E8F0"/>
-          </svg>
-        </div>
-        <div class="showcase-meta">
-          <h3 class="showcase-title" data-i18n="showcase2.t">Vidnost v ChatGPT, Perplexity &amp; co.</h3>
-          <p class="showcase-lead" data-i18n="showcase2.lead">GEO/LLMO optimizacija — da vas AI iskalniki citirajo, ne le Google najde.</p>
-        </div>
-      </article>
-
-      <!-- CARD 3 — Workflow automation -->
-      <article class="showcase-card" data-reveal>
-        <div class="showcase-preview" aria-hidden="true">
-          <svg viewBox="0 0 360 270" xmlns="http://www.w3.org/2000/svg" role="img">
-            <!-- canvas frame -->
-            <rect x="20" y="14" width="320" height="242" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-
-            <!-- subtle dot grid -->
-            <g fill="#E2E8F0">
-              <circle cx="60" cy="50" r="1"/><circle cx="100" cy="50" r="1"/><circle cx="140" cy="50" r="1"/><circle cx="180" cy="50" r="1"/><circle cx="220" cy="50" r="1"/><circle cx="260" cy="50" r="1"/><circle cx="300" cy="50" r="1"/>
-              <circle cx="60" cy="90" r="1"/><circle cx="100" cy="90" r="1"/><circle cx="140" cy="90" r="1"/><circle cx="180" cy="90" r="1"/><circle cx="220" cy="90" r="1"/><circle cx="260" cy="90" r="1"/><circle cx="300" cy="90" r="1"/>
-              <circle cx="60" cy="130" r="1"/><circle cx="100" cy="130" r="1"/><circle cx="140" cy="130" r="1"/><circle cx="180" cy="130" r="1"/><circle cx="220" cy="130" r="1"/><circle cx="260" cy="130" r="1"/><circle cx="300" cy="130" r="1"/>
-              <circle cx="60" cy="170" r="1"/><circle cx="100" cy="170" r="1"/><circle cx="140" cy="170" r="1"/><circle cx="180" cy="170" r="1"/><circle cx="220" cy="170" r="1"/><circle cx="260" cy="170" r="1"/><circle cx="300" cy="170" r="1"/>
-              <circle cx="60" cy="210" r="1"/><circle cx="100" cy="210" r="1"/><circle cx="140" cy="210" r="1"/><circle cx="180" cy="210" r="1"/><circle cx="220" cy="210" r="1"/><circle cx="260" cy="210" r="1"/><circle cx="300" cy="210" r="1"/>
-            </g>
-
-            <!-- connection lines -->
-            <path d="M118 110 C 140 110, 140 110, 162 110" stroke="#CBD5E1" stroke-width="1.4" fill="none"/>
-            <path d="M242 110 C 264 110, 264 110, 286 110" stroke="#CBD5E1" stroke-width="1.4" fill="none"/>
-            <path d="M202 130 C 202 160, 202 160, 202 192" stroke="#CBD5E1" stroke-width="1.4" fill="none"/>
-
-            <!-- arrowheads -->
-            <path d="M158 107 L 164 110 L 158 113" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M282 107 L 288 110 L 282 113" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M199 189 L 202 195 L 205 189" fill="none" stroke="#CBD5E1" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-
-            <!-- node 1: trigger -->
-            <rect x="40" y="92" width="80" height="36" rx="7" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
-            <rect x="40" y="92" width="3" height="36" rx="1.5" fill="#CC785C"/>
-            <rect x="50" y="100" width="14" height="14" rx="3" fill="#F1F5F9"/>
-            <rect x="53" y="104" width="8" height="7" rx="0.8" fill="none" stroke="#64748B" stroke-width="1.1"/>
-            <rect x="53" y="104" width="8" height="2" fill="#64748B"/>
-            <text x="70" y="108" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#141413">Trigger</text>
-            <text x="70" y="120" font-family="Inter, sans-serif" font-size="8.5" fill="#64748B">Nova rezervacija</text>
-
-            <!-- node 2: AI process -->
-            <rect x="162" y="92" width="82" height="36" rx="7" fill="#FFFFFF" stroke="#CC785C" stroke-width="1.6"/>
-            <rect x="172" y="100" width="14" height="14" rx="3" fill="#CC785C" opacity="0.12"/>
-            <path d="M175 105 L 179 107 L 183 105 L 183 109 L 179 111 L 175 109 Z" fill="#CC785C"/>
-            <text x="192" y="108" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#141413">AI preveri</text>
-            <text x="192" y="120" font-family="Inter, sans-serif" font-size="8.5" fill="#64748B">Duplikat? Želje?</text>
-
-            <!-- node 3: action right -->
-            <rect x="286" y="92" width="54" height="36" rx="7" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
-            <rect x="286" y="92" width="3" height="36" rx="1.5" fill="#141413"/>
-            <text x="296" y="108" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#141413">PMS</text>
-            <text x="296" y="120" font-family="Inter, sans-serif" font-size="8.5" fill="#64748B">Sinhron</text>
-
-            <!-- node 4: branch down -->
-            <rect x="162" y="195" width="82" height="36" rx="7" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
-            <rect x="162" y="195" width="3" height="36" rx="1.5" fill="#141413"/>
-            <rect x="172" y="203" width="14" height="14" rx="3" fill="#F1F5F9"/>
-            <rect x="174.5" y="207" width="9" height="6.5" rx="0.8" fill="none" stroke="#64748B" stroke-width="1.1"/>
-            <path d="M174.8 207.6 L 179 211 L 183.2 207.6" fill="none" stroke="#64748B" stroke-width="1.1" stroke-linejoin="round"/>
-            <text x="192" y="211" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#141413">E-pošta</text>
-            <text x="192" y="223" font-family="Inter, sans-serif" font-size="8.5" fill="#64748B">Potrditev gostu</text>
-
-            <!-- success badge -->
-            <rect x="40" y="218" width="100" height="22" rx="11" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
-            <circle cx="52" cy="229" r="4" fill="#10B981"/>
-            <path d="M49.5 229 L 51.5 231 L 54.5 227" stroke="#FFFFFF" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="62" y="233" font-family="Inter, sans-serif" font-size="9" font-weight="500" fill="#065F46">Izvedeno · 0.6s</text>
-          </svg>
-        </div>
-        <div class="showcase-meta">
-          <h3 class="showcase-title" data-i18n="showcase3.t">Procesi, ki tečejo sami.</h3>
-          <p class="showcase-lead" data-i18n="showcase3.lead">n8n workflowi povežejo vaše sisteme — konec ročnega kopiranja podatkov.</p>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
 
 <!-- WHAT WE DO — 2 vzporedni karti -->
 <section class="categories">
@@ -1647,7 +1396,6 @@
       <h5 data-i18n="footer.products">Produkti</h5>
       <a href="/web" data-i18n="footer.web">AI-pripravljena spletna stran</a>
       <a href="/avtomatizacija" data-i18n="footer.auto">Avtomatizacija</a>
-      <a href="/vpogledi" data-i18n="footer.insights">Vpogledi</a>
     </div>
     <div class="footer-col">
       <h5 data-i18n="footer.company">Podjetje</h5>
@@ -1780,7 +1528,6 @@
       "nav.home":     { sl: "Domov", en: "Home" },
       "nav.web":      { sl: "Spletna stran", en: "Website" },
       "nav.auto":     { sl: "Avtomatizacija", en: "Automation" },
-      "nav.insights": { sl: "Vpogledi", en: "Insights" },
       "nav.contact":  { sl: "Kontakt", en: "Contact" },
       "nav.cta":      { sl: "Pišite nam", en: "Write to us" },
 
@@ -1803,15 +1550,6 @@
       "cat2.l1":     { sl: "Avtomatizacija notranjih procesov", en: "Internal process automation" },
       "cat2.l2":     { sl: "AI upravljanje podatkov in dokumentov", en: "AI data and document management" },
       "cat2.l3":     { sl: "Optimizacija marketinga in raziskav", en: "Marketing optimization and research" },
-
-      "showcase.label": { sl: "V akciji", en: "In action" },
-      "showcase.title": { sl: "Kaj zares <span class=\"accent\">naredimo</span>.", en: "What we actually <span class=\"accent\">build</span>." },
-      "showcase1.t":    { sl: "Chatbot, ki govori vaš jezik.", en: "A chatbot that speaks your language." },
-      "showcase1.lead": { sl: "Pomaga obiskovalcem 24/7 in jih vodi do konkretne zahteve — ne le splošen FAQ.", en: "Helps visitors 24/7 and turns conversations into real inquiries — not just a generic FAQ." },
-      "showcase2.t":    { sl: "Vidnost v ChatGPT, Perplexity &amp; co.", en: "Visibility in ChatGPT, Perplexity &amp; co." },
-      "showcase2.lead": { sl: "GEO/LLMO optimizacija — da vas AI iskalniki citirajo, ne le Google najde.", en: "GEO/LLMO optimization — so AI search engines cite you, not just Google indexes you." },
-      "showcase3.t":    { sl: "Procesi, ki tečejo sami.", en: "Processes that run themselves." },
-      "showcase3.lead": { sl: "n8n workflowi povežejo vaše sisteme — konec ročnega kopiranja podatkov.", en: "n8n workflows connect your systems — no more manual data copying." },
 
       "honest.label": { sl: "Načela", en: "Principles" },
       "honest.title": { sl: "Dve pravili, <span class=\"accent\">brez izjem</span>.", en: "Two rules, <span class=\"accent\">no exceptions</span>." },
@@ -1872,7 +1610,6 @@
       "footer.products": { sl: "Produkti", en: "Products" },
       "footer.web":      { sl: "AI-pripravljena spletna stran", en: "AI-ready website" },
       "footer.auto":     { sl: "Avtomatizacija", en: "Automation" },
-      "footer.insights": { sl: "Vpogledi", en: "Insights" },
       "footer.contact":  { sl: "Kontakt", en: "Contact" },
       "footer.company":  { sl: "Podjetje", en: "Company" },
       "footer.contact_h":{ sl: "Kontakt", en: "Get in touch" },
