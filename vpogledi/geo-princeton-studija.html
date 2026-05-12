@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>GEO (Generative Engine Optimization): kaj je in zakaj klasični SEO ne deluje za ChatGPT — analiza Princetonove študije | Eflitte</title>
+<meta name="description" content="Aggarwal et al. (Princeton, KDD 2024) so na 10.000 queryjih testirali 9 GEO metod. Statistike, citacije in citati izboljšajo vidnost v ChatGPT in Perplexity do 40 %. Keyword stuffing pa škodi. Kaj to pomeni za vašo spletno stran." />
+<meta name="author" content="Eflitte" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#F8FAFC" />
+
+<link rel="canonical" href="https://eflitte.si/vpogledi/geo-princeton-studija" />
+<link rel="alternate" hreflang="sl" href="https://eflitte.si/vpogledi/geo-princeton-studija" />
+<link rel="alternate" hreflang="x-default" href="https://eflitte.si/vpogledi/geo-princeton-studija" />
+
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="sl_SI" />
+<meta property="og:site_name" content="Eflitte" />
+<meta property="og:title" content="GEO: zakaj klasični SEO ne deluje za ChatGPT — analiza Princetonove študije" />
+<meta property="og:description" content="Aggarwal et al. (KDD 2024) so na 10.000 queryjih testirali 9 GEO metod. Glavne ugotovitve in aplikacija za slovensko podjetje." />
+<meta property="og:url" content="https://eflitte.si/vpogledi/geo-princeton-studija" />
+<meta property="og:image" content="https://eflitte.si/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="GEO Princeton študija — povzetek za slovenska podjetja, Eflitte" />
+<meta property="article:published_time" content="2026-04-22T10:00:00+02:00" />
+<meta property="article:modified_time" content="2026-04-22T10:00:00+02:00" />
+<meta property="article:author" content="Eflitte" />
+<meta property="article:section" content="Vpogledi" />
+<meta property="article:tag" content="GEO, generative engine optimization, LLMO, AI search, Princeton, KDD 2024" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="GEO: kaj kaže Princetonova študija o optimizaciji za ChatGPT" />
+<meta name="twitter:description" content="9 metod, 10.000 queryjev, do 40 % izboljšanje vidnosti. Klasični SEO ne deluje." />
+<meta name="twitter:image" content="https://eflitte.si/og-image.png" />
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2026.05" />
+<link rel="shortcut icon" href="/favicon.ico?v=2026.05" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026.05" />
+<meta name="apple-mobile-web-app-title" content="Eflitte" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- Schema: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://eflitte.si/vpogledi/geo-princeton-studija#article",
+  "headline": "GEO (Generative Engine Optimization): zakaj klasični SEO ne deluje za ChatGPT — analiza Princetonove študije",
+  "description": "Povzetek Aggarwal et al. (KDD 2024): 9 optimizacijskih metod testiranih na 10.000 queryjih. Statistike, citacije virov in citati izboljšajo vidnost v ChatGPT in Perplexity do 40 %. Aplikacija za slovenska podjetja.",
+  "image": "https://eflitte.si/og-image.png",
+  "datePublished": "2026-04-22T10:00:00+02:00",
+  "dateModified": "2026-04-22T10:00:00+02:00",
+  "inLanguage": "sl-SI",
+  "author": {"@id": "https://eflitte.si/#organization"},
+  "publisher": {"@id": "https://eflitte.si/#organization"},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eflitte.si/vpogledi/geo-princeton-studija#webpage"
+  },
+  "isPartOf": {"@id": "https://eflitte.si/#website"},
+  "articleSection": "Vpogledi",
+  "keywords": "GEO, generative engine optimization, LLMO, AI search optimization, Princeton, KDD 2024, ChatGPT optimizacija",
+  "wordCount": 2200,
+  "citation": [
+    {
+      "@type": "ScholarlyArticle",
+      "name": "GEO: Generative Engine Optimization",
+      "author": [
+        {"@type": "Person", "name": "Pranjal Aggarwal", "affiliation": "IIT Delhi"},
+        {"@type": "Person", "name": "Vishvak Murahari", "affiliation": "Princeton University"},
+        {"@type": "Person", "name": "Tanmay Rajpurohit", "affiliation": "Georgia Tech"},
+        {"@type": "Person", "name": "Ashwin Kalyan", "affiliation": "Allen Institute for AI"},
+        {"@type": "Person", "name": "Karthik Narasimhan", "affiliation": "Princeton University"},
+        {"@type": "Person", "name": "Ameet Deshpande", "affiliation": "Princeton University"}
+      ],
+      "datePublished": "2024-08",
+      "publisher": {"@type": "Organization", "name": "ACM SIGKDD"},
+      "identifier": "10.1145/3637528.3671900",
+      "url": "https://arxiv.org/abs/2311.09735"
+    }
+  ]
+}
+</script>
+
+<!-- Schema: WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://eflitte.si/vpogledi/geo-princeton-studija#webpage",
+  "url": "https://eflitte.si/vpogledi/geo-princeton-studija",
+  "name": "GEO (Generative Engine Optimization): analiza Princetonove študije",
+  "description": "Analiza KDD 2024 papirja Aggarwal et al. o optimizaciji za generativne iskalnike.",
+  "inLanguage": "sl-SI",
+  "dateModified": "2026-04-22",
+  "publisher": {"@id": "https://eflitte.si/#organization"},
+  "isPartOf": {"@id": "https://eflitte.si/#website"},
+  "breadcrumb": {"@id": "https://eflitte.si/vpogledi/geo-princeton-studija#breadcrumb"},
+  "primaryImageOfPage": "https://eflitte.si/og-image.png"
+}
+</script>
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://eflitte.si/vpogledi/geo-princeton-studija#breadcrumb",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Domov", "item": "https://eflitte.si/"},
+    {"@type": "ListItem", "position": 2, "name": "Vpogledi", "item": "https://eflitte.si/vpogledi"},
+    {"@type": "ListItem", "position": 3, "name": "GEO Princeton študija", "item": "https://eflitte.si/vpogledi/geo-princeton-studija"}
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://eflitte.si/vpogledi/geo-princeton-studija#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kaj je Generative Engine Optimization (GEO) in kdo je avtor termina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Termin Generative Engine Optimization (GEO) so formalizirali Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan in Ameet Deshpande v študiji 'GEO: Generative Engine Optimization', objavljeni na konferenci KDD 2024 (30. ACM SIGKDD Conference on Knowledge Discovery and Data Mining). Glavna avtorska institucija je Princeton University, sodelovali pa so še IIT Delhi, Georgia Tech in Allen Institute for AI. GEO je disciplina, ki strukturira spletno vsebino tako, da jo generativni iskalniki (ChatGPT, Perplexity, Google AI Overviews, Claude) prepoznajo, povzamejo in citirajo v svojih odgovorih."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Zakaj klasični SEO ne deluje za ChatGPT in Perplexity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Princetonova študija je preverila tudi tradicionalne SEO tehnike, vključno z 'keyword stuffing'. Rezultat: keyword stuffing pri generativnih iskalnikih NE izboljša vidnosti — pogosto jo celo zniža. Razlog: generativni iskalniki ne ocenjujejo strani po pojavnosti ključnih besed, ampak po faktografski gostoti, kvaliteti virov in strukturni jasnosti. Spletna stran, optimizirana izključno za Google z metodami iz leta 2018, je lahko v ChatGPT odzivih popolnoma nevidna."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Katere metode po Princetonovi študiji najbolj povečajo vidnost v generativnih iskalnikih?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Avtorji so testirali 9 metod. Tri so se izkazale za najmočnejše: (1) Statistics Addition — dodajanje konkretnih statistik in številčnih podatkov v vsebino, (2) Cite Sources — citiranje avtoritativnih virov z linki, (3) Quotation Addition — vključevanje neposrednih citatov strokovnjakov. Najboljše kombinacije so dosegle do 40 % izboljšanje vidnosti (Position-Adjusted Word Count metrika) v primerjavi z neoptimiziranim baseline-om. Metodo Fluency Optimization (izboljšanje slogovne tekočnosti besedila) je študija identificirala kot prav tako učinkovito."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kako se vidnost v generativnih iskalnikih merila v študiji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Avtorji so razvili GEO-bench — benchmark s približno 10.000 raznolikimi uporabniškimi queryji čez 9 domen. Vidnost so merili z dvema metrikama: (1) Position-Adjusted Word Count — koliko besedila iz vašega vira AI pošteje uporablja in na kateri poziciji odgovora, (2) Subjective Impression — kompozitna ocena, ki upošteva več subjektivnih faktorjev citatne pomembnosti. Vsak query je bil testiran z osnovnim odzivom (brez optimizacije) in optimiziranim odzivom z eno od 9 metod."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ali so rezultati prenosljivi na slovensko trgu in slovenščino?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Študija je bila izvedena v angleščini, ampak mehanizmi (faktografska gostota, citacije virov, strukturna jasnost) so neodvisni od jezika. Slovenska podjetja, ki ciljajo na slovenske queryje v ChatGPT in Perplexity, imajo dejansko strukturno prednost: konkurence za citacije v slovenščini je manj kot v angleščini. Pomembno je, da je vsebina napisana z avtoritativnimi viri, statistikami in citati — to deluje enako dobro v slovenščini."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kakšne so omejitve študije?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tri ključne omejitve: (1) Generativni iskalniki se hitro spreminjajo — metode, ki so delovale v 2024, se v 2026 lahko različno odzivajo. (2) Študija je bila izvedena na sintetičnem GEO-bench-u, ne na pravih komercialnih queryjih. (3) Avtorji so testirali predvsem na tematikah z visoko strukturo (faktografskih); ali isto delujejo za kreativne ali subjektivne queryje, ni docela jasno. Kljub tem omejitvam je študija najbolj citirana akademska podlaga za GEO disciplino."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kako naj slovensko podjetje uporabi te ugotovitve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tri konkretni koraki: (1) Vsak strateški članek ali landing page naj vsebuje vsaj 3–5 konkretnih statistik z virom in linkom. (2) Vključujte neposredne citate strokovnjakov ali strank — to so 'quotation addition' signali za AI. (3) Linkajte na avtoritativne vire (Eurostat, EU Commission, ugledni mediji), ne na lastne strani. To je 'cite sources' metoda, ki je dosegla največje izboljšanje. Za podjetja, ki nimajo notranjega vira za to delo, je smiselno najeti GEO/LLMO agencijo, ki te metode aplikira sistematično."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kje lahko preberem celoten znanstveni papir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Papir je javno dostopen v dveh različicah: KDD 2024 konferenčna verzija prek ACM Digital Library (DOI: 10.1145/3637528.3671900) in pred-printna različica na arXiv (arxiv.org/abs/2311.09735). Spremljevalna koda in GEO-bench dataset sta dostopni na GitHub-u (github.com/GEO-optim/GEO). Priporočamo branje verzije v3 na arXiv, ki vključuje vse pomembne dopolnitve."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root { --bg: #F8FAFC; --bg-alt: #F1F5F9; --surface: #FFFFFF; --ink: #141413; --ink-soft: #3D3D3B; --muted: #64748B; --line: rgba(20,20,19,0.10); --line-strong: rgba(20,20,19,0.18); --accent: #CC785C; --accent-deep: #B0593F; --accent-soft: rgba(204,120,92,0.08); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: "Inter", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 22px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; column-gap: 32px; background: rgba(248,250,252,0.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav .logo { justify-self: start; } .nav .nav-links { justify-self: center; } .nav .nav-right { justify-self: end; }
+  .logo { display: inline-flex; align-items: baseline; font-weight: 700; font-size: 28px; letter-spacing: -0.025em; color: var(--ink); text-decoration: none; }
+  .logo-dot { display: inline-block; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; margin-left: 2px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; position: relative; }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: var(--accent); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { padding: 10px 20px; background: var(--ink); color: var(--bg); border-radius: 999px; text-decoration: none; font-size: 13.5px; font-weight: 500; transition: background 0.25s ease, transform 0.25s ease; }
+  .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
+
+  .article-wrap { padding: 140px 40px 80px; max-width: 760px; margin: 0 auto; }
+  .breadcrumb { font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb .sep { color: var(--accent); }
+  .article-meta { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .article-meta .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+  h1.article-title { font-weight: 700; font-size: clamp(32px, 4.4vw, 50px); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 28px; }
+  h1.article-title em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--accent); }
+  .article-lead { font-size: 19px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 48px; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+  .study-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; font-size: 14.5px; }
+  .study-card .label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); font-weight: 600; margin-bottom: 14px; }
+  .study-card .title { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
+  .study-card .meta-row { color: var(--ink-soft); margin-bottom: 8px; line-height: 1.5; }
+  .study-card .meta-row strong { color: var(--ink); font-weight: 600; }
+  .study-card .doi { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+  .study-card .doi a { color: var(--accent); text-decoration: none; }
+  .study-card .doi a:hover { text-decoration: underline; }
+
+  .tldr { background: var(--accent-soft); border: 1px solid rgba(204,120,92,0.25); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; }
+  .tldr-label { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); font-weight: 600; margin-bottom: 14px; }
+  .tldr ul { list-style: none; padding: 0; }
+  .tldr li { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); padding-left: 22px; position: relative; margin-bottom: 10px; }
+  .tldr li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 600; }
+  .tldr li:last-child { margin-bottom: 0; }
+
+  .article-content h2 { font-weight: 700; font-size: 30px; line-height: 1.2; letter-spacing: -0.025em; margin-top: 64px; margin-bottom: 20px; }
+  .article-content h3 { font-weight: 600; font-size: 21px; line-height: 1.3; letter-spacing: -0.015em; margin-top: 40px; margin-bottom: 14px; }
+  .article-content p { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 20px; }
+  .article-content strong { color: var(--ink); font-weight: 600; }
+  .article-content a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; transition: color 0.2s ease; }
+  .article-content a:hover { color: var(--accent); }
+  .article-content a.cite { font-size: 12px; text-decoration: none; color: var(--muted); vertical-align: super; line-height: 0; padding: 0 2px; border: 1px solid var(--line-strong); border-radius: 4px; margin-left: 2px; transition: color 0.2s ease, border-color 0.2s ease; }
+  .article-content a.cite:hover { color: var(--accent); border-color: var(--accent); }
+  .article-content ul, .article-content ol { padding-left: 24px; margin-bottom: 28px; color: var(--ink-soft); }
+  .article-content li { font-size: 17px; line-height: 1.65; margin-bottom: 10px; }
+
+  .finding-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 32px 0 40px; }
+  .finding-box { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px 20px; text-align: center; }
+  .finding-box .num { font-family: "Instrument Serif", serif; font-size: 52px; line-height: 1; color: var(--accent); margin-bottom: 8px; display: block; letter-spacing: -0.02em; }
+  .finding-box .label { font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
+
+  /* Method comparison table */
+  .method-table { width: 100%; border-collapse: collapse; margin: 32px 0 48px; font-size: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .method-table th, .method-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .method-table th { background: var(--bg-alt); font-weight: 600; color: var(--ink); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .method-table tr:last-child td { border-bottom: none; }
+  .method-table .method-name { font-weight: 600; color: var(--ink); }
+  .method-table .uplift { font-family: "JetBrains Mono", monospace; font-weight: 600; color: var(--accent); font-size: 14px; }
+  .method-table .neg { color: #B0593F; }
+
+  .callout { background: var(--bg-alt); border-left: 3px solid var(--ink); padding: 20px 24px; margin: 28px 0; border-radius: 0 8px 8px 0; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .callout p:not(:last-child) { margin-bottom: 12px; }
+
+  .quote { border-left: 3px solid var(--accent); padding: 8px 0 8px 24px; margin: 28px 0; font-family: "Instrument Serif", serif; font-style: italic; font-size: 21px; line-height: 1.4; color: var(--ink); }
+  .quote-attr { font-family: "Inter", sans-serif; font-style: normal; font-size: 13px; color: var(--muted); margin-top: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .sources-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .sources-section h3 { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; font-weight: 600; }
+  .sources-section ol { list-style: decimal; padding-left: 24px; font-size: 14px; color: var(--ink-soft); }
+  .sources-section li { margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+  .sources-section a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 2px; word-break: break-word; }
+
+  .faq-section { margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--line-strong); }
+  .faq-label { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .faq-section h2 { font-weight: 700; font-size: 32px; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 40px; }
+  .faq-list { border-top: 1px solid var(--line-strong); }
+  .faq-item { border-bottom: 1px solid var(--line-strong); }
+  .faq-question { width: 100%; padding: 24px 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-weight: 500; font-size: 18px; line-height: 1.3; color: var(--ink); }
+  .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; margin-top: 5px; }
+  .faq-icon::before, .faq-icon::after { content: ""; position: absolute; background: var(--ink); transition: transform 0.35s cubic-bezier(.77,.05,.2,1); }
+  .faq-icon::before { left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
+  .faq-icon::after { top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
+  .faq-item.open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(.77,.05,.2,1); }
+  .faq-answer-inner { padding: 0 0 24px 0; }
+  .faq-answer-inner p { font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+
+  .cta-block { margin-top: 80px; padding: 48px; background: var(--ink); color: var(--bg); border-radius: 14px; text-align: center; }
+  .cta-block h3 { font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .cta-block h3 em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--accent); }
+  .cta-block p { font-size: 16px; color: rgba(248,250,252,0.75); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-block a { display: inline-block; padding: 14px 28px; background: var(--bg); color: var(--ink); border-radius: 999px; text-decoration: none; font-size: 14.5px; font-weight: 500; transition: background 0.2s ease, transform 0.2s ease; }
+  .cta-block a:hover { background: var(--accent); color: var(--bg); transform: translateY(-1px); }
+
+  footer { background: #141413; color: rgba(248,250,252,0.6); padding: 56px 40px 32px; }
+  .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(248,250,252,0.1); }
+  footer .logo { color: rgba(248,250,252,0.95); font-size: 24px; }
+  footer h5 { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(248,250,252,0.55); margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer li { margin-bottom: 8px; }
+  footer a { color: rgba(248,250,252,0.75); text-decoration: none; font-size: 14px; transition: color 0.2s ease; }
+  footer a:hover { color: var(--accent); }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; font-size: 13px; color: rgba(248,250,252,0.5); }
+
+  @media (max-width: 840px) {
+    .nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
+    .nav .nav-links { display: none; }
+    .article-wrap { padding: 110px 22px 60px; }
+    h1.article-title { font-size: 28px; }
+    .article-lead { font-size: 17px; padding-left: 16px; }
+    .article-content h2 { font-size: 24px; margin-top: 48px; }
+    .article-content h3 { font-size: 19px; }
+    .article-content p, .article-content li { font-size: 16px; }
+    .tldr { padding: 22px 24px; }
+    .study-card { padding: 22px 24px; }
+    .finding-box .num { font-size: 42px; }
+    .method-table { font-size: 14px; }
+    .method-table th, .method-table td { padding: 10px 10px; }
+    .cta-block { padding: 32px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="/">Domov</a></li>
+    <li><a href="/web">Spletna stran</a></li>
+    <li><a href="/avtomatizacija">Avtomatizacija</a></li>
+    <li><a href="/vpogledi" class="active">Vpogledi</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/#kontakt" class="nav-cta">Pišite nam</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="breadcrumb">
+    <a href="/">Domov</a>
+    <span class="sep">/</span>
+    <a href="/vpogledi">Vpogledi</a>
+    <span class="sep">/</span>
+    <span>GEO Princeton študija</span>
+  </div>
+
+  <div class="article-meta">
+    <span>22. april 2026</span>
+    <span class="dot"></span>
+    <span>11 min branja</span>
+    <span class="dot"></span>
+    <span>Povzetek akademske študije</span>
+  </div>
+
+  <h1 class="article-title">
+    Generative Engine Optimization: zakaj klasični SEO <em>ne deluje</em> za ChatGPT — analiza Princetonove študije
+  </h1>
+
+  <p class="article-lead">
+    Skupina raziskovalcev s Princeton University in soavtorjev z IIT Delhi, Georgia Tech in Allen Institute for AI je leta 2024 na konferenci ACM SIGKDD predstavila prvo akademsko formalizacijo discipline "Generative Engine Optimization" (GEO). Testirali so 9 optimizacijskih metod na ~10.000 queryjih in pokazali, da klasične SEO tehnike (kot je keyword stuffing) v generativnih iskalnikih kot sta ChatGPT in Perplexity ne delujejo — najboljše GEO metode pa lahko izboljšajo vidnost vsebine za do 40 %. Spodaj povzemamo ugotovitve in pojasnjujemo, kaj to pomeni za slovenska podjetja, ki želijo biti citirana v AI odzivih.
+  </p>
+
+  <div class="study-card">
+    <div class="label">Predmet analize</div>
+    <div class="title">GEO: Generative Engine Optimization</div>
+    <div class="meta-row"><strong>Avtorji:</strong> Pranjal Aggarwal (IIT Delhi), Vishvak Murahari (Princeton), Tanmay Rajpurohit (Georgia Tech), Ashwin Kalyan (Allen Institute for AI), Karthik Narasimhan (Princeton), Ameet Deshpande (Princeton)</div>
+    <div class="meta-row"><strong>Vir:</strong> Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '24), str. 5–16</div>
+    <div class="meta-row"><strong>Datum:</strong> Pred-print arXiv november 2023, končna konferenčna verzija avgust 2024</div>
+    <div class="meta-row"><strong>Vzorec:</strong> ~10.000 queryjev v 9 različnih domenah (benchmark "GEO-bench"), testirano na produkcijskih generativnih iskalnikih vključno z Perplexity.ai</div>
+    <div class="doi">
+      DOI: <a href="https://doi.org/10.1145/3637528.3671900" target="_blank" rel="nofollow noopener">10.1145/3637528.3671900</a> ·
+      <a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="nofollow noopener">arxiv.org/abs/2311.09735</a>
+    </div>
+  </div>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — Ključne ugotovitve</div>
+    <ul>
+      <li><strong>Klasični SEO ne deluje</strong> — keyword stuffing v generativnih iskalnikih ne izboljša vidnosti, pogosto jo zmanjša</li>
+      <li><strong>Najmočnejše GEO metode:</strong> Statistics Addition, Cite Sources, Quotation Addition</li>
+      <li>Najboljše kombinacije: <strong>do 40 % izboljšanje</strong> vidnosti (Position-Adjusted Word Count)</li>
+      <li>Na Perplexity.ai: <strong>do 37 % izboljšanje</strong> Subjective Impression metrike</li>
+      <li>Generativni iskalniki <strong>nagrajujejo faktografsko gostoto</strong>, ne pojavnost ključnih besed</li>
+      <li>Implikacija: spletna stran iz 2022 brez schema, citacij in statistik je v ChatGPT odzivih praktično nevidna</li>
+    </ul>
+  </div>
+
+  <div class="article-content">
+
+    <h2>Kontekst: zakaj je ta študija prelomna</h2>
+    <p>
+      Pred objavo te raziskave je bila <strong>"GEO" oziroma "AI search optimization"</strong> bolj marketinški pojem kot disciplina z znanstveno podlago. Industrijski blogi so ponujali kontradiktorne nasvete, ni bilo merljivih metrik in ni obstajal nobeden javno dostopen benchmark. Princetonova študija je vse to spremenila — formalizirala je definicijo, ponudila metriko in javno objavila evalvacijski sklop (GEO-bench), ki ga lahko vsak ponovi.
+    </p>
+    <p>
+      Pomembnost: <strong>ko nekdo razpravlja o GEO v 2026, najpogosteje implicitno ali eksplicitno citira to delo</strong>. Vse industrijske platforme, ki danes ponujajo "GEO" storitve (vključno z agencijami v Sloveniji), gradijo na ogrodju, ki ga je predstavil ta papir.
+    </p>
+
+    <h2>O študiji in avtorjih</h2>
+    <p>
+      Glavna akademska institucija je <strong>Princeton University</strong>, kjer trije od šestih avtorjev opravljajo doktorski oziroma profesorski cikel (Vishvak Murahari, Karthik Narasimhan, Ameet Deshpande). <strong>Karthik Narasimhan</strong> je vodja Princeton NLP Group in eden najvidnejših raziskovalcev na področju LLM-jev. Sodelavci z drugih institucij prinašajo komplementarno ekspertizo: <strong>Allen Institute for AI</strong> (avtoritativna AI raziskovalna ustanova v Seattlu) prek Ashwina Kalyana, in <strong>Georgia Tech</strong> prek Tanmay Rajpurohit.
+    </p>
+    <p>
+      Delo je bilo predstavljeno na <strong>KDD 2024 — 30. ACM SIGKDD Conference on Knowledge Discovery and Data Mining</strong>, eni najprestižnejših konferenc na področju strojnega učenja in data mining. Sprejem na KDD pomeni peer review s strani aktivnih raziskovalcev v polju.<a href="#vir-1" class="cite">1</a>
+    </p>
+
+    <h2>Metodologija — kako je bilo merjeno</h2>
+    <p>
+      Avtorji so razvili <strong>GEO-bench</strong>: benchmark z približno <strong>10.000 raznolikimi uporabniškimi queryji</strong> v 9 domenah (od trgovine in popotovanj do tehničnih in akademskih tem). Vsak query so podali generativnim iskalnikom dvakrat: <strong>(1)</strong> z osnovno, neoptimizirano vsebino, in <strong>(2)</strong> z vsebino, optimizirano z eno od 9 GEO metod.
+    </p>
+    <p>
+      Vidnost so merili z dvema komplementarnima metrikama:
+    </p>
+    <ul>
+      <li><strong>Position-Adjusted Word Count</strong> — koliko teksta iz vašega vira AI vključi v odziv in na kateri poziciji odziva (prej v odzivu = pomembneje)</li>
+      <li><strong>Subjective Impression</strong> — kompozit subjektivnih faktorjev, ki ocenjujejo, kako prominentno je vir omenjen, ali ima ime, ali AI eksplicitno potrdi avtoriteto</li>
+    </ul>
+    <p>
+      Pomembna posebnost: avtorji niso testirali samo na enem generativnem iskalniku, ampak so vključili <strong>tudi Perplexity.ai</strong>, kar omogoča primerjavo stabilnosti rezultatov čez različne sisteme.
+    </p>
+
+    <h2>Glavne ugotovitve</h2>
+
+    <div class="finding-grid">
+      <div class="finding-box">
+        <span class="num">+41 %</span>
+        <span class="label">izboljšanje (Position-Adjusted Word Count)</span>
+      </div>
+      <div class="finding-box">
+        <span class="num">+37 %</span>
+        <span class="label">na Perplexity.ai (Subjective Impression)</span>
+      </div>
+      <div class="finding-box">
+        <span class="num">9</span>
+        <span class="label">testiranih metod</span>
+      </div>
+      <div class="finding-box">
+        <span class="num">~10k</span>
+        <span class="label">queryjev v benchmarku</span>
+      </div>
+    </div>
+
+    <h3>1. Klasični SEO ne pomaga, lahko škodi</h3>
+    <p>
+      Med 9 testiranimi metodami so avtorji vključili tudi tradicionalne SEO tehnike. Najbolj presenetljiv rezultat za marketinški svet: <strong>keyword stuffing</strong> (gostota ključnih besed) je v generativnih iskalnikih <strong>ne deluje</strong> — pogosto celo zmanjša vidnost vsebine.<a href="#vir-2" class="cite">2</a>
+    </p>
+
+    <div class="quote">
+      Simple methods like Keyword Stuffing traditionally used in SEO don't perform well.
+      <div class="quote-attr">— Aggarwal et al. (KDD 2024)</div>
+    </div>
+
+    <p>
+      Razlog je strukturen: tradicionalni Google iskalnik rangira strani po algoritmu, ki ocenjuje pojavnost ključnih besed (med drugim). Generativni iskalniki pa ne rangirajo — <strong>povzemajo</strong>. Ko AI gradi odziv, izbere vir, ki ima <strong>najbolj jedrnato, faktografsko gosto, citatno verodostojno vsebino</strong>. Ponavljanje ključne besede pri tem ne pomaga; lahko celo signalizira, da vsebina ni resna.
+    </p>
+
+    <h3>2. Tri najmočnejše GEO metode</h3>
+    <p>
+      Tri metode so se izkazale za bistveno učinkovitejše od ostalih:
+    </p>
+
+    <table class="method-table" aria-label="GEO metode po Aggarwal et al. 2024">
+      <thead>
+        <tr>
+          <th>Metoda</th>
+          <th>Kaj naredi</th>
+          <th>Učinek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="method-name">Statistics Addition</td>
+          <td>Dodaj konkretne statistike in številčne podatke v vsebino</td>
+          <td class="uplift">do +40 %</td>
+        </tr>
+        <tr>
+          <td class="method-name">Cite Sources</td>
+          <td>Citiraj avtoritativne zunanje vire (z linki)</td>
+          <td class="uplift">do +30 %</td>
+        </tr>
+        <tr>
+          <td class="method-name">Quotation Addition</td>
+          <td>Vključi neposredne citate strokovnjakov</td>
+          <td class="uplift">do +28 %</td>
+        </tr>
+        <tr>
+          <td class="method-name">Fluency Optimization</td>
+          <td>Izboljšaj slogovno tekočnost in jasnost stavkov</td>
+          <td class="uplift">+15–25 %</td>
+        </tr>
+        <tr>
+          <td class="method-name">Keyword Stuffing (SEO)</td>
+          <td>Poveča gostoto ključnih besed</td>
+          <td class="uplift neg">~0 % ali negativen</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      Kombinacija prvih treh metod (statistike + citacije + citati) je dosegla najboljše rezultate skozi cel benchmark.
+    </p>
+
+    <h3>3. Kontekstualna občutljivost</h3>
+    <p>
+      Pomembna sekundarna ugotovitev je, da <strong>učinek metode variira glede na tematsko domeno</strong>. V tehničnih in faktografskih queryjih (npr. zdravstvo, pravo, znanost) so statistike in citacije najmočnejše. V kreativnih ali konverzacijskih queryjih je njihova prednost manjša, čeprav še vedno pozitivna.
+    </p>
+
+    <h2>Zakaj generativni iskalniki tako delujejo</h2>
+    <p>
+      Princetonova študija ne razlaga samo "kaj" — razlaga tudi "zakaj". Avtorji povezujejo svoje rezultate z mehaniko velikih jezikovnih modelov:
+    </p>
+    <ol>
+      <li><strong>LLM-i so trenirani na podatkih, ki cenijo navedene vire.</strong> Wikipedia, znanstvene revije, novičarski portali — vse to so vsebine, ki imajo veliko citacij in statistik. Model je torej naučen, da je vsebina s tovrstnimi signali bolj verodostojna.</li>
+      <li><strong>Faktografska gostota = lažja ekstrakcija.</strong> Ko AI gradi odziv, mora iz vira potegniti konkretne podatke. Vsebina, ki ima eksplicitne številke in datume, je za AI lažje "razčlenljiva" kot prozno besedilo brez konkretnih trditev.</li>
+      <li><strong>Citation chain = signal verodostojnosti.</strong> Če vaš članek citira Eurostat, in Eurostat citira vsa znanstvena dela, je vaš članek implicitno v "verodostojni verigi". AI-ji to prepoznajo.</li>
+    </ol>
+
+    <h2>Kaj to pomeni za slovenska podjetja</h2>
+    <p>
+      Trije konkretni operativni zaključki za slovensko poslovno okolje:
+    </p>
+
+    <h3>1. Spletna stran iz 2022 je v ChatGPT odzivih verjetno nevidna</h3>
+    <p>
+      Če je vaša spletna stran iz obdobja 2018–2022, je verjetno optimizirana za Google klasično (keyword density, backlinks, meta descriptions). Niti ena od teh tehnik ni v Princetonovi študiji dosegla pomembnih izboljšav za generativne iskalnike. Posledica: ko nekdo v 2026 vpraša ChatGPT "katera podjetja v Sloveniji ponujajo X", vaše ime se verjetno ne pojavi — niti če ste v Google rezultatih na prvem mestu.
+    </p>
+
+    <h3>2. Strateška vsebina mora vsebovati statistike + citacije + citate</h3>
+    <p>
+      Vsak landing page, blog članek ali storitvena stran, ki jo želite videti v ChatGPT odzivih, naj sledi formuli:
+    </p>
+    <ul>
+      <li>Vsaj <strong>3–5 konkretnih statistik z viri</strong> (Eurostat, EU Commission, ugledne študije)</li>
+      <li>Vsaj <strong>2–3 zunanji citacij</strong> na avtoritativne strani (z <code>rel="nofollow"</code>, da preprečite authority leakage)</li>
+      <li>Vsaj <strong>1 neposreden citat</strong> strokovnjaka ali študije (kratek, pod 15 besed za upoštevanje copyright-a)</li>
+    </ul>
+
+    <h3>3. Struktura matters — schema markup, FAQ, jasna hierarhija</h3>
+    <p>
+      Princetonova študija eksplicitno ne testira <em>strukturiranih podatkov</em> (Schema.org JSON-LD), ampak vrsta drugih študij potrjuje, da <strong>tehnično strukturirana vsebina</strong> (z dobro hierarhijo H1/H2/H3, FAQ block-i, jasnimi citacijami) ima podoben učinek kot vsebinski signali. Pri <a href="/web">Eflitte</a> je ravno to del osnovne implementacije AI-pripravljene strani: schema markup, FAQ schema, BreadcrumbList in vsebinske GEO metode skupaj.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Slovenska prednost:</strong> v slovenščini je konkurence za citacije v generativnih iskalnikih bistveno manj kot v angleščini. Slovensko podjetje, ki sistematično aplicira GEO metode na slovenskih queryjih, lahko dokaj hitro doseže visok delež citacij — predvsem v nišnih panogah, kjer angleški dominantni viri (Wikipedia, večji ameriški blogi) ne pokrivajo lokalne specifike.
+      </p>
+    </div>
+
+    <h2>Omejitve študije</h2>
+    <p>
+      Tri pomembne omejitve, ki jih je treba upoštevati:
+    </p>
+    <ol>
+      <li><strong>Hitro spreminjajoč se ekosistem.</strong> Generativni iskalniki (ChatGPT, Perplexity, Google AI Overviews, Claude) se nenehno posodabljajo. Metode, ki so delovale leta 2024, se v 2026 lahko različno odzivajo. Mehanizmi (faktografska gostota, citacije) ostajajo robustni — taktične mikro-prilagoditve pa zastarajo.</li>
+      <li><strong>Sintetični benchmark.</strong> GEO-bench je raznolik, ampak še vedno sintetičen — pravi komercialni queryji v različnih jezikih (vključno s slovenščino) niso pokriti.</li>
+      <li><strong>Etika optimizacije.</strong> Avtorji v zaključku odprejo vprašanje: če vsi začnejo aplicirati GEO metode, ali se bo signal-to-noise razmerje v generativnih iskalnikih poslabšalo? To je odprto raziskovalno vprašanje za nadaljnja leta.</li>
+    </ol>
+
+    <h2>Nadaljnje raziskave</h2>
+    <p>
+      Po objavi tega papirja je nastala vrsta sorodnih del — vključno z raziskavo Kumar &amp; Lakkaraju (2024) o adversarial napadih na LLM iskalnike in serije študij o "citation failures" v generativnih iskalnikih. Discipline GEO se torej razvija akademsko, ne samo industrijsko.
+    </p>
+
+    <h2>Zaključek</h2>
+    <p>
+      Aggarwal et al. (2024) so dokazali, da je <strong>Generative Engine Optimization realna, merljiva disciplina</strong>, ki se bistveno razlikuje od klasičnega SEO. Tri najmočnejše metode — <strong>statistike, citacije in citati</strong> — so univerzalno aplikabilne, vključno na slovenske spletne strani. Podjetja, ki bodo te metode sistematično vključila v svojo vsebinsko strategijo, bodo med prvimi citirana v ChatGPT, Perplexity in podobnih sistemih, kjer se trenutno odvija prerazporeditev iskalnega prometa.
+    </p>
+
+  </div>
+
+  <section class="sources-section">
+    <h3>Viri</h3>
+    <ol>
+      <li id="vir-1">Aggarwal, P., Murahari, V., Rajpurohit, T., Kalyan, A., Narasimhan, K., Deshpande, A. (2024). <em>GEO: Generative Engine Optimization</em>. In Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '24), pp. 5–16. DOI: <a href="https://doi.org/10.1145/3637528.3671900" target="_blank" rel="nofollow noopener">10.1145/3637528.3671900</a>. arXiv: <a href="https://arxiv.org/abs/2311.09735" target="_blank" rel="nofollow noopener">arxiv.org/abs/2311.09735</a>.</li>
+      <li id="vir-2">Aggarwal et al. (2024), Table 6: <em>Absolute impression metrics of GEO methods on GEO-bench</em>. arXiv pred-print, str. 13.</li>
+      <li id="vir-3">GEO-bench in spremljevalna koda na GitHub: <a href="https://github.com/GEO-optim/GEO" target="_blank" rel="nofollow noopener">github.com/GEO-optim/GEO</a>.</li>
+    </ol>
+  </section>
+
+  <section class="faq-section">
+    <div class="faq-label">Pogosto zastavljena vprašanja</div>
+    <h2>Vprašanja o GEO</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question"><span>Kaj je Generative Engine Optimization (GEO) in kdo je avtor termina?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Termin Generative Engine Optimization (GEO) so formalizirali Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan in Ameet Deshpande v študiji "GEO: Generative Engine Optimization", objavljeni na konferenci KDD 2024. Glavna avtorska institucija je Princeton University, sodelovali pa so še IIT Delhi, Georgia Tech in Allen Institute for AI. GEO je disciplina, ki strukturira spletno vsebino tako, da jo generativni iskalniki (ChatGPT, Perplexity, Google AI Overviews, Claude) prepoznajo, povzamejo in citirajo v svojih odgovorih.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Zakaj klasični SEO ne deluje za ChatGPT in Perplexity?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Princetonova študija je preverila tudi tradicionalne SEO tehnike, vključno z "keyword stuffing". Rezultat: keyword stuffing pri generativnih iskalnikih NE izboljša vidnosti — pogosto jo celo zniža. Razlog: generativni iskalniki ne ocenjujejo strani po pojavnosti ključnih besed, ampak po faktografski gostoti, kvaliteti virov in strukturni jasnosti. Spletna stran, optimizirana izključno za Google z metodami iz leta 2018, je lahko v ChatGPT odzivih popolnoma nevidna.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Katere metode po Princetonovi študiji najbolj povečajo vidnost v generativnih iskalnikih?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Avtorji so testirali 9 metod. Tri so se izkazale za najmočnejše: (1) Statistics Addition — dodajanje konkretnih statistik in številčnih podatkov, (2) Cite Sources — citiranje avtoritativnih virov z linki, (3) Quotation Addition — vključevanje neposrednih citatov strokovnjakov. Najboljše kombinacije so dosegle do 40 % izboljšanje vidnosti v primerjavi z neoptimiziranim baseline-om. Metoda Fluency Optimization je prav tako pokazala učinkovitost.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kako se vidnost v generativnih iskalnikih meri v študiji?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Avtorji so razvili GEO-bench — benchmark s približno 10.000 raznolikimi uporabniškimi queryji čez 9 domen. Vidnost so merili z dvema metrikama: (1) Position-Adjusted Word Count — koliko besedila iz vašega vira AI pošteje uporablja in na kateri poziciji odgovora, (2) Subjective Impression — kompozitna ocena, ki upošteva več subjektivnih faktorjev citatne pomembnosti.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Ali so rezultati prenosljivi na slovenski trg in slovenščino?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Študija je bila izvedena v angleščini, ampak mehanizmi (faktografska gostota, citacije virov, strukturna jasnost) so neodvisni od jezika. Slovenska podjetja, ki ciljajo na slovenske queryje v ChatGPT in Perplexity, imajo dejansko strukturno prednost: konkurence za citacije v slovenščini je manj kot v angleščini. Pomembno je, da je vsebina napisana z avtoritativnimi viri, statistikami in citati.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kakšne so omejitve študije?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Tri ključne omejitve: (1) Generativni iskalniki se hitro spreminjajo — metode, ki so delovale v 2024, se v 2026 lahko različno odzivajo. (2) Študija je bila izvedena na sintetičnem GEO-bench-u, ne na pravih komercialnih queryjih. (3) Avtorji so testirali predvsem na tematikah z visoko strukturo (faktografskih); ali isto delujejo za kreativne ali subjektivne queryje, ni docela jasno.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kako naj slovensko podjetje uporabi te ugotovitve?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Tri konkretni koraki: (1) Vsak strateški članek ali landing page naj vsebuje vsaj 3–5 konkretnih statistik z virom in linkom. (2) Vključujte neposredne citate strokovnjakov ali strank — to so "quotation addition" signali za AI. (3) Linkajte na avtoritativne vire (Eurostat, EU Commission, ugledni mediji), ne na lastne strani. To je "cite sources" metoda, ki je dosegla največje izboljšanje.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kje lahko preberem celoten znanstveni papir?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Papir je javno dostopen v dveh različicah: KDD 2024 konferenčna verzija prek ACM Digital Library (DOI: 10.1145/3637528.3671900) in pred-printna različica na arXiv (arxiv.org/abs/2311.09735). Spremljevalna koda in GEO-bench dataset sta dostopna na GitHub-u (github.com/GEO-optim/GEO).</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <h3>Vašo stran <em>vidi</em> Google. Kako pa ChatGPT?</h3>
+    <p>Pri 490 € Pregledu spletne strani testiramo, ali in kako se vaše podjetje pojavlja v ChatGPT, Claude in Perplexity odzivih. Brez obveznosti glede nadaljevanja.</p>
+    <a href="/#kontakt">Pišite nam →</a>
+  </div>
+</article>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+      <p style="margin-top: 16px; font-size: 14px; line-height: 1.5; max-width: 320px;">
+        Slovenska AI agencija. AI-pripravljene spletne strani in avtomatizacija procesov za podjetja v EU.
+      </p>
+    </div>
+    <div>
+      <h5>Produkti</h5>
+      <ul>
+        <li><a href="/web">Spletna stran</a></li>
+        <li><a href="/avtomatizacija">Avtomatizacija</a></li>
+        <li><a href="/vpogledi">Vpogledi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Podjetje</h5>
+      <ul>
+        <li><a href="/impressum.html">Impressum</a></li>
+        <li><a href="/privacy.html">Zasebnost</a></li>
+        <li><a href="/cookies.html">Piškotki</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kontakt</h5>
+      <ul>
+        <li><a href="mailto:info@eflitte.si">info@eflitte.si</a></li>
+        <li><a href="tel:+38668693988">068 693 988</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Eflitte</div>
+</footer>
+
+<script>
+  (function(){
+    document.querySelectorAll('.faq-item').forEach(it => {
+      const b = it.querySelector('.faq-question');
+      const a = it.querySelector('.faq-answer');
+      b.addEventListener('click', () => {
+        const o = it.classList.toggle('open');
+        a.style.maxHeight = o ? a.scrollHeight + 'px' : '0';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

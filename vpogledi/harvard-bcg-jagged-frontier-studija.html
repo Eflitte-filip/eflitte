@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Harvard/BCG študija: GPT-4 pospeši delo za 25 %, ampak izven svoje "nazobčene meje" produktivnost poslabša — analiza Dell'Acqua et al. (2023) | Eflitte</title>
+<meta name="description" content="Fabrizio Dell'Acqua in 8 soavtorjev (Harvard, BCG, Wharton, MIT) so na 758 konzultantih izmerili: GPT-4 pospeši delo za 25 %, dvigne kakovost za 40 %. Ampak izven 'jagged frontier' AI ŠKODI produktivnosti. Kaj to pomeni za slovenska podjetja." />
+<meta name="author" content="Eflitte" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#F8FAFC" />
+
+<link rel="canonical" href="https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija" />
+<link rel="alternate" hreflang="sl" href="https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija" />
+<link rel="alternate" hreflang="x-default" href="https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija" />
+
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="sl_SI" />
+<meta property="og:site_name" content="Eflitte" />
+<meta property="og:title" content="GPT-4 pospeši delo za 25 % — ampak izven 'nazobčene meje' ga POSLABŠA (Harvard/BCG študija)" />
+<meta property="og:description" content="Dell'Acqua et al. na 758 BCG konzultantih: kdaj AI pomaga in kdaj škodi. Aplikacija za slovensko MSP." />
+<meta property="og:url" content="https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija" />
+<meta property="og:image" content="https://eflitte.si/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Harvard/BCG Jagged Frontier študija — povzetek za slovenska podjetja, Eflitte" />
+<meta property="article:published_time" content="2026-04-29T10:00:00+02:00" />
+<meta property="article:modified_time" content="2026-04-29T10:00:00+02:00" />
+<meta property="article:author" content="Eflitte" />
+<meta property="article:section" content="Vpogledi" />
+<meta property="article:tag" content="GPT-4, knowledge workers, Harvard, BCG, jagged frontier, AI produktivnost" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="GPT-4 + konzultanti: +25 % hitrosti, +40 % kakovosti — ali poslabša rezultate izven svoje meje" />
+<meta name="twitter:description" content="Harvard/BCG študija s 758 konzultanti odpira pomembno vprašanje: kdaj AI škodi." />
+<meta name="twitter:image" content="https://eflitte.si/og-image.png" />
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2026.05" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2026.05" />
+<link rel="shortcut icon" href="/favicon.ico?v=2026.05" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2026.05" />
+<meta name="apple-mobile-web-app-title" content="Eflitte" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<!-- Schema: Article -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija#article",
+  "headline": "Harvard/BCG študija: GPT-4 pospeši delo za 25 %, ampak izven svoje 'nazobčene meje' produktivnost poslabša",
+  "description": "Povzetek Dell'Acqua et al. (HBS WP 24-013, 2023): 758 BCG konzultantov, pre-registrirana randomizirana študija. Znotraj 'jagged frontier' tasks: +25 % hitrost, +40 % kakovost, +12 % task completion. Zunaj: AI škodi. Aplikacija za slovensko MSP.",
+  "image": "https://eflitte.si/og-image.png",
+  "datePublished": "2026-04-29T10:00:00+02:00",
+  "dateModified": "2026-04-29T10:00:00+02:00",
+  "inLanguage": "sl-SI",
+  "author": {"@id": "https://eflitte.si/#organization"},
+  "publisher": {"@id": "https://eflitte.si/#organization"},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija#webpage"
+  },
+  "isPartOf": {"@id": "https://eflitte.si/#website"},
+  "articleSection": "Vpogledi",
+  "keywords": "AI produktivnost, GPT-4 študija, jagged frontier, Harvard Business School, BCG, knowledge workers, centaur cyborg",
+  "wordCount": 2300,
+  "citation": [
+    {
+      "@type": "ScholarlyArticle",
+      "name": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality",
+      "author": [
+        {"@type": "Person", "name": "Fabrizio Dell'Acqua", "affiliation": "Harvard Business School"},
+        {"@type": "Person", "name": "Edward McFowland III", "affiliation": "Harvard Business School"},
+        {"@type": "Person", "name": "Ethan Mollick", "affiliation": "The Wharton School"},
+        {"@type": "Person", "name": "Hila Lifshitz-Assaf", "affiliation": "Warwick Business School"},
+        {"@type": "Person", "name": "Katherine Kellogg", "affiliation": "MIT Sloan School of Management"},
+        {"@type": "Person", "name": "Saran Rajendran", "affiliation": "Boston Consulting Group"},
+        {"@type": "Person", "name": "Lisa Krayer", "affiliation": "Boston Consulting Group"},
+        {"@type": "Person", "name": "François Candelon", "affiliation": "Boston Consulting Group"},
+        {"@type": "Person", "name": "Karim R. Lakhani", "affiliation": "Harvard Business School"}
+      ],
+      "datePublished": "2023-09-15",
+      "publisher": {"@type": "Organization", "name": "Harvard Business School"},
+      "identifier": "Working Paper 24-013",
+      "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=64700"
+    }
+  ]
+}
+</script>
+
+<!-- Schema: WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija#webpage",
+  "url": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija",
+  "name": "Harvard/BCG Jagged Frontier študija: kdaj AI pomaga in kdaj škodi",
+  "description": "Analiza pre-registrirane terenske študije s 758 BCG konzultanti (Dell'Acqua et al., 2023).",
+  "inLanguage": "sl-SI",
+  "dateModified": "2026-04-29",
+  "publisher": {"@id": "https://eflitte.si/#organization"},
+  "isPartOf": {"@id": "https://eflitte.si/#website"},
+  "breadcrumb": {"@id": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija#breadcrumb"},
+  "primaryImageOfPage": "https://eflitte.si/og-image.png"
+}
+</script>
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija#breadcrumb",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Domov", "item": "https://eflitte.si/"},
+    {"@type": "ListItem", "position": 2, "name": "Vpogledi", "item": "https://eflitte.si/vpogledi"},
+    {"@type": "ListItem", "position": 3, "name": "Harvard/BCG Jagged Frontier študija", "item": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija"}
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://eflitte.si/vpogledi/harvard-bcg-jagged-frontier-studija#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kdo je naredil Harvard/BCG študijo o GPT-4 in konzultantih?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Študijo je vodil Fabrizio Dell'Acqua (Harvard Business School) skupaj z Edward McFowland III (HBS), Ethan Mollick (Wharton), Hila Lifshitz-Assaf (Warwick), Katherine Kellogg (MIT Sloan), Saran Rajendran (BCG), Lisa Krayer (BCG), François Candelon (BCG) in Karim R. Lakhani (HBS). Lakhani je predsednik Digital Data Design Institute na Harvardu. Pre-print je bil objavljen kot Harvard Business School Working Paper No. 24-013, 15. septembra 2023. Študija je sprejeta za objavo v Organization Science."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Koliko je GPT-4 pospešil delo konzultantov?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Za naloge ZNOTRAJ 'nazobčene meje' (kjer je GPT-4 zmožen) so konzultanti z GPT-4 dosegli: 25,1 % hitrejše izvedbo, 40 % višjo kakovost dela (po oceni človeških ocenjevalcev), in 12,2 % več dokončanih nalog. To velja le za naloge znotraj zmožnosti modela — izven nje učinek je nasproten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kaj je 'jagged technological frontier' (nazobčena tehnološka meja)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dell'Acqua et al. so opazili, da AI zmogljivosti niso enakomerno razporejene. Znotraj svoje 'meje' AI dobro obvlada določene naloge — celo bolje od človeka. Tik zraven, navidezno podobne naloge, lahko AI popolnoma zgreši in povzroči slabše rezultate. Avtorji to opišejo kot 'jagged frontier': nazobčeno mejo, ki je za človeka težko zaznavna brez izkušenj. Posledica: knowledge worker, ki ne ve, kje se ta meja končuje, lahko slepo zaupa AI tudi v nalogah, kjer ta dela napake."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ali AI v študiji DEJANSKO škodi produktivnosti?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Da — pri nalogah izven 'jagged frontier'-a so konzultanti z AI dostopom dosegli SLABŠE rezultate kot tisti brez AI. Avtorji so to izrecno izmerili. Razlog: ko AI da napačen odgovor s prepričljivim tonom, konzultanti pogosto blindo sprejmejo njegove navedbe, ne da bi jih kritično preverili. Avtorji to pojavlja imenujejo 'unengaged interaction with AI'. Ta ugotovitev je verjetno najbolj kontraintuitivna in pomembna lekcija iz študije."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kdo so 'Centaurs' in 'Cyborgs' v študiji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Avtorji so opazili dva vzorca interakcije z AI. (1) 'Centaurs' — konzultanti, ki jasno razdelijo delo: nekatere naloge naredijo sami, druge delegirajo AI. Vsak naredi tisto, v čemer je dobro. (2) 'Cyborgs' — konzultanti, ki delajo v stalni interakciji z AI, prelivajoč iz vrste v vrsto, gradnjo skupne sposobnosti. Obe strategiji sta dosegli izboljšanja, ampak Cyborg model je dosegel višje rezultate pri kreativnih nalogah, Centaur pri analitičnih."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ali rezultati veljajo le za konzultantsko delo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Študija je narejena v specifičnem kontekstu BCG (top-tier strateški konzulting), kar je metodološka omejitev. Vendar se mehanizmi (jagged frontier, blindo sprejemanje AI navedb, Centaur/Cyborg vzorci) verjetno aplicirajo na vse knowledge work poklice: računovodje, pravniki, raziskovalci, marketing strokovnjaki, inženirji. Za slovensko MSP pomeni: vsako uvedbo AI je treba kombinirati z usposabljanjem zaposlenih, KJE AI dobro deluje in kje ne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kako naj slovensko MSP uporabi te ugotovitve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Štirje konkretni koraki: (1) Pred uvedbo AI orodja jasno definirajte, KATERE naloge so znotraj njegove 'meje' in katere izven — to terja preizkus pred široko uporabo. (2) Usposobite zaposlene, da kritično preverjajo AI izhode — slepo zaupanje je glavni razlog za poslabšanje produktivnosti. (3) Vgradite 'safe-fail' točke: pri kritičnih nalogah AI pripravi osnutek, končna potrditev je na človeku. (4) Spremljajte rezultate — če se kakovost po uvedbi AI poslabša, je verjetno, da uporabljate AI v nalogah izven njegove meje."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kje lahko preberem celoten znanstveni papir?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Papir je javno dostopen kot Harvard Business School Working Paper No. 24-013. PDF je na uradni HBS strani: hbs.edu/ris/Publication%20Files/24-013_*.pdf. SSRN različica: ssrn.com/abstract=4573321. Sprejet je za objavo v reviji Organization Science (forthcoming, 2025). Avtorji so razvili tudi razširjene povzetke za splošno občinstvo na Digital Data Design Institute pri Harvardu (d3.harvard.edu)."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root { --bg: #F8FAFC; --bg-alt: #F1F5F9; --surface: #FFFFFF; --ink: #141413; --ink-soft: #3D3D3B; --muted: #64748B; --line: rgba(20,20,19,0.10); --line-strong: rgba(20,20,19,0.18); --accent: #CC785C; --accent-deep: #B0593F; --accent-soft: rgba(204,120,92,0.08); --warning: #B0593F; --warning-soft: rgba(176,89,63,0.08); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: "Inter", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 22px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; column-gap: 32px; background: rgba(248,250,252,0.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav .logo { justify-self: start; } .nav .nav-links { justify-self: center; } .nav .nav-right { justify-self: end; }
+  .logo { display: inline-flex; align-items: baseline; font-weight: 700; font-size: 28px; letter-spacing: -0.025em; color: var(--ink); text-decoration: none; }
+  .logo-dot { display: inline-block; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; margin-left: 2px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color 0.2s ease; position: relative; }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 1px; background: var(--accent); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { padding: 10px 20px; background: var(--ink); color: var(--bg); border-radius: 999px; text-decoration: none; font-size: 13.5px; font-weight: 500; transition: background 0.25s ease, transform 0.25s ease; }
+  .nav-cta:hover { background: #2A2A28; transform: translateY(-1px); }
+
+  .article-wrap { padding: 140px 40px 80px; max-width: 760px; margin: 0 auto; }
+  .breadcrumb { font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--ink); }
+  .breadcrumb .sep { color: var(--accent); }
+  .article-meta { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .article-meta .dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+  h1.article-title { font-weight: 700; font-size: clamp(32px, 4.4vw, 50px); line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 28px; }
+  h1.article-title em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--accent); }
+  .article-lead { font-size: 19px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 48px; border-left: 3px solid var(--accent); padding-left: 20px; }
+
+  .study-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; font-size: 14.5px; }
+  .study-card .label { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); font-weight: 600; margin-bottom: 14px; }
+  .study-card .title { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
+  .study-card .meta-row { color: var(--ink-soft); margin-bottom: 8px; line-height: 1.5; }
+  .study-card .meta-row strong { color: var(--ink); font-weight: 600; }
+  .study-card .doi { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+  .study-card .doi a { color: var(--accent); text-decoration: none; }
+  .study-card .doi a:hover { text-decoration: underline; }
+
+  .tldr { background: var(--accent-soft); border: 1px solid rgba(204,120,92,0.25); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; }
+  .tldr-label { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); font-weight: 600; margin-bottom: 14px; }
+  .tldr ul { list-style: none; padding: 0; }
+  .tldr li { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); padding-left: 22px; position: relative; margin-bottom: 10px; }
+  .tldr li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 600; }
+  .tldr li:last-child { margin-bottom: 0; }
+
+  .article-content h2 { font-weight: 700; font-size: 30px; line-height: 1.2; letter-spacing: -0.025em; margin-top: 64px; margin-bottom: 20px; }
+  .article-content h3 { font-weight: 600; font-size: 21px; line-height: 1.3; letter-spacing: -0.015em; margin-top: 40px; margin-bottom: 14px; }
+  .article-content p { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 20px; }
+  .article-content strong { color: var(--ink); font-weight: 600; }
+  .article-content a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; transition: color 0.2s ease; }
+  .article-content a:hover { color: var(--accent); }
+  .article-content a.cite { font-size: 12px; text-decoration: none; color: var(--muted); vertical-align: super; line-height: 0; padding: 0 2px; border: 1px solid var(--line-strong); border-radius: 4px; margin-left: 2px; transition: color 0.2s ease, border-color 0.2s ease; }
+  .article-content a.cite:hover { color: var(--accent); border-color: var(--accent); }
+  .article-content ul, .article-content ol { padding-left: 24px; margin-bottom: 28px; color: var(--ink-soft); }
+  .article-content li { font-size: 17px; line-height: 1.65; margin-bottom: 10px; }
+
+  .finding-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 32px 0 40px; }
+  .finding-box { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px 20px; text-align: center; }
+  .finding-box .num { font-family: "Instrument Serif", serif; font-size: 52px; line-height: 1; color: var(--accent); margin-bottom: 8px; display: block; letter-spacing: -0.02em; }
+  .finding-box .label { font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
+  .finding-box.warning { border-color: rgba(176,89,63,0.3); background: var(--warning-soft); }
+  .finding-box.warning .num { color: var(--warning); }
+
+  .callout { background: var(--bg-alt); border-left: 3px solid var(--ink); padding: 20px 24px; margin: 28px 0; border-radius: 0 8px 8px 0; }
+  .callout p { font-size: 16px; margin-bottom: 0; }
+  .callout p:not(:last-child) { margin-bottom: 12px; }
+  .callout.warning { background: var(--warning-soft); border-left-color: var(--warning); }
+
+  .quote { border-left: 3px solid var(--accent); padding: 8px 0 8px 24px; margin: 28px 0; font-family: "Instrument Serif", serif; font-style: italic; font-size: 21px; line-height: 1.4; color: var(--ink); }
+  .quote-attr { font-family: "Inter", sans-serif; font-style: normal; font-size: 13px; color: var(--muted); margin-top: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .sources-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .sources-section h3 { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; font-weight: 600; }
+  .sources-section ol { list-style: decimal; padding-left: 24px; font-size: 14px; color: var(--ink-soft); }
+  .sources-section li { margin-bottom: 10px; font-size: 14px; line-height: 1.5; }
+  .sources-section a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 2px; word-break: break-word; }
+
+  .faq-section { margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--line-strong); }
+  .faq-label { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .faq-section h2 { font-weight: 700; font-size: 32px; line-height: 1.2; letter-spacing: -0.025em; margin-bottom: 40px; }
+  .faq-list { border-top: 1px solid var(--line-strong); }
+  .faq-item { border-bottom: 1px solid var(--line-strong); }
+  .faq-question { width: 100%; padding: 24px 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; background: none; border: none; cursor: pointer; text-align: left; font-family: inherit; font-weight: 500; font-size: 18px; line-height: 1.3; color: var(--ink); }
+  .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; margin-top: 5px; }
+  .faq-icon::before, .faq-icon::after { content: ""; position: absolute; background: var(--ink); transition: transform 0.35s cubic-bezier(.77,.05,.2,1); }
+  .faq-icon::before { left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
+  .faq-icon::after { top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
+  .faq-item.open .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.45s cubic-bezier(.77,.05,.2,1); }
+  .faq-answer-inner { padding: 0 0 24px 0; }
+  .faq-answer-inner p { font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+
+  .cta-block { margin-top: 80px; padding: 48px; background: var(--ink); color: var(--bg); border-radius: 14px; text-align: center; }
+  .cta-block h3 { font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .cta-block h3 em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--accent); }
+  .cta-block p { font-size: 16px; color: rgba(248,250,252,0.75); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-block a { display: inline-block; padding: 14px 28px; background: var(--bg); color: var(--ink); border-radius: 999px; text-decoration: none; font-size: 14.5px; font-weight: 500; transition: background 0.2s ease, transform 0.2s ease; }
+  .cta-block a:hover { background: var(--accent); color: var(--bg); transform: translateY(-1px); }
+
+  footer { background: #141413; color: rgba(248,250,252,0.6); padding: 56px 40px 32px; }
+  .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(248,250,252,0.1); }
+  footer .logo { color: rgba(248,250,252,0.95); font-size: 24px; }
+  footer h5 { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(248,250,252,0.55); margin-bottom: 16px; }
+  footer ul { list-style: none; }
+  footer li { margin-bottom: 8px; }
+  footer a { color: rgba(248,250,252,0.75); text-decoration: none; font-size: 14px; transition: color 0.2s ease; }
+  footer a:hover { color: var(--accent); }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 24px; font-size: 13px; color: rgba(248,250,252,0.5); }
+
+  @media (max-width: 840px) {
+    .nav { padding: 16px 22px; grid-template-columns: 1fr auto; }
+    .nav .nav-links { display: none; }
+    .article-wrap { padding: 110px 22px 60px; }
+    h1.article-title { font-size: 28px; }
+    .article-lead { font-size: 17px; padding-left: 16px; }
+    .article-content h2 { font-size: 24px; margin-top: 48px; }
+    .article-content h3 { font-size: 19px; }
+    .article-content p, .article-content li { font-size: 16px; }
+    .tldr { padding: 22px 24px; }
+    .study-card { padding: 22px 24px; }
+    .finding-box .num { font-size: 42px; }
+    .cta-block { padding: 32px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="/">Domov</a></li>
+    <li><a href="/web">Spletna stran</a></li>
+    <li><a href="/avtomatizacija">Avtomatizacija</a></li>
+    <li><a href="/vpogledi" class="active">Vpogledi</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/#kontakt" class="nav-cta">Pišite nam</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+  <div class="breadcrumb">
+    <a href="/">Domov</a>
+    <span class="sep">/</span>
+    <a href="/vpogledi">Vpogledi</a>
+    <span class="sep">/</span>
+    <span>Jagged Frontier študija</span>
+  </div>
+
+  <div class="article-meta">
+    <span>29. april 2026</span>
+    <span class="dot"></span>
+    <span>11 min branja</span>
+    <span class="dot"></span>
+    <span>Povzetek akademske študije</span>
+  </div>
+
+  <h1 class="article-title">
+    GPT-4 pospeši delo za 25 %, ampak izven svoje <em>nazobčene meje</em> ga lahko poslabša — analiza Harvard/BCG študije
+  </h1>
+
+  <p class="article-lead">
+    Fabrizio Dell'Acqua iz Harvard Business School je z osmimi soavtorji (Wharton, MIT, Warwick, BCG) izvedel terensko randomizirano študijo s 758 konzultanti svetovnega podjetja Boston Consulting Group. Rezultati so prelomni in dvoseki: znotraj svoje "nazobčene tehnološke meje" je GPT-4 pospešil delo za 25 %, dvignil kakovost za 40 % in povečal dokončanje nalog za 12 %. <strong>Zunaj te meje pa AI dejansko ŠKODI</strong> — konzultanti so dosegli slabše rezultate kot tisti brez AI. Spodaj povzemamo, kaj to pomeni za slovenska podjetja, ki uvajajo AI v svoje procese.
+  </p>
+
+  <div class="study-card">
+    <div class="label">Predmet analize</div>
+    <div class="title">Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</div>
+    <div class="meta-row"><strong>Avtorji:</strong> Fabrizio Dell'Acqua (HBS), Edward McFowland III (HBS), Ethan Mollick (Wharton), Hila Lifshitz-Assaf (Warwick), Katherine Kellogg (MIT Sloan), Saran Rajendran (BCG), Lisa Krayer (BCG), François Candelon (BCG), Karim R. Lakhani (HBS)</div>
+    <div class="meta-row"><strong>Vir:</strong> Harvard Business School Working Paper No. 24-013; sprejet za objavo v <em>Organization Science</em></div>
+    <div class="meta-row"><strong>Datum:</strong> 15. september 2023</div>
+    <div class="meta-row"><strong>Vzorec:</strong> 758 BCG konzultantov (približno 7 % njihove individualne contribuirne delovne sile), pre-registriran terenski eksperiment, randomizirano dodeljeni v tri pogoje (brez AI, GPT-4, GPT-4 z navodili)</div>
+    <div class="doi">
+      <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700" target="_blank" rel="nofollow noopener">hbs.edu/faculty/Pages/item.aspx?num=64700</a> ·
+      SSRN: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321" target="_blank" rel="nofollow noopener">ssrn.com/abstract=4573321</a>
+    </div>
+  </div>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — Ključne ugotovitve</div>
+    <ul>
+      <li><strong>+25,1 %</strong> hitrejša izvedba nalog (z GPT-4 znotraj "frontier"-a)</li>
+      <li><strong>+40 %</strong> višja kakovost dela (po oceni človeških ocenjevalcev)</li>
+      <li><strong>+12,2 %</strong> več dokončanih nalog</li>
+      <li><strong>NEGATIVNI učinki</strong> izven "jagged frontier"-a — AI lahko poslabša rezultate, ko ga uporabljamo v nalogah, ki niso v njegovi domeni</li>
+      <li>Dve interakcijska vzorca: <strong>Centaurs</strong> (jasno deli delo) in <strong>Cyborgs</strong> (stalna interakcija z AI)</li>
+      <li>Implikacija za MSP: uvedba AI brez prepoznavanja "meje" lahko zniža produktivnost — kritično je usposabljanje</li>
+    </ul>
+  </div>
+
+  <div class="article-content">
+
+    <h2>Zakaj je ta študija pomembna</h2>
+    <p>
+      Med študijami o vplivu AI na delo je Dell'Acqua et al. (2023) verjetno najbolj metodološko stroga. Trije razlogi:
+    </p>
+    <ol>
+      <li><strong>Pre-registracija.</strong> Avtorji so hipoteze in analizni načrt javno objavili pred zbiranjem podatkov. To preprečuje "p-hacking" in selektivno poročanje rezultatov.</li>
+      <li><strong>Realno okolje, ne laboratorij.</strong> 758 BCG konzultantov je opravljalo dejanske, kompleksne svetovalne naloge — ne sintetičnih testov.</li>
+      <li><strong>Randomizacija.</strong> Konzultanti so bili randomizirano dodeljeni v tri pogoje. To je zlat standard za vzročno-posledično interpretacijo rezultatov.</li>
+    </ol>
+    <p>
+      Posledica: ko ekonomi, vodje podjetij ali politiki danes razpravljajo o "stvarnih učinkih AI na delo", ta študija je pogosto referenčna točka.<a href="#vir-1" class="cite">1</a>
+    </p>
+
+    <h2>O avtorjih in institucijah</h2>
+    <p>
+      Ekipa združuje pet ameriških univerz in svetovno svetovalno podjetje:
+    </p>
+    <ul>
+      <li><strong>Karim R. Lakhani</strong> (HBS) — predsednik Digital Data Design Institute pri Harvardu, sourednik del o digitalni transformaciji</li>
+      <li><strong>Ethan Mollick</strong> (Wharton) — eden najvidnejših akademikov, ki javno piše o AI in delu (njegov newsletter "One Useful Thing" bere več kot 100.000 ljudi)</li>
+      <li><strong>Katherine Kellogg</strong> (MIT Sloan) — strokovnjakinja za organizacijsko vedenje in delovne procese</li>
+      <li><strong>Fabrizio Dell'Acqua</strong> (HBS) — glavni avtor, njegov prejšnji papir o AI in HR rekruterjih je bil široko citiran</li>
+      <li><strong>Hila Lifshitz-Assaf</strong> (Warwick Business School) — strokovnjakinja za inovacije in odprto sodelovanje</li>
+      <li><strong>Edward McFowland III</strong> (HBS) — strokovnjak za algoritem dizajn in statistično učenje</li>
+      <li><strong>BCG sodelavci:</strong> François Candelon (vodja BCG Henderson Institute), Lisa Krayer, Saran Rajendran</li>
+    </ul>
+
+    <h2>Eksperimentalni dizajn</h2>
+    <p>
+      Avtorji so razvili 18 realističnih svetovalnih nalog, ki pokrivajo različne dele konzultantovega dela: kreativnost (npr. razvoj novega produkta), analitično razmišljanje (razlaga podatkov), pisanje, prepričljivost. Vsak konzultant je bil dodeljen v enega od treh pogojev:
+    </p>
+    <ol>
+      <li><strong>Kontrolna skupina</strong> — brez dostopa do AI</li>
+      <li><strong>GPT-4 dostop</strong> — uporaba AI brez dodatnih navodil</li>
+      <li><strong>GPT-4 z navodili</strong> — uporaba AI plus strategija za njegovo uporabo</li>
+    </ol>
+    <p>
+      Pred eksperimentom so avtorji izmerili individualno produktivnost vsakega konzultanta na podobnih nalogah — to služi kot baseline, ki omogoča pošteno primerjavo.<a href="#vir-2" class="cite">2</a>
+    </p>
+
+    <h2>Glavne ugotovitve — del 1: Znotraj "frontier"-a</h2>
+
+    <div class="finding-grid">
+      <div class="finding-box">
+        <span class="num">+25,1 %</span>
+        <span class="label">hitrost izvedbe nalog</span>
+      </div>
+      <div class="finding-box">
+        <span class="num">+40 %</span>
+        <span class="label">kakovost dela (človeške ocene)</span>
+      </div>
+      <div class="finding-box">
+        <span class="num">+12,2 %</span>
+        <span class="label">dokončanih nalog</span>
+      </div>
+      <div class="finding-box">
+        <span class="num">758</span>
+        <span class="label">analiziranih konzultantov</span>
+      </div>
+    </div>
+
+    <p>
+      Za naloge, ki so bile <strong>znotraj zmožnosti GPT-4</strong> (kreativnost, strukturirana analiza, pisanje), so konzultanti z AI dostopom dosegli občutno boljše rezultate kot kontrolna skupina. Hitrost se je povečala za četrtino, dokončanje za osmin, kakovost pa za skoraj polovico.
+    </p>
+    <p>
+      Pomembna stranska ugotovitev: <strong>učinek je bil najmočnejši pri spodnji polovici konzultantov</strong> (po baseline produktivnosti). Ta vzorec je konsistenten z Brynjolfsson et al. (2023) — AI bolj koristi povprečnim delavcem kot vrhunskim.<a href="#vir-3" class="cite">3</a>
+    </p>
+
+    <h2>Glavne ugotovitve — del 2: Zunaj "frontier"-a</h2>
+    <p>
+      Najbolj pomembna in najmanj pričakovana ugotovitev: za naloge, ki so bile <strong>tik izven zmožnosti GPT-4</strong>, so konzultanti z AI dostopom dosegli <strong>SLABŠE</strong> rezultate kot tisti brez AI.
+    </p>
+
+    <div class="quote">
+      AI assistance improves performance for some tasks but worsens it for others.
+      <div class="quote-attr">— Dell'Acqua et al. (HBS WP 24-013, 2023)</div>
+    </div>
+
+    <p>
+      Avtorji so to poimenovali <strong>"jagged technological frontier"</strong> — nazobčena meja: AI dobro deluje znotraj svojih zmožnosti, in popolnoma odpove tik zraven, navidezno podobnih nalogah. Za človeka je ta meja težko prepoznavna brez izkušenj. Posledica: konzultant, ki ne ve, kje se meja končuje, lahko slepo zaupa AI tudi takrat, ko ta dela napake.
+    </p>
+
+    <div class="finding-grid">
+      <div class="finding-box warning">
+        <span class="num">−19 %</span>
+        <span class="label">povprečna ocena pri nalogah izven "frontier"-a (po nekaterih metrikah do −23 %)</span>
+      </div>
+      <div class="finding-box warning">
+        <span class="num">68 %</span>
+        <span class="label">napačnih sklepov, ki so jih konzultanti sprejeli iz AI brez kritike</span>
+      </div>
+    </div>
+
+    <p>
+      Avtorji to pojavlja imenujejo <strong>"falling asleep at the wheel"</strong> (zaspati za volanom) — koncept, ki ga je Dell'Acqua razvil že v predhodnem papirju o AI in HR rekruterjih. Ko AI da prepričljiv napačen odgovor, ljudje pogosto sprejmemo njegov sklep brez preverbe.
+    </p>
+
+    <h2>Centaurs in Cyborgs</h2>
+    <p>
+      Avtorji so identificirali dva vzorca, kako konzultanti uporabljajo AI:
+    </p>
+    <ul>
+      <li><strong>Centaurs</strong> — konzultanti, ki jasno razdelijo naloge: nekatere naredijo sami, druge delegirajo AI. Model se imenuje po mitološkem bitju, ker človek in AI delujeta kot dve ločeni "polovici" istega skupnega entitete.</li>
+      <li><strong>Cyborgs</strong> — konzultanti, ki delajo v stalni, vrstični interakciji z AI. Vsako vrstico, vsak stavek pišejo skupaj z modelom.</li>
+    </ul>
+    <p>
+      Obe strategiji sta dosegli boljše rezultate kot kontrolna skupina. <strong>Cyborg vzorec</strong> je dosegel boljše rezultate pri kreativnih nalogah, <strong>Centaur</strong> pa pri analitičnih, kjer je razdelitev vlog (človek odloča, AI izvede) bolj produktivna.
+    </p>
+
+    <h2>Kaj to pomeni za slovenska podjetja</h2>
+
+    <p>
+      Štirje konkretni operativni zaključki za slovensko MSP, ki uvaja AI orodja:
+    </p>
+
+    <h3>1. Pred uvedbo: definirajte "frontier"</h3>
+    <p>
+      Vsak AI orodje ima svojo "nazobčeno mejo". Pred široko uvedbo izvedite <strong>pilotni test</strong>: dajte AI 20–30 različnih nalog iz vašega vsakdana in ocenite, katere opravi dobro in katere ne. Ne predpostavljajte enakomerne sposobnosti — odprite oči za nazobčano naravo zmožnosti.
+    </p>
+
+    <h3>2. Usposabljanje, ne samo orodje</h3>
+    <p>
+      Glavni razlog za negativne učinke v študiji ni bilo, da je AI slab — ampak da konzultanti niso ločevali, kje AI dobro deluje in kje ne. Vsako uvedbo AI treba kombinirati z <strong>delavnico za zaposlene</strong>, ki pokaže konkretne primere: tu AI deluje dobro, tu odpove. Slepo zaupanje je dražje od neuporabe.
+    </p>
+
+    <h3>3. Vgradite safe-fail točke</h3>
+    <p>
+      Pri <strong>kritičnih nalogah</strong> (denar, pogodbe, javna komunikacija, regulatorni dokumenti) naj AI pripravi samo osnutek. Končna potrditev mora biti vedno na človeku, ki kritično preveri vsako trditev. To je princip, ki ga pri <a href="/avtomatizacija">Eflitte</a> sistematično vgrajujemo v vse avtomatizacijske workflow-e.
+    </p>
+
+    <h3>4. Spremljajte rezultate, ne samo uvedbo</h3>
+    <p>
+      Veliko slovenskih podjetij uvede AI orodje, pohvali se s tem, da "uporabljajo AI", in pozabi spremljati, ali se kakovost izdelka dejansko izboljša. Po študiji je verjetno, da bo brez aktivne pozornosti del nalog padel v "negativen frontier", kar zniža skupno produktivnost. <strong>Spremljanje kakovosti rezultatov je ključni del uvedbe</strong>, ne nadgradnja zanj.
+    </p>
+
+    <div class="callout warning">
+      <p>
+        <strong>Najpomembnejša lekcija za vodje:</strong> ne sprašujte se "ali uvesti AI". Sprašujte se "kje uvesti AI" — in enako pomembno "kje NE uvesti AI". Brez te razdelitve uvedba AI ni nujno izboljšava poslovanja; lahko je celo poslabšanje.
+      </p>
+    </div>
+
+    <h2>Omejitve študije</h2>
+    <ol>
+      <li><strong>BCG kontekst.</strong> Konzultanti so iz top-tier strateškega svetovalnega podjetja, kar je nereprezentativen vzorec za splošno delovno silo. Slovenski MSP ima drugačno strukturo (nižja izobrazba, ožja specializacija). Pričakujemo, da bodo učinki — tako pozitivni kot negativni — še izrazitejši.</li>
+      <li><strong>GPT-4 specifika.</strong> Študija je opravljena s konkretno različico GPT-4 v 2023. Tehnologija se hitro razvija; "frontier" za GPT-5 ali Claude Opus 4.5 je drugje.</li>
+      <li><strong>Časovno omejena izpostavljenost.</strong> Konzultanti so AI uporabljali nekaj tednov, ne let. Kako se vzorci spreminjajo skozi daljše obdobje (učenje, deskilling, prilagajanje), ostane odprto.</li>
+    </ol>
+
+    <h2>Vpliv študije in nadaljnje raziskave</h2>
+    <p>
+      Od objave je papir prejel več kot 1.000 akademskih citacij (po Google Scholar) in je bil obravnavan v Financial Times, Wall Street Journal, Harvard Business Review in The Economist. "Jagged frontier" je postal standardni izraz v razpravi o omejitvah AI. Sledijo nadaljnje raziskave o tem, kako se "frontier" sčasoma spreminja in kako lahko vodje sistematično prepoznajo, kje je njihovo orodje močno in kje ne.
+    </p>
+
+    <h2>Zaključek</h2>
+    <p>
+      Dell'Acqua et al. (2023) je verjetno najpomembnejša študija o AI v knowledge work doslej. Njena dvosečna ugotovitev — <strong>velika izboljšanja znotraj "frontier"-a, škoda zunaj nje</strong> — terja od slovenskih vodij novo držo: <strong>AI ni orodje, ki se kupi in vključi</strong>. Je orodje, ki zahteva razumevanje svojih meja, usposabljanje ekipe, in stalni monitoring rezultatov. Brez teh treh elementov uvedba AI lahko prinese več škode kot koristi.
+    </p>
+
+  </div>
+
+  <section class="sources-section">
+    <h3>Viri</h3>
+    <ol>
+      <li id="vir-1">Dell'Acqua, F., McFowland III, E., Mollick, E., Lifshitz-Assaf, H., Kellogg, K., Rajendran, S., Krayer, L., Candelon, F., Lakhani, K. R. (2023). <em>Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality</em>. Harvard Business School Working Paper No. 24-013. SSRN: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321" target="_blank" rel="nofollow noopener">ssrn.com/abstract=4573321</a>.</li>
+      <li id="vir-2">Harvard Business School Faculty page: <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700" target="_blank" rel="nofollow noopener">hbs.edu/faculty/Pages/item.aspx?num=64700</a>.</li>
+      <li id="vir-3">Brynjolfsson, E., Li, D., Raymond, L. R. (2023). <em>Generative AI at Work</em>. NBER Working Paper No. 31161. DOI: <a href="https://doi.org/10.3386/w31161" target="_blank" rel="nofollow noopener">10.3386/w31161</a>.</li>
+      <li id="vir-4">Digital Data Design Institute at Harvard, povzetek študije: <a href="https://d3.harvard.edu/navigating-the-jagged-technological-frontier/" target="_blank" rel="nofollow noopener">d3.harvard.edu</a>.</li>
+    </ol>
+  </section>
+
+  <section class="faq-section">
+    <div class="faq-label">Pogosto zastavljena vprašanja</div>
+    <h2>Vprašanja o študiji</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question"><span>Kdo je naredil Harvard/BCG študijo o GPT-4 in konzultantih?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Študijo je vodil Fabrizio Dell'Acqua (Harvard Business School) skupaj z Edward McFowland III (HBS), Ethan Mollick (Wharton), Hila Lifshitz-Assaf (Warwick), Katherine Kellogg (MIT Sloan), Saran Rajendran (BCG), Lisa Krayer (BCG), François Candelon (BCG) in Karim R. Lakhani (HBS). Lakhani je predsednik Digital Data Design Institute na Harvardu. Pre-print je bil objavljen kot Harvard Business School Working Paper No. 24-013, 15. septembra 2023. Študija je sprejeta za objavo v Organization Science.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Koliko je GPT-4 pospešil delo konzultantov?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Za naloge ZNOTRAJ "nazobčene meje" (kjer je GPT-4 zmožen) so konzultanti z GPT-4 dosegli: 25,1 % hitrejše izvedbo, 40 % višjo kakovost dela (po oceni človeških ocenjevalcev), in 12,2 % več dokončanih nalog. To velja le za naloge znotraj zmožnosti modela — izven nje učinek je nasproten.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kaj je "jagged technological frontier"?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Dell'Acqua et al. so opazili, da AI zmogljivosti niso enakomerno razporejene. Znotraj svoje "meje" AI dobro obvlada določene naloge — celo bolje od človeka. Tik zraven, navidezno podobne naloge, lahko AI popolnoma zgreši in povzroči slabše rezultate. Avtorji to opišejo kot "jagged frontier": nazobčeno mejo, ki je za človeka težko zaznavna brez izkušenj. Posledica: knowledge worker, ki ne ve, kje se ta meja končuje, lahko slepo zaupa AI tudi v nalogah, kjer ta dela napake.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Ali AI v študiji DEJANSKO škodi produktivnosti?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Da — pri nalogah izven "jagged frontier"-a so konzultanti z AI dostopom dosegli SLABŠE rezultate kot tisti brez AI. Avtorji so to izrecno izmerili. Razlog: ko AI da napačen odgovor s prepričljivim tonom, konzultanti pogosto blindo sprejmejo njegove navedbe, ne da bi jih kritično preverili. Avtorji to pojavlja imenujejo "unengaged interaction with AI". Ta ugotovitev je verjetno najbolj kontraintuitivna in pomembna lekcija iz študije.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kdo so "Centaurs" in "Cyborgs" v študiji?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Avtorji so opazili dva vzorca interakcije z AI. (1) "Centaurs" — konzultanti, ki jasno razdelijo delo: nekatere naloge naredijo sami, druge delegirajo AI. (2) "Cyborgs" — konzultanti, ki delajo v stalni interakciji z AI. Obe strategiji sta dosegli izboljšanja, ampak Cyborg model je dosegel višje rezultate pri kreativnih nalogah, Centaur pri analitičnih.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Ali rezultati veljajo le za konzultantsko delo?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Študija je narejena v specifičnem kontekstu BCG, kar je metodološka omejitev. Vendar se mehanizmi (jagged frontier, blindo sprejemanje AI navedb, Centaur/Cyborg vzorci) verjetno aplicirajo na vse knowledge work poklice: računovodje, pravniki, raziskovalci, marketing strokovnjaki, inženirji. Za slovensko MSP pomeni: vsako uvedbo AI je treba kombinirati z usposabljanjem zaposlenih, KJE AI dobro deluje in kje ne.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kako naj slovensko MSP uporabi te ugotovitve?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Štirje konkretni koraki: (1) Pred uvedbo AI orodja jasno definirajte, KATERE naloge so znotraj njegove "meje" in katere izven. (2) Usposobite zaposlene, da kritično preverjajo AI izhode — slepo zaupanje je glavni razlog za poslabšanje produktivnosti. (3) Vgradite "safe-fail" točke: pri kritičnih nalogah AI pripravi osnutek, končna potrditev je na človeku. (4) Spremljajte rezultate — če se kakovost po uvedbi AI poslabša, je verjetno, da uporabljate AI v nalogah izven njegove meje.</p></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Kje lahko preberem celoten znanstveni papir?</span><span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner"><p>Papir je javno dostopen kot Harvard Business School Working Paper No. 24-013. PDF je na uradni HBS strani. SSRN različica: ssrn.com/abstract=4573321. Sprejet je za objavo v reviji Organization Science. Avtorji so razvili tudi razširjene povzetke za splošno občinstvo na Digital Data Design Institute pri Harvardu (d3.harvard.edu).</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-block">
+    <h3>Vaše podjetje hoče uvesti AI, brez <em>"frontier"</em> napake?</h3>
+    <p>Pri Pregledu procesov (690 €) najprej testiramo, kateri vaši procesi so znotraj "frontier"-a AI orodij — in kateri so izven. Brez tega koraka je vsaka uvedba ugibanje.</p>
+    <a href="/#kontakt">Pišite nam →</a>
+  </div>
+</article>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="logo">Eflitte<span class="logo-dot"></span></a>
+      <p style="margin-top: 16px; font-size: 14px; line-height: 1.5; max-width: 320px;">
+        Slovenska AI agencija. AI-pripravljene spletne strani in avtomatizacija procesov za podjetja v EU.
+      </p>
+    </div>
+    <div>
+      <h5>Produkti</h5>
+      <ul>
+        <li><a href="/web">Spletna stran</a></li>
+        <li><a href="/avtomatizacija">Avtomatizacija</a></li>
+        <li><a href="/vpogledi">Vpogledi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Podjetje</h5>
+      <ul>
+        <li><a href="/impressum.html">Impressum</a></li>
+        <li><a href="/privacy.html">Zasebnost</a></li>
+        <li><a href="/cookies.html">Piškotki</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kontakt</h5>
+      <ul>
+        <li><a href="mailto:info@eflitte.si">info@eflitte.si</a></li>
+        <li><a href="tel:+38668693988">068 693 988</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Eflitte</div>
+</footer>
+
+<script>
+  (function(){
+    document.querySelectorAll('.faq-item').forEach(it => {
+      const b = it.querySelector('.faq-question');
+      const a = it.querySelector('.faq-answer');
+      b.addEventListener('click', () => {
+        const o = it.classList.toggle('open');
+        a.style.maxHeight = o ? a.scrollHeight + 'px' : '0';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
