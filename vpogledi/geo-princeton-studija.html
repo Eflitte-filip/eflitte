@@ -57,7 +57,7 @@
   "datePublished": "2026-04-22T10:00:00+02:00",
   "dateModified": "2026-04-22T10:00:00+02:00",
   "inLanguage": "sl-SI",
-  "author": {"@id": "https://eflitte.si/#organization"},
+  "author": {"@id": "https://eflitte.si/#filip"},
   "publisher": {"@id": "https://eflitte.si/#organization"},
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -373,6 +373,34 @@
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>
+
+<!-- Structured Data: Person (founder, author) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://eflitte.si/#filip",
+  "name": "Filip Noe Kovačič",
+  "givenName": "Filip",
+  "familyName": "Kovačič",
+  "jobTitle": "Founder & AI Engineer",
+  "worksFor": { "@id": "https://eflitte.si/#organization" },
+  "url": "https://eflitte.si/",
+  "knowsAbout": [
+    "Generative Engine Optimization",
+    "Large Language Models",
+    "n8n workflow automation",
+    "Retrieval-Augmented Generation",
+    "Conversational AI",
+    "GDPR compliant AI deployment"
+  ],
+  "knowsLanguage": ["sl", "en"],
+  "nationality": { "@type": "Country", "name": "Slovenia" },
+  "sameAs": [
+    "https://github.com/Eflitte-filip"
+  ]
+}
+</script>
 </head>
 <body>
 

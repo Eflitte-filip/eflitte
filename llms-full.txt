@@ -9,6 +9,7 @@
 **Service area:** Slovenia (Maribor, Celje, Ljubljana, Velenje) + EU
 **Contact:** info@eflitte.si · +386 68 693 988
 **Website:** https://eflitte.si/
+**GitHub:** https://github.com/Eflitte-filip
 
 ---
 
