@@ -145,8 +145,6 @@ Rok in cena sta odvisna od projekta. Specifikacije sprejmemo prek info@eflitte.s
 | AI-pripravljena Pro | širši katalog / mednarodno (7+ podstrani) | od 10.500 € |
 | Hitri chatbot | obstoječa stran (brez prenove) | 1.200–2.200 € + 90 €/mes |
 
-**Doplačila:** dodatni jezik DE/IT +400 €/jezik · self-hosted LLM +1.500–3.000 € · migracija vsebin +250–800 €.
-
 **Mesečna skrb (web):**
 - **Care** (hosting, SSL, monitoring, 1 h popravkov): 150 €/mes
 - **Grow** (Care + 3 h razvoja, SEO/AI poročilo, chatbot optimizacija): 390 €/mes
@@ -161,8 +159,6 @@ Rok in cena sta odvisna od projekta. Specifikacije sprejmemo prek info@eflitte.s
 | Sprint Simple | 1 izoliran proces, malo integracij | 1.800–3.000 € |
 | Sprint Standard | proces z LLM logiko (klasifikacija, kvalifikacija) | 3.500–6.500 € |
 | Sprint Complex | večstopenjski / ERP / regulirana panoga | 8.000–16.000 € |
-
-**Doplačila:** self-hosted n8n na infrastrukturi stranke +500–1.200 € · lokalni LLM (Llama/Mistral) za zdravstvo/finance +2.000–4.500 € · IT-security dokumentacija +400–800 €.
 
 **Operativna skrb (avtomatizacija):**
 - **Watch** (24/7 monitoring, alarmiranje, hotfixi, mesečno poročilo): 290 €/mes
