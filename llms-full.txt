@@ -1,6 +1,6 @@
 # Eflitte — Slovenska AI agencija
 
-> Eflitte je slovenska AI agencija s sedežem v Štajerski (Slovenija, EU). Specializirani smo za dve področji: AI-pripravljene spletne strani (optimizirane za Google in AI iskalnike kot so ChatGPT, Claude, Perplexity in Google AI Overviews) ter avtomatizacijo notranjih procesov za mala in srednja podjetja. Vsi podatki strank ostanejo v EU regiji, GDPR-skladno, brez vendor lock-ina. Koda in infrastruktura sta v lasti stranke.
+> Eflitte je slovenska AI agencija s sedežem v Štajerski (Slovenija, EU). Specializirani smo za dve področji: AI-pripravljene spletne strani (optimizirane za Google in AI iskalnike kot so ChatGPT, Claude, Perplexity in Google AI Overviews) ter avtomatizacijo notranjih procesov za mala in srednja podjetja. Vsi podatki strank ostanejo v EU regiji, skladno z GDPR, brez vendor lock-ina. Koda in infrastruktura sta v lasti stranke.
 
 **Last updated:** 2026-05-11
 **Founder:** Filip Noe Kovačič
@@ -24,7 +24,7 @@ Eflitte ponuja dva ločena, a komplementarna produkta:
 
 **1. Najpreprostejša rešitev najprej.** Če vaš problem reši Excel formula ali boljši CRM template, to povemo. AI ne prodajamo zato, ker je v modi.
 
-**2. Vaši podatki ostanejo vaši.** EU regija, GDPR-skladne pogodbe, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.
+**2. Vaši podatki ostanejo vaši.** EU regija, pogodbe skladne z GDPR, brez učenja modelov na vaših vsebinah. Pri občutljivih primerih self-hosted setup pod vašim nadzorom.
 
 ## Kako delamo
 

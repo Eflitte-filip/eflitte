@@ -1,6 +1,6 @@
 # Eflitte
 
-> Eflitte je slovenska AI agencija s sedežem v Štajerski (Slovenija). Gradimo AI-pripravljene spletne strani in avtomatiziramo notranje procese za mala in srednja podjetja v EU. Podatki strank ostanejo v EU regiji, GDPR-skladno, brez vendor lock-ina.
+> Eflitte je slovenska AI agencija s sedežem v Štajerski (Slovenija). Gradimo AI-pripravljene spletne strani in avtomatiziramo notranje procese za mala in srednja podjetja v EU. Podatki strank ostanejo v EU regiji, skladno z GDPR, brez vendor lock-ina.
 
 Dva produkta, ena ekipa:
 

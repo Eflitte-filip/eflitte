@@ -68,7 +68,7 @@ AVT_FAQS = [
     ("Kako dolgo traja, koliko stane?",
      "Trajanje sprinta je odvisno od kompleksnosti procesa, števila integracij in obsega podatkov stranke. Ne moremo dati zavezujočega okvirja brez razumevanja konteksta — zato Pregled procesov. Glede cene: brez specifikacij ne moremo dati zavezujoče ponudbe. Specifikacije sprejmemo na info@eflitte.si ali prek uvodnega pogovora, nato pripravimo pisni predračun."),
     ("Mora najprej naš IT pregledati?",
-     "Pri večjih podjetjih je IT pregled standarden in upravičen — gre za vaše sisteme in podatke. Pripravimo tehnični dokument, ki opisuje arhitekturo, dostope, varnost, GDPR-skladnost in plan disaster recovery. Tipično IT pregled traja 1–2 tedna in je del začetka projekta — ne ovira, ampak korak, ki gradi zaupanje.")
+     "Pri večjih podjetjih je IT pregled standarden in upravičen — gre za vaše sisteme in podatke. Pripravimo tehnični dokument, ki opisuje arhitekturo, dostope, varnost, skladnost z GDPR in plan disaster recovery. Tipično IT pregled traja 1–2 tedna in je del začetka projekta — ne ovira, ampak korak, ki gradi zaupanje.")
 ]
 
 def faqpage(faqs, page_url):
@@ -156,7 +156,7 @@ AVT_SERVICE = {
         {"@type": "Country", "name": "Slovenia"},
         {"@type": "AdministrativeArea", "name": "European Union"}
     ],
-    "description": "Workflow avtomatizacija z n8n in LLM logiko: obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, poročanje, AI upravljanje dokumentov. Self-hosted infrastruktura v EU regiji, GDPR-skladno.",
+    "description": "Workflow avtomatizacija z n8n in LLM logiko: obravnava povpraševanj, opomniki za fakture, razvrščanje e-pošte, poročanje, AI upravljanje dokumentov. Self-hosted infrastruktura v EU regiji, skladno z GDPR.",
     "serviceType": ["Workflow automation", "AI integration", "Process automation", "Business process automation", "RAG systems", "Document AI"],
     "category": "Business Process Automation",
     "audience": {"@type": "BusinessAudience", "audienceType": "Small and medium businesses in Slovenia and EU"},
@@ -249,7 +249,7 @@ def main():
         faqpage(AVT_FAQS, "https://eflitte.si/avtomatizacija"),
         avt_breadcrumb,
         webpage("https://eflitte.si/avtomatizacija", "Avtomatizacija procesov — Eflitte",
-                "Workflow avtomatizacija z n8n in LLM logiko. Self-hosted, EU regija, GDPR-skladno.",
+                "Workflow avtomatizacija z n8n in LLM logiko. Self-hosted, EU regija, skladno z GDPR.",
                 breadcrumb_id="https://eflitte.si/avtomatizacija#breadcrumb")
     ], remove_existing_service=True)
 
@@ -275,7 +275,7 @@ def main():
     inject(ROOT/"privacy.html", [
         priv_breadcrumb,
         webpage("https://eflitte.si/privacy.html", "Politika zasebnosti — Eflitte",
-                "Politika zasebnosti Eflitte: kako obdelujemo podatke, GDPR skladnost, EU regija.",
+                "Politika zasebnosti Eflitte: kako obdelujemo podatke, skladnost z GDPR, EU regija.",
                 breadcrumb_id="https://eflitte.si/privacy.html#breadcrumb")
     ])
 
