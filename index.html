@@ -542,6 +542,87 @@
   }
 
   /* ---------- SHOWCASE (V AKCIJI) ---------- */
+  /* INTRO CARDS — pod hero */
+  .intro-cards {
+    background: var(--bg);
+    padding: 110px 40px;
+    border-bottom: 1px solid var(--line);
+  }
+  .intro-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .intro-card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 36px 32px 38px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .intro-card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(20, 20, 19, 0.07);
+  }
+  .intro-card-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .intro-card-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .intro-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .intro-card-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .intro-card-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+  }
+  .intro-card-list li::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    width: 3px;
+    height: 6px;
+    border-right: 1.6px solid var(--accent);
+    border-bottom: 1.6px solid var(--accent);
+    transform: rotate(45deg);
+  }
   .showcase {
     background: var(--bg-alt);
     padding: 120px 40px;
@@ -980,6 +1061,8 @@
     .cta { padding: 100px 22px 90px; }
     .cat-grid { grid-template-columns: 1fr; gap: 16px; }
     .showcase-grid { grid-template-columns: 1fr; gap: 16px; }
+    .intro-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+    .intro-cards { padding: 72px 22px; }
     .cat-card { padding: 40px 28px; }
     .honest-grid { grid-template-columns: 1fr; gap: 40px; }
     .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1214,11 +1297,8 @@
       <span class="dot" aria-hidden="true"></span>Eflitte · Slovenska AI agencija
     </p>
     <h1 class="hero-title" data-reveal data-i18n="hero.title">
-      AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class="accent">uporabljajo</span>, nadomestili tiste, ki ga ne.
+      Dostavljamo svet <span class="accent">umetne inteligence</span> tudi k slovenskim poslovnežem.
     </h1>
-    <div class="hero-attribution" data-reveal data-i18n="hero.attribution">
-      — Ginni Rometty, nekdanja izvršna direktorica IBM
-    </div>
     <p class="hero-sub" data-reveal data-i18n="hero.sub">
       Eflitte je slovenska AI agencija. Gradimo AI-pripravljene spletne strani, optimizirane za Google in AI iskalnike (ChatGPT, Claude, Perplexity), ter avtomatiziramo notranje procese z n8n in LLM logiko. Vsi podatki ostanejo v EU regiji, skladno z GDPR.
     </p>
@@ -1229,6 +1309,46 @@
     </div>
   </div>
 </header>
+
+<!-- INTRO CARDS -->
+<section class="intro-cards">
+  <div class="intro-cards-grid">
+
+    <!-- CARD 1 -->
+    <article class="intro-card" data-reveal>
+      <div class="intro-card-num">01</div>
+      <h3 class="intro-card-title" data-i18n="introcard1.t">Priprava spletnih strani na novo dobo</h3>
+      <ul class="intro-card-list">
+        <li data-i18n="introcard1.p1">Brez WordPress naročnin</li>
+        <li data-i18n="introcard1.p2">Najdeni na ChatGPT, Google, Perplexity</li>
+        <li data-i18n="introcard1.p3">Manj posredniških provizij</li>
+      </ul>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="intro-card" data-reveal>
+      <div class="intro-card-num">02</div>
+      <h3 class="intro-card-title" data-i18n="introcard2.t">Vpeljevanje AI botov</h3>
+      <ul class="intro-card-list">
+        <li data-i18n="introcard2.p1">Ki odgovarjajo na vprašanja</li>
+        <li data-i18n="introcard2.p2">Ki preusmerjajo do pravih ljudi</li>
+        <li data-i18n="introcard2.p3">Ki izvajajo konkretne naloge</li>
+      </ul>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="intro-card" data-reveal>
+      <div class="intro-card-num">03</div>
+      <h3 class="intro-card-title" data-i18n="introcard3.t">Optimizacija dela</h3>
+      <ul class="intro-card-list">
+        <li data-i18n="introcard3.p1">Manj ročnega kopiranja podatkov</li>
+        <li data-i18n="introcard3.p2">Povezani sistemi, ki tečejo sami</li>
+        <li data-i18n="introcard3.p3">Več časa za delo, ki res šteje</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
 
 <!-- SHOWCASE — V AKCIJI -->
 <section class="showcase">
@@ -1807,7 +1927,7 @@
       "nav.insights": { sl: "Vpogledi", en: "Insights" },
       "nav.cta":      { sl: "Pišite nam", en: "Write to us" },
 
-      "hero.title":   { sl: "AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class=\"accent\">uporabljajo</span>, nadomestili tiste, ki ga ne.", en: "AI won't replace humans. But those who use it will replace those who don't." },
+      "hero.title":   { sl: "Dostavljamo svet <span class=\"accent\">umetne inteligence</span> tudi k slovenskim poslovnežem.", en: "We bring the world of <span class=\"accent\">artificial intelligence</span> to Slovenian business owners." },
       "hero.attribution": { sl: "— Ginni Rometty, nekdanja izvršna direktorica IBM", en: "— Ginni Rometty, former CEO of IBM" },
       "hero.sub":     { sl: "Spletne strani, chatboti, avtomatizacija. Skupaj ugotovimo, kje AI res prinaša vrednost in kje (še) ne.", en: "Websites, chatbots, automation. Together we figure out where AI actually adds value — and where it (still) doesn't." },
       "hero.cta":     { sl: "Pišite nam <span class=\"arrow\">→</span>", en: "Write to us <span class=\"arrow\">→</span>" },
@@ -1828,6 +1948,18 @@
       "cat2.l3":     { sl: "Optimizacija marketinga in raziskav", en: "Marketing optimization and research" },
 
       "showcase.label": { sl: "V akciji", en: "In action" },
+      "introcard1.t": { sl: "Priprava spletnih strani na novo dobo", en: "Websites built for a new era" },
+      "introcard1.p1": { sl: "Brez WordPress naročnin", en: "No WordPress subscriptions" },
+      "introcard1.p2": { sl: "Najdeni na ChatGPT, Google, Perplexity", en: "Found on ChatGPT, Google, Perplexity" },
+      "introcard1.p3": { sl: "Manj posredniških provizij", en: "Fewer middleman commissions" },
+      "introcard2.t": { sl: "Vpeljevanje AI botov", en: "Deploying AI bots" },
+      "introcard2.p1": { sl: "Ki odgovarjajo na vprašanja", en: "That answer questions" },
+      "introcard2.p2": { sl: "Ki preusmerjajo do pravih ljudi", en: "That route to the right people" },
+      "introcard2.p3": { sl: "Ki izvajajo konkretne naloge", en: "That carry out concrete tasks" },
+      "introcard3.t": { sl: "Optimizacija dela", en: "Optimizing how you work" },
+      "introcard3.p1": { sl: "Manj ročnega kopiranja podatkov", en: "Less manual data copying" },
+      "introcard3.p2": { sl: "Povezani sistemi, ki tečejo sami", en: "Connected systems that run themselves" },
+      "introcard3.p3": { sl: "Več časa za delo, ki res šteje", en: "More time for work that matters" },
       "showcase.title": { sl: "Kaj zares <span class=\"accent\">naredimo</span>.", en: "What we actually <span class=\"accent\">build</span>." },
       "showcase1.t":    { sl: "Chatbot, ki govori vaš jezik.", en: "A chatbot that speaks your language." },
       "showcase1.lead": { sl: "Pomaga obiskovalcem 24/7 in jih vodi do konkretne zahteve — ne le splošen FAQ.", en: "Helps visitors 24/7 and turns conversations into real inquiries — not just a generic FAQ." },
