@@ -244,23 +244,24 @@
 
   /* ---------------- Flit mascot ---------------- */
   .efc-avatar {
-    width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%;
+    width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%;
     background: rgba(204,120,92,0.10);
     display: flex; align-items: center; justify-content: center;
   }
-  .efc-mascot { width: 42px; height: 42px; display: block; overflow: visible; cursor: pointer; }
+  .efc-mascot { width: 52px; height: 52px; display: block; overflow: visible; cursor: pointer; }
   .efc-mascot *, .efc-fab-face * { transform-box: fill-box; transform-origin: center; }
   .efc-fab-face { overflow: visible; }
+  .efc-fab .efc-fab-face { width: 38px; height: 38px; }
 
   .flit-shell { fill: #CC785C; }
-  .flit-shine { fill: #FAF9F5; opacity: .20; }
+  .flit-shine { fill: #FAF9F5; opacity: .16; }
   .flit-eye   { fill: #1F1714; }
   .flit-cat   { fill: #FAF9F5; opacity: .92; }
   .flit-spark { fill: #FAF9F5; }
   .flit-td    { fill: #CC785C; }
   .flit-aura  { fill: #CC785C; opacity: .14; }
   .flit-eyes-happy path, .flit-m {
-    fill: none; stroke: #1F1714; stroke-width: 4.2;
+    fill: none; stroke: #1F1714; stroke-width: 5.5;
     stroke-linecap: round; stroke-linejoin: round;
   }
   .flit-m-talk { fill: #1F1714; stroke: none; }
@@ -353,15 +354,15 @@
   fab.innerHTML = `
     <svg class="efc-fab-face" viewBox="0 0 120 120" aria-hidden="true">
       <g class="flit-body">
-        <rect class="flit-shell" x="20" y="24" width="80" height="74" rx="30"/>
-        <ellipse class="flit-shine" cx="42" cy="45" rx="15" ry="11"/>
+        <rect class="flit-shell" x="14" y="18" width="92" height="92" rx="33"/>
+        <ellipse class="flit-shine" cx="39" cy="40" rx="15" ry="10"/>
         <g class="flit-eyes">
-          <circle class="flit-eye" cx="47" cy="61" r="7.5"/>
-          <circle class="flit-eye" cx="73" cy="61" r="7.5"/>
-          <circle class="flit-cat" cx="49.4" cy="58.4" r="2.2"/>
-          <circle class="flit-cat" cx="75.4" cy="58.4" r="2.2"/>
+          <circle class="flit-eye" cx="48" cy="58" r="11"/>
+          <circle class="flit-eye" cx="72" cy="58" r="11"/>
+          <circle class="flit-cat" cx="51.5" cy="54.5" r="3.3"/>
+          <circle class="flit-cat" cx="75.5" cy="54.5" r="3.3"/>
         </g>
-        <path class="flit-m flit-m-idle" d="M51 79 Q60 86 69 79"/>
+        <path class="flit-m flit-m-idle" d="M47 79 Q60 91 73 79"/>
       </g>
     </svg>`;
 
@@ -376,31 +377,31 @@
         <span class="efc-avatar">
         <svg class="efc-mascot" data-mood="idle" viewBox="0 0 120 120" aria-hidden="true">
           <g class="flit-think">
-            <circle class="flit-td flit-td1" cx="48" cy="13" r="4"/>
-            <circle class="flit-td flit-td2" cx="60" cy="11" r="4"/>
-            <circle class="flit-td flit-td3" cx="72" cy="13" r="4"/>
+            <circle class="flit-td flit-td1" cx="48" cy="11" r="5"/>
+            <circle class="flit-td flit-td2" cx="60" cy="9" r="5"/>
+            <circle class="flit-td flit-td3" cx="72" cy="11" r="5"/>
           </g>
-          <circle class="flit-aura" cx="60" cy="60" r="46"/>
+          <circle class="flit-aura" cx="60" cy="60" r="50"/>
           <g class="flit-body">
-            <rect class="flit-shell" x="20" y="24" width="80" height="74" rx="30"/>
-            <ellipse class="flit-shine" cx="42" cy="45" rx="15" ry="11"/>
-            <circle class="flit-spark" cx="94" cy="30" r="5"/>
+            <rect class="flit-shell" x="14" y="18" width="92" height="92" rx="33"/>
+            <ellipse class="flit-shine" cx="39" cy="40" rx="15" ry="10"/>
+            <circle class="flit-spark" cx="99" cy="21" r="6.5"/>
             <g class="flit-eyes">
-              <circle class="flit-eye" cx="47" cy="61" r="7.5"/>
-              <circle class="flit-eye" cx="73" cy="61" r="7.5"/>
-              <circle class="flit-cat" cx="49.4" cy="58.4" r="2.2"/>
-              <circle class="flit-cat" cx="75.4" cy="58.4" r="2.2"/>
+              <circle class="flit-eye" cx="48" cy="58" r="11"/>
+              <circle class="flit-eye" cx="72" cy="58" r="11"/>
+              <circle class="flit-cat" cx="51.5" cy="54.5" r="3.3"/>
+              <circle class="flit-cat" cx="75.5" cy="54.5" r="3.3"/>
             </g>
             <g class="flit-eyes-happy">
-              <path d="M40 63 Q47 54 54 63"/>
-              <path d="M66 63 Q73 54 80 63"/>
+              <path d="M35 61 Q47 48 59 61"/>
+              <path d="M61 61 Q73 48 85 61"/>
             </g>
             <g class="flit-mouth">
-              <path class="flit-m flit-m-idle"  d="M51 79 Q60 86 69 79"/>
-              <path class="flit-m flit-m-happy" d="M45 77 Q60 93 75 77"/>
-              <path class="flit-m flit-m-think" d="M53 81 L64 80"/>
-              <ellipse class="flit-m flit-m-talk" cx="60" cy="81" rx="7" ry="6"/>
-              <path class="flit-m flit-m-oops"  d="M50 83 Q60 74 70 83"/>
+              <path class="flit-m flit-m-idle"  d="M47 79 Q60 91 73 79"/>
+              <path class="flit-m flit-m-happy" d="M41 76 Q60 99 79 76"/>
+              <path class="flit-m flit-m-think" d="M52 82 L66 80"/>
+              <ellipse class="flit-m flit-m-talk" cx="60" cy="82" rx="10" ry="9"/>
+              <path class="flit-m flit-m-oops"  d="M47 85 Q60 73 73 85"/>
             </g>
           </g>
         </svg>
