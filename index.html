@@ -542,32 +542,49 @@
   }
 
   /* ---------- SHOWCASE (V AKCIJI) ---------- */
-  /* INTRO CARDS — pod hero */
-  .intro-cards {
-    background: var(--bg);
-    padding: 110px 40px;
-    border-bottom: 1px solid var(--line);
+  /* HERO CARDS — znotraj hero razdelka */
+  .hero-cards {
+    position: relative;
+    margin-top: 72px;
+    width: 100%;
+  }
+  .hero-cards-backdrop {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 116%;
+    height: 150%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-cards-backdrop svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   .intro-cards-grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    max-width: 1240px;
-    margin: 0 auto;
   }
   .intro-card {
-    background: #FFFFFF;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 36px 32px 38px;
+    background: rgba(248, 250, 252, 0.045);
+    border: 1px solid rgba(248, 250, 252, 0.12);
+    border-radius: 10px;
+    padding: 30px 28px 32px;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
   }
   .intro-card:hover {
-    border-color: var(--line-strong);
+    border-color: rgba(248, 250, 252, 0.24);
+    background: rgba(248, 250, 252, 0.07);
     transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(20, 20, 19, 0.07);
   }
   .intro-card-num {
     font-family: "JetBrains Mono", monospace;
@@ -575,16 +592,16 @@
     font-weight: 500;
     letter-spacing: 0.14em;
     color: var(--accent);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .intro-card-title {
     font-family: "Inter", sans-serif;
     font-weight: 700;
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.25;
     letter-spacing: -0.015em;
-    color: var(--ink);
-    margin-bottom: 22px;
+    color: #F8FAFC;
+    margin-bottom: 20px;
   }
   .intro-card-list {
     list-style: none;
@@ -592,31 +609,31 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 12px;
   }
   .intro-card-list li {
     position: relative;
     padding-left: 26px;
-    font-size: 15px;
+    font-size: 14.5px;
     line-height: 1.5;
-    color: var(--ink-soft);
+    color: rgba(248, 250, 252, 0.72);
   }
   .intro-card-list li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 7px;
+    top: 6px;
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: var(--accent-soft);
+    background: rgba(204, 120, 92, 0.16);
     border: 1px solid var(--accent);
   }
   .intro-card-list li::after {
     content: "";
     position: absolute;
     left: 4px;
-    top: 10px;
+    top: 9px;
     width: 3px;
     height: 6px;
     border-right: 1.6px solid var(--accent);
@@ -1061,8 +1078,9 @@
     .cta { padding: 100px 22px 90px; }
     .cat-grid { grid-template-columns: 1fr; gap: 16px; }
     .showcase-grid { grid-template-columns: 1fr; gap: 16px; }
-    .intro-cards-grid { grid-template-columns: 1fr; gap: 16px; }
-    .intro-cards { padding: 72px 22px; }
+    .intro-cards-grid { grid-template-columns: 1fr; gap: 14px; }
+    .hero-cards { margin-top: 48px; }
+    .hero-cards-backdrop { width: 150%; height: 130%; }
     .cat-card { padding: 40px 28px; }
     .honest-grid { grid-template-columns: 1fr; gap: 40px; }
     .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1299,56 +1317,88 @@
     <h1 class="hero-title" data-reveal data-i18n="hero.title">
       Dostavljamo svet <span class="accent">umetne inteligence</span> tudi k slovenskim poslovnežem.
     </h1>
-    <p class="hero-sub" data-reveal data-i18n="hero.sub">
-      Eflitte je slovenska AI agencija. Gradimo AI-pripravljene spletne strani, optimizirane za Google in AI iskalnike (ChatGPT, Claude, Perplexity), ter avtomatiziramo notranje procese z n8n in LLM logiko. Vsi podatki ostanejo v EU regiji, skladno z GDPR.
-    </p>
     <div class="hero-actions" data-reveal>
       <a href="#kontakt" class="btn-primary" data-i18n="hero.cta">
         Pišite nam <span class="arrow">→</span>
       </a>
     </div>
+
+    <!-- HERO CARDS -->
+    <div class="hero-cards" data-reveal>
+      <div class="hero-cards-backdrop" aria-hidden="true">
+        <svg viewBox="0 0 1240 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="hc-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#CC785C" stop-opacity="0.30"/>
+              <stop offset="60%" stop-color="#CC785C" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#CC785C" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="hc-rail" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#CC785C" stop-opacity="0"/>
+              <stop offset="15%" stop-color="#CC785C" stop-opacity="0.55"/>
+              <stop offset="85%" stop-color="#CC785C" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#CC785C" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- soft glow blobs behind each card -->
+          <ellipse cx="207" cy="230" rx="260" ry="200" fill="url(#hc-glow)"/>
+          <ellipse cx="620" cy="210" rx="280" ry="210" fill="url(#hc-glow)"/>
+          <ellipse cx="1033" cy="230" rx="260" ry="200" fill="url(#hc-glow)"/>
+          <!-- connecting rail -->
+          <line x1="207" y1="60" x2="1033" y2="60" stroke="url(#hc-rail)" stroke-width="1.5" stroke-dasharray="2 6"/>
+          <!-- nodes -->
+          <g fill="none" stroke="#CC785C">
+            <circle cx="207"  cy="60" r="9" stroke-opacity="0.45"/>
+            <circle cx="620"  cy="60" r="9" stroke-opacity="0.45"/>
+            <circle cx="1033" cy="60" r="9" stroke-opacity="0.45"/>
+          </g>
+          <g fill="#CC785C">
+            <circle cx="207"  cy="60" r="3.5"/>
+            <circle cx="620"  cy="60" r="3.5"/>
+            <circle cx="1033" cy="60" r="3.5"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="intro-cards-grid">
+
+        <!-- CARD 1 -->
+        <article class="intro-card">
+          <div class="intro-card-num">01</div>
+          <h3 class="intro-card-title" data-i18n="introcard1.t">Priprava spletnih strani na novo dobo</h3>
+          <ul class="intro-card-list">
+            <li data-i18n="introcard1.p1">Brez WordPress naročnin</li>
+            <li data-i18n="introcard1.p2">Najdeni na ChatGPT, Google, Perplexity</li>
+            <li data-i18n="introcard1.p3">Manj posredniških provizij</li>
+          </ul>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="intro-card">
+          <div class="intro-card-num">02</div>
+          <h3 class="intro-card-title" data-i18n="introcard2.t">Vpeljevanje AI botov</h3>
+          <ul class="intro-card-list">
+            <li data-i18n="introcard2.p1">Ki odgovarjajo na vprašanja</li>
+            <li data-i18n="introcard2.p2">Ki preusmerjajo do pravih ljudi</li>
+            <li data-i18n="introcard2.p3">Ki izvajajo konkretne naloge</li>
+          </ul>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="intro-card">
+          <div class="intro-card-num">03</div>
+          <h3 class="intro-card-title" data-i18n="introcard3.t">Optimizacija dela</h3>
+          <ul class="intro-card-list">
+            <li data-i18n="introcard3.p1">Manj ročnega kopiranja podatkov</li>
+            <li data-i18n="introcard3.p2">Povezani sistemi, ki tečejo sami</li>
+            <li data-i18n="introcard3.p3">Več časa za delo, ki res šteje</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
   </div>
 </header>
-
-<!-- INTRO CARDS -->
-<section class="intro-cards">
-  <div class="intro-cards-grid">
-
-    <!-- CARD 1 -->
-    <article class="intro-card" data-reveal>
-      <div class="intro-card-num">01</div>
-      <h3 class="intro-card-title" data-i18n="introcard1.t">Priprava spletnih strani na novo dobo</h3>
-      <ul class="intro-card-list">
-        <li data-i18n="introcard1.p1">Brez WordPress naročnin</li>
-        <li data-i18n="introcard1.p2">Najdeni na ChatGPT, Google, Perplexity</li>
-        <li data-i18n="introcard1.p3">Manj posredniških provizij</li>
-      </ul>
-    </article>
-
-    <!-- CARD 2 -->
-    <article class="intro-card" data-reveal>
-      <div class="intro-card-num">02</div>
-      <h3 class="intro-card-title" data-i18n="introcard2.t">Vpeljevanje AI botov</h3>
-      <ul class="intro-card-list">
-        <li data-i18n="introcard2.p1">Ki odgovarjajo na vprašanja</li>
-        <li data-i18n="introcard2.p2">Ki preusmerjajo do pravih ljudi</li>
-        <li data-i18n="introcard2.p3">Ki izvajajo konkretne naloge</li>
-      </ul>
-    </article>
-
-    <!-- CARD 3 -->
-    <article class="intro-card" data-reveal>
-      <div class="intro-card-num">03</div>
-      <h3 class="intro-card-title" data-i18n="introcard3.t">Optimizacija dela</h3>
-      <ul class="intro-card-list">
-        <li data-i18n="introcard3.p1">Manj ročnega kopiranja podatkov</li>
-        <li data-i18n="introcard3.p2">Povezani sistemi, ki tečejo sami</li>
-        <li data-i18n="introcard3.p3">Več časa za delo, ki res šteje</li>
-      </ul>
-    </article>
-
-  </div>
-</section>
 
 <!-- SHOWCASE — V AKCIJI -->
 <section class="showcase">
