@@ -13,60 +13,68 @@
      };
    ========================================================================= */
 (function () {
-  'use strict';
+  "use strict";
 
   /* ---------------- config ---------------- */
   const cfg = Object.assign(
-    { endpoint: '/api/chat', lang: 'auto', mock: false },
-    window.EFLITTE_CHAT_CONFIG || {}
+    { endpoint: "/api/chat", lang: "auto", mock: false },
+    window.EFLITTE_CHAT_CONFIG || {},
   );
 
   /* ---------------- i18n ---------------- */
   const STR = {
     sl: {
-      open:        'Odpri pogovor z asistentom',
-      close:       'Zapri pogovor',
-      title:       'Eflitte asistent',
-      name:        'Flit',
-      role:        'AI asistent',
-      online:      'Na voljo',
-      greeting:    'Pozdravljeni, sem Flit, AI asistent agencije Eflitte. Kako vam lahko pomagam?',
-      placeholder: 'Napišite sporočilo...',
-      send:        'Pošlji',
-      newChat:     'Nov pogovor',
-      error:       'Prišlo je do napake. Poskusite znova ali nas kontaktirajte na info@eflitte.si.',
-      disclaimer:  'Pogovori se ne hranijo. Pošlji = Enter, nova vrstica = Shift+Enter.'
+      open: "Odpri pogovor z asistentom",
+      close: "Zapri pogovor",
+      title: "Eflitte asistent",
+      name: "Flit",
+      role: "AI asistent",
+      online: "Na voljo",
+      greeting:
+        "Pozdravljeni, sem Flit, AI asistent agencije Eflitte. Kako vam lahko pomagam?",
+      placeholder: "Napišite sporočilo...",
+      send: "Pošlji",
+      newChat: "Nov pogovor",
+      error:
+        "Prišlo je do napake. Poskusite znova ali nas kontaktirajte na info@eflitte.si.",
+      disclaimer:
+        "Pogovori se ne hranijo. Pošlji = Enter, nova vrstica = Shift+Enter.",
     },
     en: {
-      open:        'Open chat with assistant',
-      close:       'Close chat',
-      title:       'Eflitte assistant',
-      name:        'Flit',
-      role:        'AI assistant',
-      online:      'Online',
-      greeting:    'Hello, I am Flit, the AI assistant of Eflitte. How can I help?',
-      placeholder: 'Type a message...',
-      send:        'Send',
-      newChat:     'New chat',
-      error:       'Something went wrong. Please try again or email us at info@eflitte.si.',
-      disclaimer:  'Conversations are not stored. Enter = send, Shift+Enter = new line.'
-    }
+      open: "Open chat with assistant",
+      close: "Close chat",
+      title: "Eflitte assistant",
+      name: "Flit",
+      role: "AI assistant",
+      online: "Online",
+      greeting:
+        "Hello, I am Flit, the AI assistant of Eflitte. How can I help?",
+      placeholder: "Type a message...",
+      send: "Send",
+      newChat: "New chat",
+      error:
+        "Something went wrong. Please try again or email us at info@eflitte.si.",
+      disclaimer:
+        "Conversations are not stored. Enter = send, Shift+Enter = new line.",
+    },
   };
 
   function detectLang() {
-    if (cfg.lang === 'sl' || cfg.lang === 'en') return cfg.lang;
+    if (cfg.lang === "sl" || cfg.lang === "en") return cfg.lang;
     // 1. Read from <html lang> attribute (most reliable for SI sites)
     try {
-      const htmlLang = (document.documentElement.lang || '').slice(0, 2).toLowerCase();
-      if (htmlLang === 'sl' || htmlLang === 'en') return htmlLang;
+      const htmlLang = (document.documentElement.lang || "")
+        .slice(0, 2)
+        .toLowerCase();
+      if (htmlLang === "sl" || htmlLang === "en") return htmlLang;
     } catch (_) {}
     // 2. Fall back to localStorage (set by Eflitte's language toggle)
     try {
-      const stored = localStorage.getItem('eflitte-lang');
-      if (stored === 'sl' || stored === 'en') return stored;
+      const stored = localStorage.getItem("eflitte-lang");
+      if (stored === "sl" || stored === "en") return stored;
     } catch (_) {}
     // 3. Default to Slovenian (Eflitte primarily serves SI market)
-    return 'sl';
+    return "sl";
   }
   let lang = detectLang();
   const t = (k) => (STR[lang] && STR[lang][k]) || STR.en[k];
@@ -343,14 +351,14 @@
   `;
 
   /* ---------------- DOM build ---------------- */
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.textContent = css;
   document.head.appendChild(style);
 
-  const fab = document.createElement('button');
-  fab.className = 'efc-fab';
-  fab.setAttribute('aria-label', t('open'));
-  fab.dataset.open = 'false';
+  const fab = document.createElement("button");
+  fab.className = "efc-fab";
+  fab.setAttribute("aria-label", t("open"));
+  fab.dataset.open = "false";
   fab.innerHTML = `
     <svg class="efc-fab-face" viewBox="0 0 120 120" aria-hidden="true">
       <g class="flit-body">
@@ -366,11 +374,11 @@
       </g>
     </svg>`;
 
-  const panel = document.createElement('div');
-  panel.className = 'efc-panel';
-  panel.setAttribute('role', 'dialog');
-  panel.setAttribute('aria-label', t('title'));
-  panel.dataset.open = 'false';
+  const panel = document.createElement("div");
+  panel.className = "efc-panel";
+  panel.setAttribute("role", "dialog");
+  panel.setAttribute("aria-label", t("title"));
+  panel.dataset.open = "false";
   panel.innerHTML = `
     <div class="efc-header">
       <div class="efc-header-left">
@@ -407,17 +415,17 @@
         </svg>
       </span>
         <div class="efc-meta">
-          <span class="efc-name">${t('name')} · ${t('role')}</span>
-          <span class="efc-status"><span class="efc-status-dot"></span>${t('online')}</span>
+          <span class="efc-name">${t("name")} · ${t("role")}</span>
+          <span class="efc-status"><span class="efc-status-dot"></span>${t("online")}</span>
         </div>
       </div>
       <div class="efc-header-actions">
-        <button class="efc-iconbtn" data-action="reset" aria-label="${t('newChat')}" title="${t('newChat')}">
+        <button class="efc-iconbtn" data-action="reset" aria-label="${t("newChat")}" title="${t("newChat")}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
           </svg>
         </button>
-        <button class="efc-iconbtn" data-action="close" aria-label="${t('close')}" title="${t('close')}">
+        <button class="efc-iconbtn" data-action="close" aria-label="${t("close")}" title="${t("close")}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
@@ -427,64 +435,73 @@
     <div class="efc-messages" id="efc-messages" aria-live="polite"></div>
     <div class="efc-input-wrap">
       <div class="efc-input-row">
-        <textarea class="efc-input" rows="1" placeholder="${t('placeholder')}" aria-label="${t('placeholder')}"></textarea>
-        <button class="efc-send" aria-label="${t('send')}" disabled>
+        <textarea class="efc-input" rows="1" placeholder="${t("placeholder")}" aria-label="${t("placeholder")}"></textarea>
+        <button class="efc-send" aria-label="${t("send")}" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
           </svg>
         </button>
       </div>
-      <div class="efc-disclaimer">${t('disclaimer')}</div>
+      <div class="efc-disclaimer">${t("disclaimer")}</div>
     </div>
   `;
 
   document.body.appendChild(fab);
   document.body.appendChild(panel);
 
-  const $messages = panel.querySelector('.efc-messages');
-  const $input    = panel.querySelector('.efc-input');
-  const $send     = panel.querySelector('.efc-send');
-  const $reset    = panel.querySelector('[data-action="reset"]');
+  const $messages = panel.querySelector(".efc-messages");
+  const $input = panel.querySelector(".efc-input");
+  const $send = panel.querySelector(".efc-send");
+  const $reset = panel.querySelector('[data-action="reset"]');
   const $closeBtn = panel.querySelector('[data-action="close"]');
 
   /* ---------------- mascot mood ---------------- */
-  const $mascot = panel.querySelector('.efc-mascot');
+  const $mascot = panel.querySelector(".efc-mascot");
   let moodTimer = null;
   function setMood(mood, holdMs) {
     if (!$mascot) return;
-    if (moodTimer) { clearTimeout(moodTimer); moodTimer = null; }
+    if (moodTimer) {
+      clearTimeout(moodTimer);
+      moodTimer = null;
+    }
     $mascot.dataset.mood = mood;
     if (holdMs) {
       moodTimer = setTimeout(function () {
         moodTimer = null;
-        $mascot.dataset.mood = busy ? 'thinking' : 'idle';
+        $mascot.dataset.mood = busy ? "thinking" : "idle";
       }, holdMs);
     }
   }
   if ($mascot) {
-    $mascot.dataset.mood = 'idle';
-    $mascot.addEventListener('click', function () {
-      if (!busy) setMood('happy', 1200);
+    $mascot.dataset.mood = "idle";
+    $mascot.addEventListener("click", function () {
+      if (!busy) setMood("happy", 1200);
     });
   }
 
   /* ---------------- state ---------------- */
-  let history = [];           // [{role, content}]
+  let history = []; // [{role, content}]
   let busy = false;
 
   function loadHistory() {
     try {
-      const raw = sessionStorage.getItem('eflitte-chat');
+      const raw = sessionStorage.getItem("eflitte-chat");
       if (raw) history = JSON.parse(raw);
-    } catch (_) { history = []; }
+    } catch (_) {
+      history = [];
+    }
   }
   function saveHistory() {
-    try { sessionStorage.setItem('eflitte-chat', JSON.stringify(history)); } catch (_) {}
+    try {
+      sessionStorage.setItem("eflitte-chat", JSON.stringify(history));
+    } catch (_) {}
   }
   function clearHistory() {
-    history = []; saveHistory(); $messages.innerHTML = '';
-    addBotMessage(t('greeting'));
-    setMood('happy', 1800);
+    history = [];
+    saveHistory();
+    $messages.innerHTML = "";
+    addBotMessage(t("greeting"));
+    setMood("happy", 1800);
   }
 
   /* ---------------- rendering ---------------- */
@@ -494,86 +511,161 @@
   // is virtually always an error — we map the common ones back to Latin.
   const CYRILLIC_TO_LATIN = {
     // Visually identical lookalikes
-    'А': 'A', 'В': 'B', 'Е': 'E', 'К': 'K', 'М': 'M', 'Н': 'H',
-    'О': 'O', 'Р': 'P', 'С': 'C', 'Т': 'T', 'Х': 'X', 'У': 'Y',
-    'а': 'a', 'е': 'e', 'о': 'o', 'р': 'p', 'с': 'c', 'у': 'y', 'х': 'x',
+    А: "A",
+    В: "B",
+    Е: "E",
+    К: "K",
+    М: "M",
+    Н: "H",
+    О: "O",
+    Р: "P",
+    С: "C",
+    Т: "T",
+    Х: "X",
+    У: "Y",
+    а: "a",
+    е: "e",
+    о: "o",
+    р: "p",
+    с: "c",
+    у: "y",
+    х: "x",
     // Slovenian-specific lookalikes (Č/Š/Ž)
-    'Ч': 'Č', 'Ш': 'Š', 'Ж': 'Ž',
-    'ч': 'č', 'ш': 'š', 'ж': 'ž',
+    Ч: "Č",
+    Ш: "Š",
+    Ж: "Ž",
+    ч: "č",
+    ш: "š",
+    ж: "ž",
     // Phonetic remappings (less common but defensive)
-    'Б': 'B', 'Г': 'G', 'Д': 'D', 'З': 'Z', 'И': 'I', 'Й': 'J',
-    'Л': 'L', 'П': 'P', 'Ф': 'F', 'Ц': 'C',
-    'б': 'b', 'г': 'g', 'д': 'd', 'з': 'z', 'и': 'i', 'й': 'j',
-    'л': 'l', 'п': 'p', 'ф': 'f', 'ц': 'c',
-    'Ы': 'Y', 'ы': 'y', 'Э': 'E', 'э': 'e', 'Ю': 'U', 'ю': 'u',
-    'Я': 'A', 'я': 'a', 'Щ': 'Š', 'щ': 'š',
-    'Ь': '', 'ь': '', 'Ъ': '', 'ъ': ''
+    Б: "B",
+    Г: "G",
+    Д: "D",
+    З: "Z",
+    И: "I",
+    Й: "J",
+    Л: "L",
+    П: "P",
+    Ф: "F",
+    Ц: "C",
+    б: "b",
+    г: "g",
+    д: "d",
+    з: "z",
+    и: "i",
+    й: "j",
+    л: "l",
+    п: "p",
+    ф: "f",
+    ц: "c",
+    Ы: "Y",
+    ы: "y",
+    Э: "E",
+    э: "e",
+    Ю: "U",
+    ю: "u",
+    Я: "A",
+    я: "a",
+    Щ: "Š",
+    щ: "š",
+    Ь: "",
+    ь: "",
+    Ъ: "",
+    ъ: "",
   };
   function fixCyrillic(s) {
-    return s.replace(/[\u0400-\u04FF]/g, ch =>
-      CYRILLIC_TO_LATIN[ch] !== undefined ? CYRILLIC_TO_LATIN[ch] : ch);
+    return s.replace(/[\u0400-\u04FF]/g, (ch) =>
+      CYRILLIC_TO_LATIN[ch] !== undefined ? CYRILLIC_TO_LATIN[ch] : ch,
+    );
   }
 
   function escapeHtml(s) {
-    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    return s.replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
   }
   // Tiny markdown: **bold**, *italic*, `code`, [text](url), paragraph breaks, lists
   function renderMarkdown(s) {
     let html = escapeHtml(s);
     // links
-    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    html = html.replace(
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener">$1</a>',
+    );
     // bold + italic + code
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-    html = html.replace(/(^|[\s(])\*([^*\n]+)\*/g, '$1<em>$2</em>');
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+    html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
     // simple lists: lines starting with "- " or "* "
-    const lines = html.split('\n');
-    const out = []; let inList = false;
+    const lines = html.split("\n");
+    const out = [];
+    let inList = false;
     for (const line of lines) {
       const m = line.match(/^[-*]\s+(.*)$/);
       if (m) {
-        if (!inList) { out.push('<ul>'); inList = true; }
-        out.push('<li>' + m[1] + '</li>');
+        if (!inList) {
+          out.push("<ul>");
+          inList = true;
+        }
+        out.push("<li>" + m[1] + "</li>");
       } else {
-        if (inList) { out.push('</ul>'); inList = false; }
+        if (inList) {
+          out.push("</ul>");
+          inList = false;
+        }
         out.push(line);
       }
     }
-    if (inList) out.push('</ul>');
-    html = out.join('\n');
+    if (inList) out.push("</ul>");
+    html = out.join("\n");
     // paragraphs from double newlines
-    html = html.split(/\n{2,}/).map(p =>
-      p.match(/^<(ul|ol|h\d)/) ? p : '<p>' + p.replace(/\n/g, '<br>') + '</p>'
-    ).join('');
+    html = html
+      .split(/\n{2,}/)
+      .map((p) =>
+        p.match(/^<(ul|ol|h\d)/)
+          ? p
+          : "<p>" + p.replace(/\n/g, "<br>") + "</p>",
+      )
+      .join("");
     return html;
   }
 
   function addUserMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'efc-msg efc-msg-user';
+    const div = document.createElement("div");
+    div.className = "efc-msg efc-msg-user";
     div.textContent = text;
     $messages.appendChild(div);
     scrollToBottom();
   }
   function addBotMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'efc-msg efc-msg-bot';
+    const div = document.createElement("div");
+    div.className = "efc-msg efc-msg-bot";
     div.innerHTML = renderMarkdown(text);
     $messages.appendChild(div);
     scrollToBottom();
     return div;
   }
   function addTyping() {
-    const div = document.createElement('div');
-    div.className = 'efc-msg efc-msg-bot';
-    div.innerHTML = '<div class="efc-typing"><span></span><span></span><span></span></div>';
+    const div = document.createElement("div");
+    div.className = "efc-msg efc-msg-bot";
+    div.innerHTML =
+      '<div class="efc-typing"><span></span><span></span><span></span></div>';
     $messages.appendChild(div);
     scrollToBottom();
     return div;
   }
   function scrollToBottom() {
-    requestAnimationFrame(() => { $messages.scrollTop = $messages.scrollHeight; });
+    requestAnimationFrame(() => {
+      $messages.scrollTop = $messages.scrollHeight;
+    });
   }
 
   /* ---------------- networking ---------------- */
@@ -581,30 +673,31 @@
     if (cfg.mock) return mockResponse(messages, onChunk);
 
     const res = await fetch(cfg.endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages, lang })
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages, lang }),
     });
-    if (!res.ok || !res.body) throw new Error('Network error: ' + res.status);
+    if (!res.ok || !res.body) throw new Error("Network error: " + res.status);
 
     const reader = res.body.getReader();
     const decoder = new TextDecoder();
-    let buffer = '';
+    let buffer = "";
     while (true) {
       const { value, done } = await reader.read();
       if (done) break;
       buffer += decoder.decode(value, { stream: true });
-      const events = buffer.split('\n\n');
-      buffer = events.pop() || '';
+      const events = buffer.split("\n\n");
+      buffer = events.pop() || "";
       for (const evt of events) {
-        const line = evt.split('\n').find(l => l.startsWith('data:'));
+        const line = evt.split("\n").find((l) => l.startsWith("data:"));
         if (!line) continue;
         const payload = line.slice(5).trim();
-        if (!payload || payload === '[DONE]') continue;
+        if (!payload || payload === "[DONE]") continue;
         try {
           const data = JSON.parse(payload);
-          if (data.type === 'text') onChunk(data.text);
-          else if (data.type === 'error') throw new Error(data.message || 'API error');
+          if (data.type === "text") onChunk(data.text);
+          else if (data.type === "error")
+            throw new Error(data.message || "API error");
         } catch (e) {
           // ignore malformed events
         }
@@ -616,18 +709,20 @@
   async function mockResponse(messages, onChunk) {
     const last = messages[messages.length - 1].content.toLowerCase();
     let reply;
-    if (lang === 'sl') {
-      reply = last.includes('cena') || last.includes('kolik')
-        ? 'Cene se razlikujejo glede na obseg projekta. Tipičen AI agent stane med **2.000 € in 8.000 €**, integracija z obstoječimi sistemi pa od **1.500 € naprej**.\n\nLahko mi opišete, kaj vas zanima, in pripravim oceno?'
-        : 'Hvala za sporočilo! Eflitte gradi prilagojene AI agente, RAG sisteme in avtomatizacije za podjetja. Lahko mi poveste kaj več o tem, kaj iščete?\n\n- Velikost vašega podjetja?\n- Katero področje bi želeli avtomatizirati?\n- Imate roke ali okvirno proračun?';
+    if (lang === "sl") {
+      reply =
+        last.includes("cena") || last.includes("kolik")
+          ? "Cene se razlikujejo glede na obseg projekta. Tipičen AI agent stane med **2.000 € in 8.000 €**, integracija z obstoječimi sistemi pa od **1.500 € naprej**.\n\nLahko mi opišete, kaj vas zanima, in pripravim oceno?"
+          : "Hvala za sporočilo! Eflitte gradi prilagojene AI agente, RAG sisteme in avtomatizacije za podjetja. Lahko mi poveste kaj več o tem, kaj iščete?\n\n- Velikost vašega podjetja?\n- Katero področje bi želeli avtomatizirati?\n- Imate roke ali okvirno proračun?";
     } else {
-      reply = last.includes('price') || last.includes('cost')
-        ? 'Pricing depends on project scope. A typical AI agent ranges from **€2,000–8,000**, and integrations start around **€1,500**.\n\nWant to share what you have in mind so I can give a closer estimate?'
-        : 'Thanks for reaching out! Eflitte builds custom AI agents, RAG systems, and automations for businesses. Could you tell me a bit about what you’re looking for?\n\n- Your company size?\n- What process you’d like to automate?\n- Any timeline or rough budget?';
+      reply =
+        last.includes("price") || last.includes("cost")
+          ? "Pricing depends on project scope. A typical AI agent ranges from **€2,000–8,000**, and integrations start around **€1,500**.\n\nWant to share what you have in mind so I can give a closer estimate?"
+          : "Thanks for reaching out! Eflitte builds custom AI agents, RAG systems, and automations for businesses. Could you tell me a bit about what you’re looking for?\n\n- Your company size?\n- What process you’d like to automate?\n- Any timeline or rough budget?";
     }
     const tokens = reply.split(/(\s+)/);
     for (const tok of tokens) {
-      await new Promise(r => setTimeout(r, 18 + Math.random() * 25));
+      await new Promise((r) => setTimeout(r, 18 + Math.random() * 25));
       onChunk(tok);
     }
   }
@@ -636,91 +731,98 @@
   async function handleSend() {
     const text = $input.value.trim();
     if (!text || busy) return;
-    busy = true; $send.disabled = true;
-    $input.value = ''; autosize();
+    busy = true;
+    $send.disabled = true;
+    $input.value = "";
+    autosize();
 
     addUserMessage(text);
-    history.push({ role: 'user', content: text });
+    history.push({ role: "user", content: text });
     saveHistory();
 
     const typingNode = addTyping();
-    setMood('thinking');
+    setMood("thinking");
     let botNode = null;
-    let acc = '';
+    let acc = "";
 
     try {
       await sendToBackend(history, (chunk) => {
         if (!botNode) {
           typingNode.remove();
-          botNode = addBotMessage('');
-          setMood('talking');
+          botNode = addBotMessage("");
+          setMood("talking");
         }
         acc += chunk;
         botNode.innerHTML = renderMarkdown(fixCyrillic(acc));
         scrollToBottom();
       });
       if (acc) {
-        history.push({ role: 'assistant', content: fixCyrillic(acc) });
+        history.push({ role: "assistant", content: fixCyrillic(acc) });
         saveHistory();
-        setMood('happy', 1600);
+        setMood("happy", 1600);
       } else {
         typingNode.remove();
-        addBotMessage(t('error'));
-        setMood('oops', 2200);
+        addBotMessage(t("error"));
+        setMood("oops", 2200);
       }
     } catch (err) {
-      console.error('[Eflitte chat]', err);
+      console.error("[Eflitte chat]", err);
       if (typingNode.parentNode) typingNode.remove();
-      addBotMessage(t('error'));
-      setMood('oops', 2200);
+      addBotMessage(t("error"));
+      setMood("oops", 2200);
     } finally {
-      busy = false; updateSendState();
+      busy = false;
+      updateSendState();
       $input.focus();
     }
   }
 
   /* ---------------- input handling ---------------- */
   function autosize() {
-    $input.style.height = 'auto';
-    $input.style.height = Math.min($input.scrollHeight, 120) + 'px';
+    $input.style.height = "auto";
+    $input.style.height = Math.min($input.scrollHeight, 120) + "px";
   }
   function updateSendState() {
     $send.disabled = busy || $input.value.trim().length === 0;
   }
-  $input.addEventListener('input', () => { autosize(); updateSendState(); });
-  $input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+  $input.addEventListener("input", () => {
+    autosize();
+    updateSendState();
+  });
+  $input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
   });
-  $send.addEventListener('click', handleSend);
+  $send.addEventListener("click", handleSend);
 
   /* ---------------- panel open/close ---------------- */
   function openPanel() {
-    panel.dataset.open = 'true';
-    fab.dataset.open = 'true';
-    fab.setAttribute('aria-label', t('close'));
-    if (!busy) setMood('idle');
+    panel.dataset.open = "true";
+    fab.dataset.open = "true";
+    fab.setAttribute("aria-label", t("close"));
+    if (!busy) setMood("idle");
     setTimeout(() => $input.focus(), 220);
   }
   function closePanel() {
-    panel.dataset.open = 'false';
-    fab.dataset.open = 'false';
-    fab.setAttribute('aria-label', t('open'));
+    panel.dataset.open = "false";
+    fab.dataset.open = "false";
+    fab.setAttribute("aria-label", t("open"));
   }
-  fab.addEventListener('click', () => {
-    if (panel.dataset.open === 'true') closePanel(); else openPanel();
+  fab.addEventListener("click", () => {
+    if (panel.dataset.open === "true") closePanel();
+    else openPanel();
   });
-  $closeBtn.addEventListener('click', closePanel);
-  $reset.addEventListener('click', clearHistory);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.dataset.open === 'true') closePanel();
+  $closeBtn.addEventListener("click", closePanel);
+  $reset.addEventListener("click", clearHistory);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panel.dataset.open === "true") closePanel();
   });
 
   // re-render greeting if site language changes (Eflitte's site stores it in localStorage)
-  window.addEventListener('storage', (e) => {
-    if (e.key === 'eflitte-lang') {
+  window.addEventListener("storage", (e) => {
+    if (e.key === "eflitte-lang") {
       lang = detectLang();
       // simplest: clear and re-greet
       clearHistory();
@@ -730,11 +832,11 @@
   /* ---------------- init ---------------- */
   loadHistory();
   if (history.length === 0) {
-    addBotMessage(t('greeting'));
-    setMood('happy', 1800);
+    addBotMessage(t("greeting"));
+    setMood("happy", 1800);
   } else {
     for (const m of history) {
-      if (m.role === 'user') addUserMessage(m.content);
+      if (m.role === "user") addUserMessage(m.content);
       else addBotMessage(m.content);
     }
   }
