@@ -264,7 +264,7 @@
   .hero {
     position: relative;
     min-height: 100vh;
-    padding: 160px 40px 120px;
+    padding: 160px 40px 80px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -452,7 +452,7 @@
   /* ---------- CATEGORIES (2-card "kaj počnemo") ---------- */
   .categories {
     background: var(--bg);
-    padding: 140px 40px 120px;
+    padding: 80px 40px;
   }
   .cat-head {
     text-align: center;
@@ -542,11 +542,127 @@
   }
 
   /* ---------- SHOWCASE (V AKCIJI) ---------- */
+  /* HERO CARDS — znotraj hero razdelka */
+  .hero-cards {
+    position: relative;
+    margin-top: 72px;
+    width: 100%;
+  }
+  .hero-cards-backdrop {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 116%;
+    height: 150%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-cards-backdrop svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .intro-cards-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .intro-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(248, 250, 252, 0.045);
+    border: 1px solid rgba(248, 250, 252, 0.12);
+    border-radius: 10px;
+    padding: 30px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  }
+  .intro-card-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .intro-card-art svg { width: 86%; height: auto; }
+  .intro-card:hover .intro-card-art { opacity: 0.22; }
+  .intro-card-num,
+  .intro-card-title,
+  .intro-card-list { position: relative; z-index: 1; }
+  .intro-card:hover {
+    border-color: rgba(248, 250, 252, 0.24);
+    background: rgba(248, 250, 252, 0.07);
+    transform: translateY(-3px);
+  }
+  .intro-card-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .intro-card-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: #F8FAFC;
+    margin-bottom: 20px;
+  }
+  .intro-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .intro-card-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: rgba(248, 250, 252, 0.72);
+  }
+  .intro-card-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgba(204, 120, 92, 0.16);
+    border: 1px solid var(--accent);
+  }
+  .intro-card-list li::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 9px;
+    width: 3px;
+    height: 6px;
+    border-right: 1.6px solid var(--accent);
+    border-bottom: 1.6px solid var(--accent);
+    transform: rotate(45deg);
+  }
   .showcase {
     background: var(--bg-alt);
-    padding: 120px 40px;
+    padding: 72px 40px 80px;
   }
-  .showcase .cat-head { margin-bottom: 64px; }
+  .showcase .cat-head { margin-bottom: 48px; }
   .showcase-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -605,7 +721,7 @@
   /* ---------- HONEST POSITIONING ---------- */
   .honest {
     background: var(--bg-alt);
-    padding: 120px 40px;
+    padding: 80px 40px;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
@@ -643,7 +759,7 @@
   /* ---------- PROCESS ---------- */
   .process {
     background: var(--bg);
-    padding: 120px 40px;
+    padding: 80px 40px;
   }
   .process-grid {
     display: grid;
@@ -679,7 +795,7 @@
   .faq {
     background: var(--bg-alt);
     border-top: 1px solid var(--line);
-    padding: 120px 40px;
+    padding: 80px 40px;
   }
   .faq-head { margin-bottom: 56px; max-width: 720px; }
   .faq-list { max-width: 900px; border-top: 1px solid var(--line-strong); }
@@ -730,7 +846,7 @@
   .cta {
     background: var(--navy);
     color: #F8FAFC;
-    padding: 140px 40px 120px;
+    padding: 90px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -766,7 +882,7 @@
   }
 
   /* ---------- CONTACT FORM ---------- */
-  .contact { background: var(--bg); padding: 120px 40px; }
+  .contact { background: var(--bg); padding: 80px 40px; }
   .contact-inner { max-width: 720px; margin: 0 auto; }
   .form-grid { display: grid; gap: 24px; margin-top: 56px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -980,6 +1096,9 @@
     .cta { padding: 100px 22px 90px; }
     .cat-grid { grid-template-columns: 1fr; gap: 16px; }
     .showcase-grid { grid-template-columns: 1fr; gap: 16px; }
+    .intro-cards-grid { grid-template-columns: 1fr; gap: 14px; }
+    .hero-cards { margin-top: 48px; }
+    .hero-cards-backdrop { width: 150%; height: 130%; }
     .cat-card { padding: 40px 28px; }
     .honest-grid { grid-template-columns: 1fr; gap: 40px; }
     .process-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -1002,14 +1121,14 @@
   @media (min-width: 1280px) {
     .nav { padding: 22px 56px; }
     .nav.scrolled { padding: 14px 56px; }
-    .hero { padding: 170px 56px 130px; }
+    .hero { padding: 170px 56px 90px; }
     .categories,
     .showcase,
     .honest,
     .process,
     .faq,
-    .contact { padding: 130px 56px; }
-    .cta { padding: 150px 56px 130px; }
+    .contact { padding: 90px 56px; }
+    .cta { padding: 100px 56px; }
     footer { padding: 90px 56px 32px; }
 
     .hero-inner,
@@ -1023,14 +1142,14 @@
   @media (min-width: 1600px) {
     .nav { padding: 24px 80px; }
     .nav.scrolled { padding: 14px 80px; }
-    .hero { padding: 190px 80px 150px; }
+    .hero { padding: 190px 80px 100px; }
     .categories,
     .showcase,
     .honest,
     .process,
     .faq,
-    .contact { padding: 150px 80px; }
-    .cta { padding: 170px 80px 150px; }
+    .contact { padding: 100px 80px; }
+    .cta { padding: 110px 80px; }
     footer { padding: 100px 80px 36px; }
 
     .hero-inner,
@@ -1045,14 +1164,14 @@
   @media (min-width: 2000px) {
     .nav { padding: 26px 120px; }
     .nav.scrolled { padding: 16px 120px; }
-    .hero { padding: 210px 120px 170px; }
+    .hero { padding: 210px 120px 110px; }
     .categories,
     .showcase,
     .honest,
     .process,
     .faq,
-    .contact { padding: 170px 120px; }
-    .cta { padding: 190px 120px 170px; }
+    .contact { padding: 110px 120px; }
+    .cta { padding: 120px 120px; }
     footer { padding: 110px 120px 40px; }
 
     .hero-inner,
@@ -1214,18 +1333,156 @@
       <span class="dot" aria-hidden="true"></span>Eflitte · Slovenska AI agencija
     </p>
     <h1 class="hero-title" data-reveal data-i18n="hero.title">
-      AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class="accent">uporabljajo</span>, nadomestili tiste, ki ga ne.
+      Dostavljamo svet <span class="accent">umetne inteligence</span> tudi k slovenskim poslovnežem.
     </h1>
-    <div class="hero-attribution" data-reveal data-i18n="hero.attribution">
-      — Ginni Rometty, nekdanja izvršna direktorica IBM
-    </div>
-    <p class="hero-sub" data-reveal data-i18n="hero.sub">
-      Eflitte je slovenska AI agencija. Gradimo AI-pripravljene spletne strani, optimizirane za Google in AI iskalnike (ChatGPT, Claude, Perplexity), ter avtomatiziramo notranje procese z n8n in LLM logiko. Vsi podatki ostanejo v EU regiji, skladno z GDPR.
-    </p>
     <div class="hero-actions" data-reveal>
       <a href="#kontakt" class="btn-primary" data-i18n="hero.cta">
         Pišite nam <span class="arrow">→</span>
       </a>
+    </div>
+
+    <!-- HERO CARDS -->
+    <div class="hero-cards" data-reveal>
+      <div class="hero-cards-backdrop" aria-hidden="true">
+        <svg viewBox="0 0 1240 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <radialGradient id="hc-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#CC785C" stop-opacity="0.30"/>
+              <stop offset="60%" stop-color="#CC785C" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#CC785C" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="hc-rail" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#CC785C" stop-opacity="0"/>
+              <stop offset="15%" stop-color="#CC785C" stop-opacity="0.55"/>
+              <stop offset="85%" stop-color="#CC785C" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#CC785C" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- soft glow blobs behind each card -->
+          <ellipse cx="207" cy="230" rx="260" ry="200" fill="url(#hc-glow)"/>
+          <ellipse cx="620" cy="210" rx="280" ry="210" fill="url(#hc-glow)"/>
+          <ellipse cx="1033" cy="230" rx="260" ry="200" fill="url(#hc-glow)"/>
+          <!-- connecting rail -->
+          <line x1="207" y1="60" x2="1033" y2="60" stroke="url(#hc-rail)" stroke-width="1.5" stroke-dasharray="2 6"/>
+          <!-- nodes -->
+          <g fill="none" stroke="#CC785C">
+            <circle cx="207"  cy="60" r="9" stroke-opacity="0.45"/>
+            <circle cx="620"  cy="60" r="9" stroke-opacity="0.45"/>
+            <circle cx="1033" cy="60" r="9" stroke-opacity="0.45"/>
+          </g>
+          <g fill="#CC785C">
+            <circle cx="207"  cy="60" r="3.5"/>
+            <circle cx="620"  cy="60" r="3.5"/>
+            <circle cx="1033" cy="60" r="3.5"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="intro-cards-grid">
+
+        <!-- CARD 1 -->
+        <article class="intro-card">
+          <div class="intro-card-art" aria-hidden="true">
+            <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <defs><filter id="skr1" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#skr1)">
+<path d="M14 170 H226"/>
+<rect x="122" y="56" width="96" height="72" rx="5"/>
+<path d="M170 128 V150 M150 152 H190"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M128 74 H212"/>
+<circle cx="134" cy="67" r="2"/><circle cx="141" cy="67" r="2"/><circle cx="148" cy="67" r="2"/>
+<rect x="156" y="63" width="52" height="8" rx="3"/>
+<path d="M130 88 H206 M130 100 H188"/>
+<rect x="130" y="108" width="44" height="14" rx="2"/>
+<path d="M118 50 l-8 7 8 7 M212 50 l8 7 -8 7"/>
+</g>
+<circle cx="56" cy="70" r="14"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M44 63 q7 -13 24 -7"/></g>
+<path d="M56 84 q-7 8 -5 30 q1 18 0 36"/>
+<path d="M60 92 Q76 118 104 150"/>
+<path d="M40 152 H84 M48 152 l-3 22 M78 152 l3 22"/>
+<path d="M88 156 H142 l8 12 H96 Z"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M100 160 H140 M98 164 H138"/></g>
+<path d="M22 152 h18 v14 a4 4 0 0 1 -4 4 h-10 a4 4 0 0 1 -4 -4 Z"/>
+<path d="M40 156 q8 0 8 6 q0 6 -8 6"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M28 144 q-3 -5 0 -10 M35 144 q-3 -5 0 -10"/></g>
+</g>
+            </svg>
+          </div>
+          <div class="intro-card-num">01</div>
+          <h3 class="intro-card-title" data-i18n="introcard1.t">Priprava spletnih strani na novo dobo</h3>
+          <ul class="intro-card-list">
+            <li data-i18n="introcard1.p1">Brez WordPress naročnin</li>
+            <li data-i18n="introcard1.p2">Najdeni na ChatGPT, Google, Perplexity</li>
+            <li data-i18n="introcard1.p3">Manj posredniških provizij</li>
+          </ul>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="intro-card">
+          <div class="intro-card-art" aria-hidden="true">
+            <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <defs><filter id="skr2" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="6" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#skr2)">
+<circle cx="46" cy="62" r="15"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M35 54 q5 -12 22 -9 M37 50 q9 -6 18 -2"/></g>
+<path d="M22 116 q2 -28 24 -30 q22 2 24 30"/>
+<path d="M26 118 H66"/>
+<rect x="166" y="52" width="56" height="52" rx="17"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M194 52 V44"/><circle cx="194" cy="41" r="3"/>
+<circle cx="183" cy="76" r="3.4"/><circle cx="205" cy="76" r="3.4"/>
+<path d="M183 88 q11 8 22 0"/>
+</g>
+<path d="M170 110 H218"/>
+<path d="M74 50 h66 a8 8 0 0 1 8 8 v18 a8 8 0 0 1 -8 8 h-52 l-12 12 v-12 a8 8 0 0 1 -2 -34 Z"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M86 62 H134 M86 72 H120"/></g>
+<path d="M150 104 h-66 a8 8 0 0 0 -8 8 v18 a8 8 0 0 0 8 8 h52 l12 12 v-12 a8 8 0 0 0 2 -34 Z"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M88 116 H146 M88 126 H128"/></g>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M150 92 q14 6 18 14" stroke-dasharray="1 6"/></g>
+</g>
+            </svg>
+          </div>
+          <div class="intro-card-num">02</div>
+          <h3 class="intro-card-title" data-i18n="introcard2.t">Vpeljevanje AI botov</h3>
+          <ul class="intro-card-list">
+            <li data-i18n="introcard2.p1">Ki odgovarjajo na vprašanja</li>
+            <li data-i18n="introcard2.p2">Ki preusmerjajo do pravih ljudi</li>
+            <li data-i18n="introcard2.p3">Ki izvajajo konkretne naloge</li>
+          </ul>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="intro-card">
+          <div class="intro-card-art" aria-hidden="true">
+            <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <defs><filter id="skr3" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="9" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#skr3)">
+<path d="M30 96 C24 70 64 64 60 92 C58 116 28 120 40 100 C50 84 78 86 64 108 C54 124 34 118 46 102"/>
+<path d="M34 84 C46 70 70 74 58 96"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M74 98 H100"/><path d="M100 98 l-7 -4 M100 98 l-7 4"/></g>
+<circle cx="128" cy="98" r="21"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="98" r="8"/>
+<path d="M128 73 V81 M128 115 V123 M103 98 H111 M145 98 H153 M110 80 l6 6 M146 116 l-6 -6 M146 80 l-6 6 M110 116 l6 -6"/></g>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M152 92 H214 M152 100 H206 M152 108 H214"/></g>
+<path d="M150 84 q26 -6 40 -30"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M190 54 l-10 1 M190 54 l-1 10"/></g>
+<circle cx="150" cy="44" r="13"/>
+<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M150 44 V35 M150 44 l8 4"/></g>
+</g>
+            </svg>
+          </div>
+          <div class="intro-card-num">03</div>
+          <h3 class="intro-card-title" data-i18n="introcard3.t">Optimizacija dela</h3>
+          <ul class="intro-card-list">
+            <li data-i18n="introcard3.p1">Manj ročnega kopiranja podatkov</li>
+            <li data-i18n="introcard3.p2">Povezani sistemi, ki tečejo sami</li>
+            <li data-i18n="introcard3.p3">Več časa za delo, ki res šteje</li>
+          </ul>
+        </article>
+
+      </div>
     </div>
   </div>
 </header>
@@ -1807,7 +2064,7 @@
       "nav.insights": { sl: "Vpogledi", en: "Insights" },
       "nav.cta":      { sl: "Pišite nam", en: "Write to us" },
 
-      "hero.title":   { sl: "AI ne bo nadomestil ljudi. Bodo pa tisti, ki ga <span class=\"accent\">uporabljajo</span>, nadomestili tiste, ki ga ne.", en: "AI won't replace humans. But those who use it will replace those who don't." },
+      "hero.title":   { sl: "Dostavljamo svet <span class=\"accent\">umetne inteligence</span> tudi k slovenskim poslovnežem.", en: "We bring the world of <span class=\"accent\">artificial intelligence</span> to Slovenian business owners." },
       "hero.attribution": { sl: "— Ginni Rometty, nekdanja izvršna direktorica IBM", en: "— Ginni Rometty, former CEO of IBM" },
       "hero.sub":     { sl: "Spletne strani, chatboti, avtomatizacija. Skupaj ugotovimo, kje AI res prinaša vrednost in kje (še) ne.", en: "Websites, chatbots, automation. Together we figure out where AI actually adds value — and where it (still) doesn't." },
       "hero.cta":     { sl: "Pišite nam <span class=\"arrow\">→</span>", en: "Write to us <span class=\"arrow\">→</span>" },
@@ -1828,6 +2085,18 @@
       "cat2.l3":     { sl: "Optimizacija marketinga in raziskav", en: "Marketing optimization and research" },
 
       "showcase.label": { sl: "V akciji", en: "In action" },
+      "introcard1.t": { sl: "Priprava spletnih strani na novo dobo", en: "Websites built for a new era" },
+      "introcard1.p1": { sl: "Brez WordPress naročnin", en: "No WordPress subscriptions" },
+      "introcard1.p2": { sl: "Najdeni na ChatGPT, Google, Perplexity", en: "Found on ChatGPT, Google, Perplexity" },
+      "introcard1.p3": { sl: "Manj posredniških provizij", en: "Fewer middleman commissions" },
+      "introcard2.t": { sl: "Vpeljevanje AI botov", en: "Deploying AI bots" },
+      "introcard2.p1": { sl: "Ki odgovarjajo na vprašanja", en: "That answer questions" },
+      "introcard2.p2": { sl: "Ki preusmerjajo do pravih ljudi", en: "That route to the right people" },
+      "introcard2.p3": { sl: "Ki izvajajo konkretne naloge", en: "That carry out concrete tasks" },
+      "introcard3.t": { sl: "Optimizacija dela", en: "Optimizing how you work" },
+      "introcard3.p1": { sl: "Manj ročnega kopiranja podatkov", en: "Less manual data copying" },
+      "introcard3.p2": { sl: "Povezani sistemi, ki tečejo sami", en: "Connected systems that run themselves" },
+      "introcard3.p3": { sl: "Več časa za delo, ki res šteje", en: "More time for work that matters" },
       "showcase.title": { sl: "Kaj zares <span class=\"accent\">naredimo</span>.", en: "What we actually <span class=\"accent\">build</span>." },
       "showcase1.t":    { sl: "Chatbot, ki govori vaš jezik.", en: "A chatbot that speaks your language." },
       "showcase1.lead": { sl: "Pomaga obiskovalcem 24/7 in jih vodi do konkretne zahteve — ne le splošen FAQ.", en: "Helps visitors 24/7 and turns conversations into real inquiries — not just a generic FAQ." },

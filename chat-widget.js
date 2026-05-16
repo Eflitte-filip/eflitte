@@ -241,8 +241,102 @@
     .efc-panel[data-open="true"] { transform: none; }
   }
 
+
+  /* ---------------- Flit mascot ---------------- */
+  .efc-avatar {
+    width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%;
+    background: rgba(204,120,92,0.10);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .efc-mascot { width: 52px; height: 52px; display: block; overflow: visible; cursor: pointer; }
+  .efc-mascot *, .efc-fab-face * { transform-box: fill-box; transform-origin: center; }
+  .efc-fab-face { overflow: visible; }
+  .efc-fab .efc-fab-face { width: 38px; height: 38px; }
+
+  .flit-shell { fill: #CC785C; }
+  .flit-shine { fill: #FAF9F5; opacity: .16; }
+  .flit-eye   { fill: #1F1714; }
+  .flit-cat   { fill: #FAF9F5; opacity: .92; }
+  .flit-spark { fill: #FAF9F5; }
+  .flit-td    { fill: #CC785C; }
+  .flit-aura  { fill: #CC785C; opacity: .14; }
+  .flit-eyes-happy path, .flit-m {
+    fill: none; stroke: #1F1714; stroke-width: 5.5;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .flit-m-talk { fill: #1F1714; stroke: none; }
+
+  /* base visibility */
+  .flit-m { display: none; }
+  .flit-eyes-happy, .flit-think { display: none; }
+  .efc-fab-face .flit-m-idle { display: block; }
+
+  .efc-mascot:not([data-mood]) .flit-m-idle,
+  .efc-mascot[data-mood="idle"] .flit-m-idle { display: block; }
+  .efc-mascot[data-mood="happy"] .flit-m-happy { display: block; }
+  .efc-mascot[data-mood="happy"] .flit-eyes { display: none; }
+  .efc-mascot[data-mood="happy"] .flit-eyes-happy { display: block; }
+  .efc-mascot[data-mood="thinking"] .flit-m-think { display: block; }
+  .efc-mascot[data-mood="thinking"] .flit-think { display: block; }
+  .efc-mascot[data-mood="talking"] .flit-m-talk { display: block; }
+  .efc-mascot[data-mood="oops"] .flit-m-oops { display: block; }
+
+  /* body motion per mood */
+  .efc-mascot:not([data-mood]) .flit-body,
+  .efc-mascot[data-mood="idle"] .flit-body,
+  .efc-fab-face .flit-body { animation: flit-idle 3.6s ease-in-out infinite; }
+  .efc-mascot[data-mood="talking"] .flit-body { animation: flit-bob .34s ease-in-out infinite; }
+  .efc-mascot[data-mood="happy"] .flit-body { animation: flit-pop .5s ease-out; }
+  .efc-mascot[data-mood="oops"] .flit-body { animation: flit-shake .4s ease-in-out 2; }
+  .efc-mascot[data-mood="thinking"] .flit-body { animation: flit-lean 2.4s ease-in-out infinite; }
+
+  /* eyes */
+  .efc-mascot:not([data-mood]) .flit-eyes,
+  .efc-mascot[data-mood="idle"] .flit-eyes,
+  .efc-mascot[data-mood="talking"] .flit-eyes,
+  .efc-fab-face .flit-eyes { animation: flit-blink 4.8s ease-in-out infinite; }
+  .efc-mascot[data-mood="thinking"] .flit-eyes { transform: translate(-2.5px,-3px); }
+  .efc-mascot[data-mood="oops"] .flit-eyes { transform: scaleY(.6); }
+
+  /* mouth + spark + dots + aura */
+  .efc-mascot[data-mood="talking"] .flit-m-talk { animation: flit-talk .26s ease-in-out infinite; }
+  .flit-spark { animation: flit-spark 3s ease-in-out infinite; }
+  .efc-mascot[data-mood="thinking"] .flit-spark { display: none; }
+  .efc-mascot[data-mood="happy"] .flit-spark { animation: flit-spark-pop .55s ease-out; }
+  .efc-mascot[data-mood="talking"] .flit-spark { animation: flit-spark 1.1s ease-in-out infinite; }
+  .flit-td1 { animation: flit-td 1.1s ease-in-out infinite; }
+  .flit-td2 { animation: flit-td 1.1s ease-in-out .15s infinite; }
+  .flit-td3 { animation: flit-td 1.1s ease-in-out .3s infinite; }
+  .flit-aura { animation: flit-aura 3.6s ease-in-out infinite; }
+  .efc-mascot[data-mood="happy"] .flit-aura { opacity: .26; }
+  .efc-mascot[data-mood="thinking"] .flit-aura { opacity: .2; }
+
+  @keyframes flit-idle {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%     { transform: translateY(-3px) scale(1.035); }
+  }
+  @keyframes flit-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+  @keyframes flit-pop { 0% { transform: scale(1); } 40% { transform: scale(1.12); } 100% { transform: scale(1); } }
+  @keyframes flit-shake {
+    0%,100% { transform: translateX(0) rotate(0); }
+    25% { transform: translateX(-3px) rotate(-4deg); }
+    75% { transform: translateX(3px) rotate(4deg); }
+  }
+  @keyframes flit-lean { 0%,100% { transform: rotate(-3.5deg); } 50% { transform: rotate(3.5deg); } }
+  @keyframes flit-blink { 0%,92%,100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+  @keyframes flit-talk { 0%,100% { transform: scaleY(.32); } 50% { transform: scaleY(1); } }
+  @keyframes flit-spark { 0%,100% { transform: scale(.7); opacity: .5; } 50% { transform: scale(1.1); opacity: 1; } }
+  @keyframes flit-spark-pop {
+    0% { transform: scale(.3); opacity: 0; }
+    55% { transform: scale(1.45); opacity: 1; }
+    100% { transform: scale(1); opacity: .9; }
+  }
+  @keyframes flit-td { 0%,100% { transform: translateY(0); opacity: .4; } 40% { transform: translateY(-5px); opacity: 1; } }
+  @keyframes flit-aura { 0%,100% { transform: scale(.9); opacity: .12; } 50% { transform: scale(1.05); opacity: .2; } }
+
   @media (prefers-reduced-motion: reduce) {
-    .efc-fab, .efc-panel, .efc-msg, .efc-status-dot, .efc-typing span {
+    .efc-fab, .efc-panel, .efc-msg, .efc-status-dot, .efc-typing span,
+    .flit-body, .flit-eyes, .flit-m-talk, .flit-spark, .flit-td, .flit-aura {
       animation: none !important; transition: none !important;
     }
   }
@@ -258,8 +352,18 @@
   fab.setAttribute('aria-label', t('open'));
   fab.dataset.open = 'false';
   fab.innerHTML = `
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    <svg class="efc-fab-face" viewBox="0 0 120 120" aria-hidden="true">
+      <g class="flit-body">
+        <rect class="flit-shell" x="14" y="18" width="92" height="92" rx="33"/>
+        <ellipse class="flit-shine" cx="39" cy="40" rx="15" ry="10"/>
+        <g class="flit-eyes">
+          <circle class="flit-eye" cx="48" cy="58" r="11"/>
+          <circle class="flit-eye" cx="72" cy="58" r="11"/>
+          <circle class="flit-cat" cx="51.5" cy="54.5" r="3.3"/>
+          <circle class="flit-cat" cx="75.5" cy="54.5" r="3.3"/>
+        </g>
+        <path class="flit-m flit-m-idle" d="M47 79 Q60 91 73 79"/>
+      </g>
     </svg>`;
 
   const panel = document.createElement('div');
@@ -270,7 +374,38 @@
   panel.innerHTML = `
     <div class="efc-header">
       <div class="efc-header-left">
-        <span class="efc-logo">Eflitte<span class="efc-logo-dot"></span></span>
+        <span class="efc-avatar">
+        <svg class="efc-mascot" data-mood="idle" viewBox="0 0 120 120" aria-hidden="true">
+          <g class="flit-think">
+            <circle class="flit-td flit-td1" cx="48" cy="11" r="5"/>
+            <circle class="flit-td flit-td2" cx="60" cy="9" r="5"/>
+            <circle class="flit-td flit-td3" cx="72" cy="11" r="5"/>
+          </g>
+          <circle class="flit-aura" cx="60" cy="60" r="50"/>
+          <g class="flit-body">
+            <rect class="flit-shell" x="14" y="18" width="92" height="92" rx="33"/>
+            <ellipse class="flit-shine" cx="39" cy="40" rx="15" ry="10"/>
+            <circle class="flit-spark" cx="99" cy="21" r="6.5"/>
+            <g class="flit-eyes">
+              <circle class="flit-eye" cx="48" cy="58" r="11"/>
+              <circle class="flit-eye" cx="72" cy="58" r="11"/>
+              <circle class="flit-cat" cx="51.5" cy="54.5" r="3.3"/>
+              <circle class="flit-cat" cx="75.5" cy="54.5" r="3.3"/>
+            </g>
+            <g class="flit-eyes-happy">
+              <path d="M35 61 Q47 48 59 61"/>
+              <path d="M61 61 Q73 48 85 61"/>
+            </g>
+            <g class="flit-mouth">
+              <path class="flit-m flit-m-idle"  d="M47 79 Q60 91 73 79"/>
+              <path class="flit-m flit-m-happy" d="M41 76 Q60 99 79 76"/>
+              <path class="flit-m flit-m-think" d="M52 82 L66 80"/>
+              <ellipse class="flit-m flit-m-talk" cx="60" cy="82" rx="10" ry="9"/>
+              <path class="flit-m flit-m-oops"  d="M47 85 Q60 73 73 85"/>
+            </g>
+          </g>
+        </svg>
+      </span>
         <div class="efc-meta">
           <span class="efc-name">${t('name')} · ${t('role')}</span>
           <span class="efc-status"><span class="efc-status-dot"></span>${t('online')}</span>
@@ -312,6 +447,27 @@
   const $reset    = panel.querySelector('[data-action="reset"]');
   const $closeBtn = panel.querySelector('[data-action="close"]');
 
+  /* ---------------- mascot mood ---------------- */
+  const $mascot = panel.querySelector('.efc-mascot');
+  let moodTimer = null;
+  function setMood(mood, holdMs) {
+    if (!$mascot) return;
+    if (moodTimer) { clearTimeout(moodTimer); moodTimer = null; }
+    $mascot.dataset.mood = mood;
+    if (holdMs) {
+      moodTimer = setTimeout(function () {
+        moodTimer = null;
+        $mascot.dataset.mood = busy ? 'thinking' : 'idle';
+      }, holdMs);
+    }
+  }
+  if ($mascot) {
+    $mascot.dataset.mood = 'idle';
+    $mascot.addEventListener('click', function () {
+      if (!busy) setMood('happy', 1200);
+    });
+  }
+
   /* ---------------- state ---------------- */
   let history = [];           // [{role, content}]
   let busy = false;
@@ -328,6 +484,7 @@
   function clearHistory() {
     history = []; saveHistory(); $messages.innerHTML = '';
     addBotMessage(t('greeting'));
+    setMood('happy', 1800);
   }
 
   /* ---------------- rendering ---------------- */
@@ -487,6 +644,7 @@
     saveHistory();
 
     const typingNode = addTyping();
+    setMood('thinking');
     let botNode = null;
     let acc = '';
 
@@ -495,6 +653,7 @@
         if (!botNode) {
           typingNode.remove();
           botNode = addBotMessage('');
+          setMood('talking');
         }
         acc += chunk;
         botNode.innerHTML = renderMarkdown(fixCyrillic(acc));
@@ -503,14 +662,17 @@
       if (acc) {
         history.push({ role: 'assistant', content: fixCyrillic(acc) });
         saveHistory();
+        setMood('happy', 1600);
       } else {
         typingNode.remove();
         addBotMessage(t('error'));
+        setMood('oops', 2200);
       }
     } catch (err) {
       console.error('[Eflitte chat]', err);
       if (typingNode.parentNode) typingNode.remove();
       addBotMessage(t('error'));
+      setMood('oops', 2200);
     } finally {
       busy = false; updateSendState();
       $input.focus();
@@ -539,6 +701,7 @@
     panel.dataset.open = 'true';
     fab.dataset.open = 'true';
     fab.setAttribute('aria-label', t('close'));
+    if (!busy) setMood('idle');
     setTimeout(() => $input.focus(), 220);
   }
   function closePanel() {
@@ -568,6 +731,7 @@
   loadHistory();
   if (history.length === 0) {
     addBotMessage(t('greeting'));
+    setMood('happy', 1800);
   } else {
     for (const m of history) {
       if (m.role === 'user') addUserMessage(m.content);
